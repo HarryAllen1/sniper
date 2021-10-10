@@ -24,8 +24,6 @@ export default class InteractionCreateEvent extends BaseEvent {
 
             const descriptions = helpCommandHelper[category].commands;
 
-            console.log(descriptions);
-
             await interaction.update({
               // @ts-ignore
               embeds: [{ title: category, fields: descriptions }],
@@ -35,7 +33,14 @@ export default class InteractionCreateEvent extends BaseEvent {
       } else {
         interaction.reply({
           ephemeral: true,
-          embeds: [{ title: "It's not your command.", color: 'RED' }],
+          embeds: [
+            {
+              title: "It's not your command.",
+              description:
+                "If this is by some chance your command, run your previous command again. No, this isn't a bug.",
+              color: 'RED',
+            },
+          ],
         });
       }
     }
