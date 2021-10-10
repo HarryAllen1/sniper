@@ -21,7 +21,8 @@ export default class CrimeCommand extends BaseCommand {
       'currency',
       [],
       5000,
-      'Commits a crime to gain coins. There is 50/50 chance you loose coins.'
+      'Commits a crime to gain coins. There is 50/50 chance you loose coins.',
+      'you need time to plot your next crime'
     );
   }
 

@@ -15,6 +15,7 @@ export default class BalanceCommand extends BaseCommand {
   }
 
   async run(client: DiscordClient, message: Message, args: Array<string>) {
+    message.channel.sendTyping();
     if (!message.mentions.users.first()) {
       if (args[0] && client.users.cache.get(args[0])) {
         const mentionedUser = client.users.cache.get(args[0])!;
