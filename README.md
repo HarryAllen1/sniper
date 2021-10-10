@@ -30,9 +30,17 @@ If you don't hav Git installed:
 - hit Code > download .zip
 - Extract the files
 - Open a command line (on windows, the app is command prompt)
-- Windows 11:
+
+Windows 11:
+
 - go into the directory with all the files
 - right click "sniper" in the directory bar, and hit copy as text.
+
+Windows 10:
+
+- go into the directory with all the files in file explorer
+- shift-click the url bar and hit "copy as path"
+
 - in your command prompt, run `cd (then right click in this text field to paste the url.)`
 - Run `npm i` to flood your hard drive with files needed for the bot.
 - create a `slappey.json` file, and include the following in it:
