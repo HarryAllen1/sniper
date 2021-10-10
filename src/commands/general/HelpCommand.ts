@@ -26,7 +26,7 @@ export default class HelpCommand extends BaseCommand {
           {
             title: 'Command Help',
             description:
-              'View source code here (not available yet). This bot is in its beta stage, so expect bugs.',
+              '[View source code](https://github.com/MajesticString/sniper). This bot is in its beta stage, so expect bugs.',
             fields: [
               {
                 name: 'Catagories',
