@@ -1,4 +1,9 @@
-import { Message, MessageActionRow, MessageSelectMenu } from 'discord.js';
+import {
+  Message,
+  MessageActionRow,
+  MessageSelectMenu,
+  version,
+} from 'discord.js';
 import BaseCommand from '../../utils/structures/BaseCommand';
 import DiscordClient from '../../client/client';
 import { helpCommandHelper } from '../../utils/registry';
@@ -25,8 +30,7 @@ export default class HelpCommand extends BaseCommand {
         embeds: [
           {
             title: 'Command Help',
-            description:
-              '[View source code](https://github.com/MajesticString/sniper). This bot is in its beta stage, so expect bugs.',
+            description: `Made using Discord.js v${version}.\n[View source code](https://github.com/MajesticString/sniper)\nThis bot is in its beta stage, so expect bugs.`,
             fields: [
               {
                 name: 'Catagories',
