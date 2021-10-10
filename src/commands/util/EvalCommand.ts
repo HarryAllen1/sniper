@@ -2,6 +2,7 @@ import { Message } from 'discord.js';
 import BaseCommand from '../../utils/structures/BaseCommand';
 import DiscordClient from '../../client/client';
 import { addCoinsToTotal, getTotalCoins } from '../../utils/user';
+import { reply } from '../../utils/reply';
 
 export default class EvalCommand extends BaseCommand {
   constructor() {
@@ -21,19 +22,19 @@ export default class EvalCommand extends BaseCommand {
         const evalGetTotalCoins = getTotalCoins;
 
         eval(message.content.substring(7));
-        message.reply('success');
+        reply(message, { title: 'success', color: 'GREEN' });
       } catch (err) {
-        message.reply('you messed up your code:\n' + err);
+        reply(message, {
+          title: 'you messed up your code:\n' + err,
+          color: 'RED',
+        });
       }
     } else {
-      message.reply({
-        embeds: [
-          {
-            title: "You can't use this command.",
-            description:
-              'This command is so dangerous (it could literally wipe all files of the server this bot is running on) that only the creator of the bot can use it.',
-          },
-        ],
+      reply(message, {
+        title: "You can't use this command.",
+        description:
+          'This command is so dangerous (it could literally wipe all files of the server this bot is running on) that only the creator of the bot can use it.',
+        color: 'RED',
       });
     }
   }

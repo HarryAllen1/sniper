@@ -2,6 +2,7 @@ import { Message, MessageEmbed, TextChannel } from 'discord.js';
 import BaseCommand from '../../utils/structures/BaseCommand';
 import DiscordClient from '../../client/client';
 import { editSnipes } from './snipes';
+import { reply } from '../../utils/reply';
 
 export default class EditsnipeCommand extends BaseCommand {
   constructor() {
@@ -17,26 +18,25 @@ export default class EditsnipeCommand extends BaseCommand {
   async run(client: DiscordClient, message: Message, args: Array<string>) {
     const snipe = editSnipes[message.channel.id];
 
-    await message.reply(
+    await reply(
+      message,
       snipe
-        ? {
-            embeds: [
-              new MessageEmbed()
+        ? new MessageEmbed()
 
-                .addField('Old message:', snipe.content!)
-                .addField(
-                  'New message:',
-                  `[Jump!](https://discord.com/channels/${message.guild!.id}/${
-                    message.channel.id
-                  }/${snipe.id})`
-                )
-                .setAuthor(snipe.author!.tag)
-                .setColor('RANDOM')
-                .setFooter(`#${(message.channel as TextChannel).name}`)
-                .setTimestamp(snipe.createdAt ? snipe.createdAt : 0),
-            ],
-          }
-        : "There's nothing to snipe!"
+            .addField('Old message:', snipe.content!)
+            .addField(
+              'New message:',
+              `[Jump!](https://discord.com/channels/${message.guild!.id}/${
+                message.channel.id
+              }/${snipe.id})`
+            )
+            .setAuthor(snipe.author!.tag)
+            .setColor('GREEN')
+            .setFooter(`#${(message.channel as TextChannel).name}`)
+            .setTimestamp(snipe.createdAt ? snipe.createdAt : 0)
+        : new MessageEmbed()
+            .setTitle("There's nothing to snipe!")
+            .setColor('RED')
     );
   }
 }

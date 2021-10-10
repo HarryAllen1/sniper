@@ -2,6 +2,7 @@ import { GuildEmoji, Message, MessageEmbed, TextChannel } from 'discord.js';
 import BaseCommand from '../../utils/structures/BaseCommand';
 import DiscordClient from '../../client/client';
 import { reactionSnipes, UniversalEmoji } from './snipes';
+import { reply } from '../../utils/reply';
 
 const formatEmoji = (emoji: UniversalEmoji | undefined) => {
   // this is a little confusing, but ill try to explain:
@@ -28,23 +29,20 @@ export default class ReactionsnipeCommand extends BaseCommand {
   async run(client: DiscordClient, message: Message, args: Array<string>) {
     const snipe = reactionSnipes[message.channel.id];
 
-    await message.reply(
+    await reply(
+      message,
       snipe
-        ? {
-            embeds: [
-              new MessageEmbed()
-                .setDescription(
-                  `reacted with ${formatEmoji(snipe.emoji)} on [this message](${
-                    snipe.messageURL
-                  })`
-                )
-                .setAuthor(snipe.user!.tag!)
-                .setColor('RANDOM')
-                .setFooter(`#${(message.channel as TextChannel).name}`)
-                .setTimestamp(snipe.createdAt!),
-            ],
-          }
-        : "There's nothing to snipe!"
+        ? new MessageEmbed()
+            .setDescription(
+              `reacted with ${formatEmoji(snipe.emoji)} on [this message](${
+                snipe.messageURL
+              })`
+            )
+            .setAuthor(snipe.user!.tag!)
+            .setColor('RANDOM')
+            .setFooter(`#${(message.channel as TextChannel).name}`)
+            .setTimestamp(snipe.createdAt!)
+        : { title: "There's nothing to snipe!" }
     );
   }
 }

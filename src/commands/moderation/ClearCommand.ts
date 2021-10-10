@@ -1,6 +1,7 @@
 import { Message, TextChannel } from 'discord.js';
 import BaseCommand from '../../utils/structures/BaseCommand';
 import DiscordClient from '../../client/client';
+import { reply } from '../../utils/reply';
 
 export default class ClearCommand extends BaseCommand {
   constructor() {
@@ -18,47 +19,38 @@ export default class ClearCommand extends BaseCommand {
       !message.member?.guild.me?.permissions.has('MANAGE_MESSAGES') &&
       message.author.id !== '696554549418262548'
     ) {
-      message.reply('you dont have the required perms lol');
+      reply(message, { title: 'you dont have the required perms lol' });
       return;
     }
     if (!args[0]) {
-      message.reply({
-        embeds: [
-          {
-            title: 'please specify the number of messages to clear.',
-            color: 'RED',
-          },
-        ],
+      reply(message, {
+        title: 'please specify the number of messages to clear.',
+        color: 'RED',
       });
       return;
     }
     if (isNaN(parseInt(args[0]))) {
-      message.reply({
-        embeds: [
-          {
-            title:
-              'the amount of messages you want me to clear must be a valid number below 100',
-            color: 'RED',
-          },
-        ],
+      reply(message, {
+        title:
+          'the amount of messages you want me to clear must be a valid number below 100',
+        color: 'RED',
       });
       return;
     }
     if (parseInt(args[0]) > 100) {
-      message.reply({
-        embeds: [
-          {
-            title: "I can't clear that many messages",
-            description:
-              "the discord api doesn't let me. Number of messages must be below 100.",
-            color: 'RED',
-          },
-        ],
+      reply(message, {
+        title: "I can't clear that many messages",
+        description:
+          "the discord api doesn't let me. Number of messages must be below 100.",
+        color: 'RED',
       });
       return;
     }
     if (parseInt(args[0]) < 1) {
-      message.reply('i have to delete at least 1 message');
+      reply(message, {
+        title: 'i have to delete at least 1 message',
+        color: 'RED',
+      });
       return;
     }
 

@@ -42,6 +42,12 @@ export const getUserData = (userID: string): Promise<any> => {
     });
 };
 
+export const getUserDataRef = (
+  userID: string
+): Promise<FirebaseFirestore.DocumentSnapshot<any>> => {
+  return db.collection('users').doc(userID).get();
+};
+
 export const setUserData = (
   userID: string,
   data: Partial<FirebaseFirestore.DocumentData>,
