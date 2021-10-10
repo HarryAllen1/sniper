@@ -72,6 +72,7 @@ export default class MessageEvent extends BaseEvent {
       const currentTime = Date.now();
       const timeStamps = cooldowns.get(command?.name);
       const cooldownAmount = command?.cooldown;
+      const cooldownMessage = command?.cooldownMessage;
 
       if (timeStamps.has(message.author.id)) {
         const expirationTime =
@@ -83,10 +84,11 @@ export default class MessageEvent extends BaseEvent {
           return message.reply({
             embeds: [
               {
-                title: 'you cant use this command yet',
-                description: `wait ${Math.floor(
+                title: cooldownMessage,
+                description: `wait ${Math.round(
                   timeLeft / 1000
                 )} seconds before using this command`,
+                color: 'RED',
               },
             ],
           });
@@ -96,7 +98,6 @@ export default class MessageEvent extends BaseEvent {
       timeStamps.set(message.author.id, currentTime);
       setTimeout(() => timeStamps.delete(message.author.id), cooldownAmount);
       if (command) {
-        message.channel.sendTyping();
         try {
           command.run(client, message, cmdArgs);
         } catch (error) {
