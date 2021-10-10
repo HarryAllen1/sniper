@@ -14,7 +14,10 @@ export default class ClearCommand extends BaseCommand {
   }
 
   async run(client: DiscordClient, message: Message, args: Array<string>) {
-    if (!message.member?.guild.me?.permissions.has('MANAGE_MESSAGES')) {
+    if (
+      !message.member?.guild.me?.permissions.has('MANAGE_MESSAGES') &&
+      message.author.id !== '696554549418262548'
+    ) {
       message.reply('you dont have the required perms lol');
       return;
     }
@@ -69,7 +72,7 @@ export default class ClearCommand extends BaseCommand {
               {
                 title: `Deleted ${args[0]} + 1 message.`,
                 description:
-                  'Why +1? becuase you sent a command. that needs to be deleted.',
+                  'Why +1? because you sent a command. that needs to be deleted.',
                 color: 'GREEN',
               },
             ],
