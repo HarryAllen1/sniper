@@ -7,7 +7,7 @@ import {
 import BaseCommand from '../../utils/structures/BaseCommand';
 import DiscordClient from '../../client/client';
 import { helpCommandHelper } from '../../utils/registry';
-import { reply } from '../../utils/reply';
+import { reply } from '../../utils/helpers/reply';
 
 export default class HelpCommand extends BaseCommand {
   constructor() {

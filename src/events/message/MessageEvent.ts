@@ -6,7 +6,7 @@ import {
   Collection,
 } from 'discord.js';
 import DiscordClient from '../../client/client';
-import { reply } from '../../utils/reply';
+import { reply } from '../../utils/helpers/reply';
 
 const cooldowns = new Map();
 

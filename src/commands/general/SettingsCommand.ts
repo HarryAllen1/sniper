@@ -1,10 +1,10 @@
 import { Message } from 'discord.js';
 import BaseCommand from '../../utils/structures/BaseCommand';
 import DiscordClient from '../../client/client';
-import { getUserData, setUserData } from '../../utils/user';
+import { getUserData, setUserData } from '../../utils/helpers/user';
 import { APIEmbedField } from 'discord-api-types';
-import { camelToNormalCase } from '../../utils/string';
-import { reply } from '../../utils/reply';
+import { camelToNormalCase } from '../../utils/helpers/string';
+import { reply } from '../../utils/helpers/reply';
 
 export default class SettingsCommand extends BaseCommand {
   constructor() {

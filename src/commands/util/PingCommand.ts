@@ -2,9 +2,9 @@ import { Message } from 'discord.js';
 import BaseCommand from '../../utils/structures/BaseCommand';
 import DiscordClient from '../../client/client';
 import admin from 'firebase-admin';
-import { getUserData } from '../../utils/user';
-import { msToTime } from '../../utils/date';
-import { reply } from '../../utils/reply';
+import { getUserData } from '../../utils/helpers/user';
+import { msToTime } from '../../utils/helpers/date';
+import { reply } from '../../utils/helpers/reply';
 
 const db = admin.firestore();
 
