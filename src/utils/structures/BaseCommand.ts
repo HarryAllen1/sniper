@@ -14,7 +14,8 @@ export default abstract class BaseCommand {
     private _category: string,
     private _aliases: Array<string>,
     private _cooldown: number,
-    private _description: string
+    private _description: string,
+    private _cooldownMessage?: string
   ) {}
 
   get name(): string {
@@ -31,6 +32,11 @@ export default abstract class BaseCommand {
   }
   get description(): string {
     return this._description ? this._description : '';
+  }
+  get cooldownMessage(): string {
+    return this._cooldownMessage
+      ? this._cooldownMessage
+      : "you can't use this command yet";
   }
 
   abstract run(
