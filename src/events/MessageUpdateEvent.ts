@@ -11,7 +11,10 @@ export default class MessageUodateEvent extends BaseEvent {
 
   async run(client: DiscordClient, oldMessage: Message, newMessage: Message) {
     if (oldMessage.partial) return; // content is null
-    if (oldMessage.author.id !== '270904126974590976')
+    if (
+      oldMessage.author.id !== '270904126974590976' &&
+      oldMessage.author.id !== '893619442712444970'
+    )
       console.log(
         `old message (${
           oldMessage.guild!.name
