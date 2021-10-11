@@ -10,7 +10,8 @@ export default class MessageReactionRemoveEvent extends BaseEvent {
   }
 
   async run(client: DiscordClient, reaction: MessageReaction, user: User) {
-    if (reaction.partial) reaction = await reaction.fetch();
+    if (reaction.partial || user.bot) return;
+    reaction = await reaction.fetch();
 
     reactionSnipes[reaction.message.channel.id] = {
       user,
