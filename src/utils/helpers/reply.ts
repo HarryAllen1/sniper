@@ -22,6 +22,7 @@ export const reply = async (
     nonce,
     stickers,
   } = otherOptions;
+  embed.color ||= 'WHITE';
   return getUserData(message.author.id).then((userData) =>
     message.reply({
       embeds: [embed],
