@@ -1,7 +1,7 @@
 import { Message } from 'discord.js';
 import BaseCommand from '../../utils/structures/BaseCommand';
 import DiscordClient from '../../client/client';
-import { addCoinsToTotal, getTotalCoins } from '../../utils/helpers/user';
+
 import { reply } from '../../utils/helpers/reply';
 
 export default class EvalCommand extends BaseCommand {
@@ -18,11 +18,14 @@ export default class EvalCommand extends BaseCommand {
   async run(client: DiscordClient, message: Message, args: Array<string>) {
     if (message.author.id === '696554549418262548') {
       try {
-        const evalAddCoinsToTotal = addCoinsToTotal;
-        const evalGetTotalCoins = getTotalCoins;
+        const userImport = await import('../../utils/helpers/user');
+        const addCoinsToTotal = userImport.addCoinsToTotal;
+        const getTotalCoins = userImport.getTotalCoins;
 
         eval(message.content.substring(7));
-        reply(message, { title: 'success', color: 'GREEN' });
+        reply(message, { title: 'success', color: 'GREEN' }).then((msg) =>
+          setTimeout(() => msg.delete(), 3000)
+        );
       } catch (err) {
         reply(message, {
           title: 'you messed up your code:\n' + err,

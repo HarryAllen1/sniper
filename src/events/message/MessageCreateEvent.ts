@@ -7,6 +7,7 @@ import {
 } from 'discord.js';
 import DiscordClient from '../../client/client';
 import { reply } from '../../utils/helpers/reply';
+import { log } from '../../utils/helpers/console';
 
 const cooldowns = new Map();
 
@@ -83,6 +84,7 @@ export default class MessageEvent extends BaseEvent {
           });
         }
       }
+      return;
     }
 
     if (
@@ -96,7 +98,7 @@ export default class MessageEvent extends BaseEvent {
       if (!cooldowns.has(command?.name)) {
         cooldowns.set(command?.name, new Collection());
       }
-
+      log('Used command ' + command?.name);
       const currentTime = Date.now();
       const timeStamps = cooldowns.get(command?.name);
       const cooldownAmount = command?.cooldown;
