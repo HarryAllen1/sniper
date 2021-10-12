@@ -2,7 +2,6 @@ import {
   Message,
   MessageEmbed,
   MessageEmbedOptions,
-  MessagePayload,
   ReplyMessageOptions,
 } from 'discord.js';
 
@@ -27,7 +26,9 @@ export const reply = async (
     message.reply({
       embeds: [embed],
       allowedMentions: {
-        repliedUser: userData.settings.mentionAuthorOnReply.value,
+        repliedUser: userData.settings.mentionAuthorOnReply
+          ? userData.settings.mentionAuthorOnReply?.value
+          : true,
       },
       files,
       attachments,
