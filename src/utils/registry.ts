@@ -4,16 +4,6 @@ import DiscordClient from '../client/client';
 import BaseEvent from './structures/BaseEvent';
 import BaseCommand from './structures/BaseCommand';
 
-const sampleData = {
-  general: {
-    commands: [
-      {
-        name: 'help',
-        description: 'idkidkidk',
-      },
-    ],
-  },
-};
 interface CommandHelper {
   [name: string]: CommandCategory;
 }
