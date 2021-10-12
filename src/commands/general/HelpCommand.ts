@@ -52,7 +52,7 @@ export default class HelpCommand extends BaseCommand {
         }
       );
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   }
 }

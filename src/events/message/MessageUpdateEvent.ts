@@ -3,6 +3,7 @@ import { Message } from 'discord.js';
 import BaseEvent from '../../utils/structures/BaseEvent';
 import DiscordClient from '../../client/client';
 import { editSnipes } from '../../commands/util/snipes';
+import { log } from '../../utils/helpers/console';
 
 export default class MessageUpdateEvent extends BaseEvent {
   constructor() {
@@ -12,7 +13,7 @@ export default class MessageUpdateEvent extends BaseEvent {
   async run(client: DiscordClient, oldMessage: Message, newMessage: Message) {
     if (oldMessage.partial || oldMessage.author.bot) return; // content is null
 
-    console.log(
+    log(
       `old message (${
         oldMessage.guild!.name
       }):\n${oldMessage}\nnew message:\n${newMessage}`
