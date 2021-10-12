@@ -22,7 +22,7 @@ export default class CrimeCommand extends BaseCommand {
       [],
       5000,
       'Commits a crime to gain coins. There is 50/50 chance you loose coins.',
-      'you need time to plot your next crime'
+      { cooldownMessage: 'you need time to plot your next crime' }
     );
   }
 

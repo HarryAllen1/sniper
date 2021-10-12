@@ -38,6 +38,7 @@ export default class HelpCommand extends BaseCommand {
               value: `${categories.map((category) => `\`${category}\``)}`,
             },
           ],
+          color: 'WHITE',
         },
         {
           components: [

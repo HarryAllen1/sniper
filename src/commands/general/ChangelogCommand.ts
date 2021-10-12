@@ -13,13 +13,19 @@ export default class ChangelogCommand extends BaseCommand {
       [],
       5000,
       'Shows changes made and plans for the bot.',
-      'this cooldown is to prevent spam.'
+      {
+        cooldownMessage: 'this cooldown is to prevent spam.',
+        argsDescription:
+          '[number of changes to get. defaults to 5. this argument cannot go above 10.]',
+      }
     );
   }
 
   async run(client: DiscordClient, message: Message, args: Array<string>) {
     Axios.get<GithubCommits>(
-      'https://api.github.com/repos/MajesticString/sniper/commits?per_page=5'
+      `https://api.github.com/repos/MajesticString/sniper/commits?per_page=${
+        args[0] ? (parseInt(args[0]) > 10 ? '10' : args[0]) : '5'
+      }`
     ).then((res) => {
       const { data } = res;
       const toReadableDate = (date: string) => {

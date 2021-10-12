@@ -26,7 +26,15 @@ export default class InteractionCreateEvent extends BaseEvent {
 
             await interaction.update({
               // @ts-ignore
-              embeds: [{ title: category, fields: descriptions }],
+              embeds: [
+                {
+                  title: category,
+                  description:
+                    'Key:\n[argument]: Optional argument\n<argument>: Required argument\n[argument] <argument>: If the first argument is specified, the second argument MUST be specified.',
+                  fields: descriptions,
+                  color: 'WHITE',
+                },
+              ],
             });
           }
         }

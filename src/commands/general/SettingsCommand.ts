@@ -8,7 +8,10 @@ import { reply } from '../../utils/helpers/reply';
 
 export default class SettingsCommand extends BaseCommand {
   constructor() {
-    super('settings', 'general', [], 0, 'Displays user settings');
+    super('settings', 'general', [], 500, 'Displays user settings', {
+      argsDescription:
+        '[setting to change] <setting value. must be `true` or `false`>',
+    });
   }
 
   async run(client: DiscordClient, message: Message, args: Array<string>) {
@@ -31,7 +34,7 @@ export default class SettingsCommand extends BaseCommand {
             {
               title: `${message.author.tag}'s settings`,
               description:
-                'To set a setting, type `,,settings <name of setting (case sensitive, sorry)> <true or false>`',
+                'To set a setting, type `,,settings [name of setting (case sensitive, sorry)] <true or false>`',
               fields: settingsFields,
             },
           ],
@@ -40,24 +43,26 @@ export default class SettingsCommand extends BaseCommand {
     };
     if (!args[0]) {
       if (!userData.settings) {
-        reply(message, { title: 'this takes a while...' }).then((msg) => {
-          message.channel.sendTyping();
-          setUserData(
-            message.author.id,
-            {
-              settings: {
-                mentionAuthorOnReply: {
-                  value: true,
-                  description:
-                    'Whether or not Sniper mentions you while using inline replies.',
+        reply(message, { title: 'this sometimes takes a while...' }).then(
+          (msg) => {
+            message.channel.sendTyping();
+            setUserData(
+              message.author.id,
+              {
+                settings: {
+                  mentionAuthorOnReply: {
+                    value: true,
+                    description:
+                      'Whether or not Sniper mentions you while using inline replies.',
+                  },
                 },
               },
-            },
-            { merge: true }
-          ).then(() => {
-            sendSettings(msg);
-          });
-        });
+              { merge: true }
+            ).then(() => {
+              sendSettings(msg);
+            });
+          }
+        );
       } else {
         reply(message, { title: 'retrieving settings' }).then((msg) => {
           sendSettings(msg);

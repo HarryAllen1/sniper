@@ -48,7 +48,9 @@ export async function registerCommands(
       if (helpCommandHelper[command.category])
         helpCommandHelper[command.category].commands.push({
           name: command.name,
-          value: command.description,
+          value: `${command.description}\n${
+            command.argsDescription ? `Args: ${command.argsDescription}\n` : ''
+          }Cooldown (ms): ${command.cooldown.toString()}`,
         });
 
       client.commands.set(command.name, command);

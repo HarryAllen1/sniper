@@ -11,7 +11,8 @@ export default class BalanceCommand extends BaseCommand {
       'currency',
       ['bal'],
       1000,
-      'Shows the current amount of coins you (or someone you mention) have.'
+      'Shows the current amount of coins you have.',
+      { argsDescription: '[mentioned user OR user ID]' }
     );
   }
 

@@ -1,6 +1,11 @@
 import { Message } from 'discord.js';
 import DiscordClient from '../../client/client';
 
+interface ExtraCommandOptions {
+  cooldownMessage?: string;
+  argsDescription?: string;
+}
+
 export default abstract class BaseCommand {
   /**
    * @param _name the name of the command
@@ -15,7 +20,7 @@ export default abstract class BaseCommand {
     private _aliases: Array<string>,
     private _cooldown: number,
     private _description: string,
-    private _cooldownMessage?: string
+    private extraCommandOptions?: ExtraCommandOptions
   ) {}
 
   get name(): string {
@@ -34,9 +39,14 @@ export default abstract class BaseCommand {
     return this._description ? this._description : '';
   }
   get cooldownMessage(): string {
-    return this._cooldownMessage
-      ? this._cooldownMessage
+    return this.extraCommandOptions?.cooldownMessage
+      ? this.extraCommandOptions.cooldownMessage
       : "you can't use this command yet";
+  }
+  get argsDescription(): string | boolean {
+    return this.extraCommandOptions?.argsDescription
+      ? this.extraCommandOptions.argsDescription
+      : false;
   }
 
   abstract run(
