@@ -1,8 +1,8 @@
 // https://discord.js.org/#/docs/main/stable/class/Client?scrollTo=e-messageReactionRemove
 import { MessageReaction, User } from 'discord.js';
-import BaseEvent from '../utils/structures/BaseEvent';
-import DiscordClient from '../client/client';
-import { reactionSnipes } from '../commands/util/snipes';
+import BaseEvent from '../../utils/structures/BaseEvent';
+import DiscordClient from '../../client/client';
+import { reactionSnipes } from '../../commands/util/snipes';
 
 export default class MessageReactionRemoveEvent extends BaseEvent {
   constructor() {

@@ -1,8 +1,8 @@
 // https://discord.js.org/#/docs/main/stable/class/Client?scrollTo=e-messageDelete
 import { Message } from 'discord.js';
-import BaseEvent from '../utils/structures/BaseEvent';
-import DiscordClient from '../client/client';
-import { snipes } from '../commands/util/snipes';
+import BaseEvent from '../../utils/structures/BaseEvent';
+import DiscordClient from '../../client/client';
+import { snipes } from '../../commands/util/snipes';
 
 export default class MessageDeleteEvent extends BaseEvent {
   constructor() {
