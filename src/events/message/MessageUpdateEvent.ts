@@ -4,7 +4,7 @@ import BaseEvent from '../../utils/structures/BaseEvent';
 import DiscordClient from '../../client/client';
 import { editSnipes } from '../../commands/util/snipes';
 
-export default class MessageUodateEvent extends BaseEvent {
+export default class MessageUpdateEvent extends BaseEvent {
   constructor() {
     super('messageUpdate');
   }
