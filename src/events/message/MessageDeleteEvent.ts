@@ -3,6 +3,7 @@ import { Message } from 'discord.js';
 import BaseEvent from '../../utils/structures/BaseEvent';
 import DiscordClient from '../../client/client';
 import { snipes } from '../../commands/util/snipes';
+import { log } from '../../utils/helpers/console';
 
 export default class MessageDeleteEvent extends BaseEvent {
   constructor() {
@@ -11,7 +12,7 @@ export default class MessageDeleteEvent extends BaseEvent {
 
   async run(client: DiscordClient, message: Message) {
     if (message.partial || message.author.bot) return; // content is null
-    console.log(message.guild!.name + ': ' + message.content);
+    log(message.guild!.name + ': ' + message.content);
     snipes[message.channel.id] = {
       author: message.author,
       content: message.content,
