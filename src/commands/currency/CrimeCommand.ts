@@ -32,8 +32,8 @@ export default class CrimeCommand extends BaseCommand {
     const receivedCoins = randomNumber(0 - 5000, 5000);
     const totalCoins = await getTotalCoins(message.author.id);
     const userData = await getUserData(message.author.id);
-    if (userData.inJailUntil) {
-      if (userData.inJailUntil > Date.now()) {
+    if (userData?.inJailUntil) {
+      if (userData?.inJailUntil > Date.now()) {
         reply(message, {
           title: 'You are still in jail!',
           color: 'RED',
@@ -64,14 +64,24 @@ export default class CrimeCommand extends BaseCommand {
         title:
           "You've finally been caught committing a crime, so you have been sent to jail.",
         description:
-          'You will be in jail for 1 day which means you cant use any currency commands, but your balance will be reset to 0.',
+          'You will be in jail for 1 hour which means you cant use any currency commands, but your balance will be reset to 0.',
         color: 'RED',
       });
       setUserData(
         message.author.id,
-        { coins: 0, inJailUntil: Date.now() + 86400000 },
+        { coins: 0, inJailUntil: Date.now() + 3600000 },
         { merge: true }
       );
+    } else if (receivedCoins > 0 - 1000 && receivedCoins < 1000) {
+      getTotalCoins(message.author.id).then((coins) => {
+        reply(message, {
+          title: `You got caught ${chosenCrime}`,
+          description:
+            "However, you managed to run away before you were caught. You didn't gain any coins.",
+          color: 'ORANGE',
+          fields: [{ name: 'Your total coins:', value: coins.toString() }],
+        });
+      });
     } else
       addCoinsToTotal(message.author.id, receivedCoins).then((val) => {
         reply(message, {
