@@ -8,7 +8,7 @@ export default class EvalCommand extends BaseCommand {
   constructor() {
     super(
       'eval',
-      'util',
+      'restricted',
       [],
       0,
       'Executes Javascript code. Can only be used by the owner(s) of the bot.'
