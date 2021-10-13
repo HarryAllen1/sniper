@@ -5,7 +5,7 @@ const db = admin.firestore();
 export const addCoinsToTotal = async (
   userID: string,
   addedCoins: number
-): Promise<number | void> => {
+): Promise<number> => {
   let totalCoins: number;
   return db
     .collection('users')
