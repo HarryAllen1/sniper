@@ -3,7 +3,6 @@ import BaseCommand from '../../utils/structures/BaseCommand';
 import DiscordClient from '../../client/client';
 import { getUserData, setUserData } from '../../utils/helpers/user';
 import { APIEmbedField } from 'discord-api-types';
-import { camelToNormalCase } from '../../utils/helpers/string';
 import { reply } from '../../utils/helpers/reply';
 
 export default class SettingsCommand extends BaseCommand {
@@ -25,7 +24,7 @@ export default class SettingsCommand extends BaseCommand {
         const settingsFields: Array<APIEmbedField> = [];
         settingsArray.forEach((setting) => {
           settingsFields.push({
-            name: `${camelToNormalCase(setting)} (${settings[setting].value})`,
+            name: `${setting} (${settings[setting].value})`,
             value: data.settings[setting].description,
           });
         });
