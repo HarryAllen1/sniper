@@ -2,7 +2,7 @@
 import { Message } from 'discord.js';
 import BaseEvent from '../../utils/structures/BaseEvent';
 import DiscordClient from '../../client/client';
-import { snipes } from '../../commands/util/snipes';
+import { snipes, setSnipe, Snipe } from '../../commands/util/snipes';
 import { log } from '../../utils/helpers/console';
 
 export default class MessageDeleteEvent extends BaseEvent {
@@ -18,5 +18,12 @@ export default class MessageDeleteEvent extends BaseEvent {
       content: message.content,
       createdAt: message.createdTimestamp,
     };
+    const snipeContent: any = {};
+    snipeContent[message.channel.id] = {
+      author: message.author.id,
+      content: message.content,
+      createdAt: message.createdTimestamp,
+    };
+    setSnipe(snipeContent);
   }
 }

@@ -13,22 +13,14 @@ export default class MessageCreateEvent extends BaseEvent {
 
   async run(client: DiscordClient, message: Message) {
     if (message.author.bot) return;
-    if (
-      message.channel.id === '894742416345665576' &&
-      message.author.id !== '696554549418262548'
-    ) {
-      if (
-        message.content.toLowerCase() === 'science' ||
-        message.content.toLowerCase().startsWith('bio')
-      ) {
-        message.member?.roles
-          .add(
-            message.guild!.roles.cache.find((role) => role.name === 'verified')!
-          )
-          .then(() => {
-            message.delete();
-          });
-      }
+
+    if (message.content.toLowerCase().startsWith(',,')) {
+      reply(message, {
+        title: 'This bot\'s prefix is now "," (a single comma).',
+        description: 'its easier to type that way',
+        color: 'RED',
+      });
+      return;
     }
 
     if (message.content.toLowerCase().startsWith('pls snipe')) {
