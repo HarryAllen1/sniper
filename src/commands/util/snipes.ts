@@ -1,10 +1,13 @@
 import {
   Emoji,
   GuildEmoji,
+  Message,
   PartialUser,
   ReactionEmoji,
   User,
 } from 'discord.js';
+import admin from 'firebase-admin';
+const db = admin.firestore();
 
 export type UniversalEmoji = GuildEmoji | ReactionEmoji | Emoji;
 interface SnipeContent {
@@ -17,10 +20,24 @@ interface SnipeContent {
   user?: User | PartialUser;
 }
 
-interface Snipe {
+export interface Snipe {
   [channelId: string]: SnipeContent;
+}
+interface UnSnipe {
+  [channelID: string]: UnSnipeContent;
+}
+interface UnSnipeContent {
+  [msg: string]: Message;
 }
 
 export let snipes: Snipe = {};
 export let editSnipes: Snipe = {};
 export let reactionSnipes: Snipe = {};
+export let unSnipes: UnSnipe = {};
+
+export const setSnipe = (snipe: Snipe) =>
+  db.collection('snipes').doc('snipes').set(snipe, { merge: true });
+export const getSnipes = (
+  channelID?: string
+): Promise<FirebaseFirestore.DocumentSnapshot<Snipe>> =>
+  db.collection('snipes').doc('snipes').get();
