@@ -3,5 +3,6 @@ config.json
 slappey.json
 firebase-credental.json
 /out
-/old
+
 github-credentials.json
+/old/config.json
