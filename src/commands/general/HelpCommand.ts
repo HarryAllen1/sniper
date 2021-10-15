@@ -1,6 +1,7 @@
 import {
   Message,
   MessageActionRow,
+  MessageButton,
   MessageSelectMenu,
   version,
 } from 'discord.js';
@@ -27,7 +28,7 @@ export default class HelpCommand extends BaseCommand {
       menu.push({ label: category, value: category });
     });
     try {
-      reply(
+      await reply(
         message,
         {
           title: 'Command Help',
@@ -48,9 +49,32 @@ export default class HelpCommand extends BaseCommand {
                 .setPlaceholder('Category of commands')
                 .addOptions(menu)
             ),
+            new MessageActionRow().addComponents(
+              new MessageButton()
+                .setCustomId('epicButton')
+                .setStyle('PRIMARY')
+                .setLabel('button')
+            ),
           ],
         }
       );
+      const collector = message.createMessageComponentCollector({
+        filter: (m) => m.user.id === message.author.id,
+        max: 1,
+        time: 15000,
+        componentType: 'BUTTON',
+      });
+      collector.on('dispose', console.log);
+      collector.on('collect', (i) => {
+        console.log('also test');
+
+        if (i.user.id === message.author.id) {
+          console.log('test');
+        }
+      });
+      collector.on('end', (collected, reason) => {
+        console.log(collected);
+      });
     } catch (error) {
       console.error(error);
     }
