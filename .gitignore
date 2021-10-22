@@ -1,8 +1,11 @@
 /node_modules
 config.json
 slappey.json
+slappey-prod.json
 firebase-credental.json
 /out
 
 github-credentials.json
 /old/config.json
+
+guilds.json
