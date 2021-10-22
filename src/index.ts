@@ -2,7 +2,8 @@ import { ShardingManager } from 'discord.js';
 import { token } from '../slappey.json';
 import { log } from './utils/helpers/console';
 
-const manager = new ShardingManager('./out/src/sniper.js', {
+const manager = new ShardingManager('./src/sniper.ts', {
+  totalShards: 'auto',
   token: token,
 });
 
