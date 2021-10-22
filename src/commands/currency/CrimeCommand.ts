@@ -21,7 +21,7 @@ export default class CrimeCommand extends BaseCommand {
       'currency',
       [],
       5000,
-      'Commits a crime to gain coins. There is 50/50 chance you loose coins.',
+      'Commits a crime to gain coins. There is 50/50 chance you loose coins and a 10% chance you go to jail.',
       { cooldownMessage: 'you need time to plot your next crime' }
     );
   }
@@ -29,9 +29,12 @@ export default class CrimeCommand extends BaseCommand {
   async run(client: DiscordClient, message: Message, args: Array<string>) {
     message.channel.sendTyping();
     const chosenCrime = crimes[randomNumber(0, crimes.length - 1)];
-    const receivedCoins = randomNumber(0 - 5000, 5000);
-    const totalCoins = await getTotalCoins(message.author.id);
+    const receivedCoins = randomNumber(-2500, 5000);
+
     const userData = await getUserData(message.author.id);
+    const chanceOfBeingInJail = 10; // percent
+    const randNum = randomNumber(0, 100, false);
+
     if (userData?.inJailUntil) {
       if (userData?.inJailUntil > Date.now()) {
         reply(message, {
@@ -59,17 +62,17 @@ export default class CrimeCommand extends BaseCommand {
           });
         });
       }
-    } else if (totalCoins < 0 - 5000) {
+    } else if (randNum <= chanceOfBeingInJail) {
       reply(message, {
         title:
           "You've finally been caught committing a crime, so you have been sent to jail.",
         description:
-          'You will be in jail for 1 hour which means you cant use any currency commands, but your balance will be reset to 0.',
+          'You will be in jail for 1 hour which means you cant use any currency commands.',
         color: 'RED',
       });
       setUserData(
         message.author.id,
-        { coins: 0, inJailUntil: Date.now() + 3600000 },
+        { inJailUntil: Date.now() + 3600000 },
         { merge: true }
       );
     } else if (receivedCoins > 0 - 1000 && receivedCoins < 1000) {

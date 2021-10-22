@@ -21,8 +21,9 @@ export default class EvalCommand extends BaseCommand {
         const userImport = await import('../../utils/helpers/user');
         const addCoinsToTotal = userImport.addCoinsToTotal;
         const getTotalCoins = userImport.getTotalCoins;
+        const setTotalCoins = userImport.setTotalCoins;
 
-        eval(message.content.substring(7));
+        eval(message.content.substring(6));
         reply(message, { title: 'success', color: 'GREEN' }).then((msg) =>
           setTimeout(() => msg.delete(), 3000)
         );

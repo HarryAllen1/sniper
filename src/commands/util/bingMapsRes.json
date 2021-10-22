@@ -1,0 +1,105 @@
+{
+  "authenticationResultCode": "ValidCredentials",
+  "brandLogoUri": "http://dev.virtualearth.net/Branding/logo_powered_by.png",
+  "copyright": "Copyright © 2021 Microsoft and its suppliers. All rights reserved. This API cannot be accessed and the content and any results may not be used, reproduced or transmitted in any manner without express written permission from Microsoft Corporation.",
+  "resourceSets": [
+    {
+      "estimatedTotal": 3,
+      "resources": [
+        {
+          "__type": "Location:http://schemas.microsoft.com/search/local/ws/rest/v1",
+          "bbox": [
+            47.467555999755859, -122.46871948242187, 47.738399505615234,
+            -122.21672058105469
+          ],
+          "name": "Seattle, WA",
+          "point": {
+            "type": "Point",
+            "coordinates": [47.603229522705078, -122.33027648925781]
+          },
+          "address": {
+            "adminDistrict": "WA",
+            "adminDistrict2": "King County",
+            "countryRegion": "United States",
+            "formattedAddress": "Seattle, WA",
+            "locality": "Seattle"
+          },
+          "confidence": "High",
+          "entityType": "PopulatedPlace",
+          "geocodePoints": [
+            {
+              "type": "Point",
+              "coordinates": [47.603229522705078, -122.33027648925781],
+              "calculationMethod": "Rooftop",
+              "usageTypes": ["Display"]
+            }
+          ],
+          "matchCodes": ["Ambiguous"]
+        },
+        {
+          "__type": "Location:http://schemas.microsoft.com/search/local/ws/rest/v1",
+          "bbox": [
+            54.211050368960571, -3.0210307596625725, 54.268991134945679,
+            -2.888927126079615
+          ],
+          "name": "Seattle, Cumbria, United Kingdom",
+          "point": {
+            "type": "Point",
+            "coordinates": [54.240020751953125, -2.9549789428710938]
+          },
+          "address": {
+            "adminDistrict": "England",
+            "adminDistrict2": "Cumbria",
+            "countryRegion": "United Kingdom",
+            "formattedAddress": "Seattle, Cumbria, United Kingdom",
+            "locality": "Seattle"
+          },
+          "confidence": "Low",
+          "entityType": "PopulatedPlace",
+          "geocodePoints": [
+            {
+              "type": "Point",
+              "coordinates": [54.240020751953125, -2.9549789428710938],
+              "calculationMethod": "Rooftop",
+              "usageTypes": ["Display"]
+            }
+          ],
+          "matchCodes": ["Ambiguous"]
+        },
+        {
+          "__type": "Location:http://schemas.microsoft.com/search/local/ws/rest/v1",
+          "bbox": [
+            20.716829299926758, -103.37592315673828, 20.723018646240234,
+            -103.36897277832031
+          ],
+          "name": "Seattle, Mexico",
+          "point": {
+            "type": "Point",
+            "coordinates": [20.720693588256836, -103.37434387207031]
+          },
+          "address": {
+            "adminDistrict": "JAL",
+            "adminDistrict2": "Zapopan",
+            "countryRegion": "Mexico",
+            "formattedAddress": "Seattle, Mexico",
+            "locality": "Zapopan"
+          },
+          "confidence": "Low",
+          "entityType": "Neighborhood",
+          "geocodePoints": [
+            {
+              "type": "Point",
+              "coordinates": [20.720693588256836, -103.37434387207031],
+              "calculationMethod": "Rooftop",
+              "usageTypes": ["Display"]
+            }
+          ],
+          "matchCodes": ["Ambiguous"]
+        }
+      ]
+    }
+  ],
+  "statusCode": 200,
+  "statusDescription": "OK",
+  "traceId": "4edacb72991e43348b6debd957c33de6|CO00004BEC|0.0.0.1|Ref A: 8985AF4F6AB645C4B0ABD810D88C4B55 Ref B: CO1EDGE2022 Ref C: 2021-10-20T23:44:39Z"
+}

@@ -1,5 +1,10 @@
-import { Message } from 'discord.js';
+import {
+  CommandInteraction,
+  CommandInteractionOptionResolver,
+  Message,
+} from 'discord.js';
 import DiscordClient from '../../client/client';
+import { RESTPostAPIApplicationCommandsJSONBody } from 'discord-api-types/v9';
 
 interface ExtraCommandOptions {
   cooldownMessage?: string;
@@ -49,9 +54,11 @@ export default abstract class BaseCommand {
       : false;
   }
 
+  slashCommand?: RESTPostAPIApplicationCommandsJSONBody;
+
   abstract run(
     client: DiscordClient,
-    message: Message,
-    args: Array<string> | null
+    message: Message | CommandInteraction,
+    args: Array<string> | CommandInteractionOptionResolver | null
   ): Promise<void>;
 }

@@ -1,7 +1,7 @@
 // https://discord.js.org/#/docs/main/stable/class/Client?scrollTo=e-guildMemberRemove
 import { GuildMember, TextChannel } from 'discord.js';
-import BaseEvent from '../utils/structures/BaseEvent';
-import DiscordClient from '../client/client';
+import BaseEvent from '../../utils/structures/BaseEvent';
+import DiscordClient from '../../client/client';
 
 export default class GuildMemberRemoveEvent extends BaseEvent {
   constructor() {

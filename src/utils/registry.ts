@@ -3,6 +3,12 @@ import { promises as fs } from 'fs';
 import DiscordClient from '../client/client';
 import BaseEvent from './structures/BaseEvent';
 import BaseCommand from './structures/BaseCommand';
+import { token, clientID } from '../../slappey.json';
+import { REST } from '@discordjs/rest';
+import {
+  RESTPostAPIApplicationCommandsJSONBody,
+  Routes,
+} from 'discord-api-types/v9';
 
 interface CommandHelper {
   [name: string]: CommandCategory;
@@ -16,8 +22,8 @@ interface Commands {
   name: string;
   value: string;
 }
-
-export let helpCommandHelper: CommandHelper = {};
+export const slashCommands: RESTPostAPIApplicationCommandsJSONBody[] = [];
+export const helpCommandHelper: CommandHelper = {};
 
 export async function registerCommands(
   client: DiscordClient,
@@ -25,6 +31,7 @@ export async function registerCommands(
 ) {
   const filePath = path.join(__dirname, dir);
   const files = await fs.readdir(filePath);
+
   for (const file of files) {
     const stat = await fs.lstat(path.join(filePath, file));
 
@@ -35,6 +42,9 @@ export async function registerCommands(
     if (file.endsWith('Command.js') || file.endsWith('Command.ts')) {
       const { default: Command } = await import(path.join(dir, file));
       const command = new Command() as BaseCommand;
+      if (command.slashCommand) {
+        slashCommands.push(command.slashCommand);
+      }
       if (helpCommandHelper[command.category])
         helpCommandHelper[command.category].commands.push({
           name: command.name,
