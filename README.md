@@ -23,8 +23,8 @@ If you have Git installed:
 }
 ```
 
-- For most commands, you need firebase. Head to https://console.firebase.google.com/ and run through the proccess of making a new project.
-- Go to the "firestore" tab in the console once you have creaed the project and run through the steps of creating a database.
+- For most commands, you need firebase. Head to https://console.firebase.google.com/ and run through the process of making a new project.
+- Go to the "firestore" tab in the console once you have created the project and run through the steps of creating a database.
 - Right next to "Project Overview", hit the settings button then head to project settings.
 - Go to "Service Accounts", and under "firebase admin sdk", hit "Generate new private key" and save it in the project root (this folder.)
 
@@ -62,8 +62,8 @@ Then:
 }
 ```
 
-- For most commands, you need firebase. Head to https://console.firebase.google.com/ and run through the proccess of making a new project.
-- Go to the "firestore" tab in the console once you have creaed the project and run through the steps of creating a database.
+- For most commands, you need firebase. Head to https://console.firebase.google.com/ and run through the process of making a new project.
+- Go to the "firestore" tab in the console once you have created the project and run through the steps of creating a database.
 - Right next to "Project Overview", hit the settings button then head to project settings.
 - Go to "Service Accounts", and under "firebase admin sdk", hit "Generate new private key" and save it in the project root (this folder.)
 
