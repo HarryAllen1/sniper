@@ -1,5 +1,6 @@
 import { Message } from 'discord.js';
 import BaseCommand from '../../utils/structures/BaseCommand';
+import { reactionSnipes } from '../util/snipes';
 import DiscordClient from '../../client/client';
 
 import { reply } from '../../utils/helpers/reply';
@@ -22,6 +23,7 @@ export default class EvalCommand extends BaseCommand {
         const addCoinsToTotal = userImport.addCoinsToTotal;
         const getTotalCoins = userImport.getTotalCoins;
         const setTotalCoins = userImport.setTotalCoins;
+        const snipes = await import('../util/snipes');
 
         eval(message.content.substring(6));
         reply(message, { title: 'success', color: 'GREEN' }).then((msg) =>
