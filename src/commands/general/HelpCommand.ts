@@ -96,7 +96,18 @@ export default class HelpCommand extends BaseCommand {
           time: 15000,
         });
         backCollector.on('collect', (reaction, user) => {
-          reaction.remove();
+          reaction.users.remove(user);
+          if (catagoriesIndex >= -1) {
+            msg.edit({ allowedMentions: { repliedUser: false } });
+          }
+        });
+        const nextCollector = msg.createReactionCollector({
+          filter: (reaction, user) =>
+            reaction.emoji.name === '➡️' && user.id === message.author.id,
+          time: 15000,
+        });
+        nextCollector.on('collect', (reaction, user) => {
+          reaction.users.remove(user);
           if (catagoriesIndex >= -1) {
             msg.edit({ allowedMentions: { repliedUser: false } });
           }
