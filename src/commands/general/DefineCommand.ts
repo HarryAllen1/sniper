@@ -4,7 +4,7 @@ import DiscordClient from '../../client/client';
 import { reply } from '../../utils/helpers/reply';
 import { apiKeys } from '../../../slappey.json';
 import axios from 'axios';
-import { MWResponse } from './DictionaryTypes';
+import { MWResponse, OxfordRes } from './DictionaryTypes';
 
 export default class DefineCommand extends BaseCommand {
   constructor() {
@@ -19,16 +19,82 @@ export default class DefineCommand extends BaseCommand {
       reply(message, { title: 'You must specify a search term', color: 'RED' });
       return;
     }
-    let defaultDictionary = 'oxford';
-
+    let defaultDictionary = 'mw';
+    message.channel.sendTyping();
     if (!args[1]) {
     } else if (
-      args[1].toLowerCase() === 'mw' ||
+      args[1].toLowerCase() === 'oxford' ||
       args[1].toLowerCase() === 'urban'
     ) {
       defaultDictionary = args[1];
     }
-    if (defaultDictionary === 'urban') {
+    if (defaultDictionary === 'oxford') {
+      // const lemmas = await axios.get<any>(
+      //   `https://od-api.oxforddictionaries.com/api/v2/lemmas/en-us/${args[0]}`,
+      //   {
+      //     headers: {
+      //       app_id: apiKeys.oxford.appId,
+      //       app_key: apiKeys.oxford.appKey,
+      //     },
+      //   }
+      // );
+      // const lemmaData = lemmas.data;
+      // const searchTerm =
+      //   lemmaData.results[0]?.lexicalEntries?.inflictionOf[0]?.text;
+      // if (!searchTerm) {
+      //   reply(message, {
+      //     title: "That word wasn't found",
+      //     description: 'Try again with a different search term.',
+      //     color: 'RED',
+      //   });
+      // }
+      const definition = await axios.get<OxfordRes>(
+        `https://od-api.oxforddictionaries.com/api/v2/entries/en-us/${args[0].toLowerCase()}?fields=definitions,examples,pronunciations`,
+        {
+          headers: {
+            app_id: apiKeys.oxford.appId,
+            app_key: apiKeys.oxford.appKey,
+          },
+        }
+      );
+      const data = definition.data;
+
+      if (data) {
+        const examples =
+          data.results[0].lexicalEntries[0].entries[0].senses[0].examples;
+        let examplesValue = '';
+        if (examples)
+          examples.forEach((example) => {
+            examplesValue += `${example.text}\n`;
+          });
+        reply(
+          message,
+          {
+            title: `[${data.results[0].lexicalEntries[0].lexicalCategory.id}] ${data.word}`,
+            fields: [
+              {
+                name: 'Definition',
+                value: `${data.results[0].lexicalEntries[0].entries[0].senses[0].definitions[0]}`,
+              },
+              {
+                name: 'Examples',
+                value:
+                  examplesValue === '' ? 'No examples found' : examplesValue,
+              },
+            ],
+          },
+          {
+            files: [
+              {
+                attachment:
+                  data.results[0].lexicalEntries[0].entries[0].pronunciations[1]
+                    .audioFile,
+              },
+            ],
+          }
+        );
+      }
+    } else if (defaultDictionary === 'urban') {
       const definition = await axios.get<{
         list: Array<{
           definition: string;
@@ -78,26 +144,33 @@ export default class DefineCommand extends BaseCommand {
         reply(
           message,
           {
-            title: `${data[0].fl} ${data[0].hwi.hw}`,
+            title: `[${data[0].fl}] ${data[0].hwi.hw}`,
             fields: [
               {
                 name: 'Definitions',
                 value: data[0].shortdef.map((val) => `\n${val}`).toString(),
               },
             ],
+          },
+          {
+            files: [
+              {
+                attachment: `https://media.merriam-webster.com/audio/prons/en/us/mp3/${
+                  data[0].hwi.prs[0].sound.audio.startsWith('bix')
+                    ? 'bix'
+                    : data[0].hwi.prs[0].sound.audio.startsWith('gg')
+                    ? 'gg'
+                    : data[0].hwi.prs[0].sound.audio.charAt(0).toLowerCase() ===
+                      data[0].hwi.prs[0].sound.audio.charAt(0).toUpperCase()
+                    ? 'number'
+                    : data[0].hwi.prs[0].sound.audio.charAt(0)
+                }/${data[0].hwi.prs[0].sound.audio}.mp3`,
+                name: 'pron.mp3',
+              },
+            ],
           }
-          // {
-          //   attachments: [
-          //     new MessageAttachment(
-          //       `https://media.merriam-webster.com/audio/prons/en/us/mp3/${data[0].hwi.prs[0].sound.audio[0]}/${data[0].hwi.prs[0].sound.audio[0]}.mp3`
-          //     ),
-          //   ],
-          // }
         );
       }
-
-      // if (data.)
-      // reply(message, { title: data.meta.id , description: ''}, {attachments: [new MessageAttachment(``)]});
     }
   }
 }
