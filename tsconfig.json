@@ -6,14 +6,16 @@
     "removeComments": true,
     "pretty": false,
 
-    "target": "es2020",
+    "target": "ESNext",
     "module": "CommonJS",
+
+    "moduleResolution": "node",
 
     "resolveJsonModule": true,
 
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
-    "lib": ["ES2020"],
+    "lib": ["ESNext"],
     "strict": true,
     "skipLibCheck": true,
     "allowSyntheticDefaultImports": true
