@@ -23,7 +23,6 @@ export default class InteractionCreateEvent extends BaseEvent {
           const descriptions = helpCommandHelper[category].commands;
 
           await interaction.update({
-            // @ts-ignore
             embeds: [
               {
                 title: category,
