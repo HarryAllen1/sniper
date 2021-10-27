@@ -46,6 +46,7 @@ export default class HelpCommand extends BaseCommand {
               },
             ],
             color: 'WHITE',
+            footer: { text: 'made by ||harry potter||#0014' },
           },
           {
             components: [
@@ -55,63 +56,147 @@ export default class HelpCommand extends BaseCommand {
                   .setPlaceholder('Category of commands')
                   .addOptions(menu)
               ),
-              new MessageActionRow().addComponents(
-                new MessageButton()
-                  .setCustomId('epicButton')
-                  .setStyle('PRIMARY')
-                  .setLabel('button')
-              ),
             ],
           }
         );
       else {
-        const msg = await reply(message, {
-          title:
-            'Command Help: If you want a more organized help menu, use the slash command version  (/help)',
-          description: `Everything is case insensitive. Made using Discord.js v${version}.\n[View source code](https://github.com/MajesticString/sniper)\nThis bot is in its beta stage, so expect bugs.`,
-          fields: [
-            {
-              name: 'Catagories',
-              value: `${categories.map((category) => `\`${category}\``)}`,
-            },
-          ],
-          color: 'WHITE',
+        let categoriesIndex = -1;
+        const updateHelpMessage = async (index: number): Promise<Message> => {
+          console.log('updateHelpMessage called');
+
+          const descriptions = helpCommandHelper[categories[index]].commands;
+          return await msg.edit({
+            embeds: [
+              {
+                title: categories[index],
+                description:
+                  'Key:\n[argument]: Optional argument\n<argument>: Required argument\n[argument] <argument>: If the first argument is specified, the second argument MUST be specified.',
+                color: 'WHITE',
+                fields: descriptions,
+              },
+            ],
+          });
+        };
+        const msg = await reply(
+          message,
+          {
+            title:
+              'Command Help: If you want a more organized help menu, use the slash command version  (/help)',
+            description: `Everything is case insensitive. Made using Discord.js v${version}.\n[View source code](https://github.com/MajesticString/sniper)\nThis bot is in its beta stage, so expect bugs.`,
+            fields: [
+              {
+                name: 'Catagories',
+                value: `${categories.map((category) => `\`${category}\``)}`,
+              },
+            ],
+            color: 'WHITE',
+            footer: { text: 'made by ||harry potter||#0014' },
+          },
+          {
+            components: [
+              new MessageActionRow().addComponents(
+                new MessageButton()
+                  .setEmoji('⏪')
+                  .setStyle('PRIMARY')
+                  .setCustomId('first'),
+                new MessageButton()
+                  .setEmoji('⬅️')
+                  .setStyle('PRIMARY')
+                  .setCustomId('back'),
+                new MessageButton()
+                  .setStyle('PRIMARY')
+                  .setEmoji('⏹️')
+                  .setCustomId('end'),
+                new MessageButton()
+                  .setEmoji('➡️')
+                  .setStyle('PRIMARY')
+                  .setCustomId('next'),
+                new MessageButton()
+                  .setEmoji('⏩')
+                  .setStyle('PRIMARY')
+                  .setCustomId('last')
+              ),
+            ],
+          }
+        );
+
+        const buttonCollector = msg.createMessageComponentCollector({
+          componentType: 'BUTTON',
+
+          time: 15000,
+          filter: (i) => {
+            i.deferUpdate();
+            if (i.user.id !== message.author.id) {
+              i.reply({ content: "This isn't your command.", ephemeral: true });
+            }
+            return i.user.id === message.author.id;
+          },
         });
 
-        await msg.react('⬅️');
-        await msg.react('⏹️');
-        await msg.react('➡️');
-        const stopCollector = msg.createReactionCollector({
-          filter: (reaction, user) =>
-            reaction.emoji.name === '⏹️' && user.id === message.author.id,
-          time: 15000,
-        });
-        stopCollector.on('collect', (reaction, user) => {
-          msg.reactions.removeAll();
-        });
-        let catagoriesIndex = -1;
-        const backCollector = msg.createReactionCollector({
-          filter: (reaction, user) =>
-            reaction.emoji.name === '⬅️' && user.id === message.author.id,
-          time: 15000,
-        });
-        backCollector.on('collect', (reaction, user) => {
-          reaction.users.remove(user);
-          if (catagoriesIndex >= -1) {
-            msg.edit({ allowedMentions: { repliedUser: false } });
+        buttonCollector.on('collect', async (i) => {
+          if (i.customId === 'end') {
+            msg.delete();
+            message.reply({
+              embeds: [
+                {
+                  title: 'Message deleted.',
+                  description: 'Use the help command again if you need to.',
+                },
+              ],
+            });
+          } else if (i.customId === 'first') {
+          } else if (i.customId === 'back') {
+            if (
+              categoriesIndex >= 1 &&
+              categoriesIndex <= categories.length + 1
+            ) {
+              categoriesIndex--;
+              updateHelpMessage(categoriesIndex);
+            }
+          } else if (i.customId === 'next') {
+            if (
+              categoriesIndex >= -1 &&
+              categoriesIndex < categories.length - 1
+            ) {
+              categoriesIndex++;
+              updateHelpMessage(categoriesIndex);
+            } else {
+            }
+          } else if (i.customId === 'last') {
           }
         });
-        const nextCollector = msg.createReactionCollector({
-          filter: (reaction, user) =>
-            reaction.emoji.name === '➡️' && user.id === message.author.id,
-          time: 15000,
-        });
-        nextCollector.on('collect', (reaction, user) => {
-          reaction.users.remove(user);
-          if (catagoriesIndex >= -1) {
-            msg.edit({ allowedMentions: { repliedUser: false } });
-          }
-        });
+
+        // const backCollector = msg.createReactionCollector({
+        //   filter: (reaction, user) =>
+        //     reaction.emoji.name === '⬅️' && user.id === message.author.id,
+        //   time: 15000,
+        // });
+        // backCollector.on('collect', (reaction, user) => {
+        //   reaction.users.remove(user);
+        //   if (
+        //     categoriesIndex >= 1 &&
+        //     categoriesIndex <= categories.length + 1
+        //   ) {
+        //     categoriesIndex--;
+        //     updateHelpMessage(categoriesIndex);
+        //   }
+        // });
+        // const nextCollector = msg.createReactionCollector({
+        //   filter: (reaction, user) =>
+        //     reaction.emoji.name === '➡️' && user.id === message.author.id,
+        //   time: 15000,
+        // });
+        // nextCollector.on('collect', (reaction, user) => {
+        //   reaction.users.remove(user);
+        //   if (
+        //     categoriesIndex >= -1 &&
+        //     categoriesIndex < categories.length - 1
+        //   ) {
+        //     categoriesIndex++;
+        //     updateHelpMessage(categoriesIndex);
+        //   } else {
+        //   }
+        // });
       }
     } catch (error) {
       console.error(error);
