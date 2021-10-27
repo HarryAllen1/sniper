@@ -5,6 +5,7 @@ import { REST } from '@discordjs/rest';
 import { Routes } from 'discord-api-types/v9';
 import { slashCommands } from '../utils/registry';
 import { clientID, token } from '../../slappey.json';
+import { TextChannel } from 'discord.js';
 
 export default class ReadyEvent extends BaseEvent {
   constructor() {
@@ -41,5 +42,12 @@ export default class ReadyEvent extends BaseEvent {
     //   .then(() => {
     //     console.log('globally registered commands');
     //   });
+    // client.guilds.cache
+    //   .get('882695828140073052')
+    //   ?.emojis.create(
+    //     'https://streamsentials.com/wp-content/uploads/OMEGALUL-transparent.png',
+    //     'omegalul',
+    //     { reason: 'lol' }
+    //   );
   }
 }
