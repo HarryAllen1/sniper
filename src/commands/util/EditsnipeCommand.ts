@@ -17,7 +17,30 @@ export default class EditsnipeCommand extends BaseCommand {
 
   async run(client: DiscordClient, message: Message, args: Array<string>) {
     const snipe = editSnipes[message.channel.id];
+    if (args[0] && message.mentions.channels.first()) {
+      const channelSnipe = editSnipes[message.mentions.channels.first()?.id!];
+      await reply(
+        message,
+        channelSnipe
+          ? new MessageEmbed()
 
+              .addField('Old message:', channelSnipe.content!)
+              .addField(
+                'New message:',
+                `[Jump!](https://discord.com/channels/${message.guild!.id}/${
+                  message.mentions.channels.first()?.id
+                }/${channelSnipe.id})`
+              )
+              .setAuthor(channelSnipe.author!.tag)
+              .setColor('GREEN')
+              .setFooter(`#${(message.channel as TextChannel).name}`)
+              .setTimestamp(channelSnipe.createdAt ? channelSnipe.createdAt : 0)
+          : new MessageEmbed()
+              .setTitle("There's nothing to snipe!")
+              .setColor('RED')
+      );
+      return;
+    }
     await reply(
       message,
       snipe

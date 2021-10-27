@@ -28,7 +28,26 @@ export default class ReactionsnipeCommand extends BaseCommand {
 
   async run(client: DiscordClient, message: Message, args: Array<string>) {
     const snipe = reactionSnipes[message.channel.id];
-
+    if (args[0] && message.mentions.channels.first()) {
+      const channelSnipe =
+        reactionSnipes[message.mentions.channels.first()?.id!];
+      await reply(
+        message,
+        channelSnipe
+          ? new MessageEmbed()
+              .setDescription(
+                `reacted with ${formatEmoji(
+                  channelSnipe.emoji
+                )} on [this message](${channelSnipe.messageURL})`
+              )
+              .setAuthor(channelSnipe.user!.tag!)
+              .setColor('RANDOM')
+              .setFooter(`#${(message.channel as TextChannel).name}`)
+              .setTimestamp(channelSnipe.createdAt!)
+          : { title: "There's nothing to snipe!" }
+      );
+      return;
+    }
     await reply(
       message,
       snipe

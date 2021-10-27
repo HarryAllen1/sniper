@@ -11,7 +11,27 @@ export default class SnipeCommand extends BaseCommand {
 
   async run(client: DiscordClient, message: Message, args: Array<string>) {
     const snipe = snipes[message.channel.id];
-
+    if (args[0] && message.mentions.channels.first()) {
+      const channelSnipe = snipes[message.mentions.channels.first()?.id!];
+      await reply(
+        message,
+        channelSnipe
+          ? new MessageEmbed()
+              .setDescription(
+                `${
+                  message.author.bot
+                    ? "(if there is nothing here, the message was probably an embed and i can't send embeds in embeds)\n"
+                    : ''
+                }${channelSnipe.content}`
+              )
+              .setAuthor(channelSnipe.author!.tag)
+              .setColor('GREEN')
+              .setFooter(`#${(message.channel as TextChannel).name}`)
+              .setTimestamp(channelSnipe.createdAt ? channelSnipe.createdAt : 0)
+          : { title: "There's nothing to snipe!" }
+      );
+      return;
+    }
     await reply(
       message,
       snipe
