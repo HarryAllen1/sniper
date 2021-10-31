@@ -12,17 +12,18 @@ export default class MessageUpdateEvent extends BaseEvent {
 
   async run(client: DiscordClient, oldMessage: Message, newMessage: Message) {
     if (oldMessage.partial || oldMessage.author.bot) return; // content is null
-
-    log(
-      `old message (${
-        oldMessage.guild!.name
-      }):\n${oldMessage}\nnew message:\n${newMessage}`
-    );
-    editSnipes[oldMessage.channel.id] = {
-      author: oldMessage.author,
-      content: oldMessage.content,
-      createdAt: newMessage.editedTimestamp,
-      id: newMessage.id,
-    };
+    if (oldMessage.content !== newMessage.content) {
+      log(
+        `old message (${
+          oldMessage.guild!.name
+        }):\n${oldMessage}\nnew message:\n${newMessage}`
+      );
+      editSnipes[oldMessage.channel.id] = {
+        author: oldMessage.author,
+        content: oldMessage.content,
+        createdAt: newMessage.editedTimestamp,
+        id: newMessage.id,
+      };
+    }
   }
 }

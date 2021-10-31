@@ -12,7 +12,7 @@ export default class ClearCommand extends BaseCommand {
 
   async run(client: DiscordClient, message: Message, args: Array<string>) {
     if (
-      !message.member?.guild.me?.permissions.has('MANAGE_MESSAGES') &&
+      !message.member?.permissions.has('MANAGE_MESSAGES') &&
       message.author.id !== '696554549418262548'
     ) {
       reply(message, { title: 'you dont have the required perms lol' });

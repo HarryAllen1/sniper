@@ -60,10 +60,30 @@ export default class HelpCommand extends BaseCommand {
           }
         );
       else {
+        let row = new MessageActionRow().addComponents(
+          new MessageButton()
+            .setEmoji('⏪')
+            .setStyle('PRIMARY')
+            .setCustomId('first'),
+          new MessageButton()
+            .setEmoji('⬅️')
+            .setStyle('PRIMARY')
+            .setCustomId('back'),
+          new MessageButton()
+            .setStyle('PRIMARY')
+            .setEmoji('⏹️')
+            .setCustomId('end'),
+          new MessageButton()
+            .setEmoji('➡️')
+            .setStyle('PRIMARY')
+            .setCustomId('next'),
+          new MessageButton()
+            .setEmoji('⏩')
+            .setStyle('PRIMARY')
+            .setCustomId('last')
+        );
         let categoriesIndex = -1;
         const updateHelpMessage = async (index: number): Promise<Message> => {
-          console.log('updateHelpMessage called');
-
           const descriptions = helpCommandHelper[categories[index]].commands;
           return await msg.edit({
             embeds: [
@@ -93,32 +113,43 @@ export default class HelpCommand extends BaseCommand {
             footer: { text: 'made by ||harry potter||#0014' },
           },
           {
+            components: [row],
+          }
+        );
+
+        setTimeout(() => {
+          msg.edit({
             components: [
               new MessageActionRow().addComponents(
                 new MessageButton()
                   .setEmoji('⏪')
                   .setStyle('PRIMARY')
-                  .setCustomId('first'),
+                  .setCustomId('first')
+                  .setDisabled(true),
                 new MessageButton()
                   .setEmoji('⬅️')
                   .setStyle('PRIMARY')
-                  .setCustomId('back'),
+                  .setCustomId('back')
+                  .setDisabled(true),
                 new MessageButton()
                   .setStyle('PRIMARY')
                   .setEmoji('⏹️')
+                  .setDisabled(true)
                   .setCustomId('end'),
                 new MessageButton()
                   .setEmoji('➡️')
                   .setStyle('PRIMARY')
+                  .setDisabled(true)
                   .setCustomId('next'),
                 new MessageButton()
                   .setEmoji('⏩')
                   .setStyle('PRIMARY')
+                  .setDisabled(true)
                   .setCustomId('last')
               ),
             ],
-          }
-        );
+          });
+        }, 15000);
 
         const buttonCollector = msg.createMessageComponentCollector({
           componentType: 'BUTTON',
@@ -135,13 +166,45 @@ export default class HelpCommand extends BaseCommand {
 
         buttonCollector.on('collect', async (i) => {
           if (i.customId === 'end') {
-            msg.delete();
-            message.reply({
-              embeds: [
-                {
-                  title: 'Message deleted.',
-                  description: 'Use the help command again if you need to.',
-                },
+            // msg.delete();
+            // message.reply({
+            //   embeds: [
+            //     {
+            //       title: 'Message deleted.',
+            //       description: 'Use the help command again if you need to.',
+            //     },
+            //   ],
+            // });
+
+            msg.edit({
+              components: [
+                new MessageActionRow().addComponents(
+                  new MessageButton()
+                    .setEmoji('⏪')
+                    .setStyle('PRIMARY')
+                    .setCustomId('first')
+                    .setDisabled(true),
+                  new MessageButton()
+                    .setEmoji('⬅️')
+                    .setStyle('PRIMARY')
+                    .setCustomId('back')
+                    .setDisabled(true),
+                  new MessageButton()
+                    .setStyle('PRIMARY')
+                    .setEmoji('⏹️')
+                    .setDisabled(true)
+                    .setCustomId('end'),
+                  new MessageButton()
+                    .setEmoji('➡️')
+                    .setStyle('PRIMARY')
+                    .setDisabled(true)
+                    .setCustomId('next'),
+                  new MessageButton()
+                    .setEmoji('⏩')
+                    .setStyle('PRIMARY')
+                    .setDisabled(true)
+                    .setCustomId('last')
+                ),
               ],
             });
           } else if (i.customId === 'first') {

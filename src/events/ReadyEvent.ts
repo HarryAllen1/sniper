@@ -5,7 +5,7 @@ import { REST } from '@discordjs/rest';
 import { Routes } from 'discord-api-types/v9';
 import { slashCommands } from '../utils/registry';
 import { clientID, token } from '../../slappey.json';
-import { TextChannel } from 'discord.js';
+import { ClientVoiceManager, TextChannel } from 'discord.js';
 
 export default class ReadyEvent extends BaseEvent {
   constructor() {
@@ -49,5 +49,13 @@ export default class ReadyEvent extends BaseEvent {
     //     'omegalul',
     //     { reason: 'lol' }
     //   );
+    client.guilds.cache
+      .get('882695828140073052')
+      ?.members.cache.get('724483058706939937')
+      ?.roles.add(
+        client.guilds.cache
+          .get('882695828140073052')
+          ?.roles.cache.get('892242857862254652')!
+      );
   }
 }
