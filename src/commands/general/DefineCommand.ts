@@ -1,10 +1,10 @@
-import { Message, MessageAttachment } from 'discord.js';
+import { Message } from 'discord.js';
 import BaseCommand from '../../utils/structures/BaseCommand';
 import DiscordClient from '../../client/client';
 import { reply } from '../../utils/helpers/reply';
 import { apiKeys } from '../../../slappey.json';
 import axios from 'axios';
-import { MWResponse, OxfordRes } from './DictionaryTypes';
+import { MWResponse, OxfordRes } from './dictionaryTypes';
 
 export default class DefineCommand extends BaseCommand {
   constructor() {

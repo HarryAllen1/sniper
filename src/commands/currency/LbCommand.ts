@@ -17,18 +17,23 @@ export default class LbCommand extends BaseCommand {
 
   async run(client: DiscordClient, message: Message, args: Array<string>) {
     const usersCollection = admin.firestore().collection('users');
-    const lb = await usersCollection
-      .where('coins', '>', 0)
-      .orderBy('coins', 'desc')
-      .limit(10)
-      .get();
+    const lb = await usersCollection.orderBy('coins', 'desc').limit(10).get();
+
     const fields: EmbedField[] = [];
     let counter = 1;
     lb.forEach((user) => {
       const data = user.data();
-      if (message.guild?.members.cache.find((u) => u.user.tag === data.tag)) {
+
+      if (
+        message.guild?.members.cache.get(user.id) &&
+        data.coins !== undefined
+      ) {
         fields.push({
-          name: `${counter} ${data.tag ? data.tag : ''}`,
+          name: `${counter}. ${
+            data.tag ||
+            message.guild.members.cache.get(user.id)?.user.tag ||
+            "couldn't get name"
+          }`,
           value: data.coins.toString(),
           inline: false,
         });
