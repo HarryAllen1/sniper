@@ -49,7 +49,7 @@ export default class LbCommand extends BaseCommand {
           size: 256,
         })!,
       },
-      description: 'Richest users. Users must have more than 0 coins.',
+      description: 'Richest users in this server.',
       fields,
     });
   }
