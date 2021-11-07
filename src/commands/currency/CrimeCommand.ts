@@ -12,7 +12,20 @@ import {
 import { reply } from '../../utils/helpers/reply';
 import { msToTime } from '../../utils/helpers/date';
 
-const crimes = ['Bank robbery', 'J-walking', 'Stealing'];
+const crimes = [
+  'bank robbery',
+  'j-walking',
+  'stealing',
+  'assault',
+  'murder',
+  'attempted murder',
+  'vandalism',
+  'child abuse',
+  'public indecency',
+  'fraud',
+  'torture',
+  'ass',
+];
 
 export default class CrimeCommand extends BaseCommand {
   constructor() {

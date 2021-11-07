@@ -13,7 +13,7 @@ export default class InteractionCreateEvent extends BaseEvent {
       const command = client.commands.get(interaction.commandName);
       if (command?.slashCommand) {
         // console.log(interaction);
-        command.run(client, interaction, interaction.options);
+        command.run(client, interaction, interaction.options as any);
       }
     } else if (interaction.isMessageComponent()) {
       if (interaction.isSelectMenu()) {

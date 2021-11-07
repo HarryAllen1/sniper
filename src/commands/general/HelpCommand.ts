@@ -16,7 +16,7 @@ export default class HelpCommand extends BaseCommand {
     super(
       'help',
       'general',
-      [],
+      ['commands', 'command'],
       1000,
       'Shows all commands and their descriptions'
     );

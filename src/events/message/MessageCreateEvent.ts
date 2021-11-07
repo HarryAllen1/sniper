@@ -3,6 +3,7 @@ import { Message, Collection } from 'discord.js';
 import DiscordClient from '../../client/client';
 import { reply } from '../../utils/helpers/reply';
 import { log } from '../../utils/helpers/console';
+import { getFromBetween } from '../../utils/helpers/charactersBetween';
 // import { sleep } from '../../utils/helpers/misc';
 // import {
 //   getGuildSettings,
@@ -20,6 +21,7 @@ export default class MessageCreateEvent extends BaseEvent {
     if (message.content.toLowerCase().includes('cum')) {
       message.react('💦');
     }
+
     if (
       message.author.id === '493716749342998541' &&
       message.channelId === '888611523881213972'
@@ -83,6 +85,14 @@ export default class MessageCreateEvent extends BaseEvent {
               title: 'An error occurred while running this command.',
               description: `Error: ${error}`,
             });
+          }
+        }
+      } else if (!message.content.startsWith('$')) {
+        const $ = getFromBetween.get(message.content, '$', '$');
+        for (let thing of $) {
+          if (thing.length > 1) {
+            const [cmdName, ...cmdArgs] = message.content.trim().split(/\s+/);
+            client.commands.get('tex')!.run(client, message, $);
           }
         }
       }

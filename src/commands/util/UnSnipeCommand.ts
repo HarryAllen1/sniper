@@ -15,10 +15,11 @@ export default class UnSnipeCommand extends BaseCommand {
   }
 
   async run(client: DiscordClient, message: Message, args: Array<string>) {
-    const snipe = unSnipes[message.channel.id].msg;
+    const snipe = unSnipes[message.channel.id]?.msg;
     const msgToDelete = message?.channel?.messages?.cache?.get(snipe.id);
     if (
       msgToDelete &&
+      snipe &&
       message.author.id === snipes[message.channel.id].author?.id
     ) {
       msgToDelete.delete();
