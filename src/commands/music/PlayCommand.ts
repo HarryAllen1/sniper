@@ -1,13 +1,21 @@
-import { GuildMember, Message, Snowflake } from 'discord.js';
+import { GuildMember, Message, Snowflake, VoiceChannel } from 'discord.js';
 import BaseCommand from '../../utils/structures/BaseCommand';
 import DiscordClient from '../../client/client';
 import { MusicSubscription } from './subscription';
+import { createReadStream } from 'node:fs';
 import {
   entersState,
   joinVoiceChannel,
   VoiceConnectionStatus,
+  createAudioPlayer,
+  createAudioResource,
+  StreamType,
+  AudioPlayerStatus,
 } from '@discordjs/voice';
 import { Track } from './track';
+import { reply } from '../../utils/helpers/reply';
+import { probeAndCreateResource } from '../../utils/helpers/voice';
+import { createDiscordJSAdapter } from './adapter';
 
 const subscriptions = new Map<Snowflake, MusicSubscription>();
 
@@ -17,67 +25,48 @@ export default class PlayCommand extends BaseCommand {
   }
 
   async run(client: DiscordClient, message: Message, args: Array<string>) {
-    let subscription = subscriptions.get(message.guild!.id);
+    const player = createAudioPlayer();
+    function playSong() {
+      const resource = createAudioResource(
+        'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
+        {
+          inputType: StreamType.Arbitrary,
+        }
+      );
 
-    const url = args[0];
-    if (!subscription) {
-      if (
-        message.member instanceof GuildMember &&
-        message.member.voice.channel
-      ) {
-        const channel = message.member.voice.channel;
-        subscription = new MusicSubscription(
-          joinVoiceChannel({
-            channelId: channel.id,
-            guildId: channel.guild.id,
-            adapterCreator: channel.guild.voiceAdapterCreator as any,
-          })
-        );
-        subscription.voiceConnection.on('error', console.warn);
-        subscriptions.set(message.guildId!, subscription);
+      player.play(resource);
+
+      return entersState(player, AudioPlayerStatus.Playing, 5e3);
+    }
+
+    async function connectToChannel(channel: VoiceChannel) {
+      const connection = joinVoiceChannel({
+        channelId: channel.id,
+        guildId: channel.guild.id,
+        adapterCreator: createDiscordJSAdapter(channel),
+      });
+
+      try {
+        await entersState(connection, VoiceConnectionStatus.Ready, 30e3);
+        return connection;
+      } catch (error) {
+        connection.destroy();
+        throw error;
       }
     }
+    await playSong();
+    const channel = message.member?.voice.channel;
 
-    if (!subscription) {
-      await message.reply('Join a voice channel and then try that again!');
-      return;
-    }
-    try {
-      await entersState(
-        subscription.voiceConnection,
-        VoiceConnectionStatus.Ready,
-        20e3
-      );
-    } catch (error) {
-      console.warn(error);
-      await message.reply(
-        'Failed to join voice channel within 20 seconds, please try again later!'
-      );
-      // return;
-    }
-
-    try {
-      // Attempt to create a Track from the user's video URL
-      const track = await Track.from(url, {
-        onStart() {
-          message.reply({ content: 'Now playing!' }).catch(console.warn);
-        },
-        onFinish() {
-          message.reply({ content: 'Now finished!' }).catch(console.warn);
-        },
-        onError(error) {
-          console.warn(error);
-          message
-            .reply({ content: `Error: ${error.message}` })
-            .catch(console.warn);
-        },
-      });
-      // Enqueue the track and reply a success message to the user
-      subscription.enqueue(track);
-      await message.reply(`Enqueued **${track.title}**`);
-    } catch (error) {
-      console.warn(error);
-      await message.reply('Failed to play track, please try again later!');
+    if (channel && channel.type === 'GUILD_VOICE') {
+      try {
+        const connection = await connectToChannel(channel);
+        connection.subscribe(player);
+        message.reply('Playing now!');
+      } catch (error) {
+        console.error(error);
+      }
+    } else {
+      message.reply('Join a voice channel then try again!');
     }
   }
 }

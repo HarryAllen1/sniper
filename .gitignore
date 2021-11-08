@@ -9,3 +9,6 @@ github-credentials.json
 /old/config.json
 
 guilds.json
+
+# log files
+*.log

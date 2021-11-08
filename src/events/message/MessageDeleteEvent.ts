@@ -13,16 +13,19 @@ export default class MessageDeleteEvent extends BaseEvent {
   async run(client: DiscordClient, message: Message) {
     if (message.partial || message.author.bot) return; // content is null
     log(message.guild!.name + ': ' + message.content);
+
     snipes[message.channel.id] = {
       author: message.author,
       content: message.content,
       createdAt: message.createdTimestamp,
+      attachment: message.attachments.first()?.url,
     };
     const snipeContent: any = {};
     snipeContent[message.channel.id] = {
       author: message.author.id,
       content: message.content,
       createdAt: message.createdTimestamp,
+      // attachment: message.attachments.first()?.url,
     };
     setSnipe(snipeContent);
   }

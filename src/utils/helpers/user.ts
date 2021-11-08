@@ -5,6 +5,24 @@ import { client } from '../../sniper';
 
 const db = admin.firestore();
 
+interface UserData {
+  coins: number;
+  inJailUntil: number;
+  items: Array<UserItem>;
+  settings: UserSettings;
+  tag: `${string}#${string}`;
+}
+interface UserItem {
+  name: string;
+  amount: number;
+}
+interface UserSettings {
+  [setting: string]: {
+    value: boolean | 'true' | 'false' | any;
+    description: string;
+  };
+}
+
 export const isAdmin = (
   client: DiscordClient,
   guildID: string,
@@ -59,14 +77,9 @@ export const getTotalCoins = (userID: string): Promise<number> => {
       return stuff.data()?.coins ? stuff.data()?.coins : 0;
     });
 };
-export const getUserData = (userID: string): Promise<any> => {
-  return db
-    .collection('users')
-    .doc(userID)
-    .get()
-    .then((stuff) => {
-      return stuff.data();
-    });
+export const getUserData = async (userID: string): Promise<UserData> => {
+  const stuff = await db.collection('users').doc(userID).get();
+  return stuff.data() as UserData;
 };
 
 export const getUserDataRef = (
@@ -78,7 +91,7 @@ export const getUserDataRef = (
 export const setUserData = (
   userID: string,
   data: Partial<FirebaseFirestore.DocumentData>,
-  options: FirebaseFirestore.SetOptions
+  options: FirebaseFirestore.SetOptions = { merge: true }
 ): Promise<FirebaseFirestore.WriteResult> => {
   return db.collection('users').doc(userID).set(data, options);
 };

@@ -28,7 +28,15 @@ export default class SnipeCommand extends BaseCommand {
               .setColor('GREEN')
               .setFooter(`#${(message.channel as TextChannel).name}`)
               .setTimestamp(channelSnipe.createdAt ? channelSnipe.createdAt : 0)
-          : { title: "There's nothing to snipe!" }
+          : { title: "There's nothing to snipe!" },
+        {
+          files: [
+            {
+              attachment: channelSnipe.attachment || '',
+              name: 'image',
+            },
+          ],
+        }
       );
       return;
     }
@@ -47,7 +55,8 @@ export default class SnipeCommand extends BaseCommand {
             .setColor('GREEN')
             .setFooter(`#${(message.channel as TextChannel).name}`)
             .setTimestamp(snipe.createdAt ? snipe.createdAt : 0)
-        : { title: "There's nothing to snipe!" }
+        : { title: "There's nothing to snipe!" },
+      {}
     ).then((msg) => {
       unSnipes[message.channel.id] = {
         msg,

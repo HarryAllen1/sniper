@@ -11,6 +11,13 @@ export default class TexCommand extends BaseCommand {
   }
 
   async run(client: DiscordClient, message: Message, args: Array<string>) {
+    if (!args[0]) {
+      reply(message, {
+        title: 'You need to provide some text to turn into math',
+        color: 'RED',
+      });
+      return;
+    }
     if (message.content.includes('%')) {
       reply(message, {
         title: 'Please do not use the percent sign in your tex command.',

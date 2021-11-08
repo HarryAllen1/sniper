@@ -5,9 +5,16 @@ import { reply } from '../../utils/helpers/reply';
 
 export default class ClearCommand extends BaseCommand {
   constructor() {
-    super('clear', 'moderation', [], 0, 'Clears messages from a channel', {
-      argsDescription: '<# of messages to clear>',
-    });
+    super(
+      'clear',
+      'moderation',
+      ['purge'],
+      0,
+      'Clears messages from a channel',
+      {
+        argsDescription: '<# of messages to clear>',
+      }
+    );
   }
 
   async run(client: DiscordClient, message: Message, args: Array<string>) {
