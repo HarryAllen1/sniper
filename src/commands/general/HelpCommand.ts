@@ -155,16 +155,21 @@ export default class HelpCommand extends BaseCommand {
           componentType: 'BUTTON',
 
           time: 15000,
-          filter: (i) => {
-            i.deferUpdate();
-            if (i.user.id !== message.author.id) {
-              i.reply({ content: "This isn't your command.", ephemeral: true });
-            }
-            return i.user.id === message.author.id;
-          },
+          // filter: (i) => {
+          //   i.deferUpdate();
+          //   i.deferReply();
+          //   // if (i.user.id !== message.author.id) {
+          //   //   i.reply({ content: "This isn't your command.", ephemeral: true });
+          //   // }
+          //   return i.user.id === message.author.id;
+          // },
         });
 
         buttonCollector.on('collect', async (i) => {
+          if (i.member?.user.id !== message.author.id) {
+            i.reply({ content: "This isn't your command.", ephemeral: true });
+            return;
+          }
           if (i.customId === 'end') {
             // msg.delete();
             // message.reply({

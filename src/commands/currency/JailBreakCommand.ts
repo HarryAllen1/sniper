@@ -24,8 +24,8 @@ export default class JailBreakCommand extends BaseCommand {
   }
 
   async run(client: DiscordClient, message: Message, args: Array<string>) {
-    message.channel.send('this command doesnt work lol');
-    return;
+    // message.channel.send('this command doesnt work lol');
+    // return;
 
     try {
       const userData = await getUserData(message.author.id);
@@ -64,17 +64,21 @@ export default class JailBreakCommand extends BaseCommand {
       );
       const collector = msg.createMessageComponentCollector({
         componentType: 'BUTTON',
-        filter: (i) => {
-          i.deferUpdate();
-          i.deferReply();
-          if (i.user.id !== message.author.id) {
-            i.reply({ content: "This isn't your command.", ephemeral: true });
-          }
-          return i.user.id === message.author.id;
-        },
+        // filter: (i) => {
+        //   i.deferUpdate();
+        //   i.deferReply();
+        //   if (i.user.id !== message.author.id) {
+        //     i.reply({ content: "This isn't your command.", ephemeral: true });
+        //   }
+        //   return i.user.id === message.author.id;
+        // },
         time: 15000,
       });
       collector.on('collect', async (i) => {
+        if (i.member?.user.id !== message.author.id) {
+          i.reply({ content: "This isn't your command.", ephemeral: true });
+          return;
+        }
         if (i.customId === 'yes') {
           const jailBreakChance = randomNumber(0, 100, true);
           if (jailBreakChance > chanceOfSuccess) {
@@ -117,6 +121,24 @@ export default class JailBreakCommand extends BaseCommand {
               }
             );
           }
+        } else if (i.customId === 'no') {
+          msg.edit({
+            components: [
+              new MessageActionRow().addComponents(
+                new MessageButton()
+                  .setStyle('SUCCESS')
+                  .setDisabled(true)
+                  .setCustomId('yes')
+                  .setLabel('Yes'),
+                new MessageButton()
+                  .setStyle('DANGER')
+                  .setCustomId('no')
+                  .setDisabled(true)
+                  .setLabel('No')
+              ),
+            ],
+          });
+          i.reply({ content: 'Cancelled', ephemeral: true });
         }
       });
     } catch (error) {

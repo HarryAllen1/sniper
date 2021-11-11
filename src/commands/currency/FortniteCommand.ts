@@ -16,22 +16,27 @@ export default class FortniteCommand extends BaseCommand {
   }
 
   async run(client: DiscordClient, message: Message, args: Array<string>) {
-    const chance = Math.floor(Math.random() * 100);
-    if (chance === 1) {
-      const total = await addCoinsToTotal(message.author.id, 5);
-      reply(message, {
-        description: `you gained 5 coins! you now have ${total} coins!`,
-        color: 'GREEN',
-      });
-    } else {
-      const total = await addCoinsToTotal(message.author.id, -1000);
-      reply(
-        message,
-        {
-          description: `you lost 1000 coins! you now have ${total} coins! also fortnite sucks`,
-          color: 'RED',
-        },
-        {
+    try {
+      const chance = Math.floor(Math.random() * 100);
+      if (chance === 1) {
+        const total = await addCoinsToTotal(message.author.id, 5);
+        message.channel.send({
+          embeds: [
+            {
+              description: `you gained 5 coins! you now have ${total} coins!`,
+              color: 'GREEN',
+            },
+          ],
+        });
+      } else {
+        const total = await addCoinsToTotal(message.author.id, -1000);
+        message.channel.send({
+          embeds: [
+            {
+              description: `you lost 1000 coins! you now have ${total} coins! also fortnite sucks`,
+              color: 'RED',
+            },
+          ],
           files: [
             {
               attachment:
@@ -39,7 +44,14 @@ export default class FortniteCommand extends BaseCommand {
               name: 'fortnite.mp3',
             },
           ],
-        }
+        });
+      }
+    } catch (error) {
+      message.channel.send(
+        `${
+          message.guild?.members.cache.get('449750153759424515')?.toString() ||
+          'whim#6166'
+        }: your bot is stupid`
       );
     }
   }
