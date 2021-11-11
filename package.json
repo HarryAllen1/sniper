@@ -1,6 +1,6 @@
 {
   "name": "cambridge-bot",
-  "version": "3.3.0",
+  "version": "3.4.0",
   "main": "./out/src/index.js",
   "license": "MIT",
   "dependencies": {
@@ -38,6 +38,6 @@
   "scripts": {
     "dev": "nodemon ./src/sniper.ts",
     "start": "node ./out/src/index.js",
-    "build": "esbuild src/sniper.ts --outdir=out --platform=node"
+    "build": "tsc"
   }
 }
