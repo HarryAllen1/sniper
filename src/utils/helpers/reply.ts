@@ -2,7 +2,6 @@ import {
   Message,
   MessageEmbed,
   MessageEmbedOptions,
-  Util,
   ReplyMessageOptions,
 } from 'discord.js';
 
@@ -26,20 +25,7 @@ export const reply = async (
     stickers,
   } = otherOptions;
   embed.color ||= 'WHITE';
-  embed.description = Util.escapeMarkdown(embed.description || '', {
-    codeBlock: false,
-    inlineCode: false,
-  });
-  embed.fields?.forEach((field): void => {
-    field.value = Util.escapeMarkdown(field.value || '', {
-      codeBlock: false,
-      inlineCode: false,
-    });
-    field.name = Util.escapeMarkdown(field.name || '', {
-      codeBlock: false,
-      inlineCode: false,
-    });
-  });
+
   return getUserData(message?.author?.id || message.member?.id!).then(
     (userData) =>
       message.type !== 'APPLICATION_COMMAND'

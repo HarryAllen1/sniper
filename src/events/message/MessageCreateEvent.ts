@@ -22,6 +22,8 @@ export default class MessageCreateEvent extends BaseEvent {
       message.react('💦');
     }
 
+    if (message.channel.type === 'DM') return;
+
     if (
       message.author.id === '493716749342998541' &&
       message.channelId === '888611523881213972'
@@ -52,7 +54,7 @@ export default class MessageCreateEvent extends BaseEvent {
         if (!cooldowns.has(command?.name)) {
           cooldowns.set(command?.name, new Collection());
         }
-        log('Used command ' + command?.name);
+
         const currentTime = Date.now();
         const timeStamps = cooldowns.get(command?.name);
         const cooldownAmount = command?.cooldown;
@@ -91,6 +93,7 @@ export default class MessageCreateEvent extends BaseEvent {
             }
           }
           try {
+            log('Used command ' + command?.name);
             command.run(client, message, cmdArgs);
           } catch (error) {
             reply(message, {

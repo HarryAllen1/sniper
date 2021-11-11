@@ -113,13 +113,17 @@ export default class WhoisCommand extends BaseCommand {
           name: 'Permissions',
           value: member.permissions
             .toArray(true)
+
             .map((val) => `\`${val}\``)
             .toString(),
           inline: false,
         },
         {
           name: 'Roles',
-          value: member.roles.cache.map((val) => `${val}`).toString(),
+          value: member.roles.cache
+            .sort((f, s) => s.position - f.position)
+            .map((val) => `${val}`)
+            .toString(),
           inline: true,
         },
         // {

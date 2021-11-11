@@ -18,8 +18,8 @@ export default class RolesCommand extends BaseCommand {
     reply(message, {
       title: 'Roles',
       description: message
-        .guild!.roles.cache.sort((f, s) => f.position - s.position)
-        .map((role) => `\`${role.name}\` - ${role.position}`)
+        .guild!.roles.cache.sort((f, s) => s.position - f.position)
+        .map((role) => `${role.toString()} - ${role.position}`)
         .join('\n'),
     });
   }

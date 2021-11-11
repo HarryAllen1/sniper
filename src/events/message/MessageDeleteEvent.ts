@@ -12,7 +12,8 @@ export default class MessageDeleteEvent extends BaseEvent {
 
   async run(client: DiscordClient, message: Message) {
     if (message.partial || message.author.bot) return; // content is null
-    log(message.guild!.name + ': ' + message.content);
+    if (message.content.toLowerCase() !== '.pick')
+      log(message.guild!.name + ': ' + message.content);
 
     snipes[message.channel.id] = {
       author: message.author,

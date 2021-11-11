@@ -21,11 +21,9 @@ try {
 
   (async () => {
     //@ts-ignore
-    const { prefixes, token } =
-      __filename ===
-      'C:\\Users\\harry\\OneDrive\\Documents\\GitHub\\sniper\\src\\sniper.ts'
-        ? await import('../slappey.json')
-        : await import('../slappey-prod.json');
+    const { prefixes, token } = __filename.endsWith('\\sniper.ts')
+      ? await import('../slappey.json')
+      : await import('../slappey-prod.json');
     client.prefix = prefixes;
 
     await registerCommands(client, '../commands');
