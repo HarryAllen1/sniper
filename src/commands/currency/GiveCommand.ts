@@ -30,6 +30,14 @@ export default class GiveCommand extends BaseCommand {
       message.guild!.members.cache.find(
         (member) => member.user.username.toLowerCase() === args[0].toLowerCase()
       );
+    if (mentionedUser === message.member) {
+      reply(message, {
+        title: "You can't give coins to yourself.",
+        description: 'seems like common sense tbh',
+        color: 'RED',
+      });
+      return;
+    }
     if (!mentionedUser) {
       reply(message, {
         title: 'Please specify a valid user to give coins to.',
