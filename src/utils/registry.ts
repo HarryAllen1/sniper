@@ -45,6 +45,9 @@ export async function registerCommands(
       if (command.slashCommand) {
         slashCommands.push(command.slashCommand);
       }
+      // if (!command.permissionsRequired) {
+      //   command.permissionsRequired = [];
+      // }
       if (helpCommandHelper[command.category])
         helpCommandHelper[command.category].commands.push({
           name: command.name,

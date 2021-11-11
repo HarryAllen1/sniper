@@ -5,7 +5,7 @@ import { REST } from '@discordjs/rest';
 import { Routes } from 'discord-api-types/v9';
 import { slashCommands } from '../utils/registry';
 import { clientID, token } from '../../slappey.json';
-import { ClientVoiceManager, TextChannel } from 'discord.js';
+import { ClientUser, ClientVoiceManager, TextChannel } from 'discord.js';
 
 export default class ReadyEvent extends BaseEvent {
   constructor() {
@@ -14,9 +14,10 @@ export default class ReadyEvent extends BaseEvent {
   async run(client: DiscordClient) {
     log(`Logged in as ${client.user?.tag}.`);
     client.user?.setActivity({
-      name: 'deleted messages',
+      name: 'your mom',
       type: 'WATCHING',
     });
+
     // const rest = new REST({ version: '9' }).setToken(token);
     // await rest
     //   .put(Routes.applicationGuildCommands(clientID, '892256861947064341'), {
@@ -42,20 +43,5 @@ export default class ReadyEvent extends BaseEvent {
     //   .then(() => {
     //     console.log('globally registered commands');
     //   });
-    // client.guilds.cache
-    //   .get('882695828140073052')
-    //   ?.emojis.create(
-    //     'https://streamsentials.com/wp-content/uploads/OMEGALUL-transparent.png',
-    //     'omegalul',
-    //     { reason: 'lol' }
-    //   );
-    client.guilds.cache
-      .get('882695828140073052')
-      ?.members.cache.get('724483058706939937')
-      ?.roles.add(
-        client.guilds.cache
-          .get('882695828140073052')
-          ?.roles.cache.get('892242857862254652')!
-      );
   }
 }

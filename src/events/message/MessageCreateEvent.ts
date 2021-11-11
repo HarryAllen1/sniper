@@ -41,6 +41,9 @@ export default class MessageCreateEvent extends BaseEvent {
     }
     for (let prefix of client.prefix) {
       if (message.content.startsWith(prefix)) {
+        if (!message.guild.me?.permissions.has('SEND_MESSAGES')) {
+          message.author.send('i cant send messages in that server lol');
+        }
         const [cmdName, ...cmdArgs] = message.content
           .slice(prefix.length)
           .trim()
@@ -78,6 +81,15 @@ export default class MessageCreateEvent extends BaseEvent {
         timeStamps.set(message.author.id, currentTime);
         setTimeout(() => timeStamps.delete(message.author.id), cooldownAmount);
         if (command) {
+          for (const permission of command?.permissionsRequired!) {
+            if (!message.member?.permissions.has(permission)) {
+              reply(message, {
+                title: `You do not have the permission to use this command.`,
+                color: 'RED',
+              });
+              return;
+            }
+          }
           try {
             command.run(client, message, cmdArgs);
           } catch (error) {

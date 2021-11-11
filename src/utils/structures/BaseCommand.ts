@@ -2,13 +2,15 @@ import {
   CommandInteraction,
   CommandInteractionOptionResolver,
   Message,
+  PermissionString,
 } from 'discord.js';
 import DiscordClient from '../../client/client';
 import { RESTPostAPIApplicationCommandsJSONBody } from 'discord-api-types/v9';
 
 interface ExtraCommandOptions {
   cooldownMessage?: string;
-  argsDescription?: string;
+  argsDescription?: string | boolean;
+  permissions?: PermissionString[];
 }
 
 export default abstract class BaseCommand {
@@ -25,7 +27,11 @@ export default abstract class BaseCommand {
     private _aliases: Array<string>,
     private _cooldown: number,
     private _description: string,
-    private extraCommandOptions?: ExtraCommandOptions
+    private extraCommandOptions: ExtraCommandOptions = {
+      cooldownMessage: "you can't use this command yet",
+      argsDescription: false,
+      permissions: ['SEND_MESSAGES', 'READ_MESSAGE_HISTORY', 'VIEW_CHANNEL'],
+    }
   ) {}
 
   get name(): string {
@@ -38,20 +44,28 @@ export default abstract class BaseCommand {
     return this._aliases;
   }
   get cooldown(): number {
-    return this._cooldown ? this._cooldown : 0;
+    return this._cooldown || 0;
   }
   get description(): string {
-    return this._description ? this._description : '';
+    return this._description || '';
   }
   get cooldownMessage(): string {
-    return this.extraCommandOptions?.cooldownMessage
-      ? this.extraCommandOptions.cooldownMessage
-      : "you can't use this command yet";
+    return (
+      this.extraCommandOptions?.cooldownMessage ||
+      "you can't use this command yet"
+    );
   }
   get argsDescription(): string | boolean {
-    return this.extraCommandOptions?.argsDescription
-      ? this.extraCommandOptions.argsDescription
-      : false;
+    return this.extraCommandOptions?.argsDescription || false;
+  }
+  get permissionsRequired(): PermissionString[] {
+    return (
+      this.extraCommandOptions?.permissions || [
+        'SEND_MESSAGES',
+        'READ_MESSAGE_HISTORY',
+        'VIEW_CHANNEL',
+      ]
+    );
   }
 
   slashCommand?: RESTPostAPIApplicationCommandsJSONBody;
