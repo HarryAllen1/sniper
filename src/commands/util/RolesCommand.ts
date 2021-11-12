@@ -13,8 +13,11 @@ export default class RolesCommand extends BaseCommand {
       'shows the roles of this server and their positions'
     );
   }
-
-  async run(client: DiscordClient, message: Message, args: Array<string>) {
+  async run(
+    client: DiscordClient,
+    message: Message,
+    args: Array<string>
+  ): Promise<void> {
     reply(message, {
       title: 'Roles',
       description: message

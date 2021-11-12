@@ -4,8 +4,11 @@ import {
   MessageEmbedOptions,
   ReplyMessageOptions,
 } from 'discord.js';
+import BaseCommand from '../structures/BaseCommand';
 
 import { getUserData } from './user';
+
+export const re = async () => {};
 
 export const reply = async (
   message: Message,

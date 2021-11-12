@@ -34,6 +34,8 @@ export default abstract class BaseCommand {
     }
   ) {}
 
+  message?: Message;
+
   get name(): string {
     return this._name;
   }
@@ -70,6 +72,13 @@ export default abstract class BaseCommand {
 
   slashCommand?: RESTPostAPIApplicationCommandsJSONBody;
 
+  /**
+   *
+   * @param {DiscordClient} client
+   * @param {Message | CommandInteraction} message
+   * @param {Array<string> | CommandInteractionOptionResolver | null} args
+   * @returns {Promise<void>}
+   */
   abstract run(
     client: DiscordClient,
     message: Message | CommandInteraction,

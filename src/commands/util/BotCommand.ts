@@ -7,7 +7,11 @@ export default class BotCommand extends BaseCommand {
     super('bot', 'util', [], 15000, 'Shows information about the bot');
   }
 
-  async run(client: DiscordClient, message: Message, args: Array<string>) {
+  async run(
+    client: DiscordClient,
+    message: Message,
+    args: Array<string>
+  ): Promise<void> {
     message.channel.send({
       embeds: [
         {
@@ -18,6 +22,11 @@ export default class BotCommand extends BaseCommand {
               : 'No activity'
           }`,
           fields: [
+            {
+              name: 'Commands',
+              value: client.commands.size.toString(),
+              inline: true,
+            },
             {
               name: 'ID',
               value: `${client.user?.id}`,
@@ -59,7 +68,7 @@ export default class BotCommand extends BaseCommand {
             },
             {
               name: 'Size of bot files',
-              value: `As of 11/8/2021:\n  With node_modules: 1.3G\n  Without node_modules: 3.4M`,
+              value: `As of 11/11/2021:\n  With node_modules: 1.3G\n  Without node_modules: 3.4M`,
               inline: true,
             },
             {
