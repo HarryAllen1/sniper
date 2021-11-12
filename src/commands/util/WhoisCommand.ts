@@ -3,6 +3,10 @@ import BaseCommand from '../../utils/structures/BaseCommand';
 import DiscordClient from '../../client/client';
 import { reply } from '../../utils/helpers/reply';
 import { capitalizeFirstLetter } from '../../utils/helpers/string';
+import {
+  getMentionedMember,
+  getMentionedUser,
+} from '../../utils/helpers/mention';
 
 export default class WhoisCommand extends BaseCommand {
   constructor() {
@@ -10,27 +14,21 @@ export default class WhoisCommand extends BaseCommand {
   }
 
   async run(client: DiscordClient, message: Message, args: Array<string>) {
-    let user: User;
-    let member: GuildMember;
+    let user: User = getMentionedUser(message, args);
+    let member: GuildMember = getMentionedMember(message, args);
     if (!args[0]) {
       user = message.author;
       member = message.member!;
-    } else {
-      if (message.mentions.users.first()) {
-        user = message.mentions.users.first()!;
-        member = message.mentions.members?.first()!;
-      } else if (client.users.cache.get(args[0])) {
-        user = client.users.cache.get(args[0])!;
-        member = message.guild?.members.cache.get(args[0])!;
-      } else {
-        reply(message, {
-          title: "That user doesn't exist",
-          description: 'Try mentioning the user',
-          color: 'RED',
-        });
-        return;
-      }
     }
+    if (!user && !member) {
+      reply(message, {
+        title: "That user doesn't exist",
+        description: 'Try mentioning the user',
+        color: 'RED',
+      });
+      return;
+    }
+
     let activities = member.presence?.activities;
     let status: string;
     let activity: string;
