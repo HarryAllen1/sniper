@@ -1,7 +1,9 @@
-import { Message } from 'discord.js';
+import { Message, User } from 'discord.js';
 import BaseCommand from '../../utils/structures/BaseCommand';
 import DiscordClient from '../../client/client';
 import { reply } from '../../utils/helpers/reply';
+import { getUserData, setUserData } from '../../utils/helpers/user';
+import randomNumber from '../../utils/helpers/randomNumber';
 
 export default class RobCommand extends BaseCommand {
   constructor() {
@@ -20,6 +22,87 @@ export default class RobCommand extends BaseCommand {
       });
       return;
     }
-    message.channel.send('rob command doesnt work yet');
+
+    const mentionedUser: User | null =
+      message.mentions.users.first() ||
+      client.users.cache.get(args[0]) ||
+      client.users.cache.find(
+        (u) => u.username.toLowerCase() === args[0].toLowerCase()
+      ) ||
+      message.guild?.members.cache.find(
+        (u) => u.user.username.toLowerCase() === args[0].toLowerCase()
+      )?.user ||
+      null;
+
+    if (!mentionedUser) {
+      reply(message, {
+        title: 'User not found',
+        description: 'Try mentioning the user.',
+        color: 'RED',
+      });
+      return;
+    }
+
+    if (mentionedUser.id === message.author.id) {
+      reply(message, {
+        title: 'You cannot rob yourself',
+        description: 'why',
+        color: 'RED',
+      });
+      return;
+    }
+
+    const user = await getUserData(message.author.id);
+    const robbedUser = await getUserData(mentionedUser.id);
+
+    if (!robbedUser) {
+      reply(message, {
+        title: 'User not found',
+        description:
+          "It seems this user isn't in the bots cache. Get them to use a command first.",
+        color: 'RED',
+      });
+      return;
+    }
+
+    if (user.coins < 500) {
+      reply(message, {
+        title: 'You need at least 500 coins to rob someone',
+        description: 'idk why tbh',
+        color: 'RED',
+      });
+      return;
+    }
+    if (robbedUser.coins < 500) {
+      reply(message, {
+        title: 'They need at least 500 coins to rob someone',
+        description: "they're poor; don't rob poor people please",
+        color: 'RED',
+      });
+      return;
+    }
+
+    const chance = randomNumber(1, 100);
+    if (chance > 50) {
+      const maxRobbableCoins = robbedUser.coins * 0.4;
+      const minRobbableCoins = robbedUser.coins * 0.1;
+      const robbedCoins = randomNumber(minRobbableCoins, maxRobbableCoins);
+      user.coins += robbedCoins;
+      robbedUser.coins -= robbedCoins;
+      reply(message, {
+        title: 'You successfully robbed them',
+        description: `You gained ${robbedCoins} coins.`,
+        color: 'GREEN',
+      });
+      setUserData(message.author.id, user);
+      setUserData(mentionedUser.id, robbedUser);
+    } else {
+      user.coins -= 500;
+      reply(message, {
+        title: 'You failed lol',
+        description: 'they were too quick',
+        color: 'RED',
+      });
+    }
   }
 }
