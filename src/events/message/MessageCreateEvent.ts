@@ -18,17 +18,8 @@ export default class MessageCreateEvent extends BaseEvent {
   }
 
   async run(client: DiscordClient, message: Message) {
-    if (message.content.toLowerCase().includes('cum')) {
-      message.react('💦');
-    }
-
     if (message.channel.type === 'DM') return;
 
-    if (
-      message.author.id === '493716749342998541' &&
-      message.channelId === '888611523881213972'
-    ) {
-    }
     if (message.author.bot || !message.guild) return;
 
     if (message.content.toLowerCase().startsWith('pls snipe')) {

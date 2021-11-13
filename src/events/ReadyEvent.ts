@@ -6,6 +6,7 @@ import { Routes } from 'discord-api-types/v9';
 import { slashCommands } from '../utils/registry';
 import { clientID, token } from '../../slappey.json';
 import { ClientUser, ClientVoiceManager, TextChannel } from 'discord.js';
+import { writeFile, writeFileSync } from 'fs';
 
 export default class ReadyEvent extends BaseEvent {
   constructor() {

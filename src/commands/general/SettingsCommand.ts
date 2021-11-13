@@ -4,6 +4,7 @@ import DiscordClient from '../../client/client';
 import { getUserData, setUserData } from '../../utils/helpers/user';
 import { APIEmbedField } from 'discord-api-types';
 import { reply } from '../../utils/helpers/reply';
+import settings from './settings.json';
 
 export default class SettingsCommand extends BaseCommand {
   constructor() {
@@ -48,13 +49,7 @@ export default class SettingsCommand extends BaseCommand {
             setUserData(
               message.author.id,
               {
-                settings: {
-                  mentionAuthorOnReply: {
-                    value: true,
-                    description:
-                      'Whether or not Sniper mentions you while using inline replies.',
-                  },
-                },
+                settings,
               },
               { merge: true }
             ).then(() => {

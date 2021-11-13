@@ -7,7 +7,7 @@ import randomNumber from '../../utils/helpers/randomNumber';
 
 export default class RobCommand extends BaseCommand {
   constructor() {
-    super('rob', 'currency', [], 30000, '(try) to rob someone!', {
+    super('rob', 'currency', [], 60000, '(try) to rob someone!', {
       argsDescription: '<user ID or mentioned user to rob>',
       cooldownMessage: 'You need time to recover!',
     });
@@ -93,6 +93,15 @@ export default class RobCommand extends BaseCommand {
         title: 'You successfully robbed them',
         description: `You gained ${robbedCoins} coins.`,
         color: 'GREEN',
+      });
+      mentionedUser.send({
+        embeds: [
+          {
+            title: 'You were robbed!',
+            description: `You lost ${robbedCoins} coins.`,
+            color: 'RED',
+          },
+        ],
       });
       setUserData(message.author.id, user);
       setUserData(mentionedUser.id, robbedUser);

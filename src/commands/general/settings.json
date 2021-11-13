@@ -1,0 +1,6 @@
+{
+  "mentionAuthorOnReply": {
+    "value": true,
+    "description": "Whether or not Sniper mentions you while using inline replies."
+  }
+}

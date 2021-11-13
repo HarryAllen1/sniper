@@ -3,6 +3,7 @@ import BaseCommand from '../../utils/structures/BaseCommand';
 import DiscordClient from '../../client/client';
 import { getTotalCoins } from '../../utils/helpers/user';
 import { reply } from '../../utils/helpers/reply';
+import { getMentionedUser } from '../../utils/helpers/mention';
 
 export default class BalanceCommand extends BaseCommand {
   constructor() {
@@ -18,46 +19,30 @@ export default class BalanceCommand extends BaseCommand {
 
   async run(client: DiscordClient, message: Message, args: Array<string>) {
     message.channel.sendTyping();
-    if (!message.mentions.users.first()) {
-      if (args[0] && client.users.cache.get(args[0])) {
-        const mentionedUser = client.users.cache.get(args[0])!;
-        getTotalCoins(mentionedUser.id).then((coins) => {
-          reply(message, {
-            title: `${mentionedUser.tag}'s balance`,
-            thumbnail: {
-              url: mentionedUser.displayAvatarURL({
-                dynamic: true,
-                format: `webp`,
-              }),
-            },
+    const user = getMentionedUser(message, args);
 
-            description: `${coins} coins`,
-            timestamp: Date.now(),
-          });
-        });
-      } else {
-        getTotalCoins(message.author.id).then((coins) => {
-          reply(message, {
-            title: `${message.author.tag}'s balance`,
-            thumbnail: {
-              url: message.author.displayAvatarURL({
-                dynamic: true,
-                format: `webp`,
-              }),
-            },
-
-            description: `${coins} coins`,
-            timestamp: Date.now(),
-          });
-        });
-      }
-    } else {
-      const firstMention = message.mentions.users.first()!;
-      getTotalCoins(firstMention.id).then((coins) => {
+    if (args[0]) {
+      const mentionedUser = getMentionedUser(message, args);
+      getTotalCoins(mentionedUser.id).then((coins) => {
         reply(message, {
-          title: `${firstMention.tag}'s balance`,
+          title: `${mentionedUser.tag}'s balance`,
           thumbnail: {
-            url: firstMention.displayAvatarURL({
+            url: mentionedUser.displayAvatarURL({
+              dynamic: true,
+              format: `webp`,
+            }),
+          },
+
+          description: `${coins} coins`,
+          timestamp: Date.now(),
+        });
+      });
+    } else {
+      getTotalCoins(user.id).then((coins) => {
+        reply(message, {
+          title: `${message.author.tag}'s balance`,
+          thumbnail: {
+            url: message.author.displayAvatarURL({
               dynamic: true,
               format: `webp`,
             }),
