@@ -22,6 +22,9 @@ export default class MessageCreateEvent extends BaseEvent {
 
     if (message.author.bot || !message.guild) return;
 
+    if (message.content === '<@!893619442712444970>') {
+      client.commands.get('help')!.run(client, message, []);
+    }
     if (message.content.toLowerCase().startsWith('pls snipe')) {
       const command = client.commands.get('snipe');
       command?.run(client, message, []);

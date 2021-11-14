@@ -9,6 +9,7 @@ import {
   RESTPostAPIApplicationCommandsJSONBody,
   Routes,
 } from 'discord-api-types/v9';
+import ms from 'ms';
 
 interface CommandHelper {
   [name: string]: CommandCategory;
@@ -53,7 +54,7 @@ export async function registerCommands(
           name: command.name,
           value: `${command.description}\n${
             command.argsDescription ? `Args: ${command.argsDescription}\n` : ''
-          }Cooldown (ms): ${command.cooldown.toString()}`,
+          }Cooldown: ${ms(command.cooldown)}`,
         });
 
       client.commands.set(command.name, command);

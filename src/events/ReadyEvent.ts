@@ -15,7 +15,7 @@ export default class ReadyEvent extends BaseEvent {
   async run(client: DiscordClient) {
     log(`Logged in as ${client.user?.tag}.`);
     client.user?.setActivity({
-      name: 'your mom',
+      name: '$help',
       type: 'WATCHING',
     });
 

@@ -4,7 +4,6 @@ import {
   MessageEmbedOptions,
   ReplyMessageOptions,
 } from 'discord.js';
-import BaseCommand from '../structures/BaseCommand';
 
 import { getUserData } from './user';
 
@@ -23,7 +22,7 @@ export const reply = async (
     components,
     content,
     tts,
-    failIfNotExists,
+
     nonce,
     stickers,
   } = otherOptions;
@@ -44,7 +43,7 @@ export const reply = async (
             content,
             components,
             tts,
-            failIfNotExists,
+            failIfNotExists: false,
             nonce,
             stickers,
           })
@@ -60,7 +59,7 @@ export const reply = async (
             content,
             components,
             tts,
-            failIfNotExists,
+            failIfNotExists: false,
             nonce,
             stickers,
             //@ts-ignore

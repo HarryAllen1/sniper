@@ -10,3 +10,9 @@ const manager = new ShardingManager('./src/sniper.ts', {
 manager.on('shardCreate', (shard) => log(`launched shard ${shard.id}`));
 
 manager.spawn({ amount: 20, delay: 5500 });
+
+export = {
+  name: 'aasfdasdfasdf',
+  description: '',
+  execute() {}
+}

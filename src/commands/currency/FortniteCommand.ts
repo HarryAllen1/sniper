@@ -20,39 +20,37 @@ export default class FortniteCommand extends BaseCommand {
       const chance = Math.floor(Math.random() * 100);
       if (chance === 1) {
         const total = await addCoinsToTotal(message.author.id, 5);
-        message.channel.send({
-          embeds: [
-            {
-              description: `you gained 5 coins! you now have ${total} coins!`,
-              color: 'GREEN',
-            },
-          ],
+        reply(message, {
+          description: `you gained 5 coins! you now have ${total} coins!`,
+          color: 'GREEN',
         });
       } else {
         const total = await addCoinsToTotal(message.author.id, -1000);
-        message.channel.send({
-          embeds: [
-            {
-              description: `you lost 1000 coins! you now have ${total} coins! also fortnite sucks`,
-              color: 'RED',
-            },
-          ],
-          files: [
-            {
-              attachment:
-                'https://www.myinstants.com/media/sounds/fortnite-funky-dance-earrape.mp3',
-              name: 'fortnite.mp3',
-            },
-          ],
-        });
+        reply(
+          message,
+          {
+            description: `you lost 1000 coins! you now have ${total} coins! also fortnite sucks`,
+            color: 'RED',
+          },
+          {
+            files: [
+              {
+                attachment:
+                  'https://www.myinstants.com/media/sounds/fortnite-funky-dance-earrape.mp3',
+                name: 'fortnite.mp3',
+              },
+            ],
+          }
+        );
       }
     } catch (error) {
-      message.channel.send(
-        `${
+      reply(message, {
+        title: `${
           message.guild?.members.cache.get('449750153759424515')?.toString() ||
           'whim#6166'
-        }: your bot is stupid`
-      );
+        }: your bot is stupid`,
+        color: 'RED',
+      });
     }
   }
 }

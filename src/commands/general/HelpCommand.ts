@@ -36,8 +36,7 @@ export default class HelpCommand extends BaseCommand {
         await reply(
           message,
           {
-            title:
-              'Command Help: IF PEOPLE ARE USING THIS COMMAND AND YOU DONT WANT THEM TO USE THE SLASH COMMAND VERSION OF THIS (/help)',
+            title: 'Command Help',
             description: `Made using Discord.js v${version}.\n[View source code](https://github.com/MajesticString/sniper)\nThis bot is in its beta stage, so expect bugs.`,
             fields: [
               {
@@ -100,8 +99,7 @@ export default class HelpCommand extends BaseCommand {
         const msg = await reply(
           message,
           {
-            title:
-              'Command Help: If you want a more organized help menu, use the slash command version  (/help)',
+            title: 'Command Help',
             description: `Everything is case insensitive. Made using Discord.js v${version}.\n[View source code](https://github.com/MajesticString/sniper)\nThis bot is in its beta stage, so expect bugs.`,
             fields: [
               {
@@ -166,6 +164,7 @@ export default class HelpCommand extends BaseCommand {
         });
 
         buttonCollector.on('collect', async (i) => {
+          i.deferUpdate();
           if (i.member?.user.id !== message.author.id) {
             i.reply({ content: "This isn't your command.", ephemeral: true });
             return;

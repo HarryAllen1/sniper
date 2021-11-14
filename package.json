@@ -1,6 +1,6 @@
 {
   "name": "cambridge-bot",
-  "version": "3.3.0",
+  "version": "3.4.0",
   "main": "./out/src/index.js",
   "license": "MIT",
   "dependencies": {
@@ -33,11 +33,13 @@
     "eslint-config-prettier": "^8.3.0",
     "nodemon": "^2.0.13",
     "ts-node": "^10.2.1",
-    "typescript": "^4.4.4"
+    "typescript": "^4.4.4",
+    "yarn": "^1.22.17"
   },
   "scripts": {
     "dev": "nodemon ./src/sniper.ts",
     "start": "node ./out/src/index.js",
-    "build": "tsc"
+    "build": "tsc",
+    "yarn": "yarn"
   }
 }
