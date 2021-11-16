@@ -5,15 +5,27 @@ import { REST } from '@discordjs/rest';
 import { Routes } from 'discord-api-types/v9';
 import { slashCommands } from '../utils/registry';
 import { clientID, token } from '../../slappey.json';
-import { ClientUser, ClientVoiceManager, TextChannel } from 'discord.js';
+import {
+  ClientUser,
+  ClientVoiceManager,
+  MessageActionRow,
+  MessageActionRowComponentResolvable,
+  MessageButton,
+  TextChannel,
+} from 'discord.js';
 import { writeFile, writeFileSync } from 'fs';
+import chalk from 'chalk';
 
 export default class ReadyEvent extends BaseEvent {
   constructor() {
     super('ready');
   }
   async run(client: DiscordClient) {
-    log(`Logged in as ${client.user?.tag}.`);
+    log(
+      chalk.green(`Logged in as ${client.user?.tag}.`),
+      chalk.green(`Ready in ${client.guilds.cache.size} guilds`)
+    );
+
     client.user?.setActivity({
       name: '$help',
       type: 'WATCHING',

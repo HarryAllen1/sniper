@@ -4,6 +4,8 @@ import BaseEvent from '../../utils/structures/BaseEvent';
 import DiscordClient from '../../client/client';
 import { setDefaultGuildSettings } from '../../utils/helpers/fb';
 import { sendMessageInBorderSecurity } from '../../utils/helpers/cambridge-server';
+import { log } from '../../utils/helpers/console';
+import chalk from 'chalk';
 
 export default class GuildMemberAddEvent extends BaseEvent {
   constructor() {
@@ -13,9 +15,14 @@ export default class GuildMemberAddEvent extends BaseEvent {
   async run(client: DiscordClient, member: GuildMember) {
     if (member.user.id === '893619442712444970') {
       setDefaultGuildSettings(member.guild.id);
+      log(
+        chalk.greenBright(
+          `Joined server ${member.guild.name}. Now in ${client.guilds.cache.size} guilds.`
+        )
+      );
     }
     if (member.user.id === '529193628569042946') {
-      member.ban({ reason: 'fuck you' });
+      member.ban({ reason: 'e' });
     }
     // const invites = await member.guild.invites.fetch();
     // console.log(invites);

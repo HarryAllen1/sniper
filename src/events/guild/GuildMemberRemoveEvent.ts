@@ -2,6 +2,8 @@
 import { GuildMember, TextChannel } from 'discord.js';
 import BaseEvent from '../../utils/structures/BaseEvent';
 import DiscordClient from '../../client/client';
+import { log } from '../../utils/helpers/console';
+import chalk from 'chalk';
 
 export default class GuildMemberRemoveEvent extends BaseEvent {
   constructor() {
@@ -9,6 +11,13 @@ export default class GuildMemberRemoveEvent extends BaseEvent {
   }
 
   async run(client: DiscordClient, member: GuildMember) {
+    if (member.user.id === '893619442712444970') {
+      log(
+        chalk.redBright(
+          `Left server ${member.guild.name}. Now in ${client.guilds.cache.size} guilds.`
+        )
+      );
+    }
     if (member.guild.id === '882695828140073052')
       (client.channels.cache.get('882695828140073054') as TextChannel).send({
         embeds: [

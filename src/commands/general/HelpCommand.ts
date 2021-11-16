@@ -10,6 +10,7 @@ import DiscordClient from '../../client/client';
 import { helpCommandHelper } from '../../utils/registry';
 import { reply } from '../../utils/helpers/reply';
 import { SlashCommandBuilder } from '@discordjs/builders';
+import ms from 'ms';
 
 export default class HelpCommand extends BaseCommand {
   constructor() {
@@ -114,9 +115,8 @@ export default class HelpCommand extends BaseCommand {
             components: [row],
           }
         );
-
-        setTimeout(() => {
-          msg.edit({
+        const disableHelpMessage = async (): Promise<Message> => {
+          return await msg.edit({
             components: [
               new MessageActionRow().addComponents(
                 new MessageButton()
@@ -147,12 +147,17 @@ export default class HelpCommand extends BaseCommand {
               ),
             ],
           });
-        }, 15000);
+        };
+        let timeout = ms('15s');
+        let timer = setTimeout(() => {
+          void disableHelpMessage();
+        }, timeout);
+        timer;
 
         const buttonCollector = msg.createMessageComponentCollector({
           componentType: 'BUTTON',
 
-          time: 15000,
+          // time: 15000,
           // filter: (i) => {
           //   i.deferUpdate();
           //   i.deferReply();
@@ -165,52 +170,15 @@ export default class HelpCommand extends BaseCommand {
 
         buttonCollector.on('collect', async (i) => {
           i.deferUpdate();
+          // timeout += ms('15s');
+          clearTimeout(timer);
+          timer;
           if (i.member?.user.id !== message.author.id) {
             i.reply({ content: "This isn't your command.", ephemeral: true });
             return;
           }
           if (i.customId === 'end') {
-            // msg.delete();
-            // message.reply({
-            //   embeds: [
-            //     {
-            //       title: 'Message deleted.',
-            //       description: 'Use the help command again if you need to.',
-            //     },
-            //   ],
-            // });
-
-            msg.edit({
-              components: [
-                new MessageActionRow().addComponents(
-                  new MessageButton()
-                    .setEmoji('⏪')
-                    .setStyle('PRIMARY')
-                    .setCustomId('first')
-                    .setDisabled(true),
-                  new MessageButton()
-                    .setEmoji('⬅️')
-                    .setStyle('PRIMARY')
-                    .setCustomId('back')
-                    .setDisabled(true),
-                  new MessageButton()
-                    .setStyle('PRIMARY')
-                    .setEmoji('⏹️')
-                    .setDisabled(true)
-                    .setCustomId('end'),
-                  new MessageButton()
-                    .setEmoji('➡️')
-                    .setStyle('PRIMARY')
-                    .setDisabled(true)
-                    .setCustomId('next'),
-                  new MessageButton()
-                    .setEmoji('⏩')
-                    .setStyle('PRIMARY')
-                    .setDisabled(true)
-                    .setCustomId('last')
-                ),
-              ],
-            });
+            void disableHelpMessage();
           } else if (i.customId === 'first') {
           } else if (i.customId === 'back') {
             if (

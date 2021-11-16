@@ -45,22 +45,22 @@ export default class BuyCommand extends BaseCommand {
 
           user.items.push({ name: item.id, amount: 1 });
           await setUserData(message.author.id, user, { merge: true });
-          // reply(message, {
-          //   title: `You bought a ${item.name} for ${item.price} coins.`,
-          //   color: 'GREEN',
-          // });
+          reply(message, {
+            title: `You bought a ${item.name} for ${item.price} coins.`,
+            color: 'GREEN',
+          });
         } else {
           reply(message, {
             title: `You don't have enough coins to buy that.`,
             color: 'RED',
           });
         }
-        await setUserData(message.author.id, user, { merge: true });
-        reply(message, {
-          title: `You bought a ${item.name} for ${item.price} coins.`,
-          description: `You now have ${user.coins} coins.`,
-          color: 'GREEN',
-        });
+        // await setUserData(message.author.id, user, { merge: true });
+        // reply(message, {
+        //   title: `You bought a ${item.name} for ${item.price} coins.`,
+        //   description: `You now have ${user.coins} coins.`,
+        //   color: 'GREEN',
+        // });
       } else {
         reply(message, { title: "That item doesn't exist.", color: 'RED' });
       }

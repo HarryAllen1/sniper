@@ -4,6 +4,8 @@ import DiscordClient from '../../client/client';
 import { reply } from '../../utils/helpers/reply';
 import { log } from '../../utils/helpers/console';
 import { getFromBetween } from '../../utils/helpers/charactersBetween';
+import { getGuildSettings } from '../../utils/helpers/fb';
+import chalk from 'chalk';
 // import { sleep } from '../../utils/helpers/misc';
 // import {
 //   getGuildSettings,
@@ -21,6 +23,12 @@ export default class MessageCreateEvent extends BaseEvent {
     if (message.channel.type === 'DM') return;
 
     if (message.author.bot || !message.guild) return;
+
+    const guildSettings = await getGuildSettings(message.guild.id);
+
+    // if (guildSettings!.ranks) {
+
+    // }
 
     if (message.content === '<@!893619442712444970>') {
       client.commands.get('help')!.run(client, message, []);
@@ -87,9 +95,12 @@ export default class MessageCreateEvent extends BaseEvent {
             }
           }
           try {
-            log('Used command ' + command?.name);
-            command.run(client, message, cmdArgs);
+            log('Begin command ' + command?.name + ' in ' + message.guild.name);
+            command.run(client, message, cmdArgs).then(() => {
+              log('End Command ' + command?.name);
+            });
           } catch (error) {
+            log(chalk.red(error));
             reply(message, {
               title: 'An error occurred while running this command.',
               description: `Error: ${error}`,
