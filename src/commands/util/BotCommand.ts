@@ -1,6 +1,7 @@
 import { Message, version } from 'discord.js';
 import BaseCommand from '../../utils/structures/BaseCommand';
 import DiscordClient from '../../client/client';
+import ms from 'ms';
 
 export default class BotCommand extends BaseCommand {
   constructor() {
@@ -38,10 +39,15 @@ export default class BotCommand extends BaseCommand {
               inline: true,
             },
             {
+              name: 'Users',
+              value: `${client.users.cache.size}`,
+              inline: true,
+            },
+            {
               name: 'Bot Age',
-              value: `${new Date(
-                client.user?.createdTimestamp!
-              ).toLocaleDateString()}`,
+              value: `${ms(
+                Date.now() - new Date(client.user?.createdTimestamp!).getTime()
+              )}`,
               inline: true,
             },
             {

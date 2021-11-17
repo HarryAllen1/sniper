@@ -7,10 +7,11 @@ import {
 } from 'discord.js';
 import BaseCommand from '../../utils/structures/BaseCommand';
 import DiscordClient from '../../client/client';
-import { helpCommandHelper } from '../../utils/registry';
+import { helpCommandHelperCollection } from '../../utils/registry';
 import { reply } from '../../utils/helpers/reply';
 import { SlashCommandBuilder } from '@discordjs/builders';
 import ms from 'ms';
+import { log } from '../../utils/helpers/console';
 
 export default class HelpCommand extends BaseCommand {
   constructor() {
@@ -27,11 +28,19 @@ export default class HelpCommand extends BaseCommand {
     .setDescription('Sends the sniper help command')
     .toJSON();
   async run(client: DiscordClient, message: Message, args: Array<string>) {
-    const categories = Object.keys(helpCommandHelper);
+    // const categories = Object.keys(helpCommandHelper);
+    const categories = [...helpCommandHelperCollection.keys()];
     let menu: any[] = [];
+    helpCommandHelperCollection.forEach((value, key) => {
+      menu.push({
+        label: key,
+        value: key,
+      });
+    });
     categories.forEach((category) => {
       menu.push({ label: category, value: category });
     });
+    log(menu);
     try {
       if (message.type === 'APPLICATION_COMMAND')
         await reply(
@@ -84,7 +93,11 @@ export default class HelpCommand extends BaseCommand {
         );
         let categoriesIndex = -1;
         const updateHelpMessage = async (index: number): Promise<Message> => {
-          const descriptions = helpCommandHelper[categories[index]].commands;
+          let // descriptions = helpCommandHelper[categories[index]].commands;
+            descriptions = helpCommandHelperCollection.get(
+              categories[index]
+            )?.commands;
+
           return await msg.edit({
             embeds: [
               {

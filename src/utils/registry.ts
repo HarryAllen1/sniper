@@ -3,6 +3,7 @@ import { promises as fs } from 'fs';
 import DiscordClient from '../client/client';
 import BaseEvent from './structures/BaseEvent';
 import BaseCommand from './structures/BaseCommand';
+import { Collection } from 'discord.js';
 import { token, clientID } from '../../slappey.json';
 import { REST } from '@discordjs/rest';
 import {
@@ -25,6 +26,10 @@ interface Commands {
 }
 export const slashCommands: RESTPostAPIApplicationCommandsJSONBody[] = [];
 export const helpCommandHelper: CommandHelper = {};
+export const helpCommandHelperCollection = new Collection<
+  string,
+  CommandCategory
+>();
 
 export async function registerCommands(
   client: DiscordClient,
@@ -39,6 +44,7 @@ export async function registerCommands(
     if (stat.isDirectory()) {
       registerCommands(client, path.join(dir, file));
       helpCommandHelper[file] = { commands: [] };
+      helpCommandHelperCollection.set(file, { commands: [] });
     }
     if (file.endsWith('Command.js') || file.endsWith('Command.ts')) {
       const { default: Command } = await import(path.join(dir, file));
@@ -49,6 +55,14 @@ export async function registerCommands(
       // if (!command.permissionsRequired) {
       //   command.permissionsRequired = [];
       // }
+      if (helpCommandHelperCollection.has(command.category)) {
+        helpCommandHelperCollection.get(command.category)!.commands.push({
+          name: command.name,
+          value: `${command.description}\n${
+            command.argsDescription ? `Args: ${command.argsDescription}\n` : ''
+          }Cooldown: ${ms(command.cooldown)}`,
+        });
+      }
       if (helpCommandHelper[command.category])
         helpCommandHelper[command.category].commands.push({
           name: command.name,
