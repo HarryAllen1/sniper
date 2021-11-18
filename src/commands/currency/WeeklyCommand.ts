@@ -7,7 +7,7 @@ import { reply } from '../../utils/helpers/reply';
 
 export default class WeeklyCommand extends BaseCommand {
   constructor() {
-    super('weekly', 'currency', [], ms('1w'), 'Collects weekly coins.');
+    super('weekly', 'currency', [], ms('7d'), 'Collects weekly coins.');
   }
 
   async run(client: DiscordClient, message: Message, args: Array<string>) {

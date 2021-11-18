@@ -7,7 +7,7 @@ import { reply } from '../../utils/helpers/reply';
 
 export default class YearlyCommand extends BaseCommand {
   constructor() {
-    super('yearly', 'currency', [], ms('1y'), 'Collects yearly coins');
+    super('yearly', 'currency', [], 365 * 86400000, 'Collects yearly coins');
   }
 
   async run(client: DiscordClient, message: Message, args: Array<string>) {

@@ -5,6 +5,7 @@ import admin from 'firebase-admin';
 import { getUserData } from '../../utils/helpers/user';
 import { msToTime } from '../../utils/helpers/date';
 import { reply } from '../../utils/helpers/reply';
+import ms from 'ms';
 
 const db = admin.firestore();
 
@@ -33,11 +34,13 @@ export default class PingCommand extends BaseCommand {
               color: 'GREEN',
               fields: [
                 {
-                  name: 'Latency (Date.now() - message.createdTimestamp)',
-                  value: `${msg.createdTimestamp - message.createdTimestamp}ms`,
+                  name: 'Latency',
+                  value: `${ms(
+                    msg.createdTimestamp - message.createdTimestamp
+                  )}`,
                 },
                 {
-                  name: 'API Latency (client.ws.ping)',
+                  name: 'API Latency',
                   value: `${client.ws.ping.toString()}ms`,
                 },
                 {

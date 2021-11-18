@@ -43,13 +43,7 @@ export default class BotCommand extends BaseCommand {
               value: `${client.users.cache.size}`,
               inline: true,
             },
-            {
-              name: 'Bot Age',
-              value: `${ms(
-                Date.now() - new Date(client.user?.createdTimestamp!).getTime()
-              )}`,
-              inline: true,
-            },
+
             {
               name: 'Discord.js Version',
               value: `${version}`,
@@ -62,7 +56,7 @@ export default class BotCommand extends BaseCommand {
             },
             {
               name: 'Uptime',
-              value: `${client.uptime}`,
+              value: `${ms(client.uptime!)}`,
               inline: true,
             },
             {
@@ -72,13 +66,9 @@ export default class BotCommand extends BaseCommand {
               )} MB`,
               inline: true,
             },
+
             {
-              name: 'Size of bot files',
-              value: `As of 11/11/2021:\n  With node_modules: 1.3G\n  Without node_modules: 3.4M`,
-              inline: true,
-            },
-            {
-              name: 'Github',
+              name: 'Github Repo',
               value: 'https://github.com/MajesticString/sniper',
               inline: true,
             },
