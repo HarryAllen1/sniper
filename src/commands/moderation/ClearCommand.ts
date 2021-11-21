@@ -25,6 +25,10 @@ export default class ClearCommand extends BaseCommand {
       reply(message, { title: 'you dont have the required perms lol' });
       return;
     }
+    if (!message.guild?.me?.permissions.has('MANAGE_MESSAGES')) {
+      reply(message, { title: 'I dont have the required perms', color: 'RED' });
+      return;
+    }
     if (!args[0]) {
       reply(message, {
         title: 'please specify the number of messages to clear.',
