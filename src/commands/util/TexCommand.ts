@@ -33,6 +33,7 @@ export default class TexCommand extends BaseCommand {
       return;
     }
     try {
+      // eslint-disable-next-line @typescript-eslint/no-var-requires -- MathJax has incorrect typings, so just dont use them.
       require('mathjax')
         .init({
           loader: {
@@ -45,7 +46,7 @@ export default class TexCommand extends BaseCommand {
             // fontSize: '1.5em',
           });
 
-          let img = sharp(
+          const img = sharp(
             Buffer.from(
               MathJax.startup.adaptor
                 .innerHTML(svg)
@@ -62,10 +63,16 @@ export default class TexCommand extends BaseCommand {
           )
             .png()
             .toBuffer();
-          message.channel.send({
-            content: message.author.toString(),
-            files: [new MessageAttachment(await img, 'tex.png')],
-          });
+          if (
+            message.guild?.members.cache
+              // just to shut up eslint
+              .get(client.user?.id ?? '')
+              ?.permissions.has('ATTACH_FILES')
+          )
+            message.channel.send({
+              content: message.author.toString(),
+              files: [new MessageAttachment(await img, 'tex.png')],
+            });
         });
     } catch (error) {
       reply(message, {

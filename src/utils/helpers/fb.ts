@@ -12,10 +12,7 @@ export const setDefaultGuildSettings = (guildID: string) => {
     sec: true,
   });
 };
-export const getGuildSettings = (guildID: string) => {
-  return db
-    .collection('guilds')
-    .doc(guildID)
-    .get()
-    .then((val) => val.data());
+export const getGuildSettings = async (guildID: string) => {
+  const val = await db.collection('guilds').doc(guildID).get();
+  return val.data();
 };

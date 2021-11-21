@@ -13,20 +13,24 @@ export const getFromBetween: GetFromBetween = {
     try {
       if (this.string.indexOf(sub1) < 0 || this.string.indexOf(sub2) < 0)
         return false;
-      var SP = this.string.indexOf(sub1) + sub1.length;
-      var string1 = this.string.substr(0, SP);
-      var string2 = this.string.substr(SP);
-      var TP = string1.length + string2.indexOf(sub2);
+      const SP = this.string.indexOf(sub1) + sub1.length;
+      const string1 = this.string.substr(0, SP);
+      const string2 = this.string.substr(SP);
+      const TP = string1.length + string2.indexOf(sub2);
       return this.string.substring(SP, TP);
-    } catch (e) {}
+    } catch (error) {
+      console.error(error);
+    }
   },
   removeFromBetween: function (sub1: string, sub2: string) {
     try {
       if (this.string.indexOf(sub1) < 0 || this.string.indexOf(sub2) < 0)
         return false;
-      var removal = sub1 + this.getFromBetween(sub1, sub2) + sub2;
+      const removal = sub1 + this.getFromBetween(sub1, sub2) + sub2;
       this.string = this.string.replace(removal, '');
-    } catch (error) {}
+    } catch (error) {
+      console.error(error);
+    }
   },
   getAllResults: function (sub1: string, sub2: string) {
     try {
@@ -35,7 +39,7 @@ export const getFromBetween: GetFromBetween = {
         return;
 
       // find one result
-      var result = this.getFromBetween(sub1, sub2);
+      const result = this.getFromBetween(sub1, sub2);
       // push it to the results array
       this.results.push(result as any);
       // remove the most recently found one from the string
@@ -45,7 +49,9 @@ export const getFromBetween: GetFromBetween = {
       if (this.string.indexOf(sub1) > -1 && this.string.indexOf(sub2) > -1) {
         this.getAllResults(sub1, sub2);
       } else return;
-    } catch (error) {}
+    } catch (error) {
+      console.error(error);
+    }
   },
   get: function (string: string, sub1: string, sub2: string) {
     try {
@@ -53,6 +59,8 @@ export const getFromBetween: GetFromBetween = {
       this.string = string;
       this.getAllResults(sub1, sub2);
       return this.results;
-    } catch (error) {}
+    } catch (error) {
+      console.error(error);
+    }
   },
 };

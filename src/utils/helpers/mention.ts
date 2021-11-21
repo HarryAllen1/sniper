@@ -19,7 +19,7 @@ export const getMentionedUser = (message: Message, args: string[]): User => {
 export const getMentionedMember = (
   message: Message,
   args: string[]
-): GuildMember => {
+): GuildMember | null => {
   return (
     message.mentions.members?.first() ||
     message.guild?.members.cache.get(args[0]) ||
@@ -27,6 +27,6 @@ export const getMentionedMember = (
       (member) =>
         member.displayName.toLowerCase() === args.join(' ').toLowerCase()
     ) ||
-    message.member!
+    message.member
   );
 };

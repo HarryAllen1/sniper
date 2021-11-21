@@ -30,22 +30,28 @@ export default class ReactionsnipeCommand extends BaseCommand {
     const snipe = reactionSnipes[message.channel.id];
     if (args[0] && message.mentions.channels.first()) {
       const channelSnipe =
-        reactionSnipes[message.mentions.channels.first()?.id!];
-      await reply(
-        message,
-        channelSnipe
-          ? new MessageEmbed()
-              .setDescription(
-                `reacted with ${formatEmoji(
-                  channelSnipe.emoji
-                )} on [this message](${channelSnipe.messageURL})`
-              )
-              .setAuthor(channelSnipe.user!.tag!)
-              .setColor('RANDOM')
-              .setFooter(`#${(message.channel as TextChannel).name}`)
-              .setTimestamp(channelSnipe.createdAt!)
-          : { title: "There's nothing to snipe!" }
-      );
+        reactionSnipes[message.mentions.channels.first()?.id ?? ''];
+      if (channelSnipe)
+        await reply(
+          message,
+          channelSnipe
+            ? new MessageEmbed()
+                .setDescription(
+                  `reacted with ${formatEmoji(
+                    channelSnipe.emoji
+                  )} on [this message](${channelSnipe.messageURL})`
+                )
+                .setAuthor(channelSnipe.user?.tag ?? '')
+                .setColor('RANDOM')
+                .setFooter(`#${(message.channel as TextChannel).name}`)
+                .setTimestamp(channelSnipe.createdAt)
+            : { title: "There's nothing to snipe!" }
+        );
+      else
+        await reply(message, {
+          title: "That channel doesn't exist.",
+          color: 'RED',
+        });
       return;
     }
     await reply(
@@ -57,10 +63,10 @@ export default class ReactionsnipeCommand extends BaseCommand {
                 snipe.messageURL
               })`
             )
-            .setAuthor(snipe.user!.tag!)
+            .setAuthor(snipe.user?.tag ?? '')
             .setColor('RANDOM')
             .setFooter(`#${(message.channel as TextChannel).name}`)
-            .setTimestamp(snipe.createdAt!)
+            .setTimestamp(snipe.createdAt)
         : { title: "There's nothing to snipe!" }
     );
   }

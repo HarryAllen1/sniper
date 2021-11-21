@@ -8,17 +8,13 @@ export default class BotCommand extends BaseCommand {
     super('bot', 'util', [], 15000, 'Shows information about the bot');
   }
 
-  async run(
-    client: DiscordClient,
-    message: Message,
-    args: Array<string>
-  ): Promise<void> {
+  async run(client: DiscordClient, message: Message): Promise<void> {
     message.channel.send({
       embeds: [
         {
           title: `${client.user?.tag}`,
           description: `${
-            client.user?.presence?.activities?.length! > 0
+            client.user?.presence?.activities?.length ?? 0 > 0
               ? client.user?.presence.activities[0].name
               : 'No activity'
           }`,
@@ -56,7 +52,7 @@ export default class BotCommand extends BaseCommand {
             },
             {
               name: 'Uptime',
-              value: `${ms(client.uptime!)}`,
+              value: `${ms(client.uptime ?? 0)}`,
               inline: true,
             },
             {

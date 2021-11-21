@@ -1,8 +1,5 @@
 import { RedditRes } from './types';
 
-interface Memes {
-  [title: string]: LiteRedditRes;
-}
 export interface LiteRedditRes {
   title: string;
   permaLink: string;

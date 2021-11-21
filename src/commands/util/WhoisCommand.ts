@@ -14,12 +14,9 @@ export default class WhoisCommand extends BaseCommand {
   }
 
   async run(client: DiscordClient, message: Message, args: Array<string>) {
-    let user: User = getMentionedUser(message, args);
-    let member: GuildMember = getMentionedMember(message, args);
-    if (!args[0]) {
-      user = message.author;
-      member = message.member!;
-    }
+    const user: User = getMentionedUser(message, args); // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    const member: GuildMember = getMentionedMember(message, args)!;
+
     if (!user && !member) {
       reply(message, {
         title: "That user doesn't exist",
@@ -29,12 +26,12 @@ export default class WhoisCommand extends BaseCommand {
       return;
     }
 
-    let activities = member.presence?.activities;
+    const activities = member.presence?.activities;
     let status: string;
     let activity: string;
     activities?.forEach((thing) => {
       if (thing.type === 'CUSTOM') {
-        status = thing.state!;
+        status = thing.state ?? '';
       } else {
         activity = `${capitalizeFirstLetter(thing.type.toLowerCase())} ${
           thing.name
@@ -84,7 +81,7 @@ export default class WhoisCommand extends BaseCommand {
         },
         {
           name: 'Join Server Age',
-          value: new Date(Date.now() - member.joinedAt?.getTime()!)
+          value: new Date(Date.now() - (member.joinedAt?.getTime() ?? 0))
             .toISOString()
             .slice(11, -1),
         },

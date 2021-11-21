@@ -7,11 +7,11 @@ import {
 } from 'discord.js';
 import BaseCommand from '../../utils/structures/BaseCommand';
 import DiscordClient from '../../client/client';
-import { helpCommandHelperCollection } from '../../utils/registry';
+import { helpCommandHelperCollection, allCommands } from '../../utils/registry';
 import { reply } from '../../utils/helpers/reply';
 import { SlashCommandBuilder } from '@discordjs/builders';
 import ms from 'ms';
-import { log } from '../../utils/helpers/console';
+import { capitalizeFirstLetter } from '../../utils/helpers/string';
 
 export default class HelpCommand extends BaseCommand {
   constructor() {
@@ -30,7 +30,7 @@ export default class HelpCommand extends BaseCommand {
   async run(client: DiscordClient, message: Message, args: Array<string>) {
     // const categories = Object.keys(helpCommandHelper);
     const categories = [...helpCommandHelperCollection.keys()];
-    let menu: any[] = [];
+    const menu: any[] = [];
     helpCommandHelperCollection.forEach((value, key) => {
       menu.push({
         label: key,
@@ -40,8 +40,29 @@ export default class HelpCommand extends BaseCommand {
     categories.forEach((category) => {
       menu.push({ label: category, value: category });
     });
-    log(menu);
+
     try {
+      if (args[0]) {
+        const command =
+          allCommands.get(args[0]) ||
+          allCommands.find(
+            (v, k) =>
+              k.toLowerCase().startsWith(args[0].toLowerCase()) ||
+              v.aliases
+                .map((v) => v.toLowerCase())
+                .includes(args[0].toLowerCase())
+          );
+        if (command)
+          reply(message, {
+            title: capitalizeFirstLetter(command?.name),
+          });
+        else {
+          reply(message, {
+            title: 'Command not found',
+            color: 'RED',
+          });
+        }
+      }
       if (message.type === 'APPLICATION_COMMAND')
         await reply(
           message,
@@ -69,7 +90,7 @@ export default class HelpCommand extends BaseCommand {
           }
         );
       else {
-        let row = new MessageActionRow().addComponents(
+        const row = new MessageActionRow().addComponents(
           new MessageButton()
             .setEmoji('⏪')
             .setStyle('PRIMARY')
@@ -93,7 +114,7 @@ export default class HelpCommand extends BaseCommand {
         );
         let categoriesIndex = -1;
         const updateHelpMessage = async (index: number): Promise<Message> => {
-          let // descriptions = helpCommandHelper[categories[index]].commands;
+          const // descriptions = helpCommandHelper[categories[index]].commands;
             descriptions = helpCommandHelperCollection.get(
               categories[index]
             )?.commands;
@@ -161,8 +182,8 @@ export default class HelpCommand extends BaseCommand {
             ],
           });
         };
-        let timeout = ms('15s');
-        let timer = setTimeout(() => {
+        const timeout = ms('15s');
+        const timer = setTimeout(() => {
           void disableHelpMessage();
         }, timeout);
         timer;
@@ -193,6 +214,8 @@ export default class HelpCommand extends BaseCommand {
           if (i.customId === 'end') {
             void disableHelpMessage();
           } else if (i.customId === 'first') {
+            categoriesIndex = 0;
+            await updateHelpMessage(categoriesIndex);
           } else if (i.customId === 'back') {
             if (
               categoriesIndex >= 1 &&
@@ -208,9 +231,10 @@ export default class HelpCommand extends BaseCommand {
             ) {
               categoriesIndex++;
               updateHelpMessage(categoriesIndex);
-            } else {
             }
           } else if (i.customId === 'last') {
+            categoriesIndex = categories.length - 1;
+            await updateHelpMessage(categoriesIndex);
           }
         });
 

@@ -1,11 +1,7 @@
 import { Message, MessageActionRow, MessageButton } from 'discord.js';
 import BaseCommand from '../../utils/structures/BaseCommand';
 import DiscordClient from '../../client/client';
-import {
-  getUserData,
-  getUserDataRef,
-  setUserData,
-} from '../../utils/helpers/user';
+import { getUserData, setUserData } from '../../utils/helpers/user';
 import { reply } from '../../utils/helpers/reply';
 import randomNumber from '../../utils/helpers/randomNumber';
 
@@ -23,7 +19,7 @@ export default class JailBreakCommand extends BaseCommand {
     );
   }
 
-  async run(client: DiscordClient, message: Message, args: Array<string>) {
+  async run(client: DiscordClient, message: Message) {
     // message.channel.send('this command doesnt work lol');
     // return;
 

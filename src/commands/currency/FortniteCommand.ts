@@ -15,7 +15,7 @@ export default class FortniteCommand extends BaseCommand {
     );
   }
 
-  async run(client: DiscordClient, message: Message, args: Array<string>) {
+  async run(client: DiscordClient, message: Message) {
     try {
       const chance = Math.floor(Math.random() * 100);
       if (chance === 1) {
@@ -29,7 +29,7 @@ export default class FortniteCommand extends BaseCommand {
         reply(
           message,
           {
-            description: `you lost 1000 coins! you now have ${total} coins! also fortnite sucks`,
+            description: `you lost 1000 coins! you now have ${total} coins! also fortnite is cringe`,
             color: 'RED',
           },
           {

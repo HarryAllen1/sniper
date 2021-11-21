@@ -39,7 +39,7 @@ export default class CrimeCommand extends BaseCommand {
     );
   }
 
-  async run(client: DiscordClient, message: Message, args: Array<string>) {
+  async run(client: DiscordClient, message: Message) {
     message.channel.sendTyping();
     const chosenCrime = crimes[randomNumber(0, crimes.length - 1)];
     const receivedCoins = randomNumber(-2500, 5000);

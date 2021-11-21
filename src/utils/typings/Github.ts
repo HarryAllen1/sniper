@@ -115,6 +115,6 @@ export interface CreateGithubIssue {
   assignee?: string | null;
 
   milestone?: string | number | null;
-  labels?: Array<string | Object>;
+  labels?: Array<string | Record<string, unknown>>;
   assignees?: string[];
 }

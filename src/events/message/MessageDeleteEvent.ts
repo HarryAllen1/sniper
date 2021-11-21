@@ -2,7 +2,7 @@
 import { Message, Util } from 'discord.js';
 import BaseEvent from '../../utils/structures/BaseEvent';
 import DiscordClient from '../../client/client';
-import { snipes, setSnipe, Snipe } from '../../commands/util/snipes';
+import { snipes, setSnipe } from '../../commands/util/snipes';
 import { log } from '../../utils/helpers/console';
 
 export default class MessageDeleteEvent extends BaseEvent {
@@ -12,9 +12,12 @@ export default class MessageDeleteEvent extends BaseEvent {
 
   async run(client: DiscordClient, message: Message) {
     if (message.partial || message.author.bot) return; // content is null
-    if (message.content.toLowerCase() !== '.pick')
+    if (
+      message.content.toLowerCase() !== '.pick' &&
+      message.guildId === '882695828140073052'
+    )
       log(
-        message.guild!.name +
+        message.guild?.name +
           ': ' +
           Util.cleanContent(message.content, message.channel)
       );

@@ -26,8 +26,8 @@ export default class GiveCommand extends BaseCommand {
     }
     const mentionedUser =
       message.mentions.members?.first() ||
-      message.guild!.members.cache.get(args[0]) ||
-      message.guild!.members.cache.find(
+      message.guild?.members.cache.get(args[0]) ||
+      message.guild?.members.cache.find(
         (member) => member.user.username.toLowerCase() === args[0].toLowerCase()
       );
     if (mentionedUser === message.member) {

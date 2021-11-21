@@ -9,7 +9,7 @@ export default class InvCommand extends BaseCommand {
     });
   }
 
-  async run(client: DiscordClient, message: Message, args: Array<string>) {
-    message.channel.send('inv command works');
+  async run(client: DiscordClient, message: Message) {
+    message.channel.send('not implemented yet');
   }
 }

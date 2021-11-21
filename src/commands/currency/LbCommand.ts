@@ -15,7 +15,7 @@ export default class LbCommand extends BaseCommand {
     );
   }
 
-  async run(client: DiscordClient, message: Message, args: Array<string>) {
+  async run(client: DiscordClient, message: Message) {
     const usersCollection = admin.firestore().collection('users');
     const lb = await usersCollection.orderBy('coins', 'desc').limit(10).get();
 
@@ -43,11 +43,12 @@ export default class LbCommand extends BaseCommand {
     reply(message, {
       title: message.guild?.name,
       thumbnail: {
-        url: message.guild?.iconURL({
-          dynamic: true,
-          format: 'webp',
-          size: 256,
-        })!,
+        url:
+          message.guild?.iconURL({
+            dynamic: true,
+            format: 'webp',
+            size: 256,
+          }) ?? '',
       },
       description: 'Richest users in this server.',
       fields,

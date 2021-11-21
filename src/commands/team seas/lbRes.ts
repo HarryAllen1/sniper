@@ -25,8 +25,6 @@ interface Most {
   created_at: number;
 }
 
-interface Config {}
-
 interface TeamsAlpha {
   team: string;
   total_donation: string;
@@ -45,7 +43,7 @@ export interface TeamSeasLBRes {
   recent: Recent[];
   teams: Team[];
   most: Most[];
-  config: Config;
+  config: Record<string, unknown>;
   teams_alpha: TeamsAlpha[];
   teams_most_donations: TeamsMostDonation[];
 }

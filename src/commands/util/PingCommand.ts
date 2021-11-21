@@ -1,13 +1,10 @@
 import { Message } from 'discord.js';
 import BaseCommand from '../../utils/structures/BaseCommand';
 import DiscordClient from '../../client/client';
-import admin from 'firebase-admin';
 import { getUserData } from '../../utils/helpers/user';
 import { msToTime } from '../../utils/helpers/date';
 import { reply } from '../../utils/helpers/reply';
 import ms from 'ms';
-
-const db = admin.firestore();
 
 export default class PingCommand extends BaseCommand {
   constructor() {
@@ -20,7 +17,7 @@ export default class PingCommand extends BaseCommand {
     );
   }
 
-  async run(client: DiscordClient, message: Message, args: Array<string>) {
+  async run(client: DiscordClient, message: Message) {
     reply(message, { title: 'pinging....', color: 'RED' }).then((msg) => {
       const messageSendTime = Date.now();
       let dbPing: number;
@@ -45,11 +42,11 @@ export default class PingCommand extends BaseCommand {
                 },
                 {
                   name: 'Database latency (affects currency commands)',
-                  value: `${(dbPing! - messageSendTime).toString()}ms`,
+                  value: `${(dbPing - messageSendTime).toString()}ms`,
                 },
                 {
                   name: 'Uptime (how long since the last bot restart; affects `snipe` commands)',
-                  value: `${msToTime(client.uptime!)}`,
+                  value: `${msToTime(client.uptime ?? 0)}`,
                 },
               ],
             },

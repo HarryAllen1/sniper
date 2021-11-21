@@ -15,7 +15,7 @@ export default class TeamSeasCommand extends BaseCommand {
     );
   }
 
-  async run(client: DiscordClient, message: Message, args: Array<string>) {
+  async run(client: DiscordClient, message: Message) {
     const total = await axios.get<{ count: string }>(
       'https://tscache.com/donation_total.json'
     );

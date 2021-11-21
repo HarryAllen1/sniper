@@ -31,7 +31,7 @@ export default class ChangelogCommand extends BaseCommand {
       const toReadableDate = (date: string) => {
         return new Date(date).toUTCString();
       };
-      let githubCommitMessages: any[] = [];
+      const githubCommitMessages: any[] = [];
       data.forEach((commit) => {
         githubCommitMessages.push({
           name: toReadableDate(commit.commit.author.date),

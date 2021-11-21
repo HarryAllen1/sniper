@@ -14,7 +14,7 @@ export default class UnSnipeCommand extends BaseCommand {
     );
   }
 
-  async run(client: DiscordClient, message: Message, args: Array<string>) {
+  async run(client: DiscordClient, message: Message) {
     const snipe = unSnipes[message.channel.id]?.msg;
     const msgToDelete = message?.channel?.messages?.cache?.get(snipe.id);
     if (

@@ -12,7 +12,7 @@ export default class DailyCommand extends BaseCommand {
     });
   }
 
-  async run(client: DiscordClient, message: Message, args: Array<string>) {
+  async run(client: DiscordClient, message: Message) {
     addCoinsToTotal(message.author.id, 10_000).then((val) => {
       reply(message, {
         title: 'Daily coins',

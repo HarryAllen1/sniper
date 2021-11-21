@@ -33,8 +33,7 @@ export default class TimerCommand extends BaseCommand {
     if (isNaN(parseInt(time))) {
       reply(message, { title: 'thats not a number' });
     }
-    const currentDate = Date.now();
-    let endDate = ms(args[0] as StringValue);
+    const endDate = ms(args[0] as StringValue);
     reply(message, { title: 'Set a timer for ' + args[0] });
     setTimeout(() => {
       reply(

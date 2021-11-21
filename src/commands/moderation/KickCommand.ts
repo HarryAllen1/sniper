@@ -18,29 +18,34 @@ export default class KickCommand extends BaseCommand {
       });
       return;
     }
+    if (!message.guild?.me?.permissions.has('KICK_MEMBERS')) {
+      reply(message, {
+        title: 'I do not have the `KICK_MEMBERS` permission.',
+        color: 'RED',
+      });
+      return;
+    }
     for (const arg of args) {
-      const user = message.mentions.members!.first();
+      const user =
+        message.mentions.members?.first() ||
+        message.guild?.members.cache.find(
+          (member) => member.user.username.toLowerCase() === arg.toLowerCase()
+        ) ||
+        message.guild?.members.cache.find(
+          (member) => member.nickname?.toLowerCase() === arg.toLowerCase()
+        ) ||
+        message.guild?.members.cache.find((member) =>
+          (member.user.username ?? member.nickname)
+            .toLowerCase()
+            .includes(arg.toLowerCase())
+        ) ||
+        message.guild?.members.cache.get(arg);
+
       if (!user) {
-        const maybeUser =
-          message.guild!.members.cache.find(
-            (member) => member.user.username.toLowerCase() === arg.toLowerCase()
-          ) ||
-          message.guild!.members.cache.find(
-            (member) => member.nickname?.toLowerCase() === arg.toLowerCase()
-          ) ||
-          message.guild!.members.cache.find((member) =>
-            member.user.username.toLowerCase().includes(arg.toLowerCase())
-          ) ||
-          message.guild!.members.cache.find((member) =>
-            member.nickname!.toLowerCase().includes(arg.toLowerCase())
-          ) ||
-          message.guild!.members.cache.get(arg);
-        if (!user) {
-          message.channel.send(`Couldn't find user ${arg} in this server.`);
-          return;
-        } else {
-          users.push(maybeUser!);
-        }
+        message.channel.send(`Couldn't find user ${arg} in this server.`);
+        return;
+      } else {
+        users.push(user);
       }
     }
     users.forEach((user) => {

@@ -4,12 +4,8 @@ import DiscordClient from '../client/client';
 import BaseEvent from './structures/BaseEvent';
 import BaseCommand from './structures/BaseCommand';
 import { Collection } from 'discord.js';
-import { token, clientID } from '../../slappey.json';
-import { REST } from '@discordjs/rest';
-import {
-  RESTPostAPIApplicationCommandsJSONBody,
-  Routes,
-} from 'discord-api-types/v9';
+
+import { RESTPostAPIApplicationCommandsJSONBody } from 'discord-api-types/v9';
 import ms from 'ms';
 
 interface CommandHelper {
@@ -30,11 +26,9 @@ export const helpCommandHelperCollection = new Collection<
   string,
   CommandCategory
 >();
+export const allCommands = new Collection<string, BaseCommand>();
 
-export async function registerCommands(
-  client: DiscordClient,
-  dir: string = ''
-) {
+export async function registerCommands(client: DiscordClient, dir = '') {
   const filePath = path.join(__dirname, dir);
   const files = await fs.readdir(filePath);
 
@@ -55,8 +49,9 @@ export async function registerCommands(
       // if (!command.permissionsRequired) {
       //   command.permissionsRequired = [];
       // }
+      allCommands.set(command.name, command);
       if (helpCommandHelperCollection.has(command.category)) {
-        helpCommandHelperCollection.get(command.category)!.commands.push({
+        helpCommandHelperCollection.get(command.category)?.commands.push({
           name: command.name,
           value: `${command.description}\n${
             command.argsDescription ? `Args: ${command.argsDescription}\n` : ''
@@ -79,7 +74,7 @@ export async function registerCommands(
   }
 }
 
-export async function registerEvents(client: DiscordClient, dir: string = '') {
+export async function registerEvents(client: DiscordClient, dir = '') {
   const filePath = path.join(__dirname, dir);
   const files = await fs.readdir(filePath);
   for (const file of files) {

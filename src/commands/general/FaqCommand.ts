@@ -8,7 +8,7 @@ export default class FaqCommand extends BaseCommand {
     super('faq', 'general', [], 1000, 'faq... pretty obvious');
   }
 
-  async run(client: DiscordClient, message: Message, args: Array<string>) {
+  async run(client: DiscordClient, message: Message) {
     reply(
       message,
       new MessageEmbed()
@@ -23,7 +23,7 @@ export default class FaqCommand extends BaseCommand {
         )
         .addField(
           'I have a suggestion for this bot',
-          "That's great! If you know how to code, you can [submit a pull request](https://github.com/MajesticString/sniper/pulls). If you don't, you can submit your feature on our [Github issues page](https://github.com/MajesticString/sniper/issues) (preferred). Or you can [DM this bot](https://discord.com/channels/@me/897633081127743528). Yes, i can see this bots DM's."
+          "That's great! If you know how to code, you can [submit a pull request](https://github.com/MajesticString/sniper/pulls). If you don't, you can submit your feature on our [Github issues page](https://github.com/MajesticString/sniper/issues) (preferred)."
         )
     );
   }

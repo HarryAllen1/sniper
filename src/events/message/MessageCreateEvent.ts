@@ -3,8 +3,7 @@ import { Message, Collection } from 'discord.js';
 import DiscordClient from '../../client/client';
 import { reply } from '../../utils/helpers/reply';
 import { log } from '../../utils/helpers/console';
-import { getFromBetween } from '../../utils/helpers/charactersBetween';
-import { getGuildSettings } from '../../utils/helpers/fb';
+
 import chalk from 'chalk';
 // import { sleep } from '../../utils/helpers/misc';
 // import {
@@ -24,14 +23,14 @@ export default class MessageCreateEvent extends BaseEvent {
 
     if (message.author.bot || !message.guild) return;
 
-    const guildSettings = await getGuildSettings(message.guild.id);
+    // const guildSettings = await getGuildSettings(message.guild.id);
 
     // if (guildSettings!.ranks) {
 
     // }
 
     if (message.content === '<@!893619442712444970>') {
-      client.commands.get('help')!.run(client, message, []);
+      client.commands.get('help')?.run(client, message, []);
     }
     if (message.content.toLowerCase().startsWith('pls snipe')) {
       const command = client.commands.get('snipe');
@@ -43,8 +42,8 @@ export default class MessageCreateEvent extends BaseEvent {
       const command = client.commands.get('editsnipe');
       command?.run(client, message, []);
     }
-    for (let prefix of client.prefix) {
-      if (message.content.startsWith(prefix)) {
+    for (const prefix of client.prefix) {
+      if (message.content.startsWith(prefix.toLowerCase())) {
         if (!message.guild.me?.permissions.has('SEND_MESSAGES')) {
           message.author.send('i cant send messages in that server lol');
         }
@@ -52,7 +51,7 @@ export default class MessageCreateEvent extends BaseEvent {
           .slice(prefix.length)
           .trim()
           .split(/\s+/);
-        const command = client.commands.get(cmdName);
+        const command = client.commands.get(cmdName.toLowerCase());
         if (!cooldowns.has(command?.name)) {
           cooldowns.set(command?.name, new Collection());
         }
@@ -85,7 +84,10 @@ export default class MessageCreateEvent extends BaseEvent {
         timeStamps.set(message.author.id, currentTime);
         setTimeout(() => timeStamps.delete(message.author.id), cooldownAmount);
         if (command) {
-          for (const permission of command?.permissionsRequired!) {
+          for (const permission of command?.permissionsRequired ?? [
+            'SEND_MESSAGES',
+            'READ_MESSAGE_HISTORY',
+          ]) {
             if (!message.member?.permissions.has(permission)) {
               reply(message, {
                 title: `You do not have the permission to use this command.`,
@@ -95,10 +97,29 @@ export default class MessageCreateEvent extends BaseEvent {
             }
           }
           try {
+            const admin = await import('firebase-admin');
+            const db = admin.firestore();
+
+            const commandsIssued = await db
+              .collection('bot')
+              .doc('stats')
+              .get();
+            db.collection('bot')
+              .doc('stats')
+              .set(
+                { commandsIssued: commandsIssued.data()?.commandsIssued + 1 },
+                { merge: true }
+              );
             log('Begin command ' + command?.name + ' in ' + message.guild.name);
-            command.run(client, message, cmdArgs).then(() => {
-              log('End Command ' + command?.name);
-            });
+            if (
+              message.channel
+                .permissionsFor(client.user ?? '')
+                ?.has('SEND_MESSAGES')
+            )
+              command.run(client, message, cmdArgs).then(() => {
+                log('End Command ' + command?.name);
+              });
+            else message.author.send("I can't send messages in that channel.");
           } catch (error) {
             log(chalk.red(error));
             reply(message, {
@@ -108,13 +129,13 @@ export default class MessageCreateEvent extends BaseEvent {
           }
         }
       } else if (!message.content.startsWith('$')) {
-        const $ = getFromBetween.get(message.content, '$', '$');
-        for (let thing of $) {
-          if (thing.length > 1) {
-            const [cmdName, ...cmdArgs] = message.content.trim().split(/\s+/);
-            client.commands.get('tex')!.run(client, message, $);
-          }
-        }
+        // const $ = getFromBetween.get(message.content, '$', '$');
+        // for (let thing of $) {
+        //   if (thing.length > 1) {
+        //     const [cmdName, ...cmdArgs] = message.content.trim().split(/\s+/);
+        //     client.commands.get('tex')!.run(client, message, $);
+        //   }
+        // }
       }
     }
   }

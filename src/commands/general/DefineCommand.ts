@@ -22,8 +22,7 @@ export default class DefineCommand extends BaseCommand {
 
     let defaultDictionary = 'mw';
     message.channel.sendTyping();
-    if (!args[1]) {
-    } else if (
+    if (
       args[1].toLowerCase() === 'oxford' ||
       args[1].toLowerCase() === 'urban'
     ) {

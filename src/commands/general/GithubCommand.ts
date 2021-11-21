@@ -7,7 +7,7 @@ export default class GithubCommand extends BaseCommand {
     super('github', 'general', [], 5000, 'Shows this bots Github repo');
   }
 
-  async run(client: DiscordClient, message: Message, args: Array<string>) {
+  async run(client: DiscordClient, message: Message) {
     message.channel.send('https://github.com/MajesticString/sniper');
   }
 }

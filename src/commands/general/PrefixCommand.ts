@@ -1,8 +1,9 @@
 import { Message } from 'discord.js';
 import BaseCommand from '../../utils/structures/BaseCommand';
 import DiscordClient from '../../client/client';
-import { prefixes } from '../../../slappey.json';
+
 import { SlashCommandBuilder } from '@discordjs/builders';
+import { reply } from '../../utils/helpers/reply';
 
 export default class PrefixCommand extends BaseCommand {
   constructor() {
@@ -22,7 +23,13 @@ export default class PrefixCommand extends BaseCommand {
     )
     .toJSON();
 
-  async run(client: DiscordClient, message: Message, args: Array<string>) {
-    message.reply(prefixes.map((val) => `\`${val}\``).toString());
+  async run(client: DiscordClient, message: Message) {
+    const { prefixes } = __filename.endsWith('.ts')
+      ? await import('../../../slappey.json')
+      : await import('../../../slappey-prod.json');
+    reply(message, {
+      title: 'Prefixes',
+      description: prefixes.map((val) => `\`${val}\``).toString(),
+    });
   }
 }

@@ -27,14 +27,15 @@ export default class GuildMemberRemoveEvent extends BaseEvent {
           },
         ],
       });
-    else if (member.guild.id === '899035595081396255')
-      (client.channels.cache.get('899035595081396258') as TextChannel).send({
-        embeds: [
-          {
-            title: `${member.user.tag} has just left the server!`,
-            color: 'ORANGE',
-          },
-        ],
-      });
+    // michael
+    // else if (member.guild.id === '899035595081396255')
+    //   (client.channels.cache.get('899035595081396258') as TextChannel).send({
+    //     embeds: [
+    //       {
+    //         title: `${member.user.tag} has just left the server!`,
+    //         color: 'ORANGE',
+    //       },
+    //     ],
+    //   });
   }
 }

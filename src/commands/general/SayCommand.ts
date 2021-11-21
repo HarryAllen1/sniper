@@ -1,4 +1,4 @@
-import { Message, Util } from 'discord.js';
+import { Message } from 'discord.js';
 import BaseCommand from '../../utils/structures/BaseCommand';
 import DiscordClient from '../../client/client';
 

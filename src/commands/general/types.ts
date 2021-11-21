@@ -5,8 +5,6 @@ interface LinkFlairRichtext {
   u: string;
 }
 
-interface MediaEmbed {}
-
 interface RedditVideo {
   bitrate_kbps: number;
   fallback_url: string;
@@ -23,8 +21,6 @@ interface RedditVideo {
 interface SecureMedia {
   reddit_video: RedditVideo;
 }
-
-interface SecureMediaEmbed {}
 
 interface AuthorFlairRichtext {
   e: string;
@@ -383,7 +379,7 @@ interface Data2 {
   subreddit_type: string;
   ups: number;
   total_awards_received: number;
-  media_embed: MediaEmbed;
+  media_embed: Record<string, unknown>;
   thumbnail_width: number;
   author_flair_template_id: string;
   is_original_content: boolean;
@@ -392,7 +388,7 @@ interface Data2 {
   is_reddit_media_domain: boolean;
   is_meta: boolean;
   category?: any;
-  secure_media_embed: SecureMediaEmbed;
+  secure_media_embed: Record<string, unknown>;
   link_flair_text: string;
   can_mod_post: boolean;
   score: number;

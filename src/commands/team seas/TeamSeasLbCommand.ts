@@ -21,15 +21,15 @@ export default class TeamSeasLbCommand extends BaseCommand {
     );
   }
 
-  async run(client: DiscordClient, message: Message, args: Array<string>) {
+  async run(client: DiscordClient, message: Message) {
     message.channel.sendTyping();
     const res = await axios.get<TeamSeasLBRes>(
       'https://tscache.com/lb_recent.json'
     );
     const body = res.data;
-    let currentIndex = 0;
+    const currentIndex = 0;
     const maxIndex = 10;
-    let fields: EmbedField[] = [];
+    const fields: EmbedField[] = [];
     if (currentIndex <= maxIndex) {
       body.most.forEach((item, i) => {
         if (i < maxIndex)

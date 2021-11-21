@@ -2,7 +2,6 @@ import { Message } from 'discord.js';
 import BaseCommand from '../../utils/structures/BaseCommand';
 import DiscordClient from '../../client/client';
 import axios from 'axios';
-import { memes, setMemes } from './cachedMemes';
 import randomNumber from '../../utils/helpers/randomNumber';
 import { RedditRes } from './types';
 import { reply } from '../../utils/helpers/reply';
@@ -12,9 +11,8 @@ export default class MemeCommand extends BaseCommand {
     super('meme', 'general', [], 3000, 'gets a meme from r/memes');
   }
 
-  async run(client: DiscordClient, message: Message, args: Array<string>) {
+  async run(client: DiscordClient, message: Message) {
     message.channel.sendTyping();
-    let res: RedditRes;
 
     // if (memes) {
     //   res = memes;
@@ -22,7 +20,7 @@ export default class MemeCommand extends BaseCommand {
     const get = await axios.get<RedditRes>(
       'https://www.reddit.com/r/memes/top/.json?sort=top&t=day&limit=100'
     );
-    res = get.data;
+    const res = get.data;
     // setMemes(res);
     // }
 

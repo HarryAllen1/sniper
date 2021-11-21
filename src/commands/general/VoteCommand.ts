@@ -9,7 +9,7 @@ export default class VoteCommand extends BaseCommand {
     super('vote', 'general', [], ms('3s'), 'Vote for the bot on top.gg');
   }
 
-  async run(client: DiscordClient, message: Message, args: Array<string>) {
+  async run(client: DiscordClient, message: Message) {
     reply(
       message,
       {
@@ -17,7 +17,7 @@ export default class VoteCommand extends BaseCommand {
         fields: [
           {
             name: 'Rewards',
-            value: '15,000 coins',
+            value: 'Currently no rewards (working on this; will be out soon)',
           },
         ],
         color: 'GREEN',

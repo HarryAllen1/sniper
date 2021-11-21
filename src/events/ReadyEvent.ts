@@ -1,19 +1,11 @@
 import BaseEvent from '../utils/structures/BaseEvent';
 import DiscordClient from '../client/client';
 import { log } from '../utils/helpers/console';
-import { REST } from '@discordjs/rest';
-import { Routes } from 'discord-api-types/v9';
-import { slashCommands } from '../utils/registry';
-import { clientID, token } from '../../slappey.json';
-import {
-  ClientUser,
-  ClientVoiceManager,
-  MessageActionRow,
-  MessageActionRowComponentResolvable,
-  MessageButton,
-  TextChannel,
-} from 'discord.js';
-import { writeFile, writeFileSync } from 'fs';
+// import { REST } from '@discordjs/rest';
+// import { Routes } from 'discord-api-types/v9';
+// import { slashCommands } from '../utils/registry';
+// import { clientID, token } from '../../slappey.json';
+
 import chalk from 'chalk';
 
 export default class ReadyEvent extends BaseEvent {
@@ -32,26 +24,8 @@ export default class ReadyEvent extends BaseEvent {
     });
 
     // const rest = new REST({ version: '9' }).setToken(token);
-    // await rest
-    //   .put(Routes.applicationGuildCommands(clientID, '892256861947064341'), {
-    //     body: slashCommands,
-    //   })
-    //   .then(() => {
-    //     console.log('registered commands for guild 892256861947064341');
-    //   });
-    // // await rest
-    // //   .put(Routes.applicationGuildCommands(clientID, '893350150209171476'), {
-    // //     body: slashCommands,
-    // //   })
-    // //   .then(() => {
-    // //     console.log('registered commands for guild 893350150209171476');
-    // //   });
 
-    // await rest.put(
-    //   Routes.applicationGuildCommands(clientID, '882695828140073052'),
-    //   { body: slashCommands }
-    // );
-    // rest
+    // await rest
     //   .put(Routes.applicationCommands(clientID), { body: slashCommands })
     //   .then(() => {
     //     console.log('globally registered commands');

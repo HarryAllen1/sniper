@@ -45,7 +45,6 @@ export const addCoinsToTotal = async (
   userID: string,
   addedCoins: number
 ): Promise<number> => {
-  let totalCoins: number;
   return db
     .collection('users')
     .doc(userID)
@@ -62,7 +61,7 @@ export const addCoinsToTotal = async (
           },
           { merge: true }
         )
-        .then((result) => {
+        .then(() => {
           return coins + addedCoins;
         });
     });
@@ -97,7 +96,7 @@ export const setUserData = (
 };
 
 export const deleteFieldFromUserData = (userID: string, fields: string[]) => {
-  let keyDelete: { [field: string]: admin.firestore.FieldValue } = {};
+  const keyDelete: { [field: string]: admin.firestore.FieldValue } = {};
   fields.forEach((field) => {
     keyDelete[field] = admin.firestore.FieldValue.delete();
   });

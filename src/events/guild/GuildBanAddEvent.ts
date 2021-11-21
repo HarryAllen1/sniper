@@ -39,7 +39,7 @@ export default class GuildBanAddEvent extends BaseEvent {
             title: `${ban.user.tag} was banned`,
             description: `Reason: ${
               ban.reason ? ban.reason : 'No reason given'
-            }\nExecutor: ${executor!.tag}`,
+            }\nExecutor: ${executor?.tag}`,
             color: 'RED',
           },
         ],

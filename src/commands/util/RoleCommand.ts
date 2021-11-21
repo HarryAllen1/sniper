@@ -14,8 +14,9 @@ export default class RoleCommand extends BaseCommand {
   async run(client: DiscordClient, message: Message, args: Array<string>) {
     const role =
       message.mentions.roles.first() ||
-      message.guild!.roles.cache.get(args[0]) ||
-      message.guild!.roles.cache.find((r) => r.name === args.join(' ')) ||
+      message.guild?.roles.cache.get(args[0]) ||
+      message.guild?.roles.cache.find((r) => r.name === args.join(' ')) ||
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       message.guild!.roles.everyone;
     reply(message, {
       title: `${role.name}`,

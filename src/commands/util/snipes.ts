@@ -31,14 +31,13 @@ interface UnSnipeContent {
   [msg: string]: Message;
 }
 
-export let snipes: Snipe = {};
-export let editSnipes: Snipe = {};
-export let reactionSnipes: Snipe = {};
-export let unSnipes: UnSnipe = {};
+export const snipes: Snipe = {};
+export const editSnipes: Snipe = {};
+export const reactionSnipes: Snipe = {};
+export const unSnipes: UnSnipe = {};
 
 export const setSnipe = (snipe: Snipe) =>
   db.collection('snipes').doc('snipes').set(snipe, { merge: true });
-export const getSnipes = (
-  channelID?: string
-): Promise<FirebaseFirestore.DocumentSnapshot<Snipe>> =>
-  db.collection('snipes').doc('snipes').get();
+export const getSnipes = (): Promise<
+  FirebaseFirestore.DocumentSnapshot<Snipe>
+> => db.collection('snipes').doc('snipes').get();
