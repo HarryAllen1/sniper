@@ -1,6 +1,6 @@
 import { registerCommands, registerEvents } from './utils/registry';
 
-import { project_id } from '../firebase-credental.json';
+import { project_id } from '../firebase-credentials.json';
 
 import DiscordClient from './client/client';
 
@@ -9,6 +9,7 @@ import admin from 'firebase-admin';
 
 import express from 'express';
 import bodyParser from 'body-parser';
+import firebaseCredentials from '../firebase-credentials.json';
 
 import { AutoPoster } from 'topgg-autoposter';
 
@@ -28,13 +29,12 @@ export const client = new DiscordClient({
 });
 try {
   admin.initializeApp({
-    credential: admin.credential.cert(require('../firebase-credental.json')),
+    credential: admin.credential.cert(firebaseCredentials),
     projectId: 'discord-sniper-5c7f0',
   });
 
   (async () => {
-    //@ts-ignore
-    const { prefixes, token, secrets } = __filename.endsWith('\\sniper.ts')
+    const { prefixes, token, secrets } = __filename.endsWith('.ts')
       ? await import('../slappey.json')
       : await import('../slappey-prod.json');
     client.prefix = prefixes;
