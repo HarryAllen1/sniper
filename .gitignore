@@ -2,7 +2,7 @@
 config.json
 slappey.json
 slappey-prod.json
-firebase-credental.json
+firebase-credentials.json
 /out
 
 github-credentials.json
