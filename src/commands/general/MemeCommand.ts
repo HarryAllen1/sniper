@@ -3,7 +3,7 @@ import BaseCommand from '../../utils/structures/BaseCommand';
 import DiscordClient from '../../client/client';
 import axios from 'axios';
 import randomNumber from '../../utils/helpers/randomNumber';
-import { RedditRes } from './types';
+import { RedditRes } from '../../utils/typings/types';
 import { reply } from '../../utils/helpers/reply';
 
 export default class MemeCommand extends BaseCommand {

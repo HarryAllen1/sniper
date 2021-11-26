@@ -482,3 +482,342 @@ export interface RedditRes {
   kind: string;
   data: Data;
 }
+
+interface GithubAuthor {
+  name: string;
+  email: string;
+  date: string;
+}
+export type GithubCommits = GithubCommit[];
+export interface GithubCommit {
+  sha: string;
+  node_id: string;
+  commit: {
+    author: GithubAuthor;
+    committer: GithubAuthor;
+    message: string;
+    tree: {
+      sha: string;
+      url: string;
+    };
+    url: string;
+    comment_count: number;
+    verification: {
+      verified: boolean;
+      reason: string;
+      signature: any;
+      payload: any;
+    };
+  };
+  url: string;
+  html_url: string;
+  comments_url: string;
+  author: GithubUser;
+  committer: GithubUser;
+  parents: Array<{ sha: string; url: string; html_url: string }>;
+}
+interface GithubUser {
+  login: string;
+  id: string;
+  node_id: string;
+  avatar_url: string;
+  gravatar_id: string;
+  url: string;
+  html_url: string;
+  followers_url: string;
+  following_url: string;
+  gists_url: string;
+  starred_url: string;
+  subscriptions_url: string;
+  organizations_url: string;
+  repos_url: string;
+  events_url: string;
+  received_events_url: string;
+  type: string;
+  site_admin: boolean;
+}
+
+export interface GithubIssue {
+  url: string;
+  repository_url: string;
+  labels_url: string;
+  comments_url: string;
+  events_url: string;
+  html_url: string;
+  id: number;
+  node_id: string;
+  number: number;
+  title: string;
+  user: GithubUser;
+  labels: Array<{
+    id: number;
+    node_id: string;
+    url: string;
+    name: string;
+    color: string;
+    default: boolean;
+    description: string;
+  }>;
+
+  state: 'open' | 'closed';
+  locked: boolean;
+  assignee: GithubUser;
+  assignees: Array<GithubUser>;
+  milestone: null | string;
+  comments: number;
+  created_at: string;
+  updated_at: string;
+  closed_at: string | null;
+  author_association: string;
+  active_lock_reason: null | string;
+  body: string;
+  reactions: {
+    url: string;
+    total_count: number;
+    '+1': number;
+    '-1': number;
+    laugh: number;
+    hooray: number;
+    confused: number;
+    heart: number;
+    rocket: number;
+    eyes: number;
+  };
+  timeline_url: string;
+  preformed_via_github_app: any;
+}
+
+export type GithubIssues = GithubIssue[];
+export interface CreateGithubIssue {
+  accept?: string;
+  owner?: string;
+  repo?: string;
+  title: string | number;
+  body?: string;
+  /**
+   * @deprecated
+   */
+  assignee?: string | null;
+
+  milestone?: string | number | null;
+  labels?: Array<string | Record<string, unknown>>;
+  assignees?: string[];
+}
+
+interface Meta {
+  id: string;
+  uuid: string;
+  sort: string;
+  src: string;
+  section: string;
+  stems: string[];
+  offensive: boolean;
+}
+
+interface Sound {
+  audio: string;
+  ref: string;
+  stat: string;
+}
+
+interface Pr {
+  mw: string;
+  sound: Sound;
+}
+
+interface Hwi {
+  hw: string;
+  prs: Pr[];
+}
+
+interface Def {
+  sseq: any[][][];
+}
+
+interface Uro {
+  ure: string;
+  fl: string;
+}
+
+export interface MWResponse {
+  meta: Meta;
+  hwi: Hwi;
+  fl: string;
+  def: Def[];
+  uros: Uro[];
+  et: string[][];
+  date: string;
+  shortdef: string[];
+}
+
+export interface Metadata {
+  operation: string;
+  provider: string;
+  schema: string;
+}
+
+export interface Derivative {
+  id: string;
+  text: string;
+}
+
+export interface Pronunciation {
+  dialects: string[];
+  phoneticNotation: string;
+  phoneticSpelling: string;
+  audioFile: string;
+}
+
+export interface Construction {
+  text: string;
+}
+
+export interface Note {
+  text: string;
+  type: string;
+}
+
+export interface Register {
+  id: string;
+  text: string;
+}
+
+export interface Example {
+  text: string;
+  notes: Note[];
+  registers: Register[];
+}
+
+export interface SemanticClass {
+  id: string;
+  text: string;
+}
+
+export interface Example2 {
+  text: string;
+}
+
+export interface SemanticClass2 {
+  id: string;
+  text: string;
+}
+
+export interface Synonym {
+  language: string;
+  text: string;
+}
+
+export interface ThesaurusLink {
+  entry_id: string;
+  sense_id: string;
+}
+
+export interface DomainClass {
+  id: string;
+  text: string;
+}
+
+export interface Domain {
+  id: string;
+  text: string;
+}
+
+export interface Note2 {
+  text: string;
+  type: string;
+}
+
+export interface Subsens {
+  definitions: string[];
+  examples: Example2[];
+  id: string;
+  semanticClasses: SemanticClass2[];
+  shortDefinitions: string[];
+  synonyms: Synonym[];
+  thesaurusLinks: ThesaurusLink[];
+  domainClasses: DomainClass[];
+  domains: Domain[];
+  notes: Note2[];
+}
+
+export interface Synonym2 {
+  language: string;
+  text: string;
+}
+
+export interface ThesaurusLink2 {
+  entry_id: string;
+  sense_id: string;
+}
+
+export interface DomainClass2 {
+  id: string;
+  text: string;
+}
+
+export interface Domain2 {
+  id: string;
+  text: string;
+}
+
+export interface Sens {
+  constructions: Construction[];
+  definitions: string[];
+  examples: Example[];
+  id: string;
+  semanticClasses: SemanticClass[];
+  shortDefinitions: string[];
+  subsenses: Subsens[];
+  synonyms: Synonym2[];
+  thesaurusLinks: ThesaurusLink2[];
+  domainClasses: DomainClass2[];
+  domains: Domain2[];
+}
+
+export interface GrammaticalFeature {
+  id: string;
+  text: string;
+  type: string;
+}
+
+export interface Entry {
+  etymologies: string[];
+  homographNumber: string;
+  pronunciations: Pronunciation[];
+  senses: Sens[];
+  grammaticalFeatures: GrammaticalFeature[];
+}
+
+export interface LexicalCategory {
+  id: string;
+  text: string;
+}
+
+export interface Phras {
+  id: string;
+  text: string;
+}
+
+export interface LexicalEntry {
+  derivatives: Derivative[];
+  entries: Entry[];
+  language: string;
+  lexicalCategory: LexicalCategory;
+  phrases: Phras[];
+  text: string;
+}
+
+export interface Result {
+  id: string;
+  language: string;
+  lexicalEntries: LexicalEntry[];
+  type: string;
+  word: string;
+}
+
+export interface OxfordRes {
+  id: string;
+  metadata: Metadata;
+  results: Result[];
+  word: string;
+}
