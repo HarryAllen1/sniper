@@ -1,4 +1,4 @@
-import { EmbedField, Message } from 'discord.js';
+import { EmbedField, Message, TextChannel } from 'discord.js';
 import BaseCommand from '../../utils/structures/BaseCommand';
 import DiscordClient from '../../client/client';
 import { reply } from '../../utils/helpers/reply';
@@ -42,32 +42,38 @@ export default class VoteCommand extends BaseCommand {
       fields,
     }).then(async (msg) => {
       // console.log(fields);
-
-      await msg.react('1️⃣');
-      await msg.react('2️⃣');
-      if (fields.length >= 3) {
-        await msg.react('3️⃣');
-      }
-      if (fields.length >= 4) {
-        await msg.react('4️⃣');
-      }
-      if (fields.length >= 5) {
-        await msg.react('5️⃣');
-      }
-      if (fields.length >= 6) {
-        await msg.react('6️⃣');
-      }
-      if (fields.length >= 7) {
-        await msg.react('7️⃣');
-      }
-      if (fields.length >= 8) {
-        await msg.react('8️⃣');
-      }
-      if (fields.length >= 9) {
-        await msg.react('9️⃣');
-      }
-      if (fields.length >= 10) {
-        await msg.react('🔟');
+      if (
+        (msg.channel as TextChannel)
+          // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+          .permissionsFor(message.guild!.me!)
+          .has('ADD_REACTIONS')
+      ) {
+        await msg.react('1️⃣');
+        await msg.react('2️⃣');
+        if (fields.length >= 3) {
+          await msg.react('3️⃣');
+        }
+        if (fields.length >= 4) {
+          await msg.react('4️⃣');
+        }
+        if (fields.length >= 5) {
+          await msg.react('5️⃣');
+        }
+        if (fields.length >= 6) {
+          await msg.react('6️⃣');
+        }
+        if (fields.length >= 7) {
+          await msg.react('7️⃣');
+        }
+        if (fields.length >= 8) {
+          await msg.react('8️⃣');
+        }
+        if (fields.length >= 9) {
+          await msg.react('9️⃣');
+        }
+        if (fields.length >= 10) {
+          await msg.react('🔟');
+        }
       }
     });
   }

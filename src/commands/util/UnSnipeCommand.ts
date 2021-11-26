@@ -2,6 +2,7 @@ import { Message } from 'discord.js';
 import BaseCommand from '../../utils/structures/BaseCommand';
 import DiscordClient from '../../client/client';
 import { snipes, unSnipes } from './snipes';
+import { reply } from '../../utils/helpers/reply';
 
 export default class UnSnipeCommand extends BaseCommand {
   constructor() {
@@ -15,8 +16,16 @@ export default class UnSnipeCommand extends BaseCommand {
   }
 
   async run(client: DiscordClient, message: Message) {
-    const snipe = unSnipes[message.channel.id]?.msg;
-    const msgToDelete = message?.channel?.messages?.cache?.get(snipe.id);
+    const snipe = unSnipes[message.channelId]?.msg;
+    if (!snipe) {
+      reply(message, {
+        title:
+          'This snipe does not exist. This usually happens after a bot restart.',
+        color: 'RED',
+      });
+      return;
+    }
+    const msgToDelete = message.channel?.messages.cache.get(snipe?.id);
     if (
       msgToDelete &&
       snipe &&

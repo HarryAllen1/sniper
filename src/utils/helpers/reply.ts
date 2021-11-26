@@ -15,16 +15,8 @@ export const reply = async (
   otherOptions: ReplyMessageOptions = {},
   ephemeral?: boolean
 ): Promise<Message> => {
-  const {
-    files,
-    attachments,
-    components,
-    content,
-    tts,
-
-    nonce,
-    stickers,
-  } = otherOptions;
+  const { files, attachments, components, content, tts, nonce, stickers } =
+    otherOptions;
   embed.color ||= 'WHITE';
   if (
     (message.channel as TextChannel)
@@ -73,6 +65,46 @@ export const reply = async (
                   : true,
             })
     );
+  else {
+    return message.author.send("I can't send messages in that channel.");
+  }
+};
+
+export const send = async (
+  message: Message,
+  embed: MessageEmbed | MessageEmbedOptions,
+
+  otherOptions: ReplyMessageOptions = {}
+): Promise<Message> => {
+  const {
+    files,
+    attachments,
+    components,
+    content,
+    tts,
+
+    nonce,
+    stickers,
+  } = otherOptions;
+  embed.color ||= 'WHITE';
+  if (
+    (message.channel as TextChannel)
+      // eslint-disable-next-line @typescript-eslint/no-non-null-asserted-optional-chain, @typescript-eslint/no-non-null-assertion -- You kind of have to do this
+      .permissionsFor(message.guild?.me!)
+      .has('SEND_MESSAGES')
+  )
+    return message.channel.send({
+      embeds: [embed],
+
+      files,
+      attachments,
+      content,
+      components,
+      tts,
+
+      nonce,
+      stickers,
+    });
   else {
     return message.author.send("I can't send messages in that channel.");
   }

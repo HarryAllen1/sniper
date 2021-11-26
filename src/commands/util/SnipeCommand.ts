@@ -6,7 +6,9 @@ import { reply } from '../../utils/helpers/reply';
 
 export default class SnipeCommand extends BaseCommand {
   constructor() {
-    super('snipe', 'util', [], 1000, 'Shows the last deleted message.');
+    super('snipe', 'util', [], 1000, 'Shows the last deleted message.', {
+      argsDescription: '[mentioned channel]',
+    });
   }
 
   async run(client: DiscordClient, message: Message, args: Array<string>) {
@@ -31,19 +33,12 @@ export default class SnipeCommand extends BaseCommand {
                 .setTimestamp(
                   channelSnipe.createdAt ? channelSnipe.createdAt : 0
                 )
-            : { title: "There's nothing to snipe!" },
-          {
-            files: [
-              {
-                attachment: channelSnipe.attachment || '',
-                name: 'image',
-              },
-            ],
-          }
+            : { title: "There's nothing to snipe!" }
         );
       else {
         await reply(message, {
-          title: "That channel doesn't exist",
+          title:
+            "That channel doesn't exist, or I don't have permission to view that channel.",
           color: 'RED',
         });
       }

@@ -1,4 +1,4 @@
-import { GuildMember, Message } from 'discord.js';
+import { GuildMember, Message, TextChannel } from 'discord.js';
 import BaseCommand from '../../utils/structures/BaseCommand';
 import DiscordClient from '../../client/client';
 import { reply } from '../../utils/helpers/reply';
@@ -18,7 +18,12 @@ export default class KickCommand extends BaseCommand {
       });
       return;
     }
-    if (!message.guild?.me?.permissions.has('KICK_MEMBERS')) {
+    if (
+      !message.guild?.me?.permissions.has('KICK_MEMBERS') ||
+      !(message.channel as TextChannel)
+        .permissionsFor(message.guild.me)
+        .has('KICK_MEMBERS')
+    ) {
       reply(message, {
         title: 'I do not have the `KICK_MEMBERS` permission.',
         color: 'RED',

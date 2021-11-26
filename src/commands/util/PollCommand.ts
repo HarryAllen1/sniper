@@ -1,4 +1,4 @@
-import { Message } from 'discord.js';
+import { Message, TextChannel } from 'discord.js';
 import BaseCommand from '../../utils/structures/BaseCommand';
 import DiscordClient from '../../client/client';
 import { reply } from '../../utils/helpers/reply';
@@ -18,18 +18,18 @@ export default class PollCommand extends BaseCommand {
       });
       return;
     }
-    message.channel
-      .send({
-        content: message.author.toString(),
-        embeds: [
-          {
-            title: args.join(' '),
-          },
-        ],
-      })
-      .then(async (msg) => {
+    reply(message, {
+      title: args.join(' '),
+    }).then(async (msg) => {
+      if (
+        (msg.channel as TextChannel)
+          // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+          .permissionsFor(message.guild!.me!)
+          .has('ADD_REACTIONS')
+      ) {
         await msg.react('👍');
         await msg.react('👎');
-      });
+      }
+    });
   }
 }

@@ -1,4 +1,4 @@
-import { GuildMember, Message } from 'discord.js';
+import { GuildMember, Message, TextChannel } from 'discord.js';
 import BaseCommand from '../../utils/structures/BaseCommand';
 import DiscordClient from '../../client/client';
 import { reply } from '../../utils/helpers/reply';
@@ -20,7 +20,12 @@ export default class BanCommand extends BaseCommand {
       });
       return;
     }
-    if (!message.guild?.me?.permissions.has('BAN_MEMBERS')) {
+    if (
+      !message.guild?.me?.permissions.has('BAN_MEMBERS') ||
+      !(message.channel as TextChannel)
+        .permissionsFor(message.guild.me)
+        .has('BAN_MEMBERS')
+    ) {
       reply(message, {
         title: 'I do not have the `BAN_MEMBERS` permission.',
         color: 'RED',

@@ -28,7 +28,7 @@ export default abstract class BaseCommand {
     private _cooldown: number,
     private _description: string,
     private extraCommandOptions: ExtraCommandOptions = {
-      cooldownMessage: "you can't use this command yet",
+      cooldownMessage: "You can't use this command yet",
       argsDescription: false,
       permissions: ['SEND_MESSAGES', 'READ_MESSAGE_HISTORY', 'VIEW_CHANNEL'],
     }
