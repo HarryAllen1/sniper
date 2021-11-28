@@ -2,7 +2,7 @@ import { Message } from 'discord.js';
 import BaseCommand from '../../utils/structures/BaseCommand';
 import DiscordClient from '../../client/client';
 import Axios from 'axios';
-import { GithubCommits } from '../../utils/typings/types';
+import { GithubCommits } from '../../typings/types';
 import { reply } from '../../utils/helpers/reply';
 
 export default class ChangelogCommand extends BaseCommand {

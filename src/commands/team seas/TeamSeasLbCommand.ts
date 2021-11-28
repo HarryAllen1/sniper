@@ -7,7 +7,7 @@ import {
 import BaseCommand from '../../utils/structures/BaseCommand';
 import DiscordClient from '../../client/client';
 import axios from 'axios';
-import { TeamSeasLBRes } from './lbRes';
+import { TeamSeasLBRes } from '../../typings/types';
 import { reply } from '../../utils/helpers/reply';
 
 export default class TeamSeasLbCommand extends BaseCommand {

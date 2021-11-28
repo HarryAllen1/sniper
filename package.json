@@ -1,18 +1,24 @@
 {
-  "name": "cambridge-bot",
-  "version": "3.6.4",
+  "name": "sniper-bot",
+  "version": "3.6.5",
   "main": "./out/src/sniper.js",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MajesticString/sniper.git"
+  },
   "scripts": {
     "dev": "nodemon ./src/sniper.ts",
     "start": "node ./out/src/index.js",
-    "build": "tsc",
-    "lint": "eslint . --ext .ts,.js"
+    "build": "rm -rf ./out/ && tsc",
+    "lint": "eslint . --ext .ts,.js",
+    "format": "prettier --write ."
   },
   "dependencies": {
     "@discordjs/builders": "^0.8.2",
     "@discordjs/rest": "^0.1.0-canary.0",
     "@discordjs/voice": "^0.7.5",
+    "@top-gg/sdk": "^3.1.2",
     "@types/mathjax": "^0.0.37",
     "@types/sharp": "^0.29.4",
     "axios": "^0.24.0",
@@ -34,15 +40,18 @@
   "devDependencies": {
     "@types/body-parser": "^1.19.2",
     "@types/node": "^16.11.9",
+    "@types/prettier": "^2.4.2",
     "@typescript-eslint/eslint-plugin": "^5.4.0",
     "@typescript-eslint/parser": "^5.4.0",
     "eslint": "^8.3.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-node": "^11.1.0",
     "nodemon": "^2.0.15",
+    "pnpm": "^6.23.2",
+    "prettier": "^2.5.0",
+    "terser": "^5.10.0",
     "ts-node": "^10.4.0",
-    "typescript": "^4.5.2",
-    "yarn": "^1.22.17"
+    "typescript": "^4.5.2"
   },
   "engines": {
     "node": ">=16.6.0"

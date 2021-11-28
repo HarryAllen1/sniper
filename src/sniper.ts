@@ -8,14 +8,14 @@ import { Intents } from 'discord.js';
 import admin from 'firebase-admin';
 
 import express from 'express';
-import bodyParser from 'body-parser';
+
 import firebaseCredentials from '../firebase-credentials.json';
 
 import { AutoPoster } from 'topgg-autoposter';
+import { Webhook } from '@top-gg/sdk';
+import { log } from './utils/helpers/console';
 
 export const app = express();
-
-app.use(bodyParser.text({ type: `*/*` }));
 
 export const FIREBASE_PROJECT_ID = project_id;
 export const client = new DiscordClient({
@@ -45,6 +45,16 @@ try {
     await registerCommands(client, '../commands');
     await registerEvents(client, '../events');
     await client.login(token);
+
+    const webhook = new Webhook(secrets.topggToken);
+
+    app.post(
+      '/topggwebhook',
+      webhook.listener((vote) => {
+        log(vote.user);
+      })
+    );
+    app.listen(6900);
   })();
 } catch (error) {
   console.error(error);

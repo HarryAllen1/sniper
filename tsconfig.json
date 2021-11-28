@@ -6,6 +6,8 @@
     "removeComments": true,
     "pretty": false,
 
+    "declaration": true,
+
     "target": "ESNext",
     "module": "CommonJS",
 
@@ -20,5 +22,5 @@
     "skipLibCheck": true,
     "allowSyntheticDefaultImports": true
   },
-  "exclude": ["out"]
+  "exclude": ["out/", "old/", "lib/"]
 }

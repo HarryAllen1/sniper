@@ -26,6 +26,15 @@ export default class WhoisCommand extends BaseCommand {
       return;
     }
 
+    if (!message.guild?.members.cache.has(user.id)) {
+      reply(message, {
+        title: 'That user is not in this server',
+        description:
+          'Make sure that user is in that server before using this command.',
+        color: 'RED',
+      });
+      return;
+    }
     const activities = member.presence?.activities;
     let status: string;
     let activity: string;

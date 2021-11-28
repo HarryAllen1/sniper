@@ -83,5 +83,5 @@ export default abstract class BaseCommand {
     client: DiscordClient,
     message: Message | CommandInteraction,
     args: Array<string> | CommandInteractionOptionResolver | null
-  ): Promise<void>;
+  ): Promise<any>;
 }

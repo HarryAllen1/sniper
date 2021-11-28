@@ -4,6 +4,7 @@ slappey.json
 slappey-prod.json
 firebase-credentials.json
 /out
+/lib
 
 github-credentials.json
 /old/config.json

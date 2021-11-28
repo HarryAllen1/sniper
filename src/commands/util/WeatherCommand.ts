@@ -7,7 +7,7 @@ import {
   BingMapsAddressRes,
   WeatherGovGridpointHourlyForecastRes,
   WeatherGovPointRes,
-} from './WeatherTypes';
+} from '../../typings/types';
 import { reply } from '../../utils/helpers/reply';
 
 export default class WeatherCommand extends BaseCommand {

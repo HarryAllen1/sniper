@@ -1,0 +1,6 @@
+src/
+out/
+lib/firebase-credentials.json
+lib/slappey.json
+lib/slappey-prod.json
+lib/github-credentials.json

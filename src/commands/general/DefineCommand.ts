@@ -4,7 +4,7 @@ import DiscordClient from '../../client/client';
 import { reply } from '../../utils/helpers/reply';
 import { apiKeys } from '../../../slappey.json';
 import axios from 'axios';
-import { MWResponse, OxfordRes } from '../../utils/typings/types';
+import { MWResponse, OxfordRes } from '../../typings/types';
 
 export default class DefineCommand extends BaseCommand {
   constructor() {
