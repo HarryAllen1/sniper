@@ -1,10 +1,12 @@
 import { Message } from 'discord.js';
-import BaseCommand from '../../utils/structures/BaseCommand';
-import DiscordClient from '../../client/client';
-import { reply } from '../../utils/helpers/reply';
-import { apiKeys } from '../../../slappey.json';
-import axios from 'axios';
-import { MWResponse, OxfordRes } from '../../typings/types';
+import BaseCommand from '../../utils/structures/BaseCommand.js';
+import DiscordClient from '../../client/client.js';
+import { reply } from '../../utils/helpers/reply.js';
+const { apiKeys } = JSON.parse(readFileSync('./slappey.json').toString());
+
+import { default as axios } from 'axios';
+import { MWResponse, OxfordRes } from '../../typings/types.js';
+import { readFileSync } from 'fs';
 
 export default class DefineCommand extends BaseCommand {
   constructor() {
@@ -23,8 +25,8 @@ export default class DefineCommand extends BaseCommand {
     let defaultDictionary = 'mw';
     message.channel.sendTyping();
     if (
-      args[1].toLowerCase() === 'oxford' ||
-      args[1].toLowerCase() === 'urban'
+      (args[1] && args[1].toLowerCase() === 'oxford') ||
+      (args[1] && args[1].toLowerCase() === 'urban')
     ) {
       defaultDictionary = args[1];
     }

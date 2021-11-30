@@ -1,9 +1,9 @@
 import { Message } from 'discord.js';
-import BaseCommand from '../../utils/structures/BaseCommand';
-import DiscordClient from '../../client/client';
-import Axios from 'axios';
-import { GithubCommits } from '../../typings/types';
-import { reply } from '../../utils/helpers/reply';
+import BaseCommand from '../../utils/structures/BaseCommand.js';
+import DiscordClient from '../../client/client.js';
+import { default as axios } from 'axios';
+import { GithubCommits } from '../../typings/types.js';
+import { reply } from '../../utils/helpers/reply.js';
 
 export default class ChangelogCommand extends BaseCommand {
   constructor() {
@@ -22,27 +22,29 @@ export default class ChangelogCommand extends BaseCommand {
   }
 
   async run(client: DiscordClient, message: Message, args: Array<string>) {
-    Axios.get<GithubCommits>(
-      `https://api.github.com/repos/MajesticString/sniper/commits?per_page=${
-        args[0] ? (parseInt(args[0]) > 10 ? '10' : args[0]) : '5'
-      }`
-    ).then((res) => {
-      const { data } = res;
-      const toReadableDate = (date: string) => {
-        return new Date(date).toUTCString();
-      };
-      const githubCommitMessages: any[] = [];
-      data.forEach((commit) => {
-        githubCommitMessages.push({
-          name: toReadableDate(commit.commit.author.date),
-          value: commit.commit.message,
+    axios
+      .get<GithubCommits>(
+        `https://api.github.com/repos/MajesticString/sniper/commits?per_page=${
+          args[0] ? (parseInt(args[0]) > 10 ? '10' : args[0]) : '5'
+        }`
+      )
+      .then((res) => {
+        const { data } = res;
+        const toReadableDate = (date: string) => {
+          return new Date(date).toUTCString();
+        };
+        const githubCommitMessages: any[] = [];
+        data.forEach((commit) => {
+          githubCommitMessages.push({
+            name: toReadableDate(commit.commit.author.date),
+            value: commit.commit.message,
+          });
+        });
+        reply(message, {
+          title: 'Changelog',
+          fields: githubCommitMessages,
+          color: 'WHITE',
         });
       });
-      reply(message, {
-        title: 'Changelog',
-        fields: githubCommitMessages,
-        color: 'WHITE',
-      });
-    });
   }
 }

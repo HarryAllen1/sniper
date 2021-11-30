@@ -1,6 +1,6 @@
 import { Message, version } from 'discord.js';
-import BaseCommand from '../../utils/structures/BaseCommand';
-import DiscordClient from '../../client/client';
+import BaseCommand from '../../utils/structures/BaseCommand.js';
+import DiscordClient from '../../client/client.js';
 import ms from 'ms';
 
 export default class BotCommand extends BaseCommand {

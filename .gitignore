@@ -4,6 +4,7 @@ slappey.json
 slappey-prod.json
 firebase-credentials.json
 /out
+/out-esm
 /lib
 
 github-credentials.json

@@ -1,9 +1,9 @@
 // https://discord.js.org/#/docs/main/stable/class/Client?scrollTo=e-messageDelete
 import { Message, Util } from 'discord.js';
-import BaseEvent from '../../utils/structures/BaseEvent';
-import DiscordClient from '../../client/client';
-import { snipes, setSnipe } from '../../commands/util/snipes';
-import { log } from '../../utils/helpers/console';
+import BaseEvent from '../../utils/structures/BaseEvent.js';
+import DiscordClient from '../../client/client.js';
+import { snipes, setSnipe } from '../../commands/util/snipes.js';
+import { log } from '../../utils/helpers/console.js';
 
 export default class MessageDeleteEvent extends BaseEvent {
   constructor() {
@@ -17,9 +17,9 @@ export default class MessageDeleteEvent extends BaseEvent {
       message.guildId === '882695828140073052'
     )
       log(
-        message.guild?.name +
-          ': ' +
-          Util.cleanContent(message.content, message.channel)
+        `${message.guild?.name}: ${
+          message.member?.user.username
+        }: ${Util.cleanContent(message.content, message.channel)}`
       );
 
     snipes[message.channel.id] = {
@@ -27,12 +27,14 @@ export default class MessageDeleteEvent extends BaseEvent {
       content: message.content,
       createdAt: message.createdTimestamp,
       attachment: message.attachments.first()?.url,
+      message,
     };
     const snipeContent: any = {};
     snipeContent[message.channel.id] = {
       author: message.author.id,
       content: message.content,
       createdAt: message.createdTimestamp,
+
       // attachment: message.attachments.first()?.url,
     };
     setSnipe(snipeContent);

@@ -1,9 +1,9 @@
 import { GuildMember, User } from 'discord.js';
-import admin from 'firebase-admin';
-import DiscordClient from '../../client/client';
-import { client } from '../../sniper';
+import { getFirestore, FieldValue } from 'firebase-admin/firestore';
+import DiscordClient from '../../client/client.js';
+import { client } from '../../sniper.js';
 
-const db = admin.firestore();
+const db = getFirestore();
 
 interface UserData {
   coins: number;
@@ -96,9 +96,9 @@ export const setUserData = (
 };
 
 export const deleteFieldFromUserData = (userID: string, fields: string[]) => {
-  const keyDelete: { [field: string]: admin.firestore.FieldValue } = {};
+  const keyDelete: { [field: string]: FieldValue } = {};
   fields.forEach((field) => {
-    keyDelete[field] = admin.firestore.FieldValue.delete();
+    keyDelete[field] = FieldValue.delete();
   });
   return db.collection('users').doc(userID).update(keyDelete);
 };

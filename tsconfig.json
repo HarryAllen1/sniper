@@ -2,16 +2,16 @@
   "compilerOptions": {
     "typeRoots": ["./node_modules/@types"],
 
-    "outDir": "./out",
+    "outDir": "./out-esm",
     "removeComments": true,
     "pretty": false,
 
     "declaration": true,
 
     "target": "ESNext",
-    "module": "CommonJS",
+    "module": "nodenext",
 
-    "moduleResolution": "node",
+    "moduleResolution": "nodenext",
 
     "resolveJsonModule": true,
 
@@ -20,7 +20,8 @@
     "lib": ["ESNext"],
     "strict": true,
     "skipLibCheck": true,
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "experimentalDecorators": true
   },
-  "exclude": ["out/", "old/", "lib/"]
+  "exclude": ["out-esm/", "out/", "old/", "lib/"]
 }

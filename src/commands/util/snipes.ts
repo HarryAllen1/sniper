@@ -6,8 +6,8 @@ import {
   ReactionEmoji,
   User,
 } from 'discord.js';
-import admin from 'firebase-admin';
-const db = admin.firestore();
+import { getFirestore } from 'firebase-admin/firestore';
+const db = getFirestore();
 
 export type UniversalEmoji = GuildEmoji | ReactionEmoji | Emoji;
 interface SnipeContent {
@@ -19,6 +19,7 @@ interface SnipeContent {
   emoji?: UniversalEmoji;
   messageURL?: string;
   user?: User | PartialUser;
+  message?: Message;
 }
 
 export interface Snipe {

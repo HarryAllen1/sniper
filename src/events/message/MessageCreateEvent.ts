@@ -1,10 +1,11 @@
-import BaseEvent from '../../utils/structures/BaseEvent';
+import BaseEvent from '../../utils/structures/BaseEvent.js';
 import { Message, Collection } from 'discord.js';
-import DiscordClient from '../../client/client';
-import { reply } from '../../utils/helpers/reply';
-import { log } from '../../utils/helpers/console';
+import DiscordClient from '../../client/client.js';
+import { reply } from '../../utils/helpers/reply.js';
+import { log } from '../../utils/helpers/console.js';
 
 import chalk from 'chalk';
+import { getFirestore } from 'firebase-admin/firestore';
 // import { sleep } from '../../utils/helpers/misc';
 // import {
 //   getGuildSettings,
@@ -97,8 +98,7 @@ export default class MessageCreateEvent extends BaseEvent {
             }
           }
           try {
-            const admin = await import('firebase-admin');
-            const db = admin.firestore();
+            const db = getFirestore();
 
             const commandsIssued = await db
               .collection('bot')

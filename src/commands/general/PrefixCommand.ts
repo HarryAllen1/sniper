@@ -1,9 +1,8 @@
 import { Message } from 'discord.js';
-import BaseCommand from '../../utils/structures/BaseCommand';
-import DiscordClient from '../../client/client';
+import BaseCommand from '../../utils/structures/BaseCommand.js';
+import DiscordClient from '../../client/client.js';
 
-import { SlashCommandBuilder } from '@discordjs/builders';
-import { reply } from '../../utils/helpers/reply';
+import { reply } from '../../utils/helpers/reply.js';
 
 export default class PrefixCommand extends BaseCommand {
   constructor() {
@@ -16,20 +15,10 @@ export default class PrefixCommand extends BaseCommand {
     );
   }
 
-  slashCommand = new SlashCommandBuilder()
-    .setName('prefix')
-    .setDescription(
-      "Shows the prefixes of this bot since most of its commands aren't slash commands."
-    )
-    .toJSON();
-
   async run(client: DiscordClient, message: Message) {
-    const { prefixes } = __filename.endsWith('.ts')
-      ? await import('../../../slappey.json')
-      : await import('../../../slappey-prod.json');
     reply(message, {
       title: 'Prefixes',
-      description: prefixes.map((val) => `\`${val}\``).toString(),
+      description: client.prefix.map((val) => `\`${val}\``).toString(),
     });
   }
 }

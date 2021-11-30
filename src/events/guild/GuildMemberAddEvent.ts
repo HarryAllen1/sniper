@@ -1,10 +1,10 @@
 // https://discord.js.org/#/docs/main/stable/class/Client?scrollTo=e-guildMemberAdd
 import { GuildMember } from 'discord.js';
-import BaseEvent from '../../utils/structures/BaseEvent';
-import DiscordClient from '../../client/client';
-import { setDefaultGuildSettings } from '../../utils/helpers/fb';
-import { sendMessageInBorderSecurity } from '../../utils/helpers/cambridge-server';
-import { log } from '../../utils/helpers/console';
+import BaseEvent from '../../utils/structures/BaseEvent.js';
+import DiscordClient from '../../client/client.js';
+import { setDefaultGuildSettings } from '../../utils/helpers/fb.js';
+import { sendMessageInBorderSecurity } from '../../utils/helpers/cambridge-server.js';
+import { log } from '../../utils/helpers/console.js';
 import chalk from 'chalk';
 
 export default class GuildMemberAddEvent extends BaseEvent {

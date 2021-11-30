@@ -1,6 +1,6 @@
 import { Message } from 'discord.js';
-import BaseCommand from '../../utils/structures/BaseCommand';
-import DiscordClient from '../../client/client';
+import BaseCommand from '../../utils/structures/BaseCommand.js';
+import DiscordClient from '../../client/client.js';
 
 export default class InviteCommand extends BaseCommand {
   constructor() {

@@ -1,9 +1,9 @@
 import { Message } from 'discord.js';
-import BaseCommand from '../../utils/structures/BaseCommand';
-import DiscordClient from '../../client/client';
-import { items as shopItems } from './items';
-import { getUserData, setUserData } from '../../utils/helpers/user';
-import { reply } from '../../utils/helpers/reply';
+import BaseCommand from '../../utils/structures/BaseCommand.js';
+import DiscordClient from '../../client/client.js';
+import { items as shopItems } from './items.js';
+import { getUserData, setUserData } from '../../utils/helpers/user.js';
+import { reply } from '../../utils/helpers/reply.js';
 
 export default class BuyCommand extends BaseCommand {
   constructor() {

@@ -1,14 +1,14 @@
 import { Message } from 'discord.js';
-import BaseCommand from '../../utils/structures/BaseCommand';
-import DiscordClient from '../../client/client';
-import axios from 'axios';
+import BaseCommand from '../../utils/structures/BaseCommand.js';
+import DiscordClient from '../../client/client.js';
+import { default as axios } from 'axios';
 
 import {
   BingMapsAddressRes,
   WeatherGovGridpointHourlyForecastRes,
   WeatherGovPointRes,
 } from '../../typings/types';
-import { reply } from '../../utils/helpers/reply';
+import { reply } from '../../utils/helpers/reply.js';
 
 export default class WeatherCommand extends BaseCommand {
   constructor() {

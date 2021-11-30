@@ -1,9 +1,9 @@
 import { Message, MessageActionRow, MessageButton } from 'discord.js';
-import BaseCommand from '../../utils/structures/BaseCommand';
-import DiscordClient from '../../client/client';
-import { getUserData, setUserData } from '../../utils/helpers/user';
-import { reply } from '../../utils/helpers/reply';
-import randomNumber from '../../utils/helpers/randomNumber';
+import BaseCommand from '../../utils/structures/BaseCommand.js';
+import DiscordClient from '../../client/client.js';
+import { getUserData, setUserData } from '../../utils/helpers/user.js';
+import { reply } from '../../utils/helpers/reply.js';
+import randomNumber from '../../utils/helpers/randomNumber.js';
 
 export default class JailBreakCommand extends BaseCommand {
   constructor() {

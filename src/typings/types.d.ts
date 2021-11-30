@@ -1,3 +1,6 @@
+declare module 'ms';
+declare module 'mathjax';
+
 interface LinkFlairRichtext {
   e: string;
   t: string;

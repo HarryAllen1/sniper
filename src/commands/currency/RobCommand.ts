@@ -1,9 +1,9 @@
 import { Message, User } from 'discord.js';
-import BaseCommand from '../../utils/structures/BaseCommand';
-import DiscordClient from '../../client/client';
-import { reply } from '../../utils/helpers/reply';
-import { getUserData, setUserData } from '../../utils/helpers/user';
-import randomNumber from '../../utils/helpers/randomNumber';
+import BaseCommand from '../../utils/structures/BaseCommand.js';
+import DiscordClient from '../../client/client.js';
+import { reply } from '../../utils/helpers/reply.js';
+import { getUserData, setUserData } from '../../utils/helpers/user.js';
+import randomNumber from '../../utils/helpers/randomNumber.js';
 
 export default class RobCommand extends BaseCommand {
   constructor() {

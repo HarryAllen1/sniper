@@ -1,8 +1,8 @@
 import { EmbedField, Message } from 'discord.js';
-import BaseCommand from '../../utils/structures/BaseCommand';
-import DiscordClient from '../../client/client';
-import admin from 'firebase-admin';
-import { reply } from '../../utils/helpers/reply';
+import BaseCommand from '../../utils/structures/BaseCommand.js';
+import DiscordClient from '../../client/client.js';
+import { reply } from '../../utils/helpers/reply.js';
+import { getFirestore } from 'firebase-admin/firestore';
 
 export default class LbCommand extends BaseCommand {
   constructor() {
@@ -16,7 +16,7 @@ export default class LbCommand extends BaseCommand {
   }
 
   async run(client: DiscordClient, message: Message) {
-    const usersCollection = admin.firestore().collection('users');
+    const usersCollection = getFirestore().collection('users');
     const lb = await usersCollection.orderBy('coins', 'desc').limit(10).get();
 
     const fields: EmbedField[] = [];

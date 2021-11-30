@@ -1,12 +1,12 @@
 import { GuildMember, Message, User } from 'discord.js';
-import BaseCommand from '../../utils/structures/BaseCommand';
-import DiscordClient from '../../client/client';
-import { reply } from '../../utils/helpers/reply';
-import { capitalizeFirstLetter } from '../../utils/helpers/string';
+import BaseCommand from '../../utils/structures/BaseCommand.js';
+import DiscordClient from '../../client/client.js';
+import { reply } from '../../utils/helpers/reply.js';
+import { capitalizeFirstLetter } from '../../utils/helpers/string.js';
 import {
   getMentionedMember,
   getMentionedUser,
-} from '../../utils/helpers/mention';
+} from '../../utils/helpers/mention.js';
 
 export default class WhoisCommand extends BaseCommand {
   constructor() {

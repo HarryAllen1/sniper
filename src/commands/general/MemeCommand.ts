@@ -1,10 +1,10 @@
 import { Message } from 'discord.js';
-import BaseCommand from '../../utils/structures/BaseCommand';
-import DiscordClient from '../../client/client';
-import axios from 'axios';
-import randomNumber from '../../utils/helpers/randomNumber';
-import { RedditRes } from '../../typings/types';
-import { reply } from '../../utils/helpers/reply';
+import BaseCommand from '../../utils/structures/BaseCommand.js';
+import DiscordClient from '../../client/client.js';
+import { default as axios } from 'axios';
+import randomNumber from '../../utils/helpers/randomNumber.js';
+import { RedditRes } from '../../typings/types.js';
+import { reply } from '../../utils/helpers/reply.js';
 
 export default class MemeCommand extends BaseCommand {
   constructor() {
@@ -12,6 +12,19 @@ export default class MemeCommand extends BaseCommand {
   }
 
   async run(client: DiscordClient, message: Message) {
+    reply(
+      message,
+      {
+        title:
+          'Disabled until Reddit fixes their api or someone knows how to fix this error',
+        color: 'RED',
+      },
+      {
+        content:
+          'https://cdn.discordapp.com/attachments/888611523881213972/915112894813839361/unknown.png',
+      }
+    );
+    return;
     message.channel.sendTyping();
 
     // if (memes) {

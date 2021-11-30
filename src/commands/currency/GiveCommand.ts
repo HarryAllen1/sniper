@@ -1,8 +1,8 @@
 import { Message } from 'discord.js';
-import BaseCommand from '../../utils/structures/BaseCommand';
-import DiscordClient from '../../client/client';
-import { reply } from '../../utils/helpers/reply';
-import { getUserData, setUserData } from '../../utils/helpers/user';
+import BaseCommand from '../../utils/structures/BaseCommand.js';
+import DiscordClient from '../../client/client.js';
+import { reply } from '../../utils/helpers/reply.js';
+import { getUserData, setUserData } from '../../utils/helpers/user.js';
 
 export default class GiveCommand extends BaseCommand {
   constructor() {

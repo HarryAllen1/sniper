@@ -1,23 +1,27 @@
-import { registerCommands, registerEvents } from './utils/registry';
+import { registerCommands, registerEvents } from './utils/registry.js';
 
-import { project_id } from '../firebase-credentials.json';
-
-import DiscordClient from './client/client';
+import DiscordClient from './client/client.js';
 
 import { Intents } from 'discord.js';
 import admin from 'firebase-admin';
 
 import express from 'express';
 
-import firebaseCredentials from '../firebase-credentials.json';
+const firebaseCredentials = JSON.parse(
+  readFileSync('./firebase-credentials.json').toString()
+);
+
+// @ts-ignore -- make the file appear in the compiled js
+void import('../firebase-credentials.json');
 
 import { AutoPoster } from 'topgg-autoposter';
 import { Webhook } from '@top-gg/sdk';
-import { log } from './utils/helpers/console';
+import { log } from './utils/helpers/console.js';
+import { readFileSync } from 'fs';
 
 export const app = express();
 
-export const FIREBASE_PROJECT_ID = project_id;
+export const FIREBASE_PROJECT_ID = firebaseCredentials.project_id;
 export const client = new DiscordClient({
   intents: [
     Intents.FLAGS.GUILDS,
@@ -34,19 +38,23 @@ try {
   });
 
   (async () => {
-    const { prefixes, token, secrets } = __filename.endsWith('.ts')
-      ? await import('../slappey.json')
-      : await import('../slappey-prod.json');
-    client.prefix = prefixes;
+    const a =
+      // process.cwd().endsWith('out-esm')
+      // ?
+      // @ts-ignore
+      await import('../slappey-prod.json');
+    // : // @ts-ignore
+    // await import('../slappey-prod.json');
+    client.prefix = a.default.prefixes;
 
-    const poster = AutoPoster(secrets.topggToken, client);
+    const poster = AutoPoster(a.default.secrets.topggToken, client);
     poster.on('error', console.error);
 
-    await registerCommands(client, '../commands');
-    await registerEvents(client, '../events');
-    await client.login(token);
+    await registerCommands(client, './out-esm/src/commands');
+    await registerEvents(client, './out-esm/src/events');
+    await client.login(a.default.token);
 
-    const webhook = new Webhook(secrets.topggToken);
+    const webhook = new Webhook(a.default.secrets.topggToken);
 
     app.post(
       '/topggwebhook',

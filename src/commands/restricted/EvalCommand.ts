@@ -1,8 +1,8 @@
 import { Message } from 'discord.js';
-import BaseCommand from '../../utils/structures/BaseCommand';
-import DiscordClient from '../../client/client';
+import BaseCommand from '../../utils/structures/BaseCommand.js';
+import DiscordClient from '../../client/client.js';
 
-import { reply } from '../../utils/helpers/reply';
+import { reply } from '../../utils/helpers/reply.js';
 
 export default class EvalCommand extends BaseCommand {
   constructor() {
@@ -18,7 +18,7 @@ export default class EvalCommand extends BaseCommand {
   async run(client: DiscordClient, message: Message, args: Array<string>) {
     if (message.author.id === '696554549418262548') {
       try {
-        const userImport = await import('../../utils/helpers/user');
+        const userImport = await import('../../utils/helpers/user.js');
         // eslint-disable-next-line @typescript-eslint/no-unused-vars -- its for the eval; it wont be used until the command is actually used and whatnot idk
         const addCoinsToTotal = userImport.addCoinsToTotal;
         // eslint-disable-next-line @typescript-eslint/no-unused-vars -- its for the eval; it wont be used until the command is actually used and whatnot idk
@@ -26,7 +26,7 @@ export default class EvalCommand extends BaseCommand {
         // eslint-disable-next-line @typescript-eslint/no-unused-vars -- its for the eval; it wont be used until the command is actually used and whatnot idk
         const setTotalCoins = userImport.setTotalCoins;
         // eslint-disable-next-line @typescript-eslint/no-unused-vars -- its for the eval; it wont be used until the command is actually used and whatnot idk
-        const snipes = await import('../util/snipes');
+        const snipes = await import('../util/snipes.js');
 
         eval(args.join(' '));
         reply(message, { title: 'success', color: 'GREEN' }).then((msg) =>

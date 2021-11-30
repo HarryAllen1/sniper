@@ -1,8 +1,8 @@
 // https://discord.js.org/#/docs/main/stable/class/Client?scrollTo=e-guildBanAdd
 import { GuildBan, User } from 'discord.js';
-import BaseEvent from '../../utils/structures/BaseEvent';
-import DiscordClient from '../../client/client';
-import { sendMessageInBorderSecurity } from '../../utils/helpers/cambridge-server';
+import BaseEvent from '../../utils/structures/BaseEvent.js';
+import DiscordClient from '../../client/client.js';
+import { sendMessageInBorderSecurity } from '../../utils/helpers/cambridge-server.js';
 
 export default class GuildBanAddEvent extends BaseEvent {
   constructor() {

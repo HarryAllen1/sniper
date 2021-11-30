@@ -1,4 +1,4 @@
-import DiscordClient from '../../client/client';
+import DiscordClient from '../../client/client.js';
 
 export default abstract class BaseEvent {
   constructor(private _name: string) {}

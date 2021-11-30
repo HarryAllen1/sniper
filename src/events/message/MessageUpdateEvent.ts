@@ -1,9 +1,9 @@
 // https://discord.js.org/#/docs/main/stable/class/Client?scrollTo=e-messageUpdate
 import { Message, Util } from 'discord.js';
-import BaseEvent from '../../utils/structures/BaseEvent';
-import DiscordClient from '../../client/client';
-import { editSnipes } from '../../commands/util/snipes';
-import { log } from '../../utils/helpers/console';
+import BaseEvent from '../../utils/structures/BaseEvent.js';
+import DiscordClient from '../../client/client.js';
+import { editSnipes } from '../../commands/util/snipes.js';
+import { log } from '../../utils/helpers/console.js';
 
 export default class MessageUpdateEvent extends BaseEvent {
   constructor() {

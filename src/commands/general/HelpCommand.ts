@@ -5,13 +5,15 @@ import {
   MessageSelectMenu,
   version,
 } from 'discord.js';
-import BaseCommand from '../../utils/structures/BaseCommand';
-import DiscordClient from '../../client/client';
-import { helpCommandHelperCollection, allCommands } from '../../utils/registry';
-import { reply } from '../../utils/helpers/reply';
-import { SlashCommandBuilder } from '@discordjs/builders';
+import BaseCommand from '../../utils/structures/BaseCommand.js';
+import DiscordClient from '../../client/client.js';
+import {
+  helpCommandHelperCollection,
+  allCommands,
+} from '../../utils/registry.js';
+import { reply } from '../../utils/helpers/reply.js';
 import ms from 'ms';
-import { capitalizeFirstLetter } from '../../utils/helpers/string';
+import { capitalizeFirstLetter } from '../../utils/helpers/string.js';
 
 export default class HelpCommand extends BaseCommand {
   constructor() {
@@ -23,10 +25,7 @@ export default class HelpCommand extends BaseCommand {
       'Shows all commands and their descriptions'
     );
   }
-  slashCommand = new SlashCommandBuilder()
-    .setName('help')
-    .setDescription('Sends the sniper help command')
-    .toJSON();
+
   async run(client: DiscordClient, message: Message, args: Array<string>) {
     // const categories = Object.keys(helpCommandHelper);
     const categories = [...helpCommandHelperCollection.keys()];

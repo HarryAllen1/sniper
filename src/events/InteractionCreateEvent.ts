@@ -1,7 +1,7 @@
 import { Interaction } from 'discord.js';
-import BaseEvent from '../utils/structures/BaseEvent';
-import DiscordClient from '../client/client';
-import { helpCommandHelper } from '../utils/registry';
+import BaseEvent from '../utils/structures/BaseEvent.js';
+import DiscordClient from '../client/client.js';
+import { helpCommandHelper } from '../utils/registry.js';
 
 export default class InteractionCreateEvent extends BaseEvent {
   constructor() {
@@ -9,13 +9,7 @@ export default class InteractionCreateEvent extends BaseEvent {
   }
 
   async run(client: DiscordClient, interaction: Interaction) {
-    if (interaction.isCommand()) {
-      const command = client.commands.get(interaction.commandName);
-      if (command?.slashCommand) {
-        // console.log(interaction);
-        command.run(client, interaction, interaction.options as any);
-      }
-    } else if (interaction.isMessageComponent()) {
+    if (interaction.isMessageComponent()) {
       if (interaction.isSelectMenu()) {
         if (interaction.customId === 'categorySelect') {
           const [category] = interaction.values;

@@ -4,7 +4,7 @@ import {
   MessageOptions,
   TextChannel,
 } from 'discord.js';
-import DiscordClient from '../../client/client';
+import DiscordClient from '../../client/client.js';
 
 export const sendMessageInBorderSecurity = (
   client: DiscordClient,

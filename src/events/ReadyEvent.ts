@@ -1,6 +1,6 @@
-import BaseEvent from '../utils/structures/BaseEvent';
-import DiscordClient from '../client/client';
-import { log } from '../utils/helpers/console';
+import BaseEvent from '../utils/structures/BaseEvent.js';
+import DiscordClient from '../client/client.js';
+import { log } from '../utils/helpers/console.js';
 // import { REST } from '@discordjs/rest';
 // import { Routes } from 'discord-api-types/v9';
 // import { slashCommands } from '../utils/registry';

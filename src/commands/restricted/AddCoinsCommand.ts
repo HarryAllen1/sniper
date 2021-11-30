@@ -1,8 +1,8 @@
 import { Message } from 'discord.js';
-import BaseCommand from '../../utils/structures/BaseCommand';
-import DiscordClient from '../../client/client';
-import { addCoinsToTotal } from '../../utils/helpers/user';
-import { reply } from '../../utils/helpers/reply';
+import BaseCommand from '../../utils/structures/BaseCommand.js';
+import DiscordClient from '../../client/client.js';
+import { addCoinsToTotal } from '../../utils/helpers/user.js';
+import { reply } from '../../utils/helpers/reply.js';
 
 export default class AddCoinsCommand extends BaseCommand {
   constructor() {

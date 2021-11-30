@@ -1,5 +1,5 @@
-import admin from 'firebase-admin';
-const db = admin.firestore();
+import { getFirestore } from 'firebase-admin/firestore';
+const db = getFirestore();
 
 export const setGuildData = (guildID: string, data: any) => {
   return db.collection('guilds').doc(guildID).set(data, { merge: true });

@@ -6,7 +6,7 @@ import {
   ReplyMessageOptions,
 } from 'discord.js';
 
-import { getUserData } from './user';
+import { getUserData } from './user.js';
 
 export const reply = async (
   message: Message,

@@ -4,8 +4,7 @@ import {
   Message,
   PermissionString,
 } from 'discord.js';
-import DiscordClient from '../../client/client';
-import { RESTPostAPIApplicationCommandsJSONBody } from 'discord-api-types/v9';
+import DiscordClient from '../../client/client.js';
 
 interface ExtraCommandOptions {
   cooldownMessage?: string;
@@ -69,8 +68,6 @@ export default abstract class BaseCommand {
       ]
     );
   }
-
-  slashCommand?: RESTPostAPIApplicationCommandsJSONBody;
 
   /**
    *

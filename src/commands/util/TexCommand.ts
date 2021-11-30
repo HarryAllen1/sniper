@@ -1,9 +1,9 @@
 import { Message, MessageAttachment } from 'discord.js';
-import BaseCommand from '../../utils/structures/BaseCommand';
-import DiscordClient from '../../client/client';
+import BaseCommand from '../../utils/structures/BaseCommand.js';
+import DiscordClient from '../../client/client.js';
 import 'mathjax';
 import sharp from 'sharp';
-import { reply } from '../../utils/helpers/reply';
+import { reply } from '../../utils/helpers/reply.js';
 
 export default class TexCommand extends BaseCommand {
   constructor() {
@@ -34,7 +34,7 @@ export default class TexCommand extends BaseCommand {
     }
     try {
       // eslint-disable-next-line @typescript-eslint/no-var-requires -- MathJax has incorrect typings, so just dont use them.
-      require('mathjax')
+      (await import('mathjax'))
         .init({
           loader: {
             load: ['input/tex', 'output/svg'],

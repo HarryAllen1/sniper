@@ -1,6 +1,6 @@
 import { Client, ClientOptions, Collection } from 'discord.js';
-import BaseEvent from '../utils/structures/BaseEvent';
-import BaseCommand from '../utils/structures/BaseCommand';
+import BaseEvent from '../utils/structures/BaseEvent.js';
+import BaseCommand from '../utils/structures/BaseCommand.js';
 
 class DiscordClient extends Client {
   private _commands = new Collection<string, BaseCommand>();

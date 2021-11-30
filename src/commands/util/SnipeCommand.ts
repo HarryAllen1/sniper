@@ -1,8 +1,8 @@
 import { Message, MessageEmbed, TextChannel } from 'discord.js';
-import BaseCommand from '../../utils/structures/BaseCommand';
-import DiscordClient from '../../client/client';
-import { snipes, unSnipes } from './snipes';
-import { reply } from '../../utils/helpers/reply';
+import BaseCommand from '../../utils/structures/BaseCommand.js';
+import DiscordClient from '../../client/client.js';
+import { snipes, unSnipes } from './snipes.js';
+import { reply } from '../../utils/helpers/reply.js';
 
 export default class SnipeCommand extends BaseCommand {
   constructor() {
@@ -60,6 +60,12 @@ export default class SnipeCommand extends BaseCommand {
             .setFooter(`#${(message.channel as TextChannel).name}`)
             .setTimestamp(snipe.createdAt ? snipe.createdAt : 0)
         : { title: "There's nothing to snipe!" },
+
+      // snipe?.message?.attachments.first()
+      //   ? {
+      //       attachments: snipe.message.attachments.toJSON(),
+      //     }
+      //   :
       {}
     ).then((msg) => {
       unSnipes[message.channel.id] = {

@@ -1,16 +1,17 @@
 import { Message } from 'discord.js';
-import BaseCommand from '../../utils/structures/BaseCommand';
-import DiscordClient from '../../client/client';
-import { randomNumber } from '../../utils/helpers/randomNumber';
+import BaseCommand from '../../utils/structures/BaseCommand.js';
+import DiscordClient from '../../client/client.js';
+import { randomNumber } from '../../utils/helpers/randomNumber.js';
 import {
   addCoinsToTotal,
   deleteFieldFromUserData,
   getTotalCoins,
   getUserData,
   setUserData,
-} from '../../utils/helpers/user';
-import { reply } from '../../utils/helpers/reply';
-import { msToTime } from '../../utils/helpers/date';
+} from '../../utils/helpers/user.js';
+import { reply } from '../../utils/helpers/reply.js';
+import { msToTime } from '../../utils/helpers/date.js';
+import { default as ms } from 'ms';
 
 const crimes = [
   'bank robbery',
@@ -33,7 +34,7 @@ export default class CrimeCommand extends BaseCommand {
       'crime',
       'currency',
       [],
-      5000,
+      ms('1m'),
       'Commits a crime to gain coins. There is 50/50 chance you lose coins and a 10% chance you go to jail.',
       { cooldownMessage: 'you need time to plot your next crime' }
     );
