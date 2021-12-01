@@ -3,7 +3,7 @@ import BaseCommand from '../../utils/structures/BaseCommand.js';
 import DiscordClient from '../../client/client.js';
 import { getUserData } from '../../utils/helpers/user.js';
 import { msToTime } from '../../utils/helpers/date.js';
-import { reply } from '../../utils/helpers/reply.js';
+import { reply } from '../../utils/helpers/message.js';
 import ms from 'ms';
 
 export default class PingCommand extends BaseCommand {

@@ -1,12 +1,13 @@
 import { GuildMember, Message, TextChannel } from 'discord.js';
 import BaseCommand from '../../utils/structures/BaseCommand.js';
 import DiscordClient from '../../client/client.js';
-import { reply } from '../../utils/helpers/reply.js';
+import { reply } from '../../utils/helpers/message.js';
 
 export default class BanCommand extends BaseCommand {
   constructor() {
     super('ban', 'moderation', [], 100, 'Bans any amount of members.', {
       argsDescription: '<@user or userID> <user> <user> ...',
+      permissions: ['BAN_MEMBERS'],
     });
   }
 

@@ -1,5 +1,5 @@
 import { GuildMember, User } from 'discord.js';
-import { getFirestore, FieldValue } from 'firebase-admin/firestore';
+import { FieldValue, getFirestore } from 'firebase-admin/firestore';
 import DiscordClient from '../../client/client.js';
 import { client } from '../../sniper.js';
 
@@ -49,22 +49,26 @@ export const addCoinsToTotal = async (
     .collection('users')
     .doc(userID)
     .get()
-    .then((stuff) => {
-      const coins: number = stuff.data()?.coins ? stuff.data()?.coins : 0;
-      return db
-        .collection('users')
-        .doc(userID)
-        .set(
-          {
-            coins: coins + addedCoins,
-            tag: client.users.cache.get(userID)?.tag,
-          },
-          { merge: true }
-        )
-        .then(() => {
-          return coins + addedCoins;
-        });
-    });
+    .then(
+      (
+        stuff: FirebaseFirestore.DocumentSnapshot<FirebaseFirestore.DocumentData>
+      ) => {
+        const coins: number = stuff.data()?.coins ? stuff.data()?.coins : 0;
+        return db
+          .collection('users')
+          .doc(userID)
+          .set(
+            {
+              coins: coins + addedCoins,
+              tag: client.users.cache.get(userID)?.tag,
+            },
+            { merge: true }
+          )
+          .then(() => {
+            return coins + addedCoins;
+          });
+      }
+    );
 };
 
 export const getTotalCoins = (userID: string): Promise<number> => {
@@ -72,9 +76,13 @@ export const getTotalCoins = (userID: string): Promise<number> => {
     .collection('users')
     .doc(userID)
     .get()
-    .then((stuff) => {
-      return stuff.data()?.coins ? stuff.data()?.coins : 0;
-    });
+    .then(
+      (
+        stuff: FirebaseFirestore.DocumentSnapshot<FirebaseFirestore.DocumentData>
+      ) => {
+        return stuff.data()?.coins ? stuff.data()?.coins : 0;
+      }
+    );
 };
 export const getUserData = async (userID: string): Promise<UserData> => {
   const stuff = await db.collection('users').doc(userID).get();

@@ -3,7 +3,7 @@ import BaseCommand from '../../utils/structures/BaseCommand.js';
 import DiscordClient from '../../client/client.js';
 import { default as axios } from 'axios';
 import { GithubCommits } from '../../typings/types.js';
-import { reply } from '../../utils/helpers/reply.js';
+import { reply } from '../../utils/helpers/message.js';
 
 export default class ChangelogCommand extends BaseCommand {
   constructor() {

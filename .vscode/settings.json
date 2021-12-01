@@ -1,5 +1,12 @@
 {
-  "cSpell.words": ["discordjs", "fortnite"],
+  "cSpell.words": [
+    "autoposter",
+    "discordjs",
+    "fortnite",
+    "nodenext",
+    "pnpm",
+    "topgg"
+  ],
   "typescript.tsdk": "./node_modules/typescript/lib",
   "typescript.preferences.importModuleSpecifierEnding": "js",
   "javascript.preferences.importModuleSpecifierEnding": "js",

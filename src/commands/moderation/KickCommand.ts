@@ -1,11 +1,14 @@
 import { GuildMember, Message, TextChannel } from 'discord.js';
 import BaseCommand from '../../utils/structures/BaseCommand.js';
 import DiscordClient from '../../client/client.js';
-import { reply } from '../../utils/helpers/reply.js';
+import { reply } from '../../utils/helpers/message.js';
 
 export default class KickCommand extends BaseCommand {
   constructor() {
-    super('kick', 'moderation', [], 100, 'kicks a user');
+    super('kick', 'moderation', [], 100, 'Kicks a user/users', {
+      permissions: ['KICK_MEMBERS'],
+      argsDescription: '<user (user mention or username or id)> ....',
+    });
   }
 
   async run(client: DiscordClient, message: Message, args: Array<string>) {

@@ -1,6 +1,6 @@
 {
   "name": "sniper-bot",
-  "version": "4.0.0",
+  "version": "4.0.1",
   "main": "./out/src/sniper.js",
   "type": "module",
   "types": "./src/types/types.d.ts",

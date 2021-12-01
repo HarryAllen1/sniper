@@ -2,7 +2,7 @@ import { GuildEmoji, Message, MessageEmbed, TextChannel } from 'discord.js';
 import BaseCommand from '../../utils/structures/BaseCommand.js';
 import DiscordClient from '../../client/client.js';
 import { reactionSnipes, UniversalEmoji } from './snipes.js';
-import { reply } from '../../utils/helpers/reply.js';
+import { reply } from '../../utils/helpers/message.js';
 
 const formatEmoji = (emoji: UniversalEmoji | undefined) => {
   // this is a little confusing, but ill try to explain:

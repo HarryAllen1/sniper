@@ -1,7 +1,7 @@
 import BaseEvent from '../../utils/structures/BaseEvent.js';
 import { Message, Collection } from 'discord.js';
 import DiscordClient from '../../client/client.js';
-import { reply } from '../../utils/helpers/reply.js';
+import { reply } from '../../utils/helpers/message.js';
 import { log } from '../../utils/helpers/console.js';
 
 import chalk from 'chalk';
@@ -111,6 +111,14 @@ export default class MessageCreateEvent extends BaseEvent {
                 { merge: true }
               );
             log('Begin command ' + command?.name + ' in ' + message.guild.name);
+            if (!cmdArgs[0] && command.argsRequired) {
+              reply(message, {
+                title: 'This command requires arguments.',
+                description: `${command.argsDescription}`,
+                color: 'RED',
+              });
+              return;
+            }
             if (
               message.channel
                 .permissionsFor(client.user ?? '')

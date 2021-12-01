@@ -11,7 +11,7 @@ import {
   helpCommandHelperCollection,
   allCommands,
 } from '../../utils/registry.js';
-import { reply } from '../../utils/helpers/reply.js';
+import { reply } from '../../utils/helpers/message.js';
 import ms from 'ms';
 import { capitalizeFirstLetter } from '../../utils/helpers/string.js';
 
@@ -54,6 +54,29 @@ export default class HelpCommand extends BaseCommand {
         if (command)
           reply(message, {
             title: capitalizeFirstLetter(command?.name),
+            description: command?.description,
+            fields: [
+              {
+                name: 'Aliases',
+                value: command.aliases.join(', ') || 'None',
+              },
+
+              {
+                name: 'Category',
+                value: command.category,
+              },
+              {
+                name: 'Cooldown',
+                value: command.cooldown ? ms(command.cooldown) : 'None',
+              },
+              {
+                name: 'Permissions',
+                value:
+                  command.permissionsRequired
+                    .map((val) => `\`${val}\``)
+                    .join(', ') || '`SEND_MESSAGES`',
+              },
+            ],
           });
         else {
           reply(message, {
@@ -61,6 +84,7 @@ export default class HelpCommand extends BaseCommand {
             color: 'RED',
           });
         }
+        return;
       }
       if (message.type === 'APPLICATION_COMMAND')
         await reply(
@@ -125,7 +149,14 @@ export default class HelpCommand extends BaseCommand {
                 description:
                   'Key:\n[argument]: Optional argument\n<argument>: Required argument\n[argument] <argument>: If the first argument is specified, the second argument MUST be specified.',
                 color: 'WHITE',
-                fields: descriptions,
+                fields: [
+                  {
+                    name: 'To view more info about a command, use the help command followed by the command name.',
+                    value:
+                      descriptions?.map((v) => `\`${v.name}\``).toString() ||
+                      ' ',
+                  },
+                ],
               },
             ],
           });

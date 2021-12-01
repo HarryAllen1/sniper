@@ -5,10 +5,11 @@ import { default as axios } from 'axios';
 
 import {
   BingMapsAddressRes,
+  Period,
   WeatherGovGridpointHourlyForecastRes,
   WeatherGovPointRes,
-} from '../../typings/types';
-import { reply } from '../../utils/helpers/reply.js';
+} from '../../typings/types.js';
+import { reply } from '../../utils/helpers/message.js';
 
 export default class WeatherCommand extends BaseCommand {
   constructor() {
@@ -82,7 +83,7 @@ export default class WeatherCommand extends BaseCommand {
             ).data.properties.periods;
       const fields: Array<{ name: string; value: string; inline?: boolean }> =
         [];
-      forecast.forEach((period) => {
+      forecast.forEach((period: Period) => {
         fields.push({
           name: `${period.name} between ${new Date(
             period.startTime

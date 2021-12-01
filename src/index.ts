@@ -1,6 +1,7 @@
 import { ShardingManager } from 'discord.js';
-import { token } from '../slappey.json';
-import { log } from './utils/helpers/console';
+import { readFileSync } from 'fs';
+const { token } = JSON.parse(readFileSync('./slappey.json').toString());
+import { log } from './utils/helpers/console.js';
 
 const manager = new ShardingManager('./src/sniper.ts', {
   totalShards: 'auto',

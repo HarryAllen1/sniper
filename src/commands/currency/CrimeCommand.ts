@@ -9,7 +9,7 @@ import {
   getUserData,
   setUserData,
 } from '../../utils/helpers/user.js';
-import { reply } from '../../utils/helpers/reply.js';
+import { reply } from '../../utils/helpers/message.js';
 import { msToTime } from '../../utils/helpers/date.js';
 import { default as ms } from 'ms';
 

@@ -2,7 +2,7 @@ import { Message, MessageActionRow, MessageButton } from 'discord.js';
 import BaseCommand from '../../utils/structures/BaseCommand.js';
 import DiscordClient from '../../client/client.js';
 import ms from 'ms';
-import { reply } from '../../utils/helpers/reply.js';
+import { reply } from '../../utils/helpers/message.js';
 
 export default class VoteCommand extends BaseCommand {
   constructor() {

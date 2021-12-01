@@ -4,7 +4,7 @@ import DiscordClient from '../../client/client.js';
 import { default as axios } from 'axios';
 import randomNumber from '../../utils/helpers/randomNumber.js';
 import { RedditRes } from '../../typings/types.js';
-import { reply } from '../../utils/helpers/reply.js';
+import { reply } from '../../utils/helpers/message.js';
 
 export default class MemeCommand extends BaseCommand {
   constructor() {

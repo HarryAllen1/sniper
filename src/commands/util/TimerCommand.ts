@@ -1,7 +1,7 @@
 import { Message } from 'discord.js';
 import BaseCommand from '../../utils/structures/BaseCommand.js';
 import DiscordClient from '../../client/client.js';
-import { reply } from '../../utils/helpers/reply.js';
+import { reply } from '../../utils/helpers/message.js';
 import { default as ms } from 'ms';
 
 export default class TimerCommand extends BaseCommand {
