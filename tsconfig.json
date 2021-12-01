@@ -23,5 +23,6 @@
     "allowSyntheticDefaultImports": true,
     "experimentalDecorators": true
   },
-  "exclude": ["out-esm/", "out/", "old/", "lib/"]
+  "exclude": ["out-esm/", "out/", "old/", "lib/"],
+  "include": ["./firebase-credentials.json", "src/"]
 }

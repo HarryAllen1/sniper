@@ -12,7 +12,7 @@ const firebaseCredentials = JSON.parse(
 );
 
 // @ts-ignore -- make the file appear in the compiled js
-void import('../firebase-credentials.json');
+// void import('../firebase-credentials.json');
 
 import { AutoPoster } from 'topgg-autoposter';
 import { Webhook } from '@top-gg/sdk';
