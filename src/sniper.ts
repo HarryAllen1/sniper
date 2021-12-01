@@ -42,7 +42,7 @@ try {
       // process.cwd().endsWith('out-esm')
       // ?
       // @ts-ignore
-      await import('../slappey-prod.json');
+      await import('../slappey-prod.json', { assert: { type: 'json' } });
     // : // @ts-ignore
     // await import('../slappey-prod.json');
     client.prefix = a.default.prefixes;
