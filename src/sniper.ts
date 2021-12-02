@@ -7,9 +7,16 @@ import admin from 'firebase-admin';
 
 import express from 'express';
 
-const firebaseCredentials = JSON.parse(
+export const firebaseCredentials = JSON.parse(
   readFileSync('./firebase-credentials.json').toString()
 );
+export const slappeyJSON =
+  // process.cwd().endsWith('out-esm')
+  // ?
+  // @ts-ignore
+  await import('../slappey-prod.json', { assert: { type: 'json' } });
+// : // @ts-ignore
+// await import('../slappey-prod.json');
 
 // @ts-ignore -- make the file appear in the compiled js
 // void import('../firebase-credentials.json');
@@ -38,23 +45,16 @@ try {
   });
 
   (async () => {
-    const a =
-      // process.cwd().endsWith('out-esm')
-      // ?
-      // @ts-ignore
-      await import('../slappey-prod.json', { assert: { type: 'json' } });
-    // : // @ts-ignore
-    // await import('../slappey-prod.json');
-    client.prefix = a.default.prefixes;
+    client.prefix = slappeyJSON.default.prefixes;
 
-    const poster = AutoPoster(a.default.secrets.topggToken, client);
+    const poster = AutoPoster(slappeyJSON.default.secrets.topggToken, client);
     poster.on('error', console.error);
 
     await registerCommands(client, './out-esm/src/commands');
     await registerEvents(client, './out-esm/src/events');
-    await client.login(a.default.token);
+    await client.login(slappeyJSON.default.token);
 
-    const webhook = new Webhook(a.default.secrets.topggToken);
+    const webhook = new Webhook(slappeyJSON.default.secrets.topggToken);
 
     app.post(
       '/topggwebhook',
