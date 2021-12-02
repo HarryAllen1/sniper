@@ -23,7 +23,7 @@ export const reply = async (
   otherOptions: ReplyMessageOptions = {},
   ephemeral?: boolean
 ): Promise<Message> => {
-  const ad = randomNumber(1, 10, true) === 1;
+  const ad = randomNumber(1, 30, true) === 1;
   const { files, attachments, components, content, tts, nonce, stickers } =
     otherOptions;
   embed.color ||= 'WHITE';
