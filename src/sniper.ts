@@ -22,7 +22,7 @@ export const slappeyJSON =
 // void import('../firebase-credentials.json');
 
 import { AutoPoster } from 'topgg-autoposter';
-import { Webhook } from '@top-gg/sdk';
+
 import { log } from './utils/helpers/console.js';
 import { readFileSync } from 'fs';
 
@@ -53,16 +53,6 @@ try {
     await registerCommands(client, './out-esm/src/commands');
     await registerEvents(client, './out-esm/src/events');
     await client.login(slappeyJSON.default.token);
-
-    const webhook = new Webhook(slappeyJSON.default.secrets.topggToken);
-
-    app.post(
-      '/topggwebhook',
-      webhook.listener((vote) => {
-        log(vote.user);
-      })
-    );
-    app.listen(6900);
   })();
 } catch (error) {
   console.error(error);

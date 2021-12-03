@@ -5,6 +5,7 @@ import {
   TextChannel,
   ReplyMessageOptions,
 } from 'discord.js';
+import './message.js';
 import ms from 'ms';
 import { sleep } from './misc.js';
 import randomNumber from './randomNumber.js';
@@ -24,6 +25,18 @@ export const reply = async (
   ephemeral?: boolean
 ): Promise<Message> => {
   const ad = randomNumber(1, 30, true) === 1;
+  if (otherOptions.attachments || otherOptions.files) {
+    if (
+      !(message.channel as TextChannel)
+        // eslint-disable-next-line
+        .permissionsFor(message.guild!.me!)
+        .has('ATTACH_FILES')
+    ) {
+      message.reply('I do not have permission to send files.');
+      otherOptions.files = [];
+      otherOptions.attachments = [];
+    }
+  }
   const { files, attachments, components, content, tts, nonce, stickers } =
     otherOptions;
   embed.color ||= 'WHITE';
@@ -82,11 +95,11 @@ export const reply = async (
 };
 
 export const send = async (
-  message: Message,
+  messageOrChannel: Message | TextChannel,
   embed: MessageEmbed | MessageEmbedOptions,
 
   otherOptions: ReplyMessageOptions = {}
-): Promise<Message> => {
+): Promise<Message | undefined> => {
   const {
     files,
     attachments,
@@ -98,26 +111,49 @@ export const send = async (
     stickers,
   } = otherOptions;
   embed.color ||= 'WHITE';
-  if (
-    (message.channel as TextChannel)
-      // eslint-disable-next-line @typescript-eslint/no-non-null-asserted-optional-chain, @typescript-eslint/no-non-null-assertion -- You kind of have to do this
-      .permissionsFor(message.guild?.me!)
-      .has('SEND_MESSAGES')
-  )
-    return message.channel.send({
-      embeds: [embed],
+  if (messageOrChannel instanceof Message) {
+    if (
+      (messageOrChannel.channel as TextChannel)
+        // eslint-disable-next-line @typescript-eslint/no-non-null-asserted-optional-chain, @typescript-eslint/no-non-null-assertion -- You kind of have to do this
+        .permissionsFor(messageOrChannel.guild?.me!)
+        .has('SEND_MESSAGES')
+    )
+      return messageOrChannel.channel.send({
+        embeds: [embed],
 
-      files,
-      attachments,
-      content,
-      components,
-      tts,
+        files,
+        attachments,
+        content,
+        components,
+        tts,
 
-      nonce,
-      stickers,
-    });
-  else {
-    return message.author.send("I can't send messages in that channel.");
+        nonce,
+        stickers,
+      });
+    else {
+      return messageOrChannel.author.send(
+        "I can't send messages in that channel."
+      );
+    }
+  } else {
+    if (
+      messageOrChannel
+        // eslint-disable-next-line @typescript-eslint/no-non-null-asserted-optional-chain, @typescript-eslint/no-non-null-assertion -- You kind of have to do this
+        .permissionsFor(messageOrChannel.guild?.me!)
+        .has('SEND_MESSAGES')
+    )
+      return messageOrChannel.send({
+        embeds: [embed],
+
+        files,
+        attachments,
+        content,
+        components,
+        tts,
+
+        nonce,
+        stickers,
+      });
   }
 };
 
@@ -142,19 +178,19 @@ export const removeAllComponents = (message: Message) => {
   });
 };
 
-// export class createAuthorOnlyMessageReactionCollector {
-//   /**
-//    * Equivalent to `Message.createMessageComponentCollector` but only allows the collector to be used by the author.`
-//    * @param {Message} message The message to create the collector on.
-//    * @param {Number | String} time  How long to run the collector for.
-//    */
-//   constructor(message: Message, time: number | string) {
-//     if (typeof time === 'string') {
-//       time = ms(time);
-//     }
-//     // We checked for a string value, and converted it to a number if it was a string.
-//     time = time as number;
-//     sleep(time);
-//     return message.createMessageComponentCollector({});
-//   }
-// }
+export class CreateAuthorOnlyMessageReactionCollector {
+  /**
+   * Equivalent to `Message.createMessageComponentCollector` but only allows the collector to be used by the author.`
+   * @param {Message} message The message to create the collector on.
+   * @param {Number | String} time  How long to run the collector for.
+   */
+  constructor(message: Message, time: number | string) {
+    if (typeof time === 'string') {
+      time = ms(time);
+    }
+    // We checked for a string value, and converted it to a number if it was a string.
+    time = time as number;
+    sleep(time);
+    return message.createMessageComponentCollector({});
+  }
+}
