@@ -11,9 +11,11 @@ import {
   helpCommandHelperCollection,
   allCommands,
 } from '../../utils/registry.js';
-import { reply } from '../../utils/helpers/message.js';
+import { disableAllComponents, reply } from '../../utils/helpers/message.js';
 import ms from 'ms';
 import { capitalizeFirstLetter } from '../../utils/helpers/string.js';
+import { log } from '../../utils/helpers/console.js';
+import { camelCase, startCase } from 'lodash-es';
 
 export default class HelpCommand extends BaseCommand {
   constructor() {
@@ -56,6 +58,12 @@ export default class HelpCommand extends BaseCommand {
             title: capitalizeFirstLetter(command?.name),
             description: command?.description,
             fields: [
+              command.argsDescription
+                ? {
+                    name: 'Arguments',
+                    value: command.argsDescription,
+                  }
+                : { name: 'Arguments', value: 'No arguments' },
               {
                 name: 'Aliases',
                 value: command.aliases.join(', ') || 'None',
@@ -73,8 +81,8 @@ export default class HelpCommand extends BaseCommand {
                 name: 'Permissions',
                 value:
                   command.permissionsRequired
-                    .map((val) => `\`${val}\``)
-                    .join(', ') || '`SEND_MESSAGES`',
+                    .map((val) => `\`${startCase(camelCase(val))}\``)
+                    .join(', ') || '`sendMessages`',
               },
             ],
           });
@@ -214,7 +222,7 @@ export default class HelpCommand extends BaseCommand {
         };
         const timeout = ms('15s');
         const timer = setTimeout(() => {
-          void disableHelpMessage();
+          disableAllComponents(msg);
         }, timeout);
         timer;
 
@@ -237,8 +245,13 @@ export default class HelpCommand extends BaseCommand {
           // timeout += ms('15s');
           clearTimeout(timer);
           timer;
-          if (i.member?.user.id !== message.author.id) {
-            i.reply({ content: "This isn't your command.", ephemeral: true });
+          if (i.user.id !== message.author.id) {
+            i.reply({
+              content: "This isn't your command.",
+              ephemeral: true,
+            }).catch(() => {
+              log('still deosnt woork');
+            });
             return;
           }
           if (i.customId === 'end') {

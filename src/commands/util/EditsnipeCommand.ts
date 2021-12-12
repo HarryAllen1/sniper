@@ -11,50 +11,17 @@ export default class EditsnipeCommand extends BaseCommand {
       'util',
       ['esnipe'],
       0,
-      'Shows the last edited messages content before it was edited'
+      'After a message is edited, you can use this command to see the old message.'
     );
   }
 
-  async run(client: DiscordClient, message: Message, args: Array<string>) {
+  async run(client: DiscordClient, message: Message) {
     const snipe = editSnipes[message.channel.id];
-    if (args[0] && message.mentions.channels.first()) {
-      const channelSnipe =
-        editSnipes[message.mentions.channels.first()?.id ?? ''];
-      if (channelSnipe)
-        await reply(
-          message,
-          channelSnipe
-            ? new MessageEmbed()
 
-                .addField('Old message:', channelSnipe.content ?? '')
-                .addField(
-                  'New message:',
-                  `[Jump!](https://discord.com/channels/${message.guild?.id}/${
-                    message.mentions.channels.first()?.id
-                  }/${channelSnipe.id})`
-                )
-                .setAuthor(channelSnipe.author?.tag ?? '')
-                .setColor('GREEN')
-                .setFooter(`#${(message.channel as TextChannel).name}`)
-                .setTimestamp(
-                  channelSnipe.createdAt ? channelSnipe.createdAt : 0
-                )
-            : new MessageEmbed()
-                .setTitle("There's nothing to snipe!")
-                .setColor('RED')
-        );
-      else
-        await reply(message, {
-          title: "That channel doesn't exist.",
-          color: 'RED',
-        });
-      return;
-    }
     await reply(
       message,
       snipe
         ? new MessageEmbed()
-
             .addField('Old message:', snipe.content ?? '')
             .addField(
               'New message:',

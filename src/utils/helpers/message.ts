@@ -67,27 +67,32 @@ export const reply = async (
               nonce,
               stickers,
             })
-          : message.reply({
-              embeds: [embed],
-              allowedMentions: {
-                repliedUser: userData?.settings?.mentionAuthorOnReply
-                  ? userData.settings?.mentionAuthorOnReply?.value
-                  : true,
-              },
-              files,
-              attachments,
-              content,
-              components,
-              tts,
-              failIfNotExists: false,
-              nonce,
-              stickers,
-              //@ts-ignore
-              ephemeral:
-                ephemeral !== null || ephemeral !== undefined
-                  ? ephemeral
-                  : true,
-            })
+          : message
+              .reply({
+                embeds: [embed],
+                allowedMentions: {
+                  repliedUser: userData?.settings?.mentionAuthorOnReply
+                    ? userData.settings?.mentionAuthorOnReply?.value
+                    : true,
+                },
+                files,
+                attachments,
+                content,
+                components,
+                tts,
+                failIfNotExists: false,
+                nonce,
+                stickers,
+                //@ts-ignore
+                ephemeral:
+                  ephemeral !== null || ephemeral !== undefined
+                    ? ephemeral
+                    : true,
+              })
+              .catch((err) => {
+                console.error(err);
+                return message.author.send('Something went wrong.');
+              })
     );
   else {
     return message.author.send("I can't send messages in that channel.");
@@ -141,8 +146,8 @@ export const send = async (
         // eslint-disable-next-line @typescript-eslint/no-non-null-asserted-optional-chain, @typescript-eslint/no-non-null-assertion -- You kind of have to do this
         .permissionsFor(messageOrChannel.guild?.me!)
         .has('SEND_MESSAGES')
-    )
-      return messageOrChannel.send({
+    ) {
+      const sentMessage = messageOrChannel.send({
         embeds: [embed],
 
         files,
@@ -154,6 +159,9 @@ export const send = async (
         nonce,
         stickers,
       });
+      sentMessage.catch((err) => console.error(err));
+      return sentMessage;
+    }
   }
 };
 

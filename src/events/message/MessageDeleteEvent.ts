@@ -4,7 +4,6 @@ import BaseEvent from '../../utils/structures/BaseEvent.js';
 import DiscordClient from '../../client/client.js';
 import { snipes, setSnipe } from '../../commands/util/snipes.js';
 import { log } from '../../utils/helpers/console.js';
-
 export default class MessageDeleteEvent extends BaseEvent {
   constructor() {
     super('messageDelete');
@@ -37,6 +36,6 @@ export default class MessageDeleteEvent extends BaseEvent {
 
       // attachment: message.attachments.first()?.url,
     };
-    setSnipe(snipeContent);
+    // setSnipe(snipeContent);
   }
 }

@@ -2,7 +2,11 @@ import { Message, MessageActionRow, MessageButton, Util } from 'discord.js';
 import BaseCommand from '../../utils/structures/BaseCommand.js';
 import DiscordClient from '../../client/client.js';
 import ms from 'ms';
-import { disableAllComponents, reply } from '../../utils/helpers/message.js';
+import {
+  disableAllComponents,
+  removeAllComponents,
+  reply,
+} from '../../utils/helpers/message.js';
 import { sleep } from '../../utils/helpers/misc.js';
 
 export default class SquidgameCommand extends BaseCommand {
@@ -32,7 +36,6 @@ export default class SquidgameCommand extends BaseCommand {
       "This game is in its alpha stage. Expect bugs. Currently doesn't give rewards."
     );
 
-    const firstRandomColor = Util.resolveColor('RANDOM');
     const gameBoard = await reply(
       message,
       {
@@ -56,19 +59,30 @@ export default class SquidgameCommand extends BaseCommand {
       }
     );
 
-    gameBoard.createMessageComponentCollector({});
-
-    await sleep(2500);
-    gameBoard.edit({
-      embeds: [
-        {
-          title: 'Red Light, Green Light',
-          description: 'If you dont know how to play, use `$help squidgame`',
-          color: firstRandomColor,
-        },
-      ],
-    });
+    gameBoard
+      .createMessageComponentCollector()
+      .on('collect', async (collected) => {
+        collected.deferUpdate();
+        if (collected.customId === 'startGame')
+          startGame(client, message, gameBoard);
+        else disableAllComponents(gameBoard);
+      });
   }
 }
 
-// const startGame = async (client: DiscordClient, message: Message, gameBoard: Message) => {}
+const startGame = async (
+  client: DiscordClient,
+  message: Message,
+  gameBoard: Message
+) => {
+  removeAllComponents(gameBoard);
+  gameBoard.edit({
+    embeds: [
+      {
+        title: 'Red Light, Green Light',
+        description: 'If you dont know how to play, use `$help squidgame`',
+        color: 'GREEN',
+      },
+    ],
+  });
+};

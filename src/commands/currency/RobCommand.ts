@@ -65,7 +65,7 @@ export default class RobCommand extends BaseCommand {
       return;
     }
 
-    if (user.coins < 500) {
+    if (user?.coins < 500) {
       reply(message, {
         title: 'You need at least 500 coins to rob someone',
         description: 'idk why tbh',
@@ -73,7 +73,7 @@ export default class RobCommand extends BaseCommand {
       });
       return;
     }
-    if (robbedUser.coins < 500) {
+    if (robbedUser?.coins < 500) {
       reply(message, {
         title: 'They need at least 500 coins to rob someone',
         description: "they're poor; don't rob poor people please",

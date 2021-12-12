@@ -6,9 +6,16 @@ import { reply } from '../../utils/helpers/message.js';
 
 export default class SnipeCommand extends BaseCommand {
   constructor() {
-    super('snipe', 'util', [], 3000, 'Shows the last deleted message.', {
-      argsDescription: '[mentioned channel]',
-    });
+    super(
+      'snipe',
+      'util',
+      [],
+      3000,
+      "After a message is deleted, this command shows what it was. If the creator of the deleted message doesn't want that message to be shown, they can use the `unsnipe` command.",
+      {
+        argsRequired: false,
+      }
+    );
   }
 
   async run(client: DiscordClient, message: Message) {
@@ -32,7 +39,11 @@ export default class SnipeCommand extends BaseCommand {
             )
             .setAuthor(snipe.author?.tag ?? '')
             .setColor('GREEN')
-            .setFooter(`#${(message.channel as TextChannel).name}`)
+            .setFooter(
+              `#${
+                (message.channel as TextChannel).name
+              } | If the original author wants to remove this message, they can use the \`unsnipe\` command.`
+            )
             .setTimestamp(snipe.createdAt ? snipe.createdAt : 0)
         : { title: "There's nothing to snipe!" },
 

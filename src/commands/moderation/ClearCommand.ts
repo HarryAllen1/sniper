@@ -13,7 +13,6 @@ export default class ClearCommand extends BaseCommand {
       'Clears messages from a channel',
       {
         argsDescription: '<# of messages to clear>',
-        permissions: ['MANAGE_MESSAGES'],
       }
     );
   }
@@ -23,7 +22,7 @@ export default class ClearCommand extends BaseCommand {
       !message.member?.permissions.has('MANAGE_MESSAGES') &&
       message.author.id !== '696554549418262548'
     ) {
-      reply(message, { title: 'you dont have the required perms lol' });
+      reply(message, { title: 'you dont have the required perms' });
       return;
     }
     if (!message.guild?.me?.permissions.has('MANAGE_MESSAGES')) {

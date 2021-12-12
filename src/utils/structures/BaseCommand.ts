@@ -8,7 +8,7 @@ import DiscordClient from '../../client/client.js';
 
 interface ExtraCommandOptions {
   cooldownMessage?: string;
-  argsDescription?: string | boolean;
+  argsDescription?: string;
   argsRequired?: boolean;
   permissions?: PermissionString[];
 }
@@ -29,7 +29,7 @@ export default abstract class BaseCommand {
     private _description: string,
     private extraCommandOptions: ExtraCommandOptions = {
       cooldownMessage: "You can't use this command yet",
-      argsDescription: false,
+      argsDescription: undefined,
       argsRequired: false,
       permissions: ['SEND_MESSAGES', 'READ_MESSAGE_HISTORY', 'VIEW_CHANNEL'],
     }
@@ -58,8 +58,8 @@ export default abstract class BaseCommand {
       "you can't use this command yet"
     );
   }
-  get argsDescription(): string | boolean {
-    return this.extraCommandOptions?.argsDescription || false;
+  get argsDescription(): string | undefined {
+    return this.extraCommandOptions?.argsDescription ?? undefined;
   }
   get permissionsRequired(): PermissionString[] {
     return (
