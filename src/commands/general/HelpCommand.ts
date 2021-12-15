@@ -75,7 +75,9 @@ export default class HelpCommand extends BaseCommand {
               },
               {
                 name: 'Cooldown',
-                value: command.cooldown ? ms(command.cooldown) : 'None',
+                value: command.cooldown
+                  ? ms(command.cooldown, { long: true })
+                  : 'None',
               },
               {
                 name: 'Permissions',

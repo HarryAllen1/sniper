@@ -28,7 +28,10 @@ export default class EvalCommand extends BaseCommand {
         // eslint-disable-next-line @typescript-eslint/no-unused-vars -- its for the eval; it wont be used until the command is actually used and whatnot idk
         const snipes = await import('../util/snipes.js');
 
-        eval(args.join(' '));
+        const evalScript = async () => {
+          eval(args.join(' '));
+        };
+        evalScript().catch(console.error);
         reply(message, { title: 'success', color: 'GREEN' }).then((msg) =>
           setTimeout(() => msg.delete(), 3000)
         );

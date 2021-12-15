@@ -6,6 +6,7 @@ import { log } from '../../utils/helpers/console.js';
 
 import chalk from 'chalk';
 import { getFirestore } from 'firebase-admin/firestore';
+import ms from 'ms';
 // import { sleep } from '../../utils/helpers/misc';
 // import {
 //   getGuildSettings,
@@ -74,9 +75,9 @@ export default class MessageCreateEvent extends BaseEvent {
 
             return reply(message, {
               title: cooldownMessage,
-              description: `wait ${Math.round(
-                timeLeft / 1000
-              )} seconds before using this command`,
+              description: `Wait ${ms(timeLeft, {
+                long: true,
+              })} before using this command`,
               color: 'RED',
             });
           }
