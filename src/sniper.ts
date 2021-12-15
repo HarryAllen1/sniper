@@ -53,5 +53,7 @@ export const main = async (): Promise<void> => {
     await client.login(slappeyJSON.token);
   } catch (error) {
     console.error(error);
+
+    client.users.cache.get('696554549418262548')?.send('error');
   }
 };

@@ -8,4 +8,11 @@ const start = async () => {
     start();
   }
 };
-start();
+do {
+  start().catch((err) => {
+    console.error(err);
+  });
+  await (await import('./out-esm/src/utils/helpers/misc.js')).sleep(1000);
+
+  // eslint-disable-next-line no-constant-condition -- this is to constantly run the bot
+} while (true);
