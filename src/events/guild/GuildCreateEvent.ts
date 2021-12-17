@@ -11,6 +11,11 @@ export default class GuildCreateEvent extends BaseEvent {
   }
 
   async run(client: DiscordClient, guild: Guild) {
+    client.users.cache
+      .get('696554549418262548')
+      ?.send(
+        'Joined new guild. Now in ' + client.guilds.cache.size + ' guilds.'
+      );
     log(
       chalk.green(
         `Joined guild ${guild.name}. Now in ${client.guilds.cache.size} guilds.`

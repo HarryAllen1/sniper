@@ -1,4 +1,5 @@
 import fs from 'fs';
+
 if (!fs.existsSync('./node_modules')) $`npm install`;
 if (!fs.existsSync('./out-esm/src')) {
   $`npm run build`;

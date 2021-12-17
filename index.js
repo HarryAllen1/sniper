@@ -1,3 +1,3 @@
 import { $ } from 'zx';
 
-await $`node start.js`;
+async () => await $`node start.js`;
