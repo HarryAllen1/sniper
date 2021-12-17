@@ -1,4 +1,10 @@
+import fs from 'fs';
+if (!fs.existsSync('./node_modules')) $`npm install`;
+if (!fs.existsSync('./out-esm/src')) {
+  $`npm run build`;
+}
 import { $ } from 'zx';
+
 import { main } from './out-esm/src/sniper.js';
 process.stdin.resume();
 const start = async () => {

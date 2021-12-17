@@ -4,7 +4,6 @@ import DiscordClient from '../../client/client.js';
 import { reply } from '../../utils/helpers/message.js';
 const { apiKeys } = (await import('../../sniper.js')).slappeyJSON;
 
-import { default as axios } from 'axios';
 import { MWResponse, OxfordRes } from '../../typings/types.js';
 
 export default class DefineCommand extends BaseCommand {
@@ -54,7 +53,7 @@ export default class DefineCommand extends BaseCommand {
         //     color: 'RED',
         //   });
         // }
-        const definition = await axios.get<OxfordRes>(
+        const definition = await fetch(
           `https://od-api.oxforddictionaries.com/api/v2/entries/${
             encodeURIComponent(args[2]) || 'en-us'
           }/${encodeURIComponent(
@@ -67,7 +66,7 @@ export default class DefineCommand extends BaseCommand {
             },
           }
         );
-        const data = definition.data;
+        const data = (await definition.json()) as OxfordRes;
 
         if (data) {
           const examples =
@@ -108,7 +107,12 @@ export default class DefineCommand extends BaseCommand {
           );
         }
       } else if (defaultDictionary === 'urban') {
-        const definition = await axios.get<{
+        const definition = await fetch(
+          `https://api.urbandictionary.com/v0/define?term=${encodeURIComponent(
+            args[0]
+          )}`
+        );
+        interface SomeResIDK {
           list: Array<{
             definition: string;
             permalink: string;
@@ -120,33 +124,30 @@ export default class DefineCommand extends BaseCommand {
             example: string;
             thumbs_down: number;
           }>;
-        }>(
-          `https://api.urbandictionary.com/v0/define?term=${encodeURIComponent(
-            args[0]
-          )}`
-        );
+        }
+        const data = (await definition.json()) as SomeResIDK;
         reply(message, {
-          title: `Definition of ${definition.data.list[0].word}`,
-          description: `From Urban Dictionary\nPermalink: ${definition.data.list[0].permalink}`,
+          title: `Definition of ${data.list[0].word}`,
+          description: `From Urban Dictionary\nPermalink: ${data.list[0].permalink}`,
           fields: [
             {
               name: 'Definition',
-              value: `${definition.data.list[0].definition}`,
+              value: `${data.list[0].definition}`,
             },
-            { name: 'Example', value: definition.data.list[0].example },
+            { name: 'Example', value: data.list[0].example },
           ],
           footer: {
-            text: `Thumbs up: ${definition.data.list[0].thumbs_up}\nThumbs down: ${definition.data.list[0].thumbs_down}\nAuthor: ${definition.data.list[0].author}`,
+            text: `Thumbs up: ${data.list[0].thumbs_up}\nThumbs down: ${data.list[0].thumbs_down}\nAuthor: ${data.list[0].author}`,
           },
         });
       } else if (defaultDictionary === 'mw') {
-        const definition = await axios.get<MWResponse[]>(
+        const definition = await fetch(
           `https://www.dictionaryapi.com/api/v3/references/collegiate/json/${encodeURIComponent(
             args[0]
           )}?key=${apiKeys.mw.apiKey}`
         );
 
-        const data = definition.data;
+        const data = (await definition.json()) as MWResponse[];
         // no word found
         if (!data[0]) {
           reply(message, {

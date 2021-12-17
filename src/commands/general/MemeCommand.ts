@@ -1,7 +1,6 @@
 import { Message } from 'discord.js';
 import BaseCommand from '../../utils/structures/BaseCommand.js';
 import DiscordClient from '../../client/client.js';
-import { default as axios } from 'axios';
 import randomNumber from '../../utils/helpers/randomNumber.js';
 import { RedditRes } from '../../typings/types.js';
 import { reply } from '../../utils/helpers/message.js';
@@ -12,28 +11,15 @@ export default class MemeCommand extends BaseCommand {
   }
 
   async run(client: DiscordClient, message: Message) {
-    reply(
-      message,
-      {
-        title:
-          'Disabled until Reddit fixes their api or someone knows how to fix this error',
-        color: 'RED',
-      },
-      {
-        content:
-          'https://cdn.discordapp.com/attachments/888611523881213972/915112894813839361/unknown.png',
-      }
-    );
-    return;
     message.channel.sendTyping();
 
     // if (memes) {
     //   res = memes;
     // } else {
-    const get = await axios.get<RedditRes>(
+    const get = await fetch(
       'https://www.reddit.com/r/memes/top/.json?sort=top&t=day&limit=100'
     );
-    const res = get.data;
+    const res = (await get.json()) as RedditRes;
     // setMemes(res);
     // }
 

@@ -21,6 +21,10 @@ export const slappeyJSON = JSON.parse(
 // void import('../firebase-credentials.json');
 import { AutoPoster } from 'topgg-autoposter';
 import { readFileSync } from 'fs';
+import fetch from 'node-fetch';
+
+// polyfill fetch
+global.fetch = fetch as any;
 export const app = express();
 export const FIREBASE_PROJECT_ID = firebaseCredentials.project_id;
 

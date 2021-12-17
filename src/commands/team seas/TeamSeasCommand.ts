@@ -1,7 +1,6 @@
 import { Message, MessageActionRow, MessageButton } from 'discord.js';
 import BaseCommand from '../../utils/structures/BaseCommand.js';
 import DiscordClient from '../../client/client.js';
-import { default as axios } from 'axios';
 import { reply } from '../../utils/helpers/message.js';
 
 export default class TeamSeasCommand extends BaseCommand {
@@ -16,9 +15,9 @@ export default class TeamSeasCommand extends BaseCommand {
   }
 
   async run(client: DiscordClient, message: Message) {
-    const total = await axios.get<{ count: string }>(
-      'https://tscache.com/donation_total.json'
-    );
+    const res = await fetch('https://tscache.com/donation_total.json');
+    const total: any = {};
+    total.data = await res.json();
     reply(
       message,
       {

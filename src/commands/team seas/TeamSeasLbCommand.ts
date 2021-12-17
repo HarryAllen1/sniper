@@ -6,7 +6,6 @@ import {
 } from 'discord.js';
 import BaseCommand from '../../utils/structures/BaseCommand.js';
 import DiscordClient from '../../client/client.js';
-import { default as axios } from 'axios';
 import { TeamSeasLBRes } from '../../typings/types.js';
 import { reply } from '../../utils/helpers/message.js';
 
@@ -23,10 +22,8 @@ export default class TeamSeasLbCommand extends BaseCommand {
 
   async run(client: DiscordClient, message: Message) {
     message.channel.sendTyping();
-    const res = await axios.get<TeamSeasLBRes>(
-      'https://tscache.com/lb_recent.json'
-    );
-    const body = res.data;
+    const res = await fetch('https://tscache.com/lb_recent.json');
+    const body = (await res.json()) as TeamSeasLBRes;
     const currentIndex = 0;
     const maxIndex = 10;
     const fields: EmbedField[] = [];

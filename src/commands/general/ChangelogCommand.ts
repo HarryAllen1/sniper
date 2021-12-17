@@ -1,7 +1,6 @@
 import { Message } from 'discord.js';
 import BaseCommand from '../../utils/structures/BaseCommand.js';
 import DiscordClient from '../../client/client.js';
-import { default as axios } from 'axios';
 import { GithubCommits } from '../../typings/types.js';
 import { reply } from '../../utils/helpers/message.js';
 
@@ -22,14 +21,13 @@ export default class ChangelogCommand extends BaseCommand {
   }
 
   async run(client: DiscordClient, message: Message, args: Array<string>) {
-    axios
-      .get<GithubCommits>(
-        `https://api.github.com/repos/MajesticString/sniper/commits?per_page=${
-          args[0] ? (parseInt(args[0]) > 10 ? '10' : args[0]) : '5'
-        }`
-      )
-      .then((res) => {
-        const { data } = res;
+    fetch(
+      `https://api.github.com/repos/MajesticString/sniper/commits?per_page=${
+        args[0] ? (parseInt(args[0]) > 10 ? '10' : args[0]) : '5'
+      }`
+    ).then((json) => {
+      json.json().then((res) => {
+        const data = res as GithubCommits;
         const toReadableDate = (date: string) => {
           return new Date(date).toUTCString();
         };
@@ -46,5 +44,15 @@ export default class ChangelogCommand extends BaseCommand {
           color: 'WHITE',
         });
       });
+    });
+    // axios
+    //   .get<GithubCommits>(
+    //     `https://api.github.com/repos/MajesticString/sniper/commits?per_page=${
+    //       args[0] ? (parseInt(args[0]) > 10 ? '10' : args[0]) : '5'
+    //     }`
+    //   )
+    //   .then((res) => {
+
+    //   });
   }
 }
