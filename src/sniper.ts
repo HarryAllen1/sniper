@@ -19,7 +19,7 @@ export const slappeyJSON = JSON.parse(
 
 // @ts-ignore -- make the file appear in the compiled js
 // void import('../firebase-credentials.json');
-import { AutoPoster } from 'topgg-autoposter';
+// import { AutoPoster } from 'topgg-autoposter';
 import { readFileSync } from 'fs';
 import fetch from 'node-fetch';
 
