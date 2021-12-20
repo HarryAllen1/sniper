@@ -25,7 +25,6 @@ export const helpCommandHelperCollection = new Collection<
   string,
   CommandCategory
 >();
-export const allCommands = client.commands;
 
 export async function registerCommands(client: DiscordClient, dir = '') {
   const filePath = path.join(process.cwd(), dir);

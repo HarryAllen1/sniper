@@ -7,10 +7,7 @@ import {
 } from 'discord.js';
 import BaseCommand from '../../utils/structures/BaseCommand.js';
 import DiscordClient from '../../client/client.js';
-import {
-  helpCommandHelperCollection,
-  allCommands,
-} from '../../utils/registry.js';
+import { helpCommandHelperCollection } from '../../utils/registry.js';
 import { disableAllComponents, reply } from '../../utils/helpers/message.js';
 import ms from 'ms';
 import { capitalizeFirstLetter } from '../../utils/helpers/string.js';
@@ -45,8 +42,8 @@ export default class HelpCommand extends BaseCommand {
     try {
       if (args[0]) {
         const command =
-          allCommands.get(args[0]) ||
-          allCommands.find(
+          client.commands.get(args[0]) ||
+          client.commands.find(
             (v, k) =>
               k.toLowerCase().startsWith(args[0].toLowerCase()) ||
               v.aliases
