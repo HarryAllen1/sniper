@@ -55,7 +55,9 @@ export default class HelpCommand extends BaseCommand {
           );
         if (command)
           reply(message, {
-            title: capitalizeFirstLetter(command?.name),
+            title: `${
+              command?.disabled ? '(DISABLED!!!) ' : ''
+            }${capitalizeFirstLetter(command?.name)}`,
             description: command?.description,
             fields: [
               command.argsDescription

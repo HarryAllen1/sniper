@@ -6,6 +6,7 @@ import BaseCommand from './structures/BaseCommand.js';
 import { Collection } from 'discord.js';
 
 import { default as ms } from 'ms';
+import { client } from '../sniper.js';
 
 interface CommandHelper {
   [name: string]: CommandCategory;
@@ -24,7 +25,7 @@ export const helpCommandHelperCollection = new Collection<
   string,
   CommandCategory
 >();
-export const allCommands = new Collection<string, BaseCommand>();
+export const allCommands = client.commands;
 
 export async function registerCommands(client: DiscordClient, dir = '') {
   const filePath = path.join(process.cwd(), dir);
@@ -46,7 +47,6 @@ export async function registerCommands(client: DiscordClient, dir = '') {
       // if (!command.permissionsRequired) {
       //   command.permissionsRequired = [];
       // }
-      allCommands.set(command.name, command);
       if (helpCommandHelperCollection.has(command.category)) {
         helpCommandHelperCollection.get(command.category)?.commands.push({
           name: command.name,
