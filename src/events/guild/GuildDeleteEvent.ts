@@ -4,6 +4,7 @@ import BaseEvent from '../../utils/structures/BaseEvent.js';
 import DiscordClient from '../../client/client.js';
 import { log } from '../../utils/helpers/console.js';
 import chalk from 'chalk';
+import { harrysDiscordID } from '../../sniper.js';
 
 export default class GuildDeleteEvent extends BaseEvent {
   constructor() {
@@ -16,5 +17,6 @@ export default class GuildDeleteEvent extends BaseEvent {
         `Left server ${guild.name}. Now in ${client.guilds.cache.size} guilds.`
       )
     );
+    client.users.cache.get(harrysDiscordID)?.send('left guild ' + guild.name);
   }
 }

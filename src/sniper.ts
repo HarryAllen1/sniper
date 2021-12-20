@@ -27,6 +27,7 @@ import fetch from 'node-fetch';
 global.fetch = fetch as any;
 export const app = express();
 export const FIREBASE_PROJECT_ID = firebaseCredentials.project_id;
+export const harrysDiscordID = '696554549418262548';
 
 export const client = new DiscordClient({
   intents: [
