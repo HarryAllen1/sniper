@@ -11,6 +11,7 @@ interface ExtraCommandOptions {
   argsDescription?: string;
   argsRequired?: boolean;
   permissions?: PermissionString[];
+  disabled?: boolean;
 }
 
 export default abstract class BaseCommand {
@@ -32,6 +33,7 @@ export default abstract class BaseCommand {
       argsDescription: undefined,
       argsRequired: false,
       permissions: ['SEND_MESSAGES', 'READ_MESSAGE_HISTORY', 'VIEW_CHANNEL'],
+      disabled: false,
     }
   ) {}
 
@@ -72,6 +74,9 @@ export default abstract class BaseCommand {
   }
   get argsRequired(): boolean {
     return this.extraCommandOptions?.argsRequired ?? false;
+  }
+  get disabled(): boolean {
+    return this.extraCommandOptions?.disabled ?? false;
   }
 
   /**

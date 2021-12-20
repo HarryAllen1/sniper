@@ -54,6 +54,13 @@ export default class MessageCreateEvent extends BaseEvent {
           .trim()
           .split(/\s+/);
         const command = client.commands.get(cmdName.toLowerCase());
+        if (command?.disabled) {
+          reply(message, {
+            title: 'This command is disabled.',
+            color: 'RED',
+          });
+          return;
+        }
         if (!cooldowns.has(command?.name)) {
           cooldowns.set(command?.name, new Collection());
         }
