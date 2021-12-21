@@ -6,7 +6,6 @@ import BaseCommand from './structures/BaseCommand.js';
 import { Collection } from 'discord.js';
 
 import { default as ms } from 'ms';
-import { client } from '../sniper.js';
 
 interface CommandHelper {
   [name: string]: CommandCategory;

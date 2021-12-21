@@ -50,7 +50,7 @@ export const main = async (): Promise<void> => {
 
     // const poster = AutoPoster(slappeyJSON.secrets.topggToken, client);
     // poster.on('error', (err) => {
-    //   console.log('toppgg autoposter: ' + err.message);
+    //   console.log('topgg autoposter: ' + err.message);
     // });
 
     await registerCommands(client, './out-esm/src/commands');

@@ -86,9 +86,11 @@ export default abstract class BaseCommand {
    * @param {Array<string> | CommandInteractionOptionResolver | null} args
    * @returns {Promise<void>}
    */
-  abstract run(
+  async run(
     client: DiscordClient,
     message: Message | CommandInteraction,
     args: Array<string> | CommandInteractionOptionResolver | null
-  ): Promise<any>;
+  ): Promise<any> {
+    return { client, message, args };
+  }
 }

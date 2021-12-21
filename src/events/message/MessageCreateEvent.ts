@@ -23,7 +23,11 @@ export default class MessageCreateEvent extends BaseEvent {
   async run(client: DiscordClient, message: Message) {
     if (message.channel.type === 'DM') return;
 
-    if (message.author.bot || !message.guild) return;
+    if (
+      (message.author.id !== '922939398239174699' && message.author.bot) ||
+      !message.guild
+    )
+      return;
 
     // const guildSettings = await getGuildSettings(message.guild.id);
 

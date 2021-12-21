@@ -21,7 +21,11 @@ export default class HelpCommand extends BaseCommand {
       'general',
       ['commands', 'command'],
       1000,
-      'Shows all commands and their descriptions'
+      'Shows all commands and their descriptions',
+      {
+        argsDescription: '[category or command name]',
+        argsRequired: false,
+      }
     );
   }
 
@@ -251,7 +255,7 @@ export default class HelpCommand extends BaseCommand {
               content: "This isn't your command.",
               ephemeral: true,
             }).catch(() => {
-              log('still deosnt woork');
+              log("still doesn't work");
             });
             return;
           }
