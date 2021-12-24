@@ -11,4 +11,7 @@ export const randomNumber = (
     return Math.random() * (max - min) + min;
   }
 };
+
+export const getRandomNumber = randomNumber;
+
 export default randomNumber;
