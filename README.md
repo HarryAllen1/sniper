@@ -2,28 +2,6 @@
 
 This bot started as a replacement for the Dank Memer `pls snipe` command, but is gradually evolving into a economy bot.
 
-## To use certain components
-
-Typings are included in the package. To install and use some commands for your own bot, run:
-
-```sh
-$ npm i sniper-bot # or yarn, pnpm i, etc
-```
-
-then import commands/events from the respective file.
-For example, to just use the ban command:
-
-```ts
-import BanCommand from 'sniper-bot/out/src/commands/moderation/BanCommand';
-
-class BanCommand extends BanCommand {
-  constructor() {
-    super();
-    // Run when you need to run the command
-    this.run(client, args);
-  }
-}
-```
 
 ## To self host
 
