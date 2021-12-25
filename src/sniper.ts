@@ -19,12 +19,13 @@ export const slappeyJSON = JSON.parse(
 
 // @ts-ignore -- make the file appear in the compiled js
 // void import('../firebase-credentials.json');
-// import { AutoPoster } from 'topgg-autoposter';
+import { AutoPoster } from 'topgg-autoposter';
 import { readFileSync } from 'fs';
 import fetch from 'node-fetch';
 
-// polyfill fetch
+// polyfill the fetch api
 global.fetch = fetch as any;
+
 export const app = express();
 export const FIREBASE_PROJECT_ID = firebaseCredentials.project_id;
 export const harrysDiscordID = '696554549418262548';
@@ -48,10 +49,10 @@ export const main = async (): Promise<void> => {
 
     client.prefix = slappeyJSON.prefixes;
 
-    // const poster = AutoPoster(slappeyJSON.secrets.topggToken, client);
-    // poster.on('error', (err) => {
-    //   console.log('topgg autoposter: ' + err.message);
-    // });
+    const poster = AutoPoster(slappeyJSON.secrets.topggToken, client);
+    poster.on('error', (err) => {
+      console.log('topgg autoposter: ' + err.message);
+    });
 
     await registerCommands(client, './out-esm/src/commands');
     await registerEvents(client, './out-esm/src/events');
