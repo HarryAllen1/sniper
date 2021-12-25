@@ -12,7 +12,7 @@ export default class PingCommand extends BaseCommand {
       'ping',
       'util',
       [],
-      5000,
+      ms('5s'),
       'Pings the bot and returns response times.'
     );
   }
@@ -46,7 +46,7 @@ export default class PingCommand extends BaseCommand {
                 },
                 {
                   name: 'Uptime (how long since the last bot restart; affects `snipe` commands)',
-                  value: `${msToTime(client.uptime ?? 0)}`,
+                  value: `${ms(client.uptime ?? 0)}`,
                 },
               ],
             },
