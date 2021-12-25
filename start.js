@@ -21,7 +21,7 @@ process.on('uncaughtException', (a, b) => {
   console.log(
     'HAHAHHAHAHAHAHAHAHAHHAH the bot crashed',
     `Error code: ${a.name}: ${a.message}\n`,
-    `idk: ${b}`
+    `whatever "b" is: ${b}`
   );
   // $`node start.js`;
 });
