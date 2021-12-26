@@ -19,7 +19,7 @@ export default class ReadyEvent extends BaseEvent {
     );
 
     client.user?.setActivity({
-      name: `$help in 64 servers`,
+      name: `$help in ${client.guilds.cache.size} servers`,
       type: 'WATCHING',
     });
 

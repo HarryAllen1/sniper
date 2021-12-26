@@ -1,5 +1,5 @@
-import path from 'path';
-import { promises as fs } from 'fs';
+import path from 'node:path';
+import { promises as fs } from 'node:fs';
 import DiscordClient from '../client/client.js';
 import BaseEvent from './structures/BaseEvent.js';
 import BaseCommand from './structures/BaseCommand.js';
@@ -38,6 +38,9 @@ export async function registerCommands(client: DiscordClient, dir = '') {
       helpCommandHelperCollection.set(file, { commands: [] });
     }
     if (file.endsWith('Command.js') || file.endsWith('Command.ts')) {
+      const experimentalCommand = (
+        await import('../../../' + path.join(dir, file))
+      ).command;
       const Command = (await import('../../../' + path.join(dir, file)))
         .default;
       const command = new Command() as BaseCommand;
