@@ -25,9 +25,13 @@ export default class GCreateCommand extends BaseCommand {
     let winners = 0;
     let prize = '';
     if (
-      !message.member?.permissions.has('MANAGE_GUILD') &&
+      !message.member?.permissions.has('MANAGE_GUILD') ||
+      (!message.member?.permissions.has('MANAGE_GUILD') &&
+        !message.member?.roles.cache.every((v) =>
+          v.name.toLowerCase().includes('giveaway')
+        )) ||
       !message.member?.roles.cache.every((v) =>
-        v.name.toLowerCase().includes('giveaways')
+        v.name.toLowerCase().includes('giveaway')
       )
     )
       return reply(message, {

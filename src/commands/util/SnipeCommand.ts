@@ -45,7 +45,11 @@ export default class SnipeCommand extends BaseCommand {
               } | If the original author wants to remove this message, they can use the \`unsnipe\` command.`
             )
             .setTimestamp(snipe.createdAt ? snipe.createdAt : 0)
-        : { title: "There's nothing to snipe!" },
+        : {
+            title:
+              "There's nothing to snipe! This is because a message hasn't been deleted in this channel since the last bot restart.",
+            color: 'RED',
+          },
 
       // snipe?.message?.attachments.first()
       //   ? {
