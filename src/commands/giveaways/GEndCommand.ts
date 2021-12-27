@@ -13,6 +13,7 @@ export default class GEndCommand extends BaseCommand {
       {
         argsRequired: true,
         argsDescription: '<message id>',
+        disabled: true,
       }
     );
   }

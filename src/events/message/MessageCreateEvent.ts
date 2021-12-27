@@ -7,6 +7,7 @@ import { log } from '../../utils/helpers/console.js';
 import chalk from 'chalk';
 import { getFirestore } from 'firebase-admin/firestore';
 import ms from 'ms';
+import { harrysDiscordID } from '../../sniper.js';
 // import { sleep } from '../../utils/helpers/misc';
 // import {
 //   getGuildSettings,
@@ -58,7 +59,12 @@ export default class MessageCreateEvent extends BaseEvent {
           .trim()
           .split(/\s+/);
         const command = client.commands.get(cmdName.toLowerCase());
-        if (command?.disabled) {
+
+        if (
+          command?.disabled &&
+          message.author.id !== '792862384489758760' &&
+          message.author.id !== harrysDiscordID
+        ) {
           reply(message, {
             title: 'This command is disabled.',
             color: 'RED',
@@ -97,6 +103,7 @@ export default class MessageCreateEvent extends BaseEvent {
         timeStamps.set(message.author.id, currentTime);
         setTimeout(() => timeStamps.delete(message.author.id), cooldownAmount);
         if (command) {
+          command.client = client;
           for (const permission of command?.permissionsRequired ?? [
             'SEND_MESSAGES',
             'READ_MESSAGE_HISTORY',

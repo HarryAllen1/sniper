@@ -1,4 +1,5 @@
 import {
+  Client,
   CommandInteraction,
   CommandInteractionOptionResolver,
   Message,
@@ -38,6 +39,7 @@ export default abstract class BaseCommand {
   ) {}
 
   message?: Message;
+  client!: Client;
 
   get name(): string {
     return this._name;

@@ -15,6 +15,7 @@ export default class GCreateCommand extends BaseCommand {
       {
         argsDescription: '[time] [amount of winners] [prize]',
         argsRequired: false,
+        disabled: true,
         // permissions: ['MANAGE_GUILD']
       }
     );
