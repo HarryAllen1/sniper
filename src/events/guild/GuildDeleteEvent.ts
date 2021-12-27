@@ -12,6 +12,10 @@ export default class GuildDeleteEvent extends BaseEvent {
   }
 
   async run(client: DiscordClient, guild: Guild) {
+    client.user?.setActivity({
+      name: `$help in ${client.guilds.cache.size} servers`,
+      type: 'WATCHING',
+    });
     log(
       chalk.redBright(
         `Left server ${guild.name}. Now in ${client.guilds.cache.size} guilds.`
