@@ -3,6 +3,7 @@ import {
   MessageActionRow,
   MessageButton,
   MessageSelectMenu,
+  MessageSelectOptionData,
   version,
 } from 'discord.js';
 import BaseCommand from '../../utils/structures/BaseCommand.js';
@@ -32,16 +33,16 @@ export default class HelpCommand extends BaseCommand {
   async run(client: DiscordClient, message: Message, args: Array<string>) {
     // const categories = Object.keys(helpCommandHelper);
     const categories = [...helpCommandHelperCollection.keys()];
-    const menu: any[] = [];
+    const menu: MessageSelectOptionData[] = [];
     helpCommandHelperCollection.forEach((value, key) => {
       menu.push({
         label: key,
         value: key,
       });
     });
-    categories.forEach((category) => {
-      menu.push({ label: category, value: category });
-    });
+    // categories.forEach((category) => {
+    //   menu.push({ label: category, value: category });
+    // });
 
     try {
       if (args[0]) {
@@ -104,7 +105,7 @@ export default class HelpCommand extends BaseCommand {
           message,
           {
             title: 'Command Help',
-            description: `Made using Discord.js v${version}.\n[View source code](https://github.com/MajesticString/sniper)\nThis bot is in its beta stage, so expect bugs.`,
+            description: `Made using Discord.js v${version}.\n[View source code](https://github.com/MajesticString/sniper)`,
             fields: [
               {
                 name: 'Catagories',
@@ -189,51 +190,52 @@ export default class HelpCommand extends BaseCommand {
             footer: { text: 'made by ||harry potter||#0014' },
           },
           {
-            components: [row],
-          }
-        );
-        const disableHelpMessage = async (): Promise<Message> => {
-          return await msg.edit({
             components: [
               new MessageActionRow().addComponents(
-                new MessageButton()
-                  .setEmoji('⏪')
-                  .setStyle('PRIMARY')
-                  .setCustomId('first')
-                  .setDisabled(true),
-                new MessageButton()
-                  .setEmoji('⬅️')
-                  .setStyle('PRIMARY')
-                  .setCustomId('back')
-                  .setDisabled(true),
-                new MessageButton()
-                  .setStyle('PRIMARY')
-                  .setEmoji('⏹️')
-                  .setDisabled(true)
-                  .setCustomId('end'),
-                new MessageButton()
-                  .setEmoji('➡️')
-                  .setStyle('PRIMARY')
-                  .setDisabled(true)
-                  .setCustomId('next'),
-                new MessageButton()
-                  .setEmoji('⏩')
-                  .setStyle('PRIMARY')
-                  .setDisabled(true)
-                  .setCustomId('last')
+                new MessageSelectMenu()
+                  .setCustomId('categorySelect')
+                  .setPlaceholder('Command Category')
+                  .addOptions(menu)
               ),
+
+              row,
             ],
-          });
-        };
+          }
+        );
+
         const timeout = ms('15s');
         const timer = setTimeout(() => {
           disableAllComponents(msg);
         }, timeout);
         timer;
 
-        const buttonCollector = msg.createMessageComponentCollector({
-          componentType: 'BUTTON',
+        // const menuCollector = msg.createMessageComponentCollector({
+        //   componentType: 'SELECT_MENU',
+        // });
 
+        // menuCollector.on('collect', async (i) => {
+        //   i.deferUpdate();
+
+        //   clearTimeout(timer);
+        //   timer;
+        //   if (i.user.id !== message.author.id) {
+        //     i.reply({
+        //       content: "This isn't your command.",
+        //       ephemeral: true,
+        //     }).catch(() => {
+        //       log("still doesn't work");
+        //     });
+        //     return;
+        //   }
+        //   if (i.customId === 'categorySelect') {
+        //     i.reply('placeholder');
+        //     console.log(i);
+        //     // await updateHelpMessage(categories.indexOf(i.))
+        //   }
+        // });
+
+        const buttonCollector = msg.createMessageComponentCollector({
+          // componentType: 'BUTTON',
           // time: 15000,
           // filter: (i) => {
           //   i.deferUpdate();
@@ -259,8 +261,12 @@ export default class HelpCommand extends BaseCommand {
             });
             return;
           }
+          if (i.customId === 'categorySelect' && i.isSelectMenu()) {
+            const [category] = i.values;
+            await updateHelpMessage(categories.indexOf(category));
+          }
           if (i.customId === 'end') {
-            void disableHelpMessage();
+            void disableAllComponents(msg);
           } else if (i.customId === 'first') {
             categoriesIndex = 0;
             await updateHelpMessage(categoriesIndex);
