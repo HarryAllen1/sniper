@@ -7,9 +7,9 @@ import { Collection } from 'discord.js';
 
 import { default as ms } from 'ms';
 
-interface CommandHelper {
-  [name: string]: CommandCategory;
-}
+// interface CommandHelper {
+//   [name: string]: CommandCategory;
+// }
 
 interface CommandCategory {
   commands: Array<Commands>;
@@ -19,7 +19,7 @@ interface Commands {
   name: string;
   value: string;
 }
-export const helpCommandHelper: CommandHelper = {};
+// export const helpCommandHelper: CommandHelper = {};
 export const helpCommandHelperCollection = new Collection<
   string,
   CommandCategory
@@ -34,7 +34,7 @@ export async function registerCommands(client: DiscordClient, dir = '') {
 
     if (stat.isDirectory()) {
       registerCommands(client, path.join(dir, file));
-      helpCommandHelper[file] = { commands: [] };
+      // helpCommandHelper[file] = { commands: [] };
       helpCommandHelperCollection.set(file, { commands: [] });
     }
     if (file.endsWith('Command.js') || file.endsWith('Command.ts')) {
@@ -56,13 +56,13 @@ export async function registerCommands(client: DiscordClient, dir = '') {
           }Cooldown: ${ms(command.cooldown)}`,
         });
       }
-      if (helpCommandHelper[command.category])
-        helpCommandHelper[command.category].commands.push({
-          name: command.name,
-          value: `${command.description}\n${
-            command.argsDescription ? `Args: ${command.argsDescription}\n` : ''
-          }Cooldown: ${ms(command.cooldown)}`,
-        });
+      // if (helpCommandHelper[command.category])
+      //   helpCommandHelper[command.category].commands.push({
+      //     name: command.name,
+      //     value: `${command.description}\n${
+      //       command.argsDescription ? `Args: ${command.argsDescription}\n` : ''
+      //     }Cooldown: ${ms(command.cooldown)}`,
+      //   });
 
       client.commands.set(command.name, command);
       command.aliases.forEach((alias: string) => {
