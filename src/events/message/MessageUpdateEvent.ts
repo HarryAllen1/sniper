@@ -4,6 +4,8 @@ import BaseEvent from '../../utils/structures/BaseEvent.js';
 import DiscordClient from '../../client/client.js';
 import { editSnipes } from '../../commands/util/snipes.js';
 import { log } from '../../utils/helpers/console.js';
+import { sleep } from '../../utils/helpers/misc.js';
+import ms from 'ms';
 
 export default class MessageUpdateEvent extends BaseEvent {
   constructor() {
@@ -29,6 +31,14 @@ export default class MessageUpdateEvent extends BaseEvent {
         createdAt: newMessage.editedTimestamp,
         id: newMessage.id,
       };
+      await sleep(ms('5m'));
+
+      if (
+        editSnipes[oldMessage.channel.id].createdAt ===
+        newMessage.editedTimestamp
+      ) {
+        delete editSnipes[oldMessage.channel.id];
+      }
     }
   }
 }

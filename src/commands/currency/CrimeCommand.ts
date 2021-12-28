@@ -25,7 +25,6 @@ const crimes = [
   'public indecency',
   'fraud',
   'torture',
-  'ass',
 ];
 
 export default class CrimeCommand extends BaseCommand {

@@ -9,16 +9,7 @@ export const firebaseCredentials = JSON.parse(
 export const slappeyJSON = JSON.parse(
   readFileSync('./slappey-prod.json').toString()
 );
-// process.cwd().endsWith('out-esm')
 
-// ?
-// // @ts-ignore
-// await import('../slappey-prod.json', { assert: { type: 'json' } });
-// : // @ts-ignore
-// await import('../slappey-prod.json');
-
-// @ts-ignore -- make the file appear in the compiled js
-// void import('../firebase-credentials.json');
 import { AutoPoster } from 'topgg-autoposter';
 import { readFileSync } from 'fs';
 import fetch from 'node-fetch';
@@ -26,7 +17,9 @@ import fetch from 'node-fetch';
 // polyfill the fetch api
 global.fetch = fetch as any;
 
+// currently not used
 export const app = express();
+
 export const FIREBASE_PROJECT_ID = firebaseCredentials.project_id;
 export const harrysDiscordID = '696554549418262548';
 
@@ -36,7 +29,10 @@ export const client = new DiscordClient({
     Intents.FLAGS.GUILD_MESSAGES,
     Intents.FLAGS.GUILD_MEMBERS,
     Intents.FLAGS.GUILD_MESSAGE_REACTIONS,
+    Intents.FLAGS.DIRECT_MESSAGES,
+    Intents.FLAGS.DIRECT_MESSAGE_REACTIONS,
   ],
+  partials: ['CHANNEL'],
 });
 
 export const main = async (): Promise<void> => {

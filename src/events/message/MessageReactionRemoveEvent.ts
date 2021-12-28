@@ -3,6 +3,8 @@ import { GuildMember, MessageReaction, TextChannel, User } from 'discord.js';
 import BaseEvent from '../../utils/structures/BaseEvent.js';
 import DiscordClient from '../../client/client.js';
 import { reactionSnipes } from '../../commands/util/snipes.js';
+import { sleep } from '../../utils/helpers/misc.js';
+import ms from 'ms';
 
 export default class MessageReactionRemoveEvent extends BaseEvent {
   constructor() {
@@ -26,7 +28,15 @@ export default class MessageReactionRemoveEvent extends BaseEvent {
       user,
       emoji: reaction.emoji,
       messageURL: reaction.message.url,
-      createdAt: Date.now(),
+      createdAt: reaction.message.createdTimestamp,
     };
+    await sleep(ms('5m'));
+
+    if (
+      reactionSnipes[reaction.message.channel.id].createdAt ===
+      reaction.message.createdTimestamp
+    ) {
+      delete reactionSnipes[reaction.message.channel.id];
+    }
   }
 }
