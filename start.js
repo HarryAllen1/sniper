@@ -5,13 +5,12 @@ if (!fs.existsSync('./out-esm/src')) {
 }
 import { $ } from 'zx';
 
-import { main, createFirebase } from './out-esm/src/sniper.js';
+import { main } from './out-esm/src/sniper.js';
 
 process.stdin.resume();
 
 const start = async () => {
   try {
-    await createFirebase();
     main();
   } catch (err) {
     console.error(err);

@@ -1,6 +1,7 @@
 {
   "cSpell.words": [
     "autoposter",
+    "Coinflip",
     "discordjs",
     "fortnite",
     "harrys",
@@ -16,5 +17,5 @@
 
   "files.associations": {
     "*.json": "jsonc"
-  },
+  }
 }

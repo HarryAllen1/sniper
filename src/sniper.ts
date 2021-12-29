@@ -1,13 +1,20 @@
+import admin from 'firebase-admin';
+import { getFirestore } from 'firebase-admin/firestore';
 export const firebaseCredentials = JSON.parse(
   readFileSync('./firebase-credentials.json').toString()
 );
-import admin from 'firebase-admin';
+admin.initializeApp({
+  credential: admin.credential.cert(firebaseCredentials),
+  projectId: 'discord-sniper-5c7f0',
+});
+
+export const db = getFirestore();
 
 import { registerCommands, registerEvents } from './utils/registry.js';
 import DiscordClient from './client/client.js';
 import { Intents } from 'discord.js';
 
-import express from 'express';
+// import express from 'express';
 
 export const slappeyJSON = JSON.parse(
   readFileSync('./slappey-prod.json').toString()
@@ -19,15 +26,9 @@ import fetch from 'node-fetch';
 
 // polyfill the fetch api
 global.fetch = fetch as any;
-export const createFirebase = async () => {
-  admin.initializeApp({
-    credential: admin.credential.cert(firebaseCredentials),
-    projectId: 'discord-sniper-5c7f0',
-  });
-};
 
 // currently not used
-export const app = express();
+// const app = express();
 
 export const FIREBASE_PROJECT_ID = firebaseCredentials.project_id;
 export const harrysDiscordID = '696554549418262548';
@@ -43,6 +44,8 @@ export const client = new DiscordClient({
   ],
   partials: ['CHANNEL'],
 });
+
+client.db.db = db;
 
 export const main = async (): Promise<void> => {
   try {
