@@ -3,7 +3,7 @@ import { FieldValue, getFirestore } from 'firebase-admin/firestore';
 import DiscordClient from '../../client/client.js';
 import { client } from '../../sniper.js';
 
-export const db = getFirestore();
+const db = getFirestore();
 
 export interface UserData {
   coins: number;
