@@ -4,13 +4,13 @@ import BaseCommand from '../utils/structures/BaseCommand.js';
 import { CommandOptions } from '../experimental/command.js';
 import {
   addCoinsToTotal,
-  db,
   deleteFieldFromUserData,
   getUserData,
   setUserData,
   UserData,
 } from '../utils/helpers/user.js';
-
+import { getFirestore } from 'firebase-admin/firestore';
+const db = getFirestore();
 class DiscordClient extends Client {
   private _commands = new Collection<string, BaseCommand>();
   private _events = new Collection<string, BaseEvent>();
