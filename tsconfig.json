@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "typeRoots": ["./node_modules/@types"],
+    "typeRoots": ["./node_modules/@types", "./src/typings"],
 
     "outDir": "./out-esm",
     "removeComments": true,
@@ -20,6 +20,7 @@
     "lib": ["ESNext"],
     "strict": true,
     "skipLibCheck": true,
+
     "allowSyntheticDefaultImports": true,
     "experimentalDecorators": true
   },
