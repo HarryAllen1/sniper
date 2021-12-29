@@ -16,7 +16,10 @@ import fetch from 'node-fetch';
 
 // polyfill the fetch api
 global.fetch = fetch as any;
-
+admin.initializeApp({
+  credential: admin.credential.cert(firebaseCredentials),
+  projectId: 'discord-sniper-5c7f0',
+});
 // currently not used
 export const app = express();
 
@@ -37,11 +40,6 @@ export const client = new DiscordClient({
 
 export const main = async (): Promise<void> => {
   try {
-    admin.initializeApp({
-      credential: admin.credential.cert(firebaseCredentials),
-      projectId: 'discord-sniper-5c7f0',
-    });
-
     client.prefix = slappeyJSON.prefixes;
 
     const poster = AutoPoster(slappeyJSON.secrets.topggToken, client);
