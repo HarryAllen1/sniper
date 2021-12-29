@@ -27,6 +27,7 @@ export default class SquidgameCommand extends BaseCommand {
         argsRequired: false,
         cooldownMessage:
           "You can't use this command since you are recovering from emotional damage.",
+        disabled: true,
       }
     );
   }
