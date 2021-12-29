@@ -14,7 +14,8 @@ import { harrysDiscordID } from '../../sniper.js';
 //   setDefaultGuildSettings,
 // } from '../../utils/helpers/fb';
 
-const cooldowns = new Map();
+const cooldowns = new Collection<string, Collection<string, number>>();
+// const exCooldowns = new Collection();
 
 export default class MessageCreateEvent extends BaseEvent {
   constructor() {
@@ -59,6 +60,91 @@ export default class MessageCreateEvent extends BaseEvent {
           .trim()
           .split(/\s+/);
         const command = client.commands.get(cmdName.toLowerCase());
+        const experimentalCommand = client.experimentalCommands.get(
+          cmdName.toLowerCase()
+        );
+        if (experimentalCommand && message.author.id === harrysDiscordID) {
+          log('found command');
+          const [exCmdOptions, exCmd] = experimentalCommand;
+          if (
+            exCmdOptions.disabled &&
+            // message.author.id !== '792862384489758760' &&
+            message.author.id !== harrysDiscordID
+          ) {
+            reply(message, {
+              title: 'This command is disabled.',
+              color: 'RED',
+            });
+            return;
+          }
+          for (const permission of command?.permissionsRequired ?? [
+            'SEND_MESSAGES',
+            'READ_MESSAGE_HISTORY',
+          ]) {
+            if (!message.member?.permissions.has(permission)) {
+              reply(message, {
+                title: `You do not have the permission to use this command.`,
+                color: 'RED',
+              });
+              return;
+            }
+          }
+          try {
+            const db = getFirestore();
+
+            const commandsIssued = await db
+              .collection('bot')
+              .doc('stats')
+              .get();
+            db.collection('bot')
+              .doc('stats')
+              .set(
+                { commandsIssued: commandsIssued.data()?.commandsIssued + 1 },
+                { merge: true }
+              );
+            log(
+              'Begin experimental command ' +
+                command?.name +
+                ' in ' +
+                message.guild.name
+            );
+            if (!cmdArgs[0] && exCmdOptions.arguments?.required) {
+              reply(message, {
+                title: 'This command requires arguments.',
+                description: `${exCmdOptions.arguments.value.join(' ')}`,
+                color: 'RED',
+              });
+              return;
+            }
+            if (
+              message.channel
+                .permissionsFor(client.user ?? '')
+                ?.has('SEND_MESSAGES')
+            )
+              exCmd(client, message, cmdArgs)
+                .then(() => {
+                  log('End Command ' + command?.name);
+                })
+                .catch((err) => {
+                  log(`Error while running ${exCmdOptions.name}`, err);
+                });
+            else message.author.send("I can't send messages in that channel.");
+          } catch (error) {
+            log(chalk.red(error));
+            reply(message, {
+              title: 'An error occurred while running this command.',
+              description: `Error: ${error}`,
+            });
+          }
+        }
+
+        if (!command) {
+          reply(message, {
+            title: 'Command not found.',
+            color: 'RED',
+          });
+          return;
+        }
 
         if (
           command?.disabled &&
@@ -80,12 +166,19 @@ export default class MessageCreateEvent extends BaseEvent {
         const cooldownAmount = command?.cooldown;
         const cooldownMessage = command?.cooldownMessage;
 
+        if (!timeStamps)
+          return reply(message, {
+            title: 'An error occured. Try again in a few seconds.',
+            color: 'RED',
+          });
+
         if (
           timeStamps.has(message.author.id) &&
           message.author.id !== '696554549418262548'
         ) {
           const expirationTime =
-            timeStamps.get(message.author.id) + cooldownAmount;
+            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion -- We now know that it wont be undefined because of the `timeStamps.has`
+            timeStamps.get(message.author.id)! + cooldownAmount;
 
           if (currentTime < expirationTime) {
             const timeLeft = expirationTime - currentTime;

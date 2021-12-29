@@ -1,7 +1,7 @@
 import { Client, ClientOptions, Collection, Message } from 'discord.js';
 import BaseEvent from '../utils/structures/BaseEvent.js';
 import BaseCommand from '../utils/structures/BaseCommand.js';
-import { CommandOptions } from '../experimental/command.js';
+import { CommandOptions } from '../utils/structures/Command.js';
 
 import { Db } from './Db.js';
 class DiscordClient extends Client {
@@ -30,7 +30,7 @@ class DiscordClient extends Client {
     string,
     [
       CommandOptions,
-      (client: DiscordClient, message: Message, args: string[]) => any
+      (client: DiscordClient, message: Message, args: string[]) => Promise<any>
     ]
   > {
     return this._experimentalCommands;

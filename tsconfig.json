@@ -17,7 +17,7 @@
 
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
-    "lib": ["ESNext"],
+    "lib": ["ESNext", "ES2015.Iterable"],
     "strict": true,
     "skipLibCheck": true,
 

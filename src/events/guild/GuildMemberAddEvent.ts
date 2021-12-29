@@ -27,7 +27,7 @@ export default class GuildMemberAddEvent extends BaseEvent {
     // const invites = await member.guild.invites.fetch();
     // console.log(invites);
     setTimeout(() => {
-      if (member.guild.id === '882695828140073052')
+      if (member.guild.id === '882695828140073052' && !member.user.bot)
         sendMessageInBorderSecurity(client, {
           embeds: [
             {

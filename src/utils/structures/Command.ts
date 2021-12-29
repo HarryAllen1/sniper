@@ -1,8 +1,7 @@
 import { Message, PermissionString } from 'discord.js';
 import ms from 'ms';
-import DiscordClient from '../client/client.js';
-import { client } from '../sniper.js';
-import { StringValue } from '../utils/helpers/misc.js';
+import DiscordClient from '../../client/client.js';
+import { StringValue } from '../helpers/misc.js';
 
 export interface CommandOptions {
   name: string;
@@ -14,10 +13,13 @@ export interface CommandOptions {
   aliases?: string[];
   description?: string;
   permissions?: PermissionString[];
-  cooldown?: {
-    value?: number | StringValue;
-    message?: string;
-  };
+  cooldown?:
+    | {
+        value?: number | StringValue;
+        message?: string;
+      }
+    | number
+    | StringValue;
   disabled?: boolean;
 }
 
@@ -29,8 +31,13 @@ export const createCommand = (
     args: string[]
   ) => Promise<any>
 ) => {
+  if (typeof options.cooldown === 'number') {
+    options.cooldown = { value: options.cooldown };
+  } else if (typeof options.cooldown === 'string') {
+    options.cooldown = { value: options.cooldown };
+  }
   if (typeof options.cooldown?.value === 'string') {
     options.cooldown.value = ms(options.cooldown.value);
   }
-  client.experimentalCommands.set(options.name, [options, command]);
+  return [options, command];
 };
