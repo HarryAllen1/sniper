@@ -5,7 +5,7 @@ import { client } from '../../sniper.js';
 
 export const db = getFirestore();
 
-interface UserData {
+export interface UserData {
   coins: number;
   inJailUntil: number;
   items: Array<UserItem>;
@@ -16,7 +16,7 @@ interface UserItem {
   name: string;
   amount: number;
 }
-interface UserSettings {
+export interface UserSettings {
   [setting: string]: {
     value: boolean | 'true' | 'false' | any;
     description: string;
@@ -50,11 +50,11 @@ export const addCoinsToTotal = async (
     .doc(userID)
     .get()
     .then(
-      (
+      async (
         stuff: FirebaseFirestore.DocumentSnapshot<FirebaseFirestore.DocumentData>
       ) => {
         const coins: number = stuff.data()?.coins ? stuff.data()?.coins : 0;
-        return db
+        await db
           .collection('users')
           .doc(userID)
           .set(
@@ -63,26 +63,15 @@ export const addCoinsToTotal = async (
               tag: client.users.cache.get(userID)?.tag,
             },
             { merge: true }
-          )
-          .then(() => {
-            return coins + addedCoins;
-          });
+          );
+        return coins + addedCoins;
       }
     );
 };
 
-export const getTotalCoins = (userID: string): Promise<number> => {
-  return db
-    .collection('users')
-    .doc(userID)
-    .get()
-    .then(
-      (
-        stuff: FirebaseFirestore.DocumentSnapshot<FirebaseFirestore.DocumentData>
-      ) => {
-        return stuff.data()?.coins ? stuff.data()?.coins : 0;
-      }
-    );
+export const getTotalCoins = async (userID: string): Promise<number> => {
+  const stuff = await db.collection('users').doc(userID).get();
+  return stuff.data()?.coins ? stuff.data()?.coins : 0;
 };
 export const getUserData = async (userID: string): Promise<UserData> => {
   const stuff = await db.collection('users').doc(userID).get();
