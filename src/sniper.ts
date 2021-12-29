@@ -2,10 +2,7 @@ export const firebaseCredentials = JSON.parse(
   readFileSync('./firebase-credentials.json').toString()
 );
 import admin from 'firebase-admin';
-admin.initializeApp({
-  credential: admin.credential.cert(firebaseCredentials),
-  projectId: 'discord-sniper-5c7f0',
-});
+
 import { registerCommands, registerEvents } from './utils/registry.js';
 import DiscordClient from './client/client.js';
 import { Intents } from 'discord.js';
@@ -22,6 +19,12 @@ import fetch from 'node-fetch';
 
 // polyfill the fetch api
 global.fetch = fetch as any;
+export const createFirebase = async () => {
+  admin.initializeApp({
+    credential: admin.credential.cert(firebaseCredentials),
+    projectId: 'discord-sniper-5c7f0',
+  });
+};
 
 // currently not used
 export const app = express();
