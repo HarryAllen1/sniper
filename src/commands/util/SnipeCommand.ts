@@ -46,8 +46,9 @@ export default class SnipeCommand extends BaseCommand {
             )
             .setTimestamp(snipe.createdAt ? snipe.createdAt : 0)
         : {
-            title:
-              "There's nothing to snipe! This is because a message hasn't been deleted in this channel since the last bot restart.",
+            title: "There's nothing to snipe!",
+            description:
+              'Deleted messages can only be sniped within 5 minutes of deletion.',
             color: 'RED',
           },
 
