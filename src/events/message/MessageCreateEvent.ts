@@ -50,10 +50,11 @@ export default class MessageCreateEvent extends BaseEvent {
       const command = client.commands.get('editsnipe');
       command?.run(client, message, []);
     }
-    const prefixes = (await client.db.getGuildSettings(message.guildId ?? ''))
-      ?.prefixes[0]
-      ? (await client.db.getGuildSettings(message.guildId ?? ''))?.prefixes
-      : client.prefix;
+    const prefixes =
+      (await client.db.getGuildSettings(message.guildId ?? ''))?.prefixes &&
+      (await client.db.getGuildSettings(message.guildId ?? ''))?.prefixes[0]
+        ? (await client.db.getGuildSettings(message.guildId ?? ''))?.prefixes
+        : client.prefix;
     for (const prefix of prefixes) {
       if (message.content.startsWith(prefix.toLowerCase())) {
         if (!message.guild.me?.permissions.has('SEND_MESSAGES')) {
