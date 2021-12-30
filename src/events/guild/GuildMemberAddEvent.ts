@@ -2,7 +2,6 @@
 import { GuildMember } from 'discord.js';
 import BaseEvent from '../../utils/structures/BaseEvent.js';
 import DiscordClient from '../../client/client.js';
-import { setDefaultGuildSettings } from '../../utils/helpers/fb.js';
 import { sendMessageInBorderSecurity } from '../../utils/helpers/cambridge-server.js';
 import { log } from '../../utils/helpers/console.js';
 import chalk from 'chalk';
@@ -14,7 +13,6 @@ export default class GuildMemberAddEvent extends BaseEvent {
 
   async run(client: DiscordClient, member: GuildMember) {
     if (member.user.id === '893619442712444970') {
-      setDefaultGuildSettings(member.guild.id);
       log(
         chalk.greenBright(
           `Joined server ${member.guild.name}. Now in ${client.guilds.cache.size} guilds.`

@@ -3,10 +3,9 @@ import { promises as fs } from 'node:fs';
 import DiscordClient from '../client/client.js';
 import BaseEvent from './structures/BaseEvent.js';
 import BaseCommand from './structures/BaseCommand.js';
-import { Collection, Message } from 'discord.js';
+import { Collection } from 'discord.js';
 
 import { default as ms } from 'ms';
-import { CommandOptions } from './structures/Command.js';
 
 // interface CommandHelper {
 //   [name: string]: CommandCategory;
@@ -39,25 +38,6 @@ export async function registerCommands(client: DiscordClient, dir = '') {
       helpCommandHelperCollection.set(file, { commands: [] });
     }
     if (file.endsWith('Command.js') || file.endsWith('Command.ts')) {
-      const experimentalCommand = (
-        await import('../../../' + path.join(dir, file))
-      ).command as [
-        CommandOptions,
-        (
-          client: DiscordClient,
-          message: Message,
-          args: string[]
-        ) => Promise<any>
-      ];
-      if (experimentalCommand) {
-        client.experimentalCommands.set(
-          experimentalCommand[0].name,
-          experimentalCommand
-        );
-        experimentalCommand[0].aliases?.forEach((alias) => {
-          client.experimentalCommands.set(alias, experimentalCommand);
-        });
-      }
       const Command = (await import('../../../' + path.join(dir, file)))
         .default;
       const command = new Command() as BaseCommand;

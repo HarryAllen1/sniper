@@ -50,7 +50,11 @@ export default class MessageCreateEvent extends BaseEvent {
       const command = client.commands.get('editsnipe');
       command?.run(client, message, []);
     }
-    for (const prefix of client.prefix) {
+    const prefixes = (await client.db.getGuildSettings(message.guildId ?? ''))
+      ?.prefixes[0]
+      ? (await client.db.getGuildSettings(message.guildId ?? ''))?.prefixes
+      : client.prefix;
+    for (const prefix of prefixes) {
       if (message.content.startsWith(prefix.toLowerCase())) {
         if (!message.guild.me?.permissions.has('SEND_MESSAGES')) {
           message.author.send('i cant send messages in that server lol');
@@ -60,83 +64,6 @@ export default class MessageCreateEvent extends BaseEvent {
           .trim()
           .split(/\s+/);
         const command = client.commands.get(cmdName.toLowerCase());
-        const experimentalCommand = client.experimentalCommands.get(
-          cmdName.toLowerCase()
-        );
-        if (experimentalCommand && message.author.id === harrysDiscordID) {
-          log('found command');
-          const [exCmdOptions, exCmd] = experimentalCommand;
-          if (
-            exCmdOptions.disabled &&
-            // message.author.id !== '792862384489758760' &&
-            message.author.id !== harrysDiscordID
-          ) {
-            reply(message, {
-              title: 'This command is disabled.',
-              color: 'RED',
-            });
-            return;
-          }
-          for (const permission of command?.permissionsRequired ?? [
-            'SEND_MESSAGES',
-            'READ_MESSAGE_HISTORY',
-          ]) {
-            if (!message.member?.permissions.has(permission)) {
-              reply(message, {
-                title: `You do not have the permission to use this command.`,
-                color: 'RED',
-              });
-              return;
-            }
-          }
-          try {
-            const db = getFirestore();
-
-            const commandsIssued = await db
-              .collection('bot')
-              .doc('stats')
-              .get();
-            db.collection('bot')
-              .doc('stats')
-              .set(
-                { commandsIssued: commandsIssued.data()?.commandsIssued + 1 },
-                { merge: true }
-              );
-            log(
-              'Begin experimental command ' +
-                command?.name +
-                ' in ' +
-                message.guild.name
-            );
-            if (!cmdArgs[0] && exCmdOptions.arguments?.required) {
-              reply(message, {
-                title: 'This command requires arguments.',
-                description: `${exCmdOptions.arguments.value.join(' ')}`,
-                color: 'RED',
-              });
-              return;
-            }
-            if (
-              message.channel
-                .permissionsFor(client.user ?? '')
-                ?.has('SEND_MESSAGES')
-            )
-              exCmd(client, message, cmdArgs)
-                .then(() => {
-                  log('End Command ' + command?.name);
-                })
-                .catch((err) => {
-                  log(`Error while running ${exCmdOptions.name}`, err);
-                });
-            else message.author.send("I can't send messages in that channel.");
-          } catch (error) {
-            log(chalk.red(error));
-            reply(message, {
-              title: 'An error occurred while running this command.',
-              description: `Error: ${error}`,
-            });
-          }
-        }
 
         if (!command) {
           reply(message, {
