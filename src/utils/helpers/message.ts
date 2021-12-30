@@ -45,7 +45,11 @@ export const reply = async (
     (message.channel as TextChannel)
       // eslint-disable-next-line @typescript-eslint/no-non-null-asserted-optional-chain, @typescript-eslint/no-non-null-assertion -- You kind of have to do this
       .permissionsFor(message.guild?.me!)
-      .has('SEND_MESSAGES')
+      .has('SEND_MESSAGES') &&
+    (message.channel as TextChannel)
+      // eslint-disable-next-line @typescript-eslint/no-non-null-asserted-optional-chain, @typescript-eslint/no-non-null-assertion
+      .permissionsFor(message.guild?.me!)
+      .has('EMBED_LINKS')
   )
     return getUserData(message?.author?.id || message.member?.id || '').then(
       (userData) =>
@@ -95,7 +99,7 @@ export const reply = async (
               })
     );
   else {
-    return message.author.send("I can't send messages in that channel.");
+    return message.author.send("I can't send embeds in that channel.");
   }
 };
 

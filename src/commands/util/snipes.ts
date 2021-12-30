@@ -15,6 +15,7 @@ interface SnipeContent {
   content?: string;
   createdAt: number | null;
   attachment?: string;
+  attachments?: string[];
   id?: string;
   emoji?: UniversalEmoji;
   messageURL?: string;

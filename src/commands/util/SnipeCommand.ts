@@ -14,18 +14,18 @@ export default class SnipeCommand extends BaseCommand {
       "After a message is deleted, this command shows what it was. If the creator of the deleted message doesn't want that message to be shown, they can use the `unsnipe` command.",
       {
         argsRequired: false,
+        argsDescription: '[type: embeds | attachments | messages]',
       }
     );
   }
 
-  async run(client: DiscordClient, message: Message) {
+  async run(client: DiscordClient, message: Message, args: string[]) {
+    let type: 'messages' | 'embeds' | 'attachments' = 'messages';
+    if (args[0] && !/^(embeds|attachments|messages)$/i.test(args[0]))
+      // we know that its the same because of the regex test.
+      type = args[0] as 'messages' | 'embeds' | 'attachments';
     const snipe = snipes[message.channel.id];
-    if (message.mentions.channels.first()) {
-      reply(message, {
-        title: 'Sniping a different channel has been removed due to abuse.',
-        color: 'RED',
-      });
-    }
+
     await reply(
       message,
       snipe

@@ -28,6 +28,7 @@ export default class MessageDeleteEvent extends BaseEvent {
       content: message.content,
       createdAt: message.createdTimestamp,
       attachment: message.attachments.first()?.url,
+      attachments: [...message.attachments.values()].map((a) => a.proxyURL),
       message,
     };
     // const snipeContent: any = {};
