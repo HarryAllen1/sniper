@@ -66,10 +66,6 @@ export default class MessageCreateEvent extends BaseEvent {
         const command = client.commands.get(cmdName.toLowerCase());
 
         if (!command) {
-          reply(message, {
-            title: 'Command not found.',
-            color: 'RED',
-          });
           return;
         }
 
