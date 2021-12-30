@@ -1,3 +1,4 @@
+import { getGuildSettings, setGuildSettings } from '../utils/helpers/fb.js';
 import {
   addCoinsToTotal,
   deleteFieldFromUserData,
@@ -30,6 +31,20 @@ export class Db {
     fields: string[]
   ): Promise<FirebaseFirestore.WriteResult> {
     return deleteFieldFromUserData(userID, fields);
+  }
+
+  static getGuildSettings(
+    guildID: string
+  ): Promise<FirebaseFirestore.DocumentData | undefined> {
+    return getGuildSettings(guildID);
+  }
+
+  static setGuildSettings(
+    guildID: string,
+    data: FirebaseFirestore.DocumentData,
+    options: FirebaseFirestore.SetOptions = { merge: true }
+  ): Promise<FirebaseFirestore.WriteResult> {
+    return setGuildSettings(guildID, data, options);
   }
 
   static async setCoins(userID: string, amount: number): Promise<number> {
