@@ -24,5 +24,4 @@ process.on('uncaughtException', (a, b) => {
     `Error code: ${a.name}: ${a.message}\n`,
     `whatever "b" is: ${b}`
   );
-  // $`node start.js`;
 });

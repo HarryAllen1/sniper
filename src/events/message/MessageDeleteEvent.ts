@@ -43,7 +43,10 @@ export default class MessageDeleteEvent extends BaseEvent {
 
     await sleep(ms('5m'));
 
-    if (snipes[message.channel.id].createdAt === message.createdTimestamp) {
+    if (
+      snipes[message.channelId] &&
+      snipes[message.channel.id].createdAt === message.createdTimestamp
+    ) {
       delete snipes[message.channel.id];
     }
   }
