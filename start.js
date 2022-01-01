@@ -5,13 +5,11 @@ if (!fs.existsSync('./out-esm/src')) {
 }
 import { $ } from 'zx';
 
-import { main } from './out-esm/src/sniper.js';
-
 process.stdin.resume();
 
 const start = async () => {
   try {
-    main();
+    (await import('./out-esm/src/sniper.js')).main();
   } catch (err) {
     console.error(err);
     // start();
