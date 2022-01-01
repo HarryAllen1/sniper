@@ -13,6 +13,7 @@ export const db = getFirestore();
 import { registerCommands, registerEvents } from './utils/registry.js';
 import DiscordClient from './client/client.js';
 import { Intents } from 'discord.js';
+import './webhooks.js';
 
 // import express from 'express';
 

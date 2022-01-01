@@ -1,3 +1,6 @@
+# ignore functions for now
+/functions
+
 /node_modules
 config.json
 slappey.json
