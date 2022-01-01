@@ -44,7 +44,7 @@ export default class SnipeCommand extends BaseCommand {
                 (message.channel as TextChannel).name
               } | If the original author wants to remove this message, they can use the \`unsnipe\` command.`
             )
-            .setTimestamp(snipe.createdAt ? snipe.createdAt : 0)
+            .setTimestamp(snipe?.createdAt ? snipe.createdAt : 0)
         : {
             title: "There's nothing to snipe!",
             description:
