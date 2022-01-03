@@ -3,6 +3,7 @@ import BaseCommand from '../../utils/structures/BaseCommand.js';
 import DiscordClient from '../../client/client.js';
 import { reply } from '../../utils/helpers/message.js';
 import { default as ms } from 'ms';
+import { StringValue } from '../../utils/helpers/misc.js';
 
 export default class TimerCommand extends BaseCommand {
   constructor() {
@@ -22,18 +23,24 @@ export default class TimerCommand extends BaseCommand {
   async run(client: DiscordClient, message: Message, args: Array<string>) {
     if (!args[0]) return;
     if (
-      !args[0].endsWith('m') &&
-      !args[0].endsWith('h') &&
-      !args[0].endsWith('s')
+      isNaN(parseInt(args[0])) &&
+      !/^(-?(?:\d+)?\.?\d+) *(milliseconds?|msecs?|ms|seconds?|secs?|s|minutes?|mins?|m|hours?|hrs?|h|days?|d|weeks?|w|years?|yrs?|y)?$/i.test(
+        args[0]
+      )
     ) {
-      reply(message, { title: 'the length must be h, m, or s', color: 'RED' });
+      reply(message, {
+        title: 'The length must be a valid time unit',
+        color: 'RED',
+      });
       return;
     }
-    const time = args[0].slice(0, -1);
+    const time = args[0].length > 1 ? args[0].slice(0, -1) : args[0];
     if (isNaN(parseInt(time))) {
-      reply(message, { title: 'thats not a number' });
+      reply(message, { title: 'Thats not a number' });
     }
-    const endDate = ms(args[0]);
+
+    const endDate = ms(args[0] as StringValue);
+
     reply(message, { title: 'Set a timer for ' + args[0] });
     setTimeout(() => {
       reply(

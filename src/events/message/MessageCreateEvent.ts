@@ -1,5 +1,5 @@
 import BaseEvent from '../../utils/structures/BaseEvent.js';
-import { Message, Collection } from 'discord.js';
+import { Message, Collection, MessageEmbedOptions } from 'discord.js';
 import DiscordClient from '../../client/client.js';
 import { reply } from '../../utils/helpers/message.js';
 import { log } from '../../utils/helpers/console.js';
@@ -58,7 +58,7 @@ export default class MessageCreateEvent extends BaseEvent {
     for (const prefix of prefixes) {
       if (message.content.startsWith(prefix.toLowerCase())) {
         if (!message.guild.me?.permissions.has('SEND_MESSAGES')) {
-          message.author.send('i cant send messages in that server lol');
+          message.author.send('I cant send messages in that server lol');
         }
         const [cmdName, ...cmdArgs] = message.content
           .slice(prefix.length)
@@ -68,6 +68,19 @@ export default class MessageCreateEvent extends BaseEvent {
 
         if (!command) {
           return;
+        }
+
+        if (
+          command.category === 'test' &&
+          message.author.id !== harrysDiscordID
+        ) {
+          const embed: MessageEmbedOptions = {
+            title: 'This command is in the category of `test`',
+            description:
+              'Test commands are in development and are generally unstable and prone to errors. They are disabled because are sometimes capable of mentioning everyone and changing peoples permissions',
+            color: 'RED',
+          };
+          return reply(message, embed);
         }
 
         if (

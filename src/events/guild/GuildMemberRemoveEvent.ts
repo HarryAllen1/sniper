@@ -28,7 +28,7 @@ export default class GuildMemberRemoveEvent extends BaseEvent {
         return;
       }
       const { executor, target: t } = kickLog;
-      const target = t as GuildMember;
+      const target = t;
       if (target?.id && target.id === member.id) {
         (client.channels.cache.get('882695828140073054') as TextChannel).send({
           embeds: [

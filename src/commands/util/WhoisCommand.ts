@@ -116,8 +116,7 @@ export default class WhoisCommand extends BaseCommand {
         {
           name: 'Permissions',
           value: member.permissions
-            .toArray(true)
-
+            .toArray()
             .map((val) => `\`${val}\``)
             .toString(),
           inline: false,

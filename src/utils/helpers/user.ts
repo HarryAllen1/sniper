@@ -1,4 +1,5 @@
 import { GuildMember, User } from 'discord.js';
+// @ts-ignore
 import { FieldValue } from 'firebase-admin/firestore';
 import DiscordClient from '../../client/client.js';
 import { client, db } from '../../sniper.js';

@@ -37,13 +37,13 @@ export default class SnipeCommand extends BaseCommand {
                   : ''
               }${snipe.content}`
             )
-            .setAuthor(snipe.author?.tag ?? '')
+            .setAuthor({ name: snipe.author?.tag ?? '' })
             .setColor('GREEN')
-            .setFooter(
-              `#${
+            .setFooter({
+              text: `#${
                 (message.channel as TextChannel).name
-              } | If the original author wants to remove this message, they can use the \`unsnipe\` command.`
-            )
+              } | If the original author wants to remove this message, they can use the \`unsnipe\` command.`,
+            })
             .setTimestamp(snipe?.createdAt ? snipe.createdAt : 0)
         : {
             title: "There's nothing to snipe!",

@@ -5,9 +5,10 @@ import {
   TextChannel,
   ReplyMessageOptions,
 } from 'discord.js';
+import { APIEmbed } from 'discord-api-types/v9';
 import './message.js';
 import ms from 'ms';
-import { sleep } from './misc.js';
+import { sleep, StringValue } from './misc.js';
 import randomNumber from './randomNumber.js';
 
 import { getUserData } from './user.js';
@@ -19,7 +20,7 @@ const ads: string[] = [
 
 export const reply = async (
   message: Message,
-  embed: MessageEmbed | MessageEmbedOptions,
+  embed: MessageEmbed | MessageEmbedOptions | APIEmbed,
 
   otherOptions: ReplyMessageOptions = {},
   ephemeral?: boolean
@@ -196,7 +197,7 @@ export class CreateAuthorOnlyMessageReactionCollector {
    * @param {Message} message The message to create the collector on.
    * @param {Number | String} time  How long to run the collector for.
    */
-  constructor(message: Message, time: number | string) {
+  constructor(message: Message, time: number | StringValue) {
     if (typeof time === 'string') {
       time = ms(time);
     }

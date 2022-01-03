@@ -7,15 +7,19 @@ import {
   MessageEditOptions,
 } from 'discord.js';
 
+interface StartOptions {
+  message: Message;
+  time?: number;
+}
+
 export class Paginator {
   /**
    * @param {MessageEditOptions[]} data Array with edit options for each page.
    */
-  constructor(data: MessageEditOptions[]) {
-    if (!data?.length)
+  constructor(private data: MessageEditOptions[]) {
+    if (!this.data?.length)
       throw new TypeError('Paginator data must have at least one value.');
 
-    this.data = data;
     this.currentPage = 0; // 0-indexed
     this.row = new MessageActionRow().addComponents(
       new MessageButton()
@@ -41,25 +45,16 @@ export class Paginator {
     );
   }
 
-  data;
   currentPage: number;
   row: MessageActionRow;
   stopRow;
 
   /**
    * Starts the paginator.
-   * @param {object} options
-   * @param {CommandInteraction} options.interaction
-   * @param {number=} options.time
+   * @param {StartOptions} options
    * @returns {Promise<Message>}
    */
-  async start({
-    message,
-    time = 30000,
-  }: {
-    message: Message;
-    time?: number;
-  }): Promise<void> {
+  async start({ message, time = 30000 }: StartOptions): Promise<void> {
     const msg = await message.reply({
       ...(this.getPage(0) as any),
     });
@@ -72,7 +67,7 @@ export class Paginator {
       componentType: 'BUTTON',
     });
     collector.on('collect', (i) => this.onClicked(i, collector));
-    collector.on('end', () => this.onEnd(message));
+    collector.on('end', () => this.onEnd(msg));
   }
 
   /**
