@@ -21,7 +21,7 @@ export default class LbCommand extends BaseCommand {
 
     const fields: EmbedField[] = [];
     let counter = 1;
-    lb.forEach((user) => {
+    lb.forEach((user: any) => {
       const data = user.data();
 
       if (

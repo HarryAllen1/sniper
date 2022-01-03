@@ -25,7 +25,7 @@ export const reply = async (
   otherOptions: ReplyMessageOptions = {},
   ephemeral?: boolean
 ): Promise<Message> => {
-  const ad = randomNumber(1, 300000000000000000000000000, true) === 1;
+  const ad = randomNumber(1, 30000000000000, true) === 1;
   if (otherOptions.attachments || otherOptions.files) {
     if (
       !(message.channel as TextChannel)
