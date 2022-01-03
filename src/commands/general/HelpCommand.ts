@@ -12,7 +12,6 @@ import { helpCommandHelperCollection } from '../../utils/registry.js';
 import { reply } from '../../utils/helpers/message.js';
 import ms from 'ms';
 import { capitalizeFirstLetter } from '../../utils/helpers/string.js';
-import { log } from '../../utils/helpers/console.js';
 import { camelCase, startCase } from 'lodash-es';
 import { Paginator } from '../../utils/helpers/paginator.js';
 
@@ -34,7 +33,7 @@ export default class HelpCommand extends BaseCommand {
   async run(client: DiscordClient, message: Message, args: Array<string>) {
     const categories = [...helpCommandHelperCollection.keys()];
     const menu: MessageSelectOptionData[] = [];
-    log(helpCommandHelperCollection.toJSON());
+
     const updateHelpMessageExceptItReturnsTheEmbed = (
       index: number
     ): MessageEditOptions => {
