@@ -33,7 +33,7 @@ export default class MessageReactionRemoveEvent extends BaseEvent {
     await sleep(ms('5m'));
 
     if (
-      reactionSnipes[reaction.message.channel.id].createdAt ===
+      reactionSnipes[reaction.message.channel.id]?.createdAt ===
       reaction.message.createdTimestamp
     ) {
       delete reactionSnipes[reaction.message.channel.id];
