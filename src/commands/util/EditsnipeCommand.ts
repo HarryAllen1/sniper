@@ -27,9 +27,9 @@ export default class EditsnipeCommand extends BaseCommand {
               'New message:',
               `[Jump!](https://discord.com/channels/${message.guild?.id}/${message.channel.id}/${snipe.id})`
             )
-            .setAuthor(snipe.author?.tag ?? '')
+            .setAuthor({ name: snipe.author?.tag ?? '' })
             .setColor('GREEN')
-            .setFooter(`#${(message.channel as TextChannel).name}`)
+            .setFooter({ text: `#${(message.channel as TextChannel).name}` })
             .setTimestamp(snipe.createdAt ? snipe.createdAt : 0)
         : new MessageEmbed()
             .setTitle("There's nothing to snipe!")

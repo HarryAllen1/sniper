@@ -63,9 +63,9 @@ export default class ReactionsnipeCommand extends BaseCommand {
                 snipe.messageURL
               })`
             )
-            .setAuthor(snipe.user?.tag ?? '')
+            .setAuthor({ name: snipe.user?.tag ?? '' })
             .setColor('RANDOM')
-            .setFooter(`#${(message.channel as TextChannel).name}`)
+            .setFooter({ text: `#${(message.channel as TextChannel).name}` })
             .setTimestamp(snipe.createdAt)
         : { title: "There's nothing to snipe!" }
     );
