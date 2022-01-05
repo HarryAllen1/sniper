@@ -18,6 +18,7 @@ export default class EvalCommand extends BaseCommand {
   async run(client: DiscordClient, message: Message, args: Array<string>) {
     if (message.author.id === '696554549418262548') {
       try {
+        const util = await import('node:util');
         const userImport = await import('../../utils/helpers/user.js');
         // eslint-disable-next-line @typescript-eslint/no-unused-vars -- its for the eval; it wont be used until the command is actually used and whatnot idk
         const addCoinsToTotal = userImport.addCoinsToTotal;

@@ -54,7 +54,7 @@ export class Paginator {
    * @param {StartOptions} options
    * @returns {Promise<Message>}
    */
-  async start({ message, time = 30000 }: StartOptions): Promise<void> {
+  async start({ message, time = 30000 }: StartOptions): Promise<Message> {
     const msg = await message.reply({
       ...(this.getPage(0) as any),
     });
@@ -68,6 +68,7 @@ export class Paginator {
     });
     collector.on('collect', (i) => this.onClicked(i, collector));
     collector.on('end', () => this.onEnd(msg));
+    return msg;
   }
 
   /**

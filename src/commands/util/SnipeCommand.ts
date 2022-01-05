@@ -116,7 +116,10 @@ export default class SnipeCommand extends BaseCommand {
       const paginator = new Paginator(
         snipe.embeds.map((e) => ({ embeds: [e] }))
       );
-      await paginator.start({ message });
+      const unSnipe = await paginator.start({ message });
+      unSnipes[message.channel.id] = {
+        msg: unSnipe,
+      };
     } else if (type === 'attachments') {
       if (!snipe.attachments?.length)
         return reply(message, {
@@ -126,7 +129,10 @@ export default class SnipeCommand extends BaseCommand {
       const paginator = new Paginator(
         snipe.attachments.map((a) => ({ content: a }))
       );
-      await paginator.start({ message });
+      const unSnipe = await paginator.start({ message });
+      unSnipes[message.channel.id] = {
+        msg: unSnipe,
+      };
     }
   }
 }
