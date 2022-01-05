@@ -2,6 +2,7 @@ import {
   Emoji,
   GuildEmoji,
   Message,
+  MessageEmbed,
   PartialUser,
   ReactionEmoji,
   User,
@@ -21,6 +22,7 @@ interface SnipeContent {
   messageURL?: string;
   user?: User | PartialUser;
   message?: Message;
+  embeds?: MessageEmbed[];
 }
 
 export interface Snipe {

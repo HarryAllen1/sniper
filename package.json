@@ -1,8 +1,8 @@
 {
   "name": "sniper-bot",
-  "version": "4.1.0",
+  "version": "5.0.0",
   "type": "module",
-  "main": "./out-esm/src/sniper.js",
+  "main": "./start.js",
   "types": "./src/types/types.d.ts",
   "exports": {
     ".": {

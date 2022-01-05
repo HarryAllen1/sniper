@@ -12,7 +12,7 @@ export default class MessageDeleteEvent extends BaseEvent {
   }
 
   async run(client: DiscordClient, message: Message) {
-    if (message.partial || message.author.bot) return; // content is null
+    if (message.partial) return; // content is null
     if (
       message.content.toLowerCase() !== '.pick' &&
       message.guildId === '882695828140073052'
@@ -28,7 +28,8 @@ export default class MessageDeleteEvent extends BaseEvent {
       content: message.content,
       createdAt: message.createdTimestamp,
       attachment: message.attachments.first()?.url,
-      attachments: [...message.attachments.values()].map((a) => a.proxyURL),
+      attachments: [...message.attachments.values()]?.map((a) => a.proxyURL),
+      embeds: message.embeds === [] ? undefined : message.embeds,
       message,
     };
     // const snipeContent: any = {};
