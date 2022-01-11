@@ -7,6 +7,8 @@ import { log } from '../utils/helpers/console.js';
 // import { clientID, token } from '../../slappey.json';
 
 import chalk from 'chalk';
+// import { TextChannel } from 'discord.js';
+// import { sleep } from '../utils/helpers/misc.js';
 
 export default class ReadyEvent extends BaseEvent {
   constructor() {
@@ -23,6 +25,21 @@ export default class ReadyEvent extends BaseEvent {
       type: 'WATCHING',
     });
 
+    // const giveawayEnd = 1641960780;
+    // const timeLeft = giveawayEnd - Date.now();
+    // await sleep(timeLeft);
+    // // setTimeout(() => {
+    // log('test', timeLeft);
+    // (client.channels.cache.get('890058558241116250') as TextChannel)?.send(
+    //   (
+    //     client.channels.cache.get('890058558241116250') as TextChannel
+    //   ).messages.cache
+    //     .get('928139226380402688')
+    //     ?.reactions.cache.get('🎉')
+    //     ?.users.cache.random()
+    //     ?.toString() ?? 'Something went wrong'
+    // );
+    // }, timeLeft);
     // const rest = new REST({ version: '9' }).setToken(token);
 
     // await rest

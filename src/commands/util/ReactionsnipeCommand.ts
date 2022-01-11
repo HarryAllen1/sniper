@@ -22,52 +22,36 @@ export default class ReactionsnipeCommand extends BaseCommand {
       'util',
       ['rsnipe'],
       0,
-      'shows the last removed reaction from a message in this channel'
+      'Shows the last removed reaction from a message in this channel'
     );
   }
 
-  async run(client: DiscordClient, message: Message, args: Array<string>) {
+  async run(client: DiscordClient, message: Message) {
     const snipe = reactionSnipes[message.channel.id];
-    if (args[0] && message.mentions.channels.first()) {
-      const channelSnipe =
-        reactionSnipes[message.mentions.channels.first()?.id ?? ''];
-      if (channelSnipe)
-        await reply(
-          message,
-          channelSnipe
-            ? new MessageEmbed()
-                .setDescription(
-                  `reacted with ${formatEmoji(
-                    channelSnipe.emoji
-                  )} on [this message](${channelSnipe.messageURL})`
-                )
-                .setAuthor(channelSnipe.user?.tag ?? '')
-                .setColor('GREEN')
-                .setFooter(`#${(message.channel as TextChannel).name}`)
-                .setTimestamp(channelSnipe.createdAt)
-            : { title: "There's nothing to snipe!" }
-        );
-      else
-        await reply(message, {
-          title: "That channel doesn't exist.",
-          color: 'RED',
-        });
-      return;
-    }
-    await reply(
-      message,
-      snipe
-        ? new MessageEmbed()
-            .setDescription(
-              `reacted with ${formatEmoji(snipe.emoji)} on [this message](${
-                snipe.messageURL
-              })`
-            )
-            .setAuthor({ name: snipe.user?.tag ?? '' })
-            .setColor('RANDOM')
-            .setFooter({ text: `#${(message.channel as TextChannel).name}` })
-            .setTimestamp(snipe.createdAt)
-        : { title: "There's nothing to snipe!" }
-    );
+    const channelSnipe = snipe;
+    if (channelSnipe)
+      await reply(
+        message,
+        channelSnipe
+          ? new MessageEmbed()
+              .setDescription(
+                `reacted with ${formatEmoji(
+                  channelSnipe.emoji
+                )} on [this message](${channelSnipe.messageURL})`
+              )
+              .setAuthor({ name: channelSnipe.user?.tag ?? '' })
+              .setColor('GREEN')
+              .setFooter({
+                text: `#${(message.channel as TextChannel).name}`,
+              })
+              .setTimestamp(channelSnipe.createdAt)
+          : { title: "There's nothing to snipe!" }
+      );
+    else
+      await reply(message, {
+        title: "That channel doesn't exist.",
+        color: 'RED',
+      });
+    return;
   }
 }

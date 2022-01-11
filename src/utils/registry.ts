@@ -6,6 +6,7 @@ import BaseCommand from './structures/BaseCommand.js';
 import { Collection } from 'discord.js';
 
 import { default as ms } from 'ms';
+import { RESTPostAPIApplicationCommandsJSONBody } from 'discord-api-types/v9';
 
 // interface CommandHelper {
 //   [name: string]: CommandCategory;
@@ -24,6 +25,8 @@ export const helpCommandHelperCollection = new Collection<
   string,
   CommandCategory
 >();
+
+export const interactions: RESTPostAPIApplicationCommandsJSONBody[] = [];
 
 export async function registerCommands(client: DiscordClient, dir = '') {
   const filePath = path.join(process.cwd(), dir);
@@ -65,6 +68,10 @@ export async function registerCommands(client: DiscordClient, dir = '') {
       command.aliases.forEach((alias: string) => {
         client.commands.set(alias, command);
       });
+
+      if (command.interactionData) {
+        interactions.push(command.interactionData.toJSON());
+      }
     }
   }
 }

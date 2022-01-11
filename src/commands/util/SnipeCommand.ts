@@ -91,7 +91,7 @@ export default class SnipeCommand extends BaseCommand {
           : {
               title: "There's nothing to snipe!",
               description:
-                'Deleted messages can only be sniped within 15 minutes of deletion.',
+                'Deleted messages can only be sniped within 1 hour of deletion.',
               color: 'RED',
             },
 

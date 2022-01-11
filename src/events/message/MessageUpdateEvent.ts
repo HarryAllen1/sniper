@@ -31,7 +31,7 @@ export default class MessageUpdateEvent extends BaseEvent {
         createdAt: newMessage.editedTimestamp,
         id: newMessage.id,
       };
-      await sleep(ms('15m'));
+      await sleep(ms('1h'));
 
       if (
         editSnipes[oldMessage.channel.id]?.createdAt ===

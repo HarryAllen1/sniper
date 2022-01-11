@@ -30,7 +30,7 @@ export default class MessageReactionRemoveEvent extends BaseEvent {
       messageURL: reaction.message.url,
       createdAt: reaction.message.createdTimestamp,
     };
-    await sleep(ms('15m'));
+    await sleep(ms('1h'));
 
     if (
       reactionSnipes[reaction.message.channel.id]?.createdAt ===

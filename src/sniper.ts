@@ -11,7 +11,11 @@ admin.initializeApp({
 
 export const db = getFirestore();
 
-import { registerCommands, registerEvents } from './utils/registry.js';
+import {
+  interactions,
+  registerCommands,
+  registerEvents,
+} from './utils/registry.js';
 import DiscordClient from './client/client.js';
 import { Intents } from 'discord.js';
 
@@ -24,6 +28,8 @@ export const slappeyJSON = JSON.parse(
 import { AutoPoster } from 'topgg-autoposter';
 import { readFileSync } from 'fs';
 import fetch from 'node-fetch';
+import { Routes } from 'discord-api-types/v9';
+import { REST } from '@discordjs/rest';
 
 // polyfill the fetch api
 global.fetch = fetch as any;
@@ -59,6 +65,16 @@ export const main = async (): Promise<void> => {
 
     await registerCommands(client, './out-esm/src/commands');
     await registerEvents(client, './out-esm/src/events');
+    const rest = new REST({ version: '9' }).setToken(slappeyJSON.token);
+    try {
+      console.log('Registering interactions....');
+      await rest.put(Routes.applicationCommands(slappeyJSON.clientID), {
+        body: interactions,
+      });
+      console.log('Interactions registered.');
+    } catch (error) {
+      console.log(error);
+    }
     await client.login(slappeyJSON.token);
   } catch (error) {
     console.error(error);

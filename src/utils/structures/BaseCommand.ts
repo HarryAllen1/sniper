@@ -6,6 +6,7 @@ import {
   PermissionString,
 } from 'discord.js';
 import DiscordClient from '../../client/client.js';
+import { SlashCommandBuilder } from '@discordjs/builders';
 
 interface ExtraCommandOptions {
   cooldownMessage?: string;
@@ -40,6 +41,8 @@ export default abstract class BaseCommand {
 
   message?: Message;
   client!: Client;
+
+  interactionData?: SlashCommandBuilder;
 
   get name(): string {
     return this._name;

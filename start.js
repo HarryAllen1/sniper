@@ -16,10 +16,10 @@ const start = async () => {
   }
 };
 start();
-process.on('uncaughtException', (a, b) => {
-  console.log(
-    'HAHAHHAHAHAHAHAHAHAHHAH the bot crashed',
-    `Error code: ${a.name}: ${a.message}\n`,
-    `whatever "b" is: ${b}`
-  );
-});
+// process.on('uncaughtException', (a, b) => {
+//   console.log(
+//     'HAHAHHAHAHAHAHAHAHAHHAH the bot crashed',
+//     `Error code: ${a.name}: ${a.message}\n`,
+//     `whatever "b" is: ${b}`
+//   );
+// });
