@@ -7,13 +7,14 @@ import { log } from '../../utils/helpers/console.js';
 import { sleep } from '../../utils/helpers/misc.js';
 import ms from 'ms';
 
+
 export default class MessageUpdateEvent extends BaseEvent {
   constructor() {
     super('messageUpdate');
   }
 
   async run(client: DiscordClient, oldMessage: Message, newMessage: Message) {
-    if (oldMessage.partial || oldMessage.author.bot) return; // content is null
+    if (oldMessage.partial) return; // content is null
     if (oldMessage.content !== newMessage.content) {
       if (oldMessage.guildId === '882695828140073052')
         log(

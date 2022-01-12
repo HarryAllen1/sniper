@@ -15,8 +15,15 @@ export default class EditsnipeCommand extends BaseCommand {
     );
   }
 
-  async run(client: DiscordClient, message: Message) {
+  async run(client: DiscordClient, message: Message): Promise<any> {
     const snipe = editSnipes[message.channel.id];
+    if (!snipe)
+      return reply(message, {
+        title: "There's nothing to snipe!",
+        description:
+          'Deleted messages can only be sniped within 1 hour of deletion.',
+        color: 'RED',
+      });
 
     await reply(
       message,

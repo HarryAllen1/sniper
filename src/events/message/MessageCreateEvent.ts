@@ -134,6 +134,16 @@ export default class MessageCreateEvent extends BaseEvent {
         setTimeout(() => timeStamps.delete(message.author.id), cooldownAmount);
         if (command) {
           command.client = client;
+          if (
+            command.category === 'restricted' &&
+            message.author.id !== harrysDiscordID
+          ) {
+            reply(message, {
+              title: 'This command is restricted.',
+              color: 'RED',
+            });
+            return;
+          }
           for (const permission of command?.permissionsRequired ?? [
             'SEND_MESSAGES',
             'READ_MESSAGE_HISTORY',
