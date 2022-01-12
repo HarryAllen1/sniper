@@ -117,7 +117,7 @@ export class Paginator {
    */
   async onEnd(message: Message): Promise<void> {
     this.row.components.forEach((component) => component.setDisabled(true));
-    await message.edit({ components: [this.row] });
+    if (message) await message.edit({ components: [this.row] });
   }
 
   /**
