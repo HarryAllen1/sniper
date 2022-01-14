@@ -6,7 +6,7 @@ import { reply } from '../../utils/helpers/message.js';
 export default class VoteCommand extends BaseCommand {
   constructor() {
     super(
-      'vote',
+      'vote2',
       'util',
       [],
       5000,
