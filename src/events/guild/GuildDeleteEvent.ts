@@ -21,6 +21,27 @@ export default class GuildDeleteEvent extends BaseEvent {
         `Left server ${guild.name}. Now in ${client.guilds.cache.size} guilds.`
       )
     );
-    client.users.cache.get(harrysDiscordID)?.send('left guild ' + guild.name);
+    const owner = await guild.fetchOwner({ force: true });
+
+    client.users.cache.get(harrysDiscordID)?.send({
+      content: `Now in ${client.guilds.cache.size} guilds.`,
+      embeds: [
+        {
+          title: 'Removed from Guild',
+          description: [
+            `**Guild Name:** ${guild.name}`,
+            `**Guild ID:** ${guild.id}`,
+            `**Guild Owner:** ${owner.user.tag} [<@${owner.user.id}>]`,
+            `**Guild Member Count:** ${guild.memberCount.toLocaleString()}`,
+          ].join('\n'),
+          image: {
+            url:
+              guild.iconURL({ dynamic: true, size: 1024 }) ??
+              owner.user.avatarURL({ dynamic: true, size: 1024 }) ??
+              owner.user.defaultAvatarURL,
+          },
+        },
+      ],
+    });
   }
 }

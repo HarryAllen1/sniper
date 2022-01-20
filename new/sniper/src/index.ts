@@ -1,38 +1,25 @@
-import './lib/setup';
-import { LogLevel, SapphireClient } from '@sapphire/framework';
-import config from '../config.json';
+import { SapphireClient } from '@sapphire/framework';
+import '@sapphire/plugin-hmr/register';
+import '@sapphire/plugin-editable-commands/register';
+import { token } from '../config.json';
 
-const client = new SapphireClient({
-	defaultPrefix: config.defaultPrefix,
-	regexPrefix: /^(hey +)?bot[,! ]/i,
-	caseInsensitiveCommands: true,
-	logger: {
-		level: LogLevel.Debug
-	},
-	shards: 'auto',
-	intents: [
-		'GUILDS',
-		'GUILD_MEMBERS',
-		'GUILD_BANS',
-		'GUILD_EMOJIS_AND_STICKERS',
-		'GUILD_VOICE_STATES',
-		'GUILD_MESSAGES',
-		'GUILD_MESSAGE_REACTIONS',
-		'DIRECT_MESSAGES',
-		'DIRECT_MESSAGE_REACTIONS'
-	]
+export const harrysDiscordID = '696554549418262548';
+
+export const client = new SapphireClient({
+  intents: [
+    'GUILD_MEMBERS',
+    'GUILD_MESSAGES',
+    'GUILD_MESSAGE_REACTIONS',
+    'GUILD_MESSAGE_REACTIONS',
+    'GUILDS',
+  ],
+  defaultPrefix: ['$', '%'],
+  defaultCooldown: {
+    delay: 3000,
+    filteredUsers: [harrysDiscordID],
+  },
 });
 
-const main = async () => {
-	try {
-		client.logger.info('Logging in');
-		await client.login(config.token);
-		client.logger.info('logged in');
-	} catch (error) {
-		client.logger.fatal(error);
-		client.destroy();
-		throw new Error('Something went wrong.');
-	}
-};
-
-main();
+(async () => {
+  client.login(token);
+})();

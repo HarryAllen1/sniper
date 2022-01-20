@@ -1,12 +1,32 @@
 {
-	"extends": "@sapphire/ts-config",
-	"compilerOptions": {
-		"typeRoots": ["node_modules/@types"],
-		// "rootDir": "src",
-		"sourceMap": false,
-		"outDir": "dist",
-		"tsBuildInfoFile": "dist/.tsbuildinfo",
-		"resolveJsonModule": true
-	},
-	"include": ["src"]
+  "compilerOptions": {
+    "typeRoots": ["node_modules/@types"],
+    "outDir": "out",
+    "allowSyntheticDefaultImports": true,
+    "alwaysStrict": true,
+    "emitDecoratorMetadata": true,
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "forceConsistentCasingInFileNames": true,
+    "importHelpers": true,
+    "importsNotUsedAsValues": "error",
+    "incremental": true,
+    "lib": [
+      "esnext"
+    ],
+    "module": "CommonJS",
+    "moduleResolution": "Node",
+    "noEmitHelpers": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitReturns": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "preserveConstEnums": true,
+    "pretty": true,
+    "removeComments": false,
+    "resolveJsonModule": true,
+    "strict": true,
+    "target": "ES2019",
+    "useDefineForClassFields": true
+  }
 }

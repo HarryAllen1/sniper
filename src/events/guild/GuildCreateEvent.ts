@@ -4,6 +4,7 @@ import BaseEvent from '../../utils/structures/BaseEvent.js';
 import DiscordClient from '../../client/client.js';
 import { log } from '../../utils/helpers/console.js';
 import chalk from 'chalk';
+import { harrysDiscordID } from '../../sniper.js';
 
 export default class GuildCreateEvent extends BaseEvent {
   constructor() {
@@ -15,11 +16,28 @@ export default class GuildCreateEvent extends BaseEvent {
       name: `$help in ${client.guilds.cache.size} servers`,
       type: 'WATCHING',
     });
-    client.users.cache
-      .get('696554549418262548')
-      ?.send(
-        'Joined new guild. Now in ' + client.guilds.cache.size + ' guilds.'
-      );
+    const owner = await guild.fetchOwner({ force: true });
+
+    client.users.cache.get(harrysDiscordID)?.send({
+      content: `Now in ${client.guilds.cache.size} guilds.`,
+      embeds: [
+        {
+          title: 'Added to Guild',
+          description: [
+            `**Guild Name:** ${guild.name}`,
+            `**Guild ID:** ${guild.id}`,
+            `**Guild Owner:** ${owner.user.tag} [<@${owner.user.id}>]`,
+            `**Guild Member Count:** ${guild.memberCount.toLocaleString()}`,
+          ].join('\n'),
+          image: {
+            url:
+              guild.iconURL({ dynamic: true, size: 1024 }) ??
+              owner.user.avatarURL({ dynamic: true, size: 1024 }) ??
+              owner.user.defaultAvatarURL,
+          },
+        },
+      ],
+    });
     log(
       chalk.green(
         `Joined guild ${guild.name}. Now in ${client.guilds.cache.size} guilds.`
