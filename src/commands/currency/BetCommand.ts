@@ -29,6 +29,12 @@ export default class BetCommand extends BaseCommand {
         color: 'RED',
         description: 'You must bet a real number',
       });
+
+    if (bet > 1000000)
+      return reply(message, {
+        title: 'You cannot bet more than 1,000,000 coins',
+        color: 'RED',
+      });
     const userDice = getRandomNumber(1, 6);
     const botDice = getRandomNumber(1, 6);
     const win = userDice > botDice;
