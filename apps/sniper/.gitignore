@@ -1,0 +1,19 @@
+# ignore functions for now
+/functions
+
+/node_modules
+config.json
+slappey.json
+slappey-prod.json
+firebase-credentials.json
+/out
+/out-esm
+/lib
+
+github-credentials.json
+/old/config.json
+
+guilds.json
+
+# log files
+*.log

@@ -1,71 +1,78 @@
-# Sniper
+# Turborepo starter with pnpm
 
-This bot started as a replacement for the Dank Memer `pls snipe` command, but is gradually evolving into a economy bot.
+This is an official starter turborepo.
 
+## What's inside?
 
-## To self host
+This turborepo uses [pnpm](https://pnpm.io) as a packages manager. It includes the following packages/apps:
 
-Prerequisites: Node.JS 16 and NPM (included with Node.JS) must be installed. [Here is a link to the download page.](https://nodejs.org/en/download/current/)
+### Apps and Packages
 
-If you have Git installed:
+- `docs`: a [Next.js](https://nextjs.org) app
+- `web`: another [Next.js](https://nextjs.org) app
+- `ui`: a stub React component library shared by both `web` and `docs` applications
+- `config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
+- `tsconfig`: `tsconfig.json`s used throughout the monorepo
 
-- Run `git clone https://github.com/MajesticString/sniper.git`
-- Run `cd sniper`
-- Run `npm i` to flood your hard drive with files needed for the bot.
-- create a `slappey.json` file, and include the following in it:
+Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
 
-```json
-{
-  "name": "sniper",
-  "language": "typescript",
-  "manager": "npm",
-  "token": "Your token. Can be obtained through https://discord.com/developers/applications . Create an app, head to the bot tab, and hit add a bot. Then, hit copy underneath the token field. ",
-  "prefix": ",,"
-}
+### Utilities
+
+This turborepo has some additional tools already setup for you:
+
+- [TypeScript](https://www.typescriptlang.org/) for static type checking
+- [ESLint](https://eslint.org/) for code linting
+- [Jest](https://jestjs.io) test runner for all things JavaScript
+- [Prettier](https://prettier.io) for code formatting
+
+## Setup
+
+This repository is used in the `npx create-turbo@latest` command, and selected when choosing which package manager you wish to use with your monorepo (PNPM).
+
+### Build
+
+To build all apps and packages, run the following command:
+
+```
+cd my-turborepo
+pnpm run build
 ```
 
-- For most commands, you need firebase. Head to https://console.firebase.google.com/ and run through the process of making a new project.
-- Go to the "firestore" tab in the console once you have created the project and run through the steps of creating a database.
-- Right next to "Project Overview", hit the settings button then head to project settings.
-- Go to "Service Accounts", and under "firebase admin sdk", hit "Generate new private key" and save it in the project root (this folder.)
+### Develop
 
-- run `npm run dev` to start the bot (or `yarn dev` if you have yarn installed.
+To develop all apps and packages, run the following command:
 
-If you don't hav Git installed:
-
-- hit Code > download .zip
-- Extract the files
-- Open a command line (on windows, the app is command prompt)
-
-Windows 11:
-
-- go into the directory with all the files
-- right click "sniper" in the directory bar, and hit copy as text.
-
-Windows 10:
-
-- go into the directory with all the files in file explorer
-- shift-click the url bar and hit "copy as path"
-
-Then:
-
-- in your command prompt, run `cd (then right click in this text field to paste the url.)`
-- Run `npm i` to flood your hard drive with files needed for the bot.
-- create a `slappey.json` file, and include the following in it:
-
-```json
-{
-  "name": "sniper",
-  "language": "typescript",
-  "manager": "npm",
-  "token": "Your token. Can be obtained through https://discord.com/developers/applications . Create an app, head to the bot tab, and hit add a bot. Then, hit copy underneath the token field. ",
-  "prefix": ",,"
-}
+```
+cd my-turborepo
+pnpm run dev
 ```
 
-- For most commands, you need firebase. Head to https://console.firebase.google.com/ and run through the process of making a new project.
-- Go to the "firestore" tab in the console once you have created the project and run through the steps of creating a database.
-- Right next to "Project Overview", hit the settings button then head to project settings.
-- Go to "Service Accounts", and under "firebase admin sdk", hit "Generate new private key" and save it in the project root (this folder.)
+### Remote Caching
 
-- run `npm run dev` to start the bot (or `yarn dev` if you have yarn installed.
+Turborepo can use a technique known as [Remote Caching (Beta)](https://turborepo.org/docs/features/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
+
+By default, Turborepo will cache locally. To enable Remote Caching (Beta) you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup), then enter the following commands:
+
+```
+cd my-turborepo
+pnpx turbo login
+```
+
+This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
+
+Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your turborepo:
+
+```
+pnpx turbo link
+```
+
+## Useful Links
+
+Learn more about the power of Turborepo:
+
+- [Pipelines](https://turborepo.org/docs/features/pipelines)
+- [Caching](https://turborepo.org/docs/features/caching)
+- [Remote Caching (Beta)](https://turborepo.org/docs/features/remote-caching)
+- [Scoped Tasks](https://turborepo.org/docs/features/scopes)
+- [Configuration Options](https://turborepo.org/docs/reference/configuration)
+- [CLI Usage](https://turborepo.org/docs/reference/command-line-reference)

@@ -48,39 +48,35 @@ export default class ClearCommand extends BaseCommand {
       reply(message, {
         title: "I can't clear that many messages",
         description:
-          "the discord api doesn't let me. Number of messages must be below 100.",
+          "The discord api doesn't let me. Number of messages must be below 100.",
         color: 'RED',
       });
       return;
     }
     if (parseInt(args[0]) < 1) {
       reply(message, {
-        title: 'i have to delete at least 1 message',
+        title: 'I have to delete at least 1 message',
         color: 'RED',
       });
       return;
     }
 
-    await message.channel.messages
-      .fetch({ limit: parseInt(args[0]) + 1 })
-      .then(async (messages) => {
-        await (message.channel as TextChannel).bulkDelete(messages);
-        message.channel
-          .send({
-            embeds: [
-              {
-                title: `Deleted ${args[0]} + 1 message.`,
-                description:
-                  'Why +1? because you sent a command. that needs to be deleted.',
-                color: 'GREEN',
-              },
-            ],
-          })
-          .then((message) =>
-            setTimeout(() => {
-              message.delete();
-            }, 5000)
-          );
-      });
+    await (message.channel as TextChannel).bulkDelete(parseInt(args[0]) + 1);
+    message.channel
+      .send({
+        embeds: [
+          {
+            title: `Deleted ${args[0]} + 1 message.`,
+            description:
+              'Why +1? because you sent a command. that needs to be deleted.',
+            color: 'GREEN',
+          },
+        ],
+      })
+      .then((message) =>
+        setTimeout(() => {
+          message.delete();
+        }, 5000)
+      );
   }
 }
