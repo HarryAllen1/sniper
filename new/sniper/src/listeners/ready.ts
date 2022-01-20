@@ -1,11 +1,9 @@
 import type { ListenerOptions, PieceContext } from '@sapphire/framework';
 import { Listener, Store } from '@sapphire/framework';
-import { blue, gray, green, magenta, magentaBright, white, yellow } from 'colorette';
-
-const dev = process.env.NODE_ENV !== 'production';
+import { gray, green, magenta, magentaBright, yellow } from 'colorette';
 
 export class UserEvent extends Listener {
-	private readonly style = dev ? yellow : blue;
+	private readonly style = yellow;
 
 	public constructor(context: PieceContext, options?: ListenerOptions) {
 		super(context, {
@@ -17,13 +15,18 @@ export class UserEvent extends Listener {
 	public run() {
 		this.printBanner();
 		this.printStoreDebugInformation();
+		this.container.client.user?.setActivity({
+			name: 'test',
+			type: 'WATCHING'
+		});
+		this.container.logger.info(this.container.client.user?.username);
 	}
 
 	private printBanner() {
 		const success = green('+');
 
-		const llc = dev ? magentaBright : white;
-		const blc = dev ? magenta : blue;
+		const llc = magentaBright;
+		const blc = magenta;
 
 		const line01 = llc('');
 		const line02 = llc('');
@@ -36,7 +39,7 @@ export class UserEvent extends Listener {
 			String.raw`
 ${line01} ${pad}${blc('1.0.0')}
 ${line02} ${pad}[${success}] Gateway
-${line03}${dev ? ` ${pad}${blc('<')}${llc('/')}${blc('>')} ${llc('DEVELOPMENT MODE')}` : ''}
+${line03}${` ${pad}${blc('<')}${llc('/')}${blc('>')} ${llc('DEVELOPMENT MODE')}`}
 		`.trim()
 		);
 	}

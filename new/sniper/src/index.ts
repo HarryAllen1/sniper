@@ -1,8 +1,9 @@
 import './lib/setup';
 import { LogLevel, SapphireClient } from '@sapphire/framework';
+import config from '../config.json';
 
 const client = new SapphireClient({
-	defaultPrefix: process.env.DEFAULT_PREFIX,
+	defaultPrefix: config.defaultPrefix,
 	regexPrefix: /^(hey +)?bot[,! ]/i,
 	caseInsensitiveCommands: true,
 	logger: {
@@ -25,7 +26,7 @@ const client = new SapphireClient({
 const main = async () => {
 	try {
 		client.logger.info('Logging in');
-		await client.login();
+		await client.login(config.token);
 		client.logger.info('logged in');
 	} catch (error) {
 		client.logger.fatal(error);

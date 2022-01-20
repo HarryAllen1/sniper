@@ -5,7 +5,8 @@ export class UserCommand extends Command {
 	public constructor(context: PieceContext, options: CommandOptions) {
 		super(context, {
 			...options,
-			description: 'ping pong'
+			description: 'ping pong',
+			name: 'ping'
 		});
 	}
 
