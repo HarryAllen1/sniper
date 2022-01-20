@@ -7,7 +7,6 @@ import { log } from '../../utils/helpers/console.js';
 import { sleep } from '../../utils/helpers/misc.js';
 import ms from 'ms';
 
-
 export default class MessageUpdateEvent extends BaseEvent {
   constructor() {
     super('messageUpdate');

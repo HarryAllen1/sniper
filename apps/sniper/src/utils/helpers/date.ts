@@ -1,3 +1,3 @@
-import ms from "ms";
+import ms from 'ms';
 
 export const msToTime = ms;

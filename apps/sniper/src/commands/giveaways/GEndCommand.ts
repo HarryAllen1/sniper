@@ -18,7 +18,7 @@ export default class GEndCommand extends BaseCommand {
     );
   }
 
-  async run(client: DiscordClient, message: Message, args: Array<string>) {
+  async run(client: DiscordClient, message: Message) {
     message.channel.send('gEnd command works');
   }
 }

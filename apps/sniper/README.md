@@ -2,7 +2,6 @@
 
 This bot started as a replacement for the Dank Memer `pls snipe` command, but is gradually evolving into a economy bot.
 
-
 ## To self host
 
 Prerequisites: Node.JS 16 and NPM (included with Node.JS) must be installed. [Here is a link to the download page.](https://nodejs.org/en/download/current/)

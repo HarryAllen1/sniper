@@ -27,12 +27,8 @@ export const slappeyJSON = JSON.parse(
 
 import { AutoPoster } from 'topgg-autoposter';
 import { readFileSync } from 'fs';
-import fetch from 'node-fetch';
 import { Routes } from 'discord-api-types/v9';
 import { REST } from '@discordjs/rest';
-
-// polyfill the fetch api
-global.fetch = fetch as any;
 
 // currently not used
 // const app = express();

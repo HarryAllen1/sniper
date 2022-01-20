@@ -1,4 +1,4 @@
-import { Message, MessageActionRow, MessageButton, Util } from 'discord.js';
+import { Message, MessageActionRow, MessageButton } from 'discord.js';
 import BaseCommand from '../../utils/structures/BaseCommand.js';
 import DiscordClient from '../../client/client.js';
 import ms from 'ms';
@@ -7,7 +7,6 @@ import {
   removeAllComponents,
   reply,
 } from '../../utils/helpers/message.js';
-import { sleep } from '../../utils/helpers/misc.js';
 
 export default class SquidgameCommand extends BaseCommand {
   constructor() {

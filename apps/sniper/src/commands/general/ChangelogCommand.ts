@@ -3,6 +3,7 @@ import BaseCommand from '../../utils/structures/BaseCommand.js';
 import DiscordClient from '../../client/client.js';
 import { GithubCommits } from '../../typings/types.js';
 import { reply } from '../../utils/helpers/message.js';
+import { fetch } from '@sapphire/fetch';
 
 export default class ChangelogCommand extends BaseCommand {
   constructor() {
@@ -21,28 +22,26 @@ export default class ChangelogCommand extends BaseCommand {
   }
 
   async run(client: DiscordClient, message: Message, args: Array<string>) {
-    fetch(
+    fetch<GithubCommits>(
       `https://api.github.com/repos/MajesticString/sniper/commits?per_page=${
         args[0] ? (parseInt(args[0]) > 10 ? '10' : args[0]) : '5'
       }`
-    ).then((json) => {
-      json.json().then((res) => {
-        const data = res as GithubCommits;
-        const toReadableDate = (date: string) => {
-          return new Date(date).toUTCString();
-        };
-        const githubCommitMessages: any[] = [];
-        data.forEach((commit) => {
-          githubCommitMessages.push({
-            name: toReadableDate(commit.commit.author.date),
-            value: commit.commit.message,
-          });
+    ).then((res) => {
+      const data = res as GithubCommits;
+      const toReadableDate = (date: string) => {
+        return new Date(date).toUTCString();
+      };
+      const githubCommitMessages: any[] = [];
+      data.forEach((commit) => {
+        githubCommitMessages.push({
+          name: toReadableDate(commit.commit.author.date),
+          value: commit.commit.message,
         });
-        reply(message, {
-          title: 'Changelog',
-          fields: githubCommitMessages,
-          color: 'WHITE',
-        });
+      });
+      reply(message, {
+        title: 'Changelog',
+        fields: githubCommitMessages,
+        color: 'WHITE',
       });
     });
     // axios

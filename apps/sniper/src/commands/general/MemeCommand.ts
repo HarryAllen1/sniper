@@ -4,6 +4,7 @@ import DiscordClient from '../../client/client.js';
 import randomNumber from '../../utils/helpers/randomNumber.js';
 import { RedditRes } from '../../typings/types.js';
 import { reply } from '../../utils/helpers/message.js';
+import { fetch } from '@sapphire/fetch';
 
 export default class MemeCommand extends BaseCommand {
   constructor() {
@@ -16,10 +17,9 @@ export default class MemeCommand extends BaseCommand {
     // if (memes) {
     //   res = memes;
     // } else {
-    const get = await fetch(
+    const res = await fetch<RedditRes>(
       'https://www.reddit.com/r/memes/top/.json?sort=top&t=day&limit=100'
     );
-    const res = (await get.json()) as RedditRes;
     // setMemes(res);
     // }
 
