@@ -10,7 +10,7 @@ export class SniperClient extends SapphireClient {
 
   public async initDB() {
     initializeApp({
-      credential: cert(await import('../firebase-credentials.json')),
+      credential: cert(require('../firebase-credentials.json')),
       projectId: 'discord-sniper-5c7f0',
     });
     container.db = getFirestore();

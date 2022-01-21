@@ -1,3 +1,10 @@
-const { $ } = require('zx');
+const glob = require('glob');
 
-$`./node_modules/.bin/esbuild \`find . \\( -name '*.ts' -o -name '*.tsx' \\)\` --outdir=out --platform=node`;
+glob('src/**/*.ts', {}, (err, files) => {
+  require('esbuild').buildSync({
+    format: 'cjs',
+    platform: 'node',
+    outdir: 'out',
+    entryPoints: files,
+  });
+});

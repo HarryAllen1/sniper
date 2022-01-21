@@ -1,3 +1,10 @@
-import { $ } from 'zx';
+import glob from 'glob';
 
-$`./node_modules/.bin/esbuild \`find . \\( -name '*.ts' -o -name '*.tsx' \\)\` --outdir=out --platform=node`;
+glob('src/**/*.ts', {}, (err, files) => {
+  (await import('esbuild')).buildSync({
+    format: 'cjs',
+    platform: 'node',
+    outdir: 'out',
+    entryPoints: files,
+  });
+});
