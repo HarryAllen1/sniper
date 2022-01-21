@@ -2,7 +2,6 @@ import { Message } from 'discord.js';
 import BaseCommand from '../../utils/structures/BaseCommand.js';
 import DiscordClient from '../../client/client.js';
 import { reply } from '../../utils/helpers/message.js';
-const { apiKeys } = (await import('../../sniper.js')).slappeyJSON;
 
 import { MWResponse, OxfordRes } from '../../typings/types.js';
 import { fetch } from '@sapphire/fetch';
@@ -16,6 +15,7 @@ export default class DefineCommand extends BaseCommand {
   }
 
   async run(client: DiscordClient, message: Message, args: Array<string>) {
+    const { apiKeys } = (await import('../../sniper.js')).slappeyJSON;
     if (!args[0]) {
       reply(message, { title: 'You must specify a search term', color: 'RED' });
       return;

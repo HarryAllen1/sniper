@@ -59,8 +59,8 @@ export const main = async (): Promise<void> => {
       console.log('topgg autoposter: ' + err.message);
     });
 
-    await registerCommands(client, './out-esm/src/commands');
-    await registerEvents(client, './out-esm/src/events');
+    await registerCommands(client, './out/commands');
+    await registerEvents(client, './out/events');
     const rest = new REST({ version: '9' }).setToken(slappeyJSON.token);
     try {
       console.log('Registering interactions....');

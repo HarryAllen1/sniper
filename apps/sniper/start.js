@@ -1,15 +1,8 @@
-import fs from 'fs';
-
-if (!fs.existsSync('./out-esm/src')) {
-  $`npm run build`;
-}
-import { $ } from 'zx';
-
 // process.stdin.resume();
 
 const start = async () => {
   try {
-    (await import('./out-esm/src/sniper.js')).main();
+    (await import('./out/sniper.js')).main();
   } catch (err) {
     console.error(err);
     // start();

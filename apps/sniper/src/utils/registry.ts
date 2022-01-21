@@ -41,8 +41,7 @@ export async function registerCommands(client: DiscordClient, dir = '') {
       helpCommandHelperCollection.set(file, { commands: [] });
     }
     if (file.endsWith('Command.js') || file.endsWith('Command.ts')) {
-      const Command = (await import('../../../' + path.join(dir, file)))
-        .default;
+      const Command = (await import('../../' + path.join(dir, file))).default;
       const command = new Command() as BaseCommand;
 
       // if (!command.permissionsRequired) {
@@ -83,9 +82,7 @@ export async function registerEvents(client: DiscordClient, dir = '') {
     const stat = await fs.lstat(path.join(filePath, file));
     if (stat.isDirectory()) registerEvents(client, path.join(dir, file));
     if (file.endsWith('Event.js') || file.endsWith('Event.ts')) {
-      const { default: Event } = await import(
-        '../../../' + path.join(dir, file)
-      );
+      const { default: Event } = await import('../../' + path.join(dir, file));
       const event = new Event() as BaseEvent;
       client.events.set(event.name, event);
       client.on(event.name, event.run.bind(event, client));

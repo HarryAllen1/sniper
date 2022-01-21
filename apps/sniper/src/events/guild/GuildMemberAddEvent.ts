@@ -24,6 +24,13 @@ export default class GuildMemberAddEvent extends BaseEvent {
     }
     // const invites = await member.guild.invites.fetch();
     // console.log(invites);
+    if (member.guild.id === '882695828140073052') {
+      const channel = client.channels.cache.get('891408397570818098');
+
+      if (channel?.isVoice()) {
+        channel.setName(`👥 members: ${channel.guild.memberCount}`);
+      }
+    }
     setTimeout(() => {
       if (member.guild.id === '882695828140073052' && !member.user.bot)
         sendMessageInBorderSecurity(client, {

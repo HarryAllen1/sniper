@@ -29,7 +29,7 @@ export default class MessageDeleteEvent extends BaseEvent {
       createdAt: message.createdTimestamp,
       attachment: message.attachments.first()?.url,
       attachments: [...message.attachments.values()]?.map((a) => a.proxyURL),
-      embeds: message.embeds === [] ? undefined : message.embeds,
+      embeds: Array.isArray(message.embeds) ? undefined : message.embeds,
       message,
     };
     // const snipeContent: any = {};

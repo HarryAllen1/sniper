@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "baseUrl": "./out",
     "typeRoots": ["node_modules/@types"],
     "outDir": "out",
     "allowSyntheticDefaultImports": true,
@@ -26,7 +27,11 @@
     "removeComments": false,
     "resolveJsonModule": true,
     "strict": true,
-    "target": "ES2019",
-    "useDefineForClassFields": true
-  }
+    "target": "ES2021",
+    "useDefineForClassFields": true,
+    "paths": {
+      "$lib/*": ["lib/*"]
+    }
+  },
+  "include":["src"],
 }
