@@ -42,7 +42,7 @@ export default class SnipeCommand extends BaseCommand {
     if (
       !snipe.content &&
       snipe.embeds &&
-      snipe.embeds !== [] &&
+      !Array.isArray(snipe.embeds) &&
       snipe.embeds[0] &&
       !args[0]
     )
