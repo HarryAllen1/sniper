@@ -22,7 +22,11 @@
     "skipLibCheck": true,
 
     "allowSyntheticDefaultImports": true,
-    "experimentalDecorators": true
+    "experimentalDecorators": true,
+    "baseUrl": "src",
+    "paths": {
+      "#lib/*": ["./utils/helpers/*"]
+    }
   },
   "exclude": ["out-esm/", "out/", "old/", "lib/"],
   "include": ["./firebase-credentials.json", "src/"]

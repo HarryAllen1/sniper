@@ -104,12 +104,22 @@ export const reply = async (
   }
 };
 
-export const send = async (
+export async function send(
+  messageOrChannel: TextChannel,
+  embed: MessageEmbed | MessageEmbedOptions,
+  otherOptions: ReplyMessageOptions
+): Promise<TextChannel>;
+export async function send(
+  messageOrChannel: Message,
+  embed: MessageEmbed | MessageEmbedOptions,
+  otherOptions: ReplyMessageOptions
+): Promise<Message>;
+export async function send(
   messageOrChannel: Message | TextChannel,
   embed: MessageEmbed | MessageEmbedOptions,
 
   otherOptions: ReplyMessageOptions = {}
-): Promise<Message | undefined> => {
+): Promise<Message | TextChannel | undefined> {
   const {
     files,
     attachments,
@@ -145,7 +155,7 @@ export const send = async (
         "I can't send messages in that channel."
       );
     }
-  } else {
+  } else if (messageOrChannel instanceof TextChannel) {
     if (
       messageOrChannel
         // eslint-disable-next-line @typescript-eslint/no-non-null-asserted-optional-chain, @typescript-eslint/no-non-null-assertion -- You kind of have to do this
@@ -168,7 +178,7 @@ export const send = async (
       return sentMessage;
     }
   }
-};
+}
 
 export const disableAllComponents = (message: Message) => {
   if (!message.components && !message.components[0]) return message;
