@@ -18,7 +18,7 @@
   "scripts": {
     "dev": "npm run build && node start.js",
     "start": "npm run build && node start.js",
-    "build": "rm -rf ./out/ && node build.js",
+    "build": "rm -rf ./out/ && swc src -d out",
     "lint": "eslint . --ext .ts,.js",
     "format": "prettier --write ."
   },
@@ -50,6 +50,8 @@
   "devDependencies": {
     "@firebase/app-compat": "^0.1.13",
     "@firebase/app-types": "^0.7.0",
+    "@swc/cli": "^0.1.55",
+    "@swc/core": "^1.2.133",
     "@types/body-parser": "^1.19.2",
     "@types/lodash-es": "^4.17.5",
     "@types/ms": "^0.7.31",
@@ -58,11 +60,9 @@
     "@types/sharp": "^0.29.5",
     "@typescript-eslint/eslint-plugin": "^5.9.1",
     "@typescript-eslint/parser": "^5.9.1",
-    "esbuild": "^0.14.12",
     "eslint": "^8.6.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-node": "^11.1.0",
-    "glob": "^7.2.0",
     "nodemon": "^2.0.15",
     "pnpm": "^6.26.0",
     "prettier": "^2.5.1",
