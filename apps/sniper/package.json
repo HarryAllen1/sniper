@@ -2,7 +2,7 @@
   "name": "sniper-bot",
   "version": "5.0.0",
   "type": "module",
-  "main": "./start.js",
+  "main": "./out/sniper.js",
   "types": "./src/types/types.d.ts",
   "exports": {
     ".": {
@@ -19,7 +19,7 @@
     "dev": "tsup --watch --onSuccess \"node .\"",
     "build": "tsup",
     "watch": "tsup --watch",
-    "start": "node out/index.js",
+    "start": "node out/sniper.js",
     "lint": "eslint . --ext .ts,.js",
     "format": "prettier --write ."
   },
