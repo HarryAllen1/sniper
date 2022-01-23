@@ -29,5 +29,5 @@
     }
   },
   "exclude": ["out-esm/", "out/", "old/", "lib/"],
-  "include": ["./firebase-credentials.json", "src/"]
+  "include": ["./firebase-credentials.json", "src/", "tsup.config.ts"]
 }
