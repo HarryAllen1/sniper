@@ -2,7 +2,7 @@ import { ApplyOptions } from '@sapphire/decorators';
 import { Args, Command } from '@sapphire/framework';
 import { reply } from '@sapphire/plugin-editable-commands';
 import type { Message } from 'discord.js';
-import { snipes } from '#lib/snipes.js';
+import { snipes } from '../../lib/snipes.js';
 
 @ApplyOptions<Command.Options>({
   name: 'snipe',

@@ -33,6 +33,14 @@ import { REST } from '@discordjs/rest';
 // currently not used
 // const app = express();
 
+process.on('uncaughtException', (a, b) => {
+  console.error(
+    'HAHAHHAHAHAHAHAHAHAHHAH the bot crashed',
+    `Error code: ${a.name}: ${a.message}\n`,
+    `whatever "b" is: ${b}`
+  );
+});
+
 export const FIREBASE_PROJECT_ID = firebaseCredentials.project_id;
 export const harrysDiscordID = '696554549418262548';
 

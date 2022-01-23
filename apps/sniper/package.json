@@ -16,9 +16,10 @@
     "url": "https://github.com/MajesticString/sniper.git"
   },
   "scripts": {
-    "dev": "npm run build && node start.js",
-    "start": "npm run build && node start.js",
-    "build": "rm -rf ./out/ && swc src -d out",
+    "dev": "tsup --watch --onSuccess \"node .\"",
+    "build": "tsup",
+    "watch": "tsup --watch",
+    "start": "node out/index.js",
     "lint": "eslint . --ext .ts,.js",
     "format": "prettier --write ."
   },
@@ -50,8 +51,6 @@
   "devDependencies": {
     "@firebase/app-compat": "^0.1.13",
     "@firebase/app-types": "^0.7.0",
-    "@swc/cli": "^0.1.55",
-    "@swc/core": "^1.2.133",
     "@types/body-parser": "^1.19.2",
     "@types/lodash-es": "^4.17.5",
     "@types/ms": "^0.7.31",
@@ -68,6 +67,7 @@
     "prettier": "^2.5.1",
     "terser": "^5.10.0",
     "ts-node": "^10.4.0",
+    "tsup": "^5.11.11",
     "typescript": "^4.6.0-dev.20220112",
     "zx": "^4.2.0"
   },

@@ -12,6 +12,7 @@
     "importHelpers": true,
     "importsNotUsedAsValues": "error",
     "incremental": true,
+    "tsBuildInfoFile": ".tsbuildinfo",
     "lib": ["esnext"],
     "module": "CommonJS",
     "moduleResolution": "Node",
@@ -26,10 +27,7 @@
     "resolveJsonModule": true,
     "strict": true,
     "target": "ES2021",
-    "useDefineForClassFields": true,
-    "paths": {
-      "#lib/*": ["lib/*"]
-    }
+    "useDefineForClassFields": true
   },
   "include": ["src"]
 }
