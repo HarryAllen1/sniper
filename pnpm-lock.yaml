@@ -62,7 +62,7 @@ importers:
   apps/sniper:
     specifiers:
       '@discordjs/builders': ^0.11.0
-      '@discordjs/rest': ^0.2.0-canary.0
+      '@discordjs/rest': ^0.3.0
       '@discordjs/voice': ^0.8.0
       '@firebase/app-compat': ^0.1.13
       '@firebase/app-types': ^0.7.0
@@ -107,7 +107,7 @@ importers:
       zx: ^4.2.0
     dependencies:
       '@discordjs/builders': 0.11.0
-      '@discordjs/rest': 0.2.0-canary.0
+      '@discordjs/rest': 0.3.0
       '@discordjs/voice': 0.8.0
       '@sapphire/fetch': 2.0.4
       '@sapphire/framework': 2.3.0
@@ -254,14 +254,14 @@ packages:
       - supports-color
     dev: false
 
-  /@discordjs/rest/0.2.0-canary.0:
-    resolution: {integrity: sha512-jOxz1aqTEzn9N0qaJcZbHz6FbA0oq+vjpXUKkQzgfMihO6gC+kLlpRnFqG25T/aPYbjaR1UM/lGhrGBB1dutqg==}
-    engines: {node: '>=16.0.0'}
+  /@discordjs/rest/0.3.0:
+    resolution: {integrity: sha512-F9aeP3odlAlllM1ciBZLdd+adiAyBj4VaZBejj4UMj4afE2wfCkNTGvYYiRxrXUE9fN7e/BuDP2ePl0tVA2m7Q==}
+    engines: {node: '>=16.9.0'}
     dependencies:
-      '@discordjs/collection': 0.3.2
+      '@discordjs/collection': 0.4.0
       '@sapphire/async-queue': 1.1.9
       '@sapphire/snowflake': 3.0.1
-      discord-api-types: 0.25.2
+      discord-api-types: 0.26.1
       form-data: 4.0.0
       node-fetch: 2.6.7
       tslib: 2.3.1
@@ -2489,11 +2489,6 @@ packages:
     engines: {node: '>=8'}
     dependencies:
       path-type: 4.0.0
-
-  /discord-api-types/0.25.2:
-    resolution: {integrity: sha512-O243LXxb5gLLxubu5zgoppYQuolapGVWPw3ll0acN0+O8TnPUE2kFp9Bt3sTRYodw8xFIknOVxjSeyWYBpVcEQ==}
-    engines: {node: '>=12'}
-    dev: false
 
   /discord-api-types/0.26.1:
     resolution: {integrity: sha512-T5PdMQ+Y1MEECYMV5wmyi9VEYPagEDEi4S0amgsszpWY0VB9JJ/hEvM6BgLhbdnKky4gfmZEXtEEtojN8ZKJQQ==}
