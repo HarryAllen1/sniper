@@ -61,7 +61,7 @@ importers:
 
   apps/sniper:
     specifiers:
-      '@discordjs/builders': ^0.11.0
+      '@discordjs/builders': ^0.12.0
       '@discordjs/rest': ^0.2.0-canary.0
       '@discordjs/voice': ^0.8.0
       '@firebase/app-compat': ^0.1.13
@@ -106,7 +106,7 @@ importers:
       typescript: ^4.6.0-dev.20220112
       zx: ^4.2.0
     dependencies:
-      '@discordjs/builders': 0.11.0
+      '@discordjs/builders': 0.12.0
       '@discordjs/rest': 0.2.0-canary.0
       '@discordjs/voice': 0.8.0
       '@sapphire/fetch': 2.0.4
@@ -218,6 +218,17 @@ packages:
   /@discordjs/builders/0.11.0:
     resolution: {integrity: sha512-ZTB8yJdJKrKlq44dpWkNUrAtEJEq0gqpb7ASdv4vmq6/mZal5kOv312hQ56I/vxwMre+VIkoHquNUAfnTbiYtg==}
     engines: {node: '>=16.0.0', npm: '>=7.0.0'}
+    dependencies:
+      '@sindresorhus/is': 4.3.0
+      discord-api-types: 0.26.1
+      ts-mixer: 6.0.0
+      tslib: 2.3.1
+      zod: 3.11.6
+    dev: false
+
+  /@discordjs/builders/0.12.0:
+    resolution: {integrity: sha512-Vx2MjUZd6QVo1uS2uWt708Fd6cHWGFblAvbpL5EBO+kLl0BADmPwwvts+YJ/VfSywed6Vsk6K2cEooR/Ytjhjw==}
+    engines: {node: '>=16.9.0'}
     dependencies:
       '@sindresorhus/is': 4.3.0
       discord-api-types: 0.26.1
