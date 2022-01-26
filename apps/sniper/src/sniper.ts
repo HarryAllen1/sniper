@@ -82,6 +82,7 @@ export const main = async (): Promise<void> => {
     } catch (error) {
       console.log(error);
     }
+    console.log('test');
     await client.login(slappeyJSON.token);
   } catch (error) {
     console.error(error);
