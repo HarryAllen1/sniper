@@ -3,7 +3,7 @@ import { Guild, MessageActionRow, MessageButton } from 'discord.js';
 import BaseEvent from '../../utils/structures/BaseEvent.js';
 import DiscordClient from '../../client/client.js';
 import { log } from '../../utils/helpers/console.js';
-import chalk from 'colorette';
+import { green } from 'colorette';
 import { harrysDiscordID } from '../../sniper.js';
 
 export default class GuildCreateEvent extends BaseEvent {
@@ -39,7 +39,7 @@ export default class GuildCreateEvent extends BaseEvent {
       ],
     });
     log(
-      chalk.green(
+      green(
         `Joined guild ${guild.name}. Now in ${client.guilds.cache.size} guilds.`
       )
     );

@@ -4,7 +4,7 @@ import BaseEvent from '../../utils/structures/BaseEvent.js';
 import DiscordClient from '../../client/client.js';
 import { sendMessageInBorderSecurity } from '../../utils/helpers/cambridge-server.js';
 import { log } from '../../utils/helpers/console.js';
-import chalk from 'colorette';
+import { greenBright } from 'colorette';
 
 export default class GuildMemberAddEvent extends BaseEvent {
   constructor() {
@@ -14,7 +14,7 @@ export default class GuildMemberAddEvent extends BaseEvent {
   async run(client: DiscordClient, member: GuildMember) {
     if (member.user.id === '893619442712444970') {
       log(
-        chalk.greenBright(
+        greenBright(
           `Joined server ${member.guild.name}. Now in ${client.guilds.cache.size} guilds.`
         )
       );

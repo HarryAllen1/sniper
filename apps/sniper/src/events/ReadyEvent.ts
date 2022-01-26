@@ -6,7 +6,7 @@ import { log } from '../utils/helpers/console.js';
 // import { slashCommands } from '../utils/registry';
 // import { clientID, token } from '../../slappey.json';
 
-import chalk from 'colorette';
+import { green } from 'colorette';
 // import { TextChannel } from 'discord.js';
 // import { sleep } from '../utils/helpers/misc.js';
 
@@ -16,8 +16,8 @@ export default class ReadyEvent extends BaseEvent {
   }
   async run(client: DiscordClient) {
     log(
-      chalk.green(`Logged in as ${client.user?.tag}.`),
-      chalk.green(`Ready in ${client.guilds.cache.size} guilds`)
+      green(`Logged in as ${client.user?.tag}.`),
+      green(`Ready in ${client.guilds.cache.size} guilds`)
     );
 
     client.user?.setActivity({

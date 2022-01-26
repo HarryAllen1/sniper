@@ -3,7 +3,7 @@ import { Guild } from 'discord.js';
 import BaseEvent from '../../utils/structures/BaseEvent.js';
 import DiscordClient from '../../client/client.js';
 import { log } from '../../utils/helpers/console.js';
-import chalk from 'colorette';
+import { redBright } from 'colorette';
 import { harrysDiscordID } from '../../sniper.js';
 
 export default class GuildDeleteEvent extends BaseEvent {
@@ -17,7 +17,7 @@ export default class GuildDeleteEvent extends BaseEvent {
       type: 'WATCHING',
     });
     log(
-      chalk.redBright(
+      redBright(
         `Left server ${guild.name}. Now in ${client.guilds.cache.size} guilds.`
       )
     );
