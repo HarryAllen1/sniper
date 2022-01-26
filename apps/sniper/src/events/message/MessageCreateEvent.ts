@@ -4,7 +4,7 @@ import DiscordClient from '../../client/client.js';
 import { reply } from '../../utils/helpers/message.js';
 import { log } from '../../utils/helpers/console.js';
 
-import chalk from 'chalk';
+import chalk from 'colorette';
 import { getFirestore } from 'firebase-admin/firestore';
 import ms from 'ms';
 import { harrysDiscordID } from '../../sniper.js';
@@ -188,7 +188,7 @@ export default class MessageCreateEvent extends BaseEvent {
               });
             else message.author.send("I can't send messages in that channel.");
           } catch (error) {
-            log(chalk.red(error));
+            log(chalk.red(error as any));
             reply(message, {
               title: 'An error occurred while running this command.',
               description: `Error: ${error}`,

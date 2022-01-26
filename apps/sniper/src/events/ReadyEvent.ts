@@ -6,7 +6,7 @@ import { log } from '../utils/helpers/console.js';
 // import { slashCommands } from '../utils/registry';
 // import { clientID, token } from '../../slappey.json';
 
-import chalk from 'chalk';
+import chalk from 'colorette';
 // import { TextChannel } from 'discord.js';
 // import { sleep } from '../utils/helpers/misc.js';
 
@@ -21,7 +21,8 @@ export default class ReadyEvent extends BaseEvent {
     );
 
     client.user?.setActivity({
-      name: `$help in ${client.guilds.cache.size} servers`,
+      // +2 because of a bug. discord count always seems to be 2 higher so idk
+      name: `$help in ${client.guilds.cache.size + 2} servers`,
       type: 'WATCHING',
     });
 

@@ -29,6 +29,7 @@ import { AutoPoster } from 'topgg-autoposter';
 import { readFileSync } from 'fs';
 import { Routes } from 'discord-api-types/v9';
 import { REST } from '@discordjs/rest';
+import { createColors } from 'colorette';
 
 // currently not used
 // const app = express();
@@ -43,6 +44,8 @@ process.on('uncaughtException', (a, b) => {
 
 export const FIREBASE_PROJECT_ID = firebaseCredentials.project_id;
 export const harrysDiscordID = '696554549418262548';
+
+createColors();
 
 export const client = new DiscordClient({
   intents: [

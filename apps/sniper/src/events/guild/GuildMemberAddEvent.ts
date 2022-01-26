@@ -4,7 +4,7 @@ import BaseEvent from '../../utils/structures/BaseEvent.js';
 import DiscordClient from '../../client/client.js';
 import { sendMessageInBorderSecurity } from '../../utils/helpers/cambridge-server.js';
 import { log } from '../../utils/helpers/console.js';
-import chalk from 'chalk';
+import chalk from 'colorette';
 
 export default class GuildMemberAddEvent extends BaseEvent {
   constructor() {
