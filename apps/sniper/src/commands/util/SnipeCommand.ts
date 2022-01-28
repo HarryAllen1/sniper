@@ -25,10 +25,11 @@ export default class SnipeCommand extends BaseCommand {
     message: Message,
     args: string[]
   ): Promise<any> {
-    let type: 'messages' | 'embeds' | 'attachments' = 'messages';
+    type SnipeType = 'messages' | 'embeds' | 'attachments';
+    let type: SnipeType = 'messages';
     if (args[0] && /^(embeds|attachments|messages)$/i.test(args[0]))
       // we know that its the same because of the regex test.
-      type = args[0] as 'messages' | 'embeds' | 'attachments';
+      type = args[0] as SnipeType;
 
     const snipe = snipes[message.channel.id];
     if (!snipe)
@@ -42,7 +43,7 @@ export default class SnipeCommand extends BaseCommand {
     if (
       !snipe.content &&
       snipe.embeds &&
-      !Array.isArray(snipe.embeds) &&
+      Array.isArray(snipe.embeds) &&
       snipe.embeds[0] &&
       !args[0]
     )
