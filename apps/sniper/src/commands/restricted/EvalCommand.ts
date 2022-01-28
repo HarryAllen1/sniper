@@ -8,7 +8,7 @@ import { inspect } from 'node:util';
 import * as userImport from '../../utils/helpers/user.js';
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import * as snipes from '../util/snipes.js';
+import * as snipesImport from '../util/snipes.js';
 
 export default class EvalCommand extends BaseCommand {
   constructor() {
@@ -93,6 +93,8 @@ export default class EvalCommand extends BaseCommand {
       const setTotalCoins = userImport.setTotalCoins;
       // eslint-disable-next-line @typescript-eslint/no-unused-vars -- its for the eval; it wont be used until the command is actually used and whatnot idk
       const util = await import('node:util');
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars -- its for the eval; it wont be used until the command is actually used and whatnot idk
+      const snipes = snipesImport;
       // eslint-disable-next-line no-eval
       result = eval(code);
     } catch (error) {
