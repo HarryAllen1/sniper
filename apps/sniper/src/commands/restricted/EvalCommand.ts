@@ -5,6 +5,10 @@ import { Type } from '@sapphire/type';
 import { reply } from '../../utils/helpers/message.js';
 import { isThenable, codeBlock } from '@sapphire/utilities';
 import { inspect } from 'node:util';
+import * as userImport from '../../utils/helpers/user.js';
+
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import * as snipes from '../util/snipes.js';
 
 export default class EvalCommand extends BaseCommand {
   constructor() {
@@ -81,15 +85,12 @@ export default class EvalCommand extends BaseCommand {
     let result = null;
 
     try {
-      const userImport = await import('../../utils/helpers/user.js');
       // eslint-disable-next-line @typescript-eslint/no-unused-vars -- its for the eval; it wont be used until the command is actually used and whatnot idk
       const addCoinsToTotal = userImport.addCoinsToTotal;
       // eslint-disable-next-line @typescript-eslint/no-unused-vars -- its for the eval; it wont be used until the command is actually used and whatnot idk
       const getTotalCoins = userImport.getTotalCoins;
       // eslint-disable-next-line @typescript-eslint/no-unused-vars -- its for the eval; it wont be used until the command is actually used and whatnot idk
       const setTotalCoins = userImport.setTotalCoins;
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars -- its for the eval; it wont be used until the command is actually used and whatnot idk
-      const snipes = await import('../util/snipes.js');
       // eslint-disable-next-line @typescript-eslint/no-unused-vars -- its for the eval; it wont be used until the command is actually used and whatnot idk
       const util = await import('node:util');
       // eslint-disable-next-line no-eval
