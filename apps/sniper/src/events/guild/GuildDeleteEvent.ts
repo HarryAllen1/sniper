@@ -34,7 +34,7 @@ export default class GuildDeleteEvent extends BaseEvent {
             `**Guild Name:** ${guild.name}`,
             `**Guild ID:** ${guild.id}`,
             `**Guild Owner:** ${owner?.user.tag} [<@${owner?.user.id}>]`,
-            `**Guild Member Count:** ${guild.memberCount.toLocaleString()}`,
+            `**Guild Member Count:** ${guild.memberCount?.toLocaleString()}`,
           ].join('\n'),
           image: {
             url:
