@@ -20,7 +20,7 @@
 		"eslint-plugin-svelte3": "3.4.0",
 		"prettier": "2.5.1",
 		"prettier-plugin-svelte": "2.6.0",
-		"svelte": "3.46.2",
+		"svelte": "3.46.3",
 		"svelte-adapter-firebase": "^0.13.1",
 		"svelte-check": "2.3.0",
 		"svelte-preprocess": "4.10.2",
