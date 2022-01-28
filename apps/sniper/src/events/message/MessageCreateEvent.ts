@@ -3,7 +3,6 @@ import { Message, Collection, MessageEmbedOptions } from 'discord.js';
 import DiscordClient from '../../client/client.js';
 import { reply } from '../../utils/helpers/message.js';
 import { log } from '../../utils/helpers/console.js';
-
 import { red } from 'colorette';
 import { getFirestore } from 'firebase-admin/firestore';
 import ms from 'ms';
@@ -13,7 +12,6 @@ import { harrysDiscordID } from '../../sniper.js';
 //   getGuildSettings,
 //   setDefaultGuildSettings,
 // } from '../../utils/helpers/fb';
-
 const cooldowns = new Collection<string, Collection<string, number>>();
 // const exCooldowns = new Collection();
 
@@ -129,7 +127,6 @@ export default class MessageCreateEvent extends BaseEvent {
             });
           }
         }
-
         timeStamps.set(message.author.id, currentTime);
         setTimeout(() => timeStamps.delete(message.author.id), cooldownAmount);
         if (command) {

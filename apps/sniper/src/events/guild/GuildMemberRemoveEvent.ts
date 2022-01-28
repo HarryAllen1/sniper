@@ -10,6 +10,11 @@ export default class GuildMemberRemoveEvent extends BaseEvent {
   }
 
   async run(client: DiscordClient, member: GuildMember) {
+    if (member.guild.id === '631138980322344960' && !member.user.bot) {
+      (
+        member.guild.channels.cache.get('631262532677533726') as TextChannel
+      ).send(`${member.user.tag} has left the server.`);
+    }
     if (member.guild.id === '882695828140073052') {
       const fetchedLogs = await member.guild.fetchAuditLogs({
         limit: 1,
