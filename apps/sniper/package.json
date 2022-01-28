@@ -19,7 +19,7 @@
     "dev": "tsup --watch --onSuccess \"node .\"",
     "build": "swc src -d out",
     "watch": "swc src -d out -w",
-    "start": "node start.js",
+    "start": "node .",
     "lint": "eslint . --ext .ts,.js",
     "format": "prettier --write ."
   },

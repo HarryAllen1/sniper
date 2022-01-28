@@ -34,13 +34,7 @@ import { createColors } from 'colorette';
 // currently not used
 // const app = express();
 
-process.on('uncaughtException', (a, b) => {
-  console.error(
-    'HAHAHHAHAHAHAHAHAHAHHAH the bot crashed',
-    `Error code: ${a.name}: ${a.message}\n`,
-    `whatever "b" is: ${b}`
-  );
-});
+process.on('uncaughtException', console.error);
 
 export const FIREBASE_PROJECT_ID = firebaseCredentials.project_id;
 export const harrysDiscordID = '696554549418262548';
@@ -90,3 +84,4 @@ export const main = async (): Promise<void> => {
     client.users.cache.get('696554549418262548')?.send('error');
   }
 };
+main();
