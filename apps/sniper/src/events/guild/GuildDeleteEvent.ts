@@ -21,7 +21,9 @@ export default class GuildDeleteEvent extends BaseEvent {
         `Left server ${guild.name}. Now in ${client.guilds.cache.size} guilds.`
       )
     );
-    const owner = await guild.fetchOwner({ force: true });
+    const owner = await guild
+      .fetchOwner({ force: true })
+      .catch(() => console.log('cant fetch guild owner'));
 
     client.users.cache.get(harrysDiscordID)?.send({
       content: `Now in ${client.guilds.cache.size} guilds.`,
@@ -31,14 +33,14 @@ export default class GuildDeleteEvent extends BaseEvent {
           description: [
             `**Guild Name:** ${guild.name}`,
             `**Guild ID:** ${guild.id}`,
-            `**Guild Owner:** ${owner.user.tag} [<@${owner.user.id}>]`,
+            `**Guild Owner:** ${owner?.user.tag} [<@${owner?.user.id}>]`,
             `**Guild Member Count:** ${guild.memberCount.toLocaleString()}`,
           ].join('\n'),
           image: {
             url:
               guild.iconURL({ dynamic: true, size: 1024 }) ??
-              owner.user.avatarURL({ dynamic: true, size: 1024 }) ??
-              owner.user.defaultAvatarURL,
+              owner?.user.avatarURL({ dynamic: true, size: 1024 }) ??
+              owner?.user.defaultAvatarURL,
           },
         },
       ],

@@ -89,19 +89,19 @@ export class Paginator {
       await interaction.update(this.getPage(0));
     } else if (interaction.customId === 'previous') {
       if (this.currentPage === 0) {
-        interaction.deferUpdate();
+        await interaction.deferUpdate();
         return;
       }
       await interaction.update(this.getPage(this.currentPage - 1));
     } else if (interaction.customId === 'next') {
       if (this.currentPage === this.data.length - 1) {
-        interaction.deferUpdate();
+        await interaction.deferUpdate();
         return;
       }
       await interaction.update(this.getPage(this.currentPage + 1));
     } else if (interaction.customId === 'last') {
       if (this.currentPage === this.data.length - 1) {
-        interaction.deferUpdate();
+        await interaction.deferUpdate();
         return;
       }
       await interaction.update(this.getPage(this.data.length - 1));

@@ -23,7 +23,7 @@ export default class MessageDeleteEvent extends BaseEvent {
         }: ${Util.cleanContent(message.content, message.channel)}`
       );
 
-    snipes[message.channel.id] = {
+    snipes[message.channelId] = {
       author: message.author,
       content: message.content,
       createdAt: message.createdTimestamp,
@@ -48,7 +48,7 @@ export default class MessageDeleteEvent extends BaseEvent {
       snipes[message.channelId] &&
       snipes[message.channelId]?.createdAt === message.createdTimestamp
     ) {
-      delete snipes[message.channel.id];
+      delete snipes[message.channelId];
     }
   }
 }
