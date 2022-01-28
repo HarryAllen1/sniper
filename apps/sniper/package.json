@@ -49,7 +49,7 @@
     "topgg-autoposter": "^2.0.1"
   },
   "devDependencies": {
-    "@firebase/app-compat": "0.1.15",
+    "@firebase/app-compat": "0.1.16",
     "@firebase/app-types": "0.7.0",
     "@swc/cli": "^0.1.55",
     "@swc/core": "^1.2.133",
