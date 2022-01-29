@@ -25,7 +25,7 @@ export default class MessageUpdateEvent extends BaseEvent {
             newMessage.channel
           )}`
         );
-      editSnipes[oldMessage.channel.id] = {
+      editSnipes[oldMessage.channelId] = {
         author: oldMessage.author,
         content: oldMessage.content,
         createdAt: newMessage.editedTimestamp,
@@ -34,10 +34,10 @@ export default class MessageUpdateEvent extends BaseEvent {
       await sleep(ms('1h'));
 
       if (
-        editSnipes[oldMessage.channel.id]?.createdAt ===
+        editSnipes[oldMessage.channelId]?.createdAt ===
         newMessage.editedTimestamp
       ) {
-        delete editSnipes[oldMessage.channel.id];
+        delete editSnipes[oldMessage.channelId];
       }
     }
   }
