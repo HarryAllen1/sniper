@@ -2,7 +2,7 @@ import { Message } from 'discord.js';
 import BaseCommand from '../../utils/structures/BaseCommand.js';
 import DiscordClient from '../../client/client.js';
 import { reply } from '../../utils/helpers/message.js';
-import { default as ms } from 'ms';
+import ms from 'ms';
 import { StringValue } from '../../utils/helpers/misc.js';
 
 export default class TimerCommand extends BaseCommand {
@@ -25,7 +25,7 @@ export default class TimerCommand extends BaseCommand {
     if (
       isNaN(parseInt(args[0])) &&
       !/^(-?(?:\d+)?\.?\d+) *(milliseconds?|msecs?|ms|seconds?|secs?|s|minutes?|mins?|m|hours?|hrs?|h|days?|d|weeks?|w|years?|yrs?|y)?$/i.test(
-        args[0]
+        args.join(' ')
       )
     ) {
       reply(message, {
@@ -39,7 +39,7 @@ export default class TimerCommand extends BaseCommand {
       reply(message, { title: 'Thats not a number' });
     }
 
-    const endDate = ms(args[0] as StringValue);
+    const endDate = ms(args.join(' ') as StringValue);
 
     reply(message, { title: 'Set a timer for ' + args[0] });
     setTimeout(() => {

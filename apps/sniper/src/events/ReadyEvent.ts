@@ -17,7 +17,7 @@ export default class ReadyEvent extends BaseEvent {
   async run(client: DiscordClient) {
     log(
       green(`Logged in as ${client.user?.tag}.`),
-      green(`Ready in ${client.guilds.cache.size} guilds`)
+      green(`Ready in ${client.guilds.cache.size + 2} guilds`)
     );
 
     client.user?.setActivity({
