@@ -9,14 +9,7 @@ import { APIEmbed } from 'discord-api-types/v9';
 import './message.js';
 import ms from 'ms';
 import { sleep, StringValue } from './misc.js';
-import randomNumber from './randomNumber.js';
-
 import { getUserData } from './user.js';
-
-const ads: string[] = [
-  'Join our support server for bot updates and support: https://discord.gg/wsEHfhzk54',
-  'This bot also has an (almost) full currency system. Check out the currency page of the help command for more info.',
-];
 
 export const reply = async (
   message: Message,
@@ -25,7 +18,6 @@ export const reply = async (
   otherOptions: ReplyMessageOptions = {},
   ephemeral?: boolean
 ): Promise<Message> => {
-  const ad = randomNumber(1, 30000000000000, true) === 1;
   if (otherOptions.attachments || otherOptions.files) {
     if (
       !(message.channel as TextChannel)
@@ -64,8 +56,7 @@ export const reply = async (
               },
               files,
               attachments,
-              content:
-                content || ad ? ads[randomNumber(0, ads.length - 1)] : null,
+              content,
               components,
               tts,
               failIfNotExists: false,
