@@ -93,7 +93,20 @@ export async function reply(
       )
       .catch((err) => {
         console.error(err);
-        return message.reply('Failed to fetch user data. Try again later.');
+        return message.reply({
+          embeds: embed instanceof MessageEmbed ? [embed] : [],
+          allowedMentions: {
+            repliedUser: true,
+          },
+          files,
+          attachments,
+          content: typeof embed === 'string' ? embed : content,
+          components,
+          tts,
+          failIfNotExists: false,
+          nonce,
+          stickers,
+        });
       });
   } else {
     return message.author.send(
