@@ -92,7 +92,7 @@ export async function reply(
               })
       )
       .catch((err) => {
-        console.error(err);
+        // console.error(err);
         return message.reply({
           embeds: embed instanceof MessageEmbed ? [embed] : [],
           allowedMentions: {
