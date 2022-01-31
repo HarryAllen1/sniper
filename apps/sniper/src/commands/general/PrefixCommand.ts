@@ -1,8 +1,7 @@
 import { Message } from 'discord.js';
-import BaseCommand from '../../utils/structures/BaseCommand.js';
 import DiscordClient from '../../client/client.js';
-
 import { reply } from '../../utils/helpers/message.js';
+import BaseCommand from '../../utils/structures/BaseCommand.js';
 
 export default class PrefixCommand extends BaseCommand {
   constructor() {
@@ -40,7 +39,9 @@ export default class PrefixCommand extends BaseCommand {
         title: 'Prefixes',
         description: (
           await client.db.getGuildSettings(message.guildId ?? '')
-        )?.prefixes.map((val: string) => `\`${val}\``),
+        )?.prefixes
+          .map((val: string) => `\`${val}\``)
+          .toString(),
       });
     }
     if (args[0] && message.member?.permissions.has('MANAGE_GUILD')) {

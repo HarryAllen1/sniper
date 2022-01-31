@@ -1,3 +1,4 @@
+import { SlashCommandBuilder } from '@discordjs/builders';
 import {
   Client,
   CommandInteraction,
@@ -6,7 +7,6 @@ import {
   PermissionString,
 } from 'discord.js';
 import DiscordClient from '../../client/client.js';
-import { SlashCommandBuilder } from '@discordjs/builders';
 
 interface ExtraCommandOptions {
   cooldownMessage?: string;

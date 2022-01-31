@@ -8,6 +8,7 @@ If you just want basic sniping functionality:
 https://discord.com/api/oauth2/authorize?client_id=893619442712444970&permissions=126016&scope=bot%20applications.commands
 
 ## File structure
+
 ```
 |- apps      // All projects
   |- sniper    // The current live bot

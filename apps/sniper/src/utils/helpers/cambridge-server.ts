@@ -1,7 +1,7 @@
 import {
   Message,
-  MessagePayload,
   MessageOptions,
+  MessagePayload,
   TextChannel,
 } from 'discord.js';
 import DiscordClient from '../../client/client.js';

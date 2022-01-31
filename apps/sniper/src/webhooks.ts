@@ -1,5 +1,5 @@
-import express from 'express';
 import { Webhook } from '@top-gg/sdk';
+import express from 'express';
 import { slappeyJSON } from './sniper.js';
 
 const app = express();

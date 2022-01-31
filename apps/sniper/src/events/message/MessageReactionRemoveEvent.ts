@@ -1,10 +1,10 @@
 // https://discord.js.org/#/docs/main/stable/class/Client?scrollTo=e-messageReactionRemove
 import { GuildMember, MessageReaction, TextChannel, User } from 'discord.js';
-import BaseEvent from '../../utils/structures/BaseEvent.js';
+import ms from 'ms';
 import DiscordClient from '../../client/client.js';
 import { reactionSnipes } from '../../commands/util/snipes.js';
 import { sleep } from '../../utils/helpers/misc.js';
-import ms from 'ms';
+import BaseEvent from '../../utils/structures/BaseEvent.js';
 
 export default class MessageReactionRemoveEvent extends BaseEvent {
   constructor() {
@@ -33,10 +33,10 @@ export default class MessageReactionRemoveEvent extends BaseEvent {
     await sleep(ms('1h'));
 
     if (
-      reactionSnipes[reaction.message.channel.id]?.createdAt ===
+      reactionSnipes[reaction.message.channelId]?.createdAt ===
       reaction.message.createdTimestamp
     ) {
-      delete reactionSnipes[reaction.message.channel.id];
+      delete reactionSnipes[reaction.message.channelId];
     }
   }
 }

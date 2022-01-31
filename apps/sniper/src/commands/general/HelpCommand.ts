@@ -1,3 +1,4 @@
+import { SlashCommandBuilder } from '@discordjs/builders';
 import {
   Message,
   MessageActionRow,
@@ -6,15 +7,14 @@ import {
   MessageSelectOptionData,
   version,
 } from 'discord.js';
-import BaseCommand from '../../utils/structures/BaseCommand.js';
-import DiscordClient from '../../client/client.js';
-import { helpCommandHelperCollection } from '../../utils/registry.js';
-import { reply } from '../../utils/helpers/message.js';
-import ms from 'ms';
-import { capitalizeFirstLetter } from '../../utils/helpers/string.js';
 import { camelCase, startCase } from 'lodash-es';
+import ms from 'ms';
+import DiscordClient from '../../client/client.js';
+import { reply } from '../../utils/helpers/message.js';
 import { Paginator } from '../../utils/helpers/paginator.js';
-import { SlashCommandBuilder } from '@discordjs/builders';
+import { capitalizeFirstLetter } from '../../utils/helpers/string.js';
+import { helpCommandHelperCollection } from '../../utils/registry.js';
+import BaseCommand from '../../utils/structures/BaseCommand.js';
 
 export default class HelpCommand extends BaseCommand {
   constructor() {

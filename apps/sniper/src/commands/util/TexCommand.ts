@@ -1,9 +1,9 @@
 import { Message, MessageAttachment } from 'discord.js';
-import BaseCommand from '../../utils/structures/BaseCommand.js';
-import DiscordClient from '../../client/client.js';
 import 'mathjax';
 import sharp from 'sharp';
+import DiscordClient from '../../client/client.js';
 import { reply } from '../../utils/helpers/message.js';
+import BaseCommand from '../../utils/structures/BaseCommand.js';
 
 export default class TexCommand extends BaseCommand {
   constructor() {

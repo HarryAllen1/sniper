@@ -1,10 +1,10 @@
 // https://discord.js.org/#/docs/main/stable/class/Client?scrollTo=e-guildDelete
-import { Guild } from 'discord.js';
-import BaseEvent from '../../utils/structures/BaseEvent.js';
-import DiscordClient from '../../client/client.js';
-import { log } from '../../utils/helpers/console.js';
 import { redBright } from 'colorette';
+import { Guild } from 'discord.js';
+import DiscordClient from '../../client/client.js';
 import { harrysDiscordID } from '../../sniper.js';
+import { log } from '../../utils/helpers/console.js';
+import BaseEvent from '../../utils/structures/BaseEvent.js';
 
 export default class GuildDeleteEvent extends BaseEvent {
   constructor() {

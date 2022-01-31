@@ -1,10 +1,10 @@
+import { fetch } from '@sapphire/fetch';
 import { Message } from 'discord.js';
-import BaseCommand from '../../utils/structures/BaseCommand.js';
 import DiscordClient from '../../client/client.js';
-import randomNumber from '../../utils/helpers/randomNumber.js';
 import { RedditRes } from '../../typings/types.js';
 import { reply } from '../../utils/helpers/message.js';
-import { fetch } from '@sapphire/fetch';
+import randomNumber from '../../utils/helpers/randomNumber.js';
+import BaseCommand from '../../utils/structures/BaseCommand.js';
 
 export default class MemeCommand extends BaseCommand {
   constructor() {

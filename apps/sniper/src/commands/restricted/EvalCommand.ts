@@ -1,12 +1,11 @@
-import { Message } from 'discord.js';
-import BaseCommand from '../../utils/structures/BaseCommand.js';
-import DiscordClient from '../../client/client.js';
 import { Type } from '@sapphire/type';
-import { reply } from '../../utils/helpers/message.js';
-import { isThenable, codeBlock } from '@sapphire/utilities';
+import { codeBlock, isThenable } from '@sapphire/utilities';
+import { Message } from 'discord.js';
 import { inspect } from 'node:util';
+import DiscordClient from '../../client/client.js';
+import { reply } from '../../utils/helpers/message.js';
 import * as userImport from '../../utils/helpers/user.js';
-
+import BaseCommand from '../../utils/structures/BaseCommand.js';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import * as snipesImport from '../util/snipes.js';
 

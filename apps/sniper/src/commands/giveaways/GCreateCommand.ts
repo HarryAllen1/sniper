@@ -1,8 +1,8 @@
 import { Message } from 'discord.js';
-import BaseCommand from '../../utils/structures/BaseCommand.js';
+import ms from 'ms';
 import DiscordClient from '../../client/client.js';
 import { reply } from '../../utils/helpers/message.js';
-import ms, { StringValue } from 'ms';
+import BaseCommand from '../../utils/structures/BaseCommand.js';
 
 export default class GCreateCommand extends BaseCommand {
   constructor() {
@@ -62,7 +62,7 @@ export default class GCreateCommand extends BaseCommand {
                     description:
                       'Please try again with a valid time. The time must be a number or end with some form of unit (single letter or long-form units are both fine)',
                   });
-                } else time = ms(msg.content as StringValue);
+                } else time = ms(msg.content);
               } else {
                 time = Number(msg.content);
                 await reply(message, {

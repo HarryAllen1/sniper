@@ -1,12 +1,11 @@
-import path from 'node:path';
-import { promises as fs } from 'node:fs';
-import DiscordClient from '../client/client.js';
-import BaseEvent from './structures/BaseEvent.js';
-import BaseCommand from './structures/BaseCommand.js';
-import { Collection } from 'discord.js';
-
-import { default as ms } from 'ms';
 import { RESTPostAPIApplicationCommandsJSONBody } from 'discord-api-types/v9';
+import { Collection } from 'discord.js';
+import { default as ms } from 'ms';
+import { promises as fs } from 'node:fs';
+import path from 'node:path';
+import DiscordClient from '../client/client.js';
+import BaseCommand from './structures/BaseCommand.js';
+import BaseEvent from './structures/BaseEvent.js';
 
 // interface CommandHelper {
 //   [name: string]: CommandCategory;

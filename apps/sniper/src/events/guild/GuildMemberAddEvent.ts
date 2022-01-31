@@ -1,10 +1,10 @@
 // https://discord.js.org/#/docs/main/stable/class/Client?scrollTo=e-guildMemberAdd
+import { greenBright } from 'colorette';
 import { GuildMember } from 'discord.js';
-import BaseEvent from '../../utils/structures/BaseEvent.js';
 import DiscordClient from '../../client/client.js';
 import { sendMessageInBorderSecurity } from '../../utils/helpers/cambridge-server.js';
 import { log } from '../../utils/helpers/console.js';
-import { greenBright } from 'colorette';
+import BaseEvent from '../../utils/structures/BaseEvent.js';
 
 export default class GuildMemberAddEvent extends BaseEvent {
   constructor() {

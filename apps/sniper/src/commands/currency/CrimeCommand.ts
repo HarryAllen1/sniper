@@ -1,17 +1,17 @@
 import { Message } from 'discord.js';
-import BaseCommand from '../../utils/structures/BaseCommand.js';
+import { default as ms } from 'ms';
 import DiscordClient from '../../client/client.js';
+import { msToTime } from '../../utils/helpers/date.js';
+import { reply } from '../../utils/helpers/message.js';
 import { randomNumber } from '../../utils/helpers/randomNumber.js';
 import {
   addCoinsToTotal,
   deleteFieldFromUserData,
   getTotalCoins,
   getUserData,
-  setUserData,
+  setUserData
 } from '../../utils/helpers/user.js';
-import { reply } from '../../utils/helpers/message.js';
-import { msToTime } from '../../utils/helpers/date.js';
-import { default as ms } from 'ms';
+import BaseCommand from '../../utils/structures/BaseCommand.js';
 
 const crimes = [
   'bank robbery',

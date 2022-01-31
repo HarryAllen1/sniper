@@ -1,6 +1,18 @@
+import { REST } from '@discordjs/rest';
+import { createColors } from 'colorette';
+import { Routes } from 'discord-api-types/v9';
+import { Intents } from 'discord.js';
 import admin from 'firebase-admin';
 // @ts-ignore
 import { getFirestore } from 'firebase-admin/firestore';
+import { readFileSync } from 'fs';
+import { AutoPoster } from 'topgg-autoposter';
+import DiscordClient from './client/client.js';
+import {
+  interactions,
+  registerCommands,
+  registerEvents,
+} from './utils/registry.js';
 export const firebaseCredentials = JSON.parse(
   readFileSync('./firebase-credentials.json').toString()
 );
@@ -11,25 +23,11 @@ admin.initializeApp({
 
 export const db = getFirestore();
 
-import {
-  interactions,
-  registerCommands,
-  registerEvents,
-} from './utils/registry.js';
-import DiscordClient from './client/client.js';
-import { Intents } from 'discord.js';
-
 // import express from 'express';
 
 export const slappeyJSON = JSON.parse(
   readFileSync('./slappey-prod.json').toString()
 );
-
-import { AutoPoster } from 'topgg-autoposter';
-import { readFileSync } from 'fs';
-import { Routes } from 'discord-api-types/v9';
-import { REST } from '@discordjs/rest';
-import { createColors } from 'colorette';
 
 // currently not used
 // const app = express();

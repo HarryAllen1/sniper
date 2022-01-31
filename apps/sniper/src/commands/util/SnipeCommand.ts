@@ -1,9 +1,9 @@
 import { Message, MessageEmbed, TextChannel } from 'discord.js';
-import BaseCommand from '../../utils/structures/BaseCommand.js';
 import DiscordClient from '../../client/client.js';
-import { snipes, unSnipes } from './snipes.js';
 import { reply } from '../../utils/helpers/message.js';
 import { Paginator } from '../../utils/helpers/paginator.js';
+import BaseCommand from '../../utils/structures/BaseCommand.js';
+import { snipes, unSnipes } from './snipes.js';
 
 export default class SnipeCommand extends BaseCommand {
   constructor() {

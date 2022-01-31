@@ -1,5 +1,5 @@
+import { GuildMember, Message, User } from 'discord.js';
 import { client } from '../../sniper.js';
-import { User, GuildMember, Message } from 'discord.js';
 
 export const getMentionedUser = (message: Message, args: string[]): User => {
   return (

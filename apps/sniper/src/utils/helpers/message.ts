@@ -1,23 +1,21 @@
+import { APIEmbed } from 'discord-api-types/v9';
 import {
   Message,
   MessageEmbed,
   MessageEmbedOptions,
-  TextChannel,
   ReplyMessageOptions,
+  TextChannel,
 } from 'discord.js';
-import { APIEmbed } from 'discord-api-types/v9';
-import './message.js';
 import ms from 'ms';
 import { sleep, StringValue } from './misc.js';
 import { getUserData } from './user.js';
 
-export const reply = async (
+export async function reply(
   message: Message,
-  embed: MessageEmbed | MessageEmbedOptions | APIEmbed,
-
+  embed: string | MessageEmbed | MessageEmbedOptions | APIEmbed,
   otherOptions: ReplyMessageOptions = {},
   ephemeral?: boolean
-): Promise<Message> => {
+): Promise<Message> {
   if (otherOptions.attachments || otherOptions.files) {
     if (
       !(message.channel as TextChannel)
@@ -32,8 +30,11 @@ export const reply = async (
   }
   const { files, attachments, components, content, tts, nonce, stickers } =
     otherOptions;
-  embed.color ||= 'WHITE';
-  if (embed.footer) embed.footer.text ||= 'Made by ||harry potter||#0014';
+  if (embed instanceof MessageEmbed) {
+    if (!embed.color) embed.setColor('WHITE');
+    if (embed.footer) embed.footer.text ||= 'Made by ||harry potter||#0014';
+  }
+
   if (
     (message.channel as TextChannel)
       // eslint-disable-next-line @typescript-eslint/no-non-null-asserted-optional-chain, @typescript-eslint/no-non-null-assertion -- You kind of have to do this
@@ -43,12 +44,12 @@ export const reply = async (
       // eslint-disable-next-line @typescript-eslint/no-non-null-asserted-optional-chain, @typescript-eslint/no-non-null-assertion
       .permissionsFor(message.guild?.me!)
       .has('EMBED_LINKS')
-  )
-    return getUserData(message?.author?.id || message.member?.id || '').then(
-      (userData) =>
+  ) {
+    return getUserData(message?.author?.id || message.member?.id || '')
+      .then((userData) =>
         message.type !== 'APPLICATION_COMMAND'
           ? message.reply({
-              embeds: [embed],
+              embeds: embed instanceof MessageEmbed ? [embed] : [],
               allowedMentions: {
                 repliedUser: userData?.settings?.mentionAuthorOnReply
                   ? userData.settings?.mentionAuthorOnReply?.value
@@ -56,7 +57,7 @@ export const reply = async (
               },
               files,
               attachments,
-              content,
+              content: typeof embed === 'string' ? embed : content,
               components,
               tts,
               failIfNotExists: false,
@@ -65,7 +66,7 @@ export const reply = async (
             })
           : message
               .reply({
-                embeds: [embed],
+                embeds: embed instanceof MessageEmbed ? [embed] : [],
                 allowedMentions: {
                   repliedUser: userData?.settings?.mentionAuthorOnReply
                     ? userData.settings?.mentionAuthorOnReply?.value
@@ -73,7 +74,7 @@ export const reply = async (
                 },
                 files,
                 attachments,
-                content,
+                content: typeof embed === 'string' ? embed : content,
                 components,
                 tts,
                 failIfNotExists: false,
@@ -89,11 +90,17 @@ export const reply = async (
                 console.error(err);
                 return message.author.send('Something went wrong.');
               })
+      )
+      .catch((err) => {
+        console.error(err);
+        return message.reply('Failed to fetch user data. Try again later.');
+      });
+  } else {
+    return message.author.send(
+      'I do not have the permissions to send messages in that channel. Contact a server admin and tell them to give Sniper the permission to send messages in that channel.'
     );
-  else {
-    return message.author.send("I can't send embeds in that channel.");
   }
-};
+}
 
 export async function send(
   messageOrChannel: TextChannel,

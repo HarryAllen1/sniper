@@ -1,12 +1,11 @@
 import { GuildMember, Message, User } from 'discord.js';
-import BaseCommand from '../../utils/structures/BaseCommand.js';
 import DiscordClient from '../../client/client.js';
-import { reply } from '../../utils/helpers/message.js';
-import { capitalizeFirstLetter } from '../../utils/helpers/string.js';
 import {
   getMentionedMember,
   getMentionedUser,
 } from '../../utils/helpers/mention.js';
+import { reply } from '../../utils/helpers/message.js';
+import BaseCommand from '../../utils/structures/BaseCommand.js';
 
 export default class WhoisCommand extends BaseCommand {
   constructor() {
@@ -35,20 +34,6 @@ export default class WhoisCommand extends BaseCommand {
       });
       return;
     }
-    const activities = member.presence?.activities;
-    let status: string;
-    let activity: string;
-    activities?.forEach((thing) => {
-      if (thing.type === 'CUSTOM') {
-        status = thing.state ?? '';
-      } else {
-        activity = `${capitalizeFirstLetter(thing.type.toLowerCase())} ${
-          thing.name
-        }${thing.details ? `: ${thing.details}` : ''}. ${
-          thing.url ? `[link](${thing.url})` : ''
-        }. Started at ${new Date(thing.createdTimestamp)}`;
-      }
-    });
 
     reply(message, {
       title: `${user.tag}${member.nickname ? `(${member.nickname})` : ''}`,
@@ -97,9 +82,7 @@ export default class WhoisCommand extends BaseCommand {
         {
           name: 'Status',
           value:
-            // @ts-ignore what is the compiler on?
-            status ||
-            "Has no active status, is invisible/offline or is not in the bot's cache.",
+            'Presences cannot be tracked by Sniper since the intent is not enabled, and presences are not crucial for the bot to function. For more info, visit the [Discord article](https://support-dev.discord.com/hc/en-us/articles/360056426994-Gateway-Update-FAQ).',
           inline: true,
         },
         {

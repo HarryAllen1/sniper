@@ -1,9 +1,9 @@
+import { fetch } from '@sapphire/fetch';
 import { Message } from 'discord.js';
-import BaseCommand from '../../utils/structures/BaseCommand.js';
 import DiscordClient from '../../client/client.js';
 import { GithubCommits } from '../../typings/types.js';
 import { reply } from '../../utils/helpers/message.js';
-import { fetch } from '@sapphire/fetch';
+import BaseCommand from '../../utils/structures/BaseCommand.js';
 
 export default class ChangelogCommand extends BaseCommand {
   constructor() {

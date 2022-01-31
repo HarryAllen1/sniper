@@ -1,7 +1,7 @@
 import { Message } from 'discord.js';
-import BaseCommand from '../../utils/structures/BaseCommand.js';
 import DiscordClient from '../../client/client.js';
 import { log } from '../../utils/helpers/console.js';
+import BaseCommand from '../../utils/structures/BaseCommand.js';
 // import { getUserData } from '../../utils/helpers/user.js';
 // import { reply } from '../../utils/helpers/reply.js';
 
