@@ -91,7 +91,7 @@ export async function reply(
                 return message.author.send('Something went wrong.');
               })
       )
-      .catch((err) => {
+      .catch(() => {
         // console.error(err);
         return message.reply({
           embeds: embed instanceof MessageEmbed ? [embed] : [],
