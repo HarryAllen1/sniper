@@ -11,7 +11,7 @@ If you have Git installed:
 - Run `git clone https://github.com/MajesticString/sniper.git`
 - Run `cd sniper`
 - Run `npm i` to flood your hard drive with files needed for the bot.
-- create a `slappey.json` file, and include the following in it:
+- create a `slappey-prod.json` file, and include the following in it:
 
 ```json
 {
@@ -19,7 +19,7 @@ If you have Git installed:
   "language": "typescript",
   "manager": "npm",
   "token": "Your token. Can be obtained through https://discord.com/developers/applications . Create an app, head to the bot tab, and hit add a bot. Then, hit copy underneath the token field. ",
-  "prefix": ",,"
+  "prefixes": ["all", "prefixes", "here"]
 }
 ```
 
@@ -28,7 +28,7 @@ If you have Git installed:
 - Right next to "Project Overview", hit the settings button then head to project settings.
 - Go to "Service Accounts", and under "firebase admin sdk", hit "Generate new private key" and save it in the project root (this folder.)
 
-- run `npm run dev` to start the bot (or `yarn dev` if you have yarn installed.
+- run `npm run build` then `node start.js`
 
 If you don't hav Git installed:
 
