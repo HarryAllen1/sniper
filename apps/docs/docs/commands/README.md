@@ -35,7 +35,7 @@ Flips a coin\
 
 Submits an issue for this bot.\
 **Aliases:** issue, createproblem, problem\
-**Arguments:** \<issue\>;: The issue with the bot.\
+**Arguments:** \<issue\>: The issue with the bot.\
 **Cooldown:** 15 minutes\
 **Permissions:** `send messages`, `read message history`, `view channel`
 
@@ -43,7 +43,7 @@ Submits an issue for this bot.\
 
 Gets a definition\
 **Aliases:** \
-**Arguments:** \<word or term\>; [dictionary to use (can be oxford, urban, or mw (which stands for Merriam Webster)). Defaults to Oxford]\
+**Arguments:** \<word or term\> [dictionary to use (can be oxford, urban, or mw (which stands for Merriam Webster)). Defaults to Oxford]\
 **Cooldown:** 1 second\
 **Permissions:** `send messages`, `read message history`, `view channel`
 
@@ -67,7 +67,7 @@ faq... pretty obvious\
 
 Requests a feature\
 **Aliases:** requestfeature, featurerequest\
-**Arguments:** \<feature\>;: The requested bot feature.\
+**Arguments:** \<feature\>: The requested bot feature.\
 **Cooldown:** 15 minutes\
 **Permissions:** `send messages`, `read message history`, `view channel`
 
@@ -149,7 +149,7 @@ Vote for the bot on top.gg\
 
 Bans any amount of members.\
 **Aliases:** \
-**Arguments:** \<@user or userID\>; \<user\>; \<user\>; ...\
+**Arguments:** \<@user or userID\> \<user\> \<user\> ...\
 **Cooldown:** 100 ms\
 **Permissions:** `ban members`
 
@@ -157,7 +157,7 @@ Bans any amount of members.\
 
 Clears messages from a channel\
 **Aliases:** purge\
-**Arguments:** \<# of messages to clear\>;\
+**Arguments:** \<# of messages to clear\>\
 **Cooldown:** 0 ms\
 **Permissions:** `send messages`, `read message history`, `view channel`
 
@@ -165,16 +165,14 @@ Clears messages from a channel\
 
 Kicks a user/users\
 **Aliases:** \
-**Arguments:** \<user (user mention or username or id)\>; ....\
+**Arguments:** \<user (user mention or username or id)\> ....\
 **Cooldown:** 100 ms\
 **Permissions:** `kick members`
 
 ## Giveaways
 
 ### ~~gcreate~~
-
 #### This command is disabled
-
 Creates a giveaway. If no arguments are provided, Sniper will walk you through the creation.\
 **Aliases:** \
 **Arguments:** [time] [amount of winners] [prize]\
@@ -182,12 +180,10 @@ Creates a giveaway. If no arguments are provided, Sniper will walk you through t
 **Permissions:** `send messages`, `read message history`, `view channel`
 
 ### ~~gEnd~~
-
 #### This command is disabled
-
 Ends a giveaway. You will need to obtain a message ID. If you don't know how to obtain a message ID, refer to this article: https://support.discord.com/hc/en-us/articles/206346498-Where-can-I-find-my-User-Server-Message-ID-\
 **Aliases:** \
-**Arguments:** \<message id\>;\
+**Arguments:** \<message id\>\
 **Cooldown:** 0 ms\
 **Permissions:** `send messages`, `read message history`, `view channel`
 
@@ -197,7 +193,7 @@ Ends a giveaway. You will need to obtain a message ID. If you don't know how to 
 
 Adds any amount of coins to a user. Can only be used by bot creators.\
 **Aliases:** \
-**Arguments:** \<userID OR mentioned user\>;\
+**Arguments:** \<userID OR mentioned user\>\
 **Cooldown:** 0 ms\
 **Permissions:** `send messages`, `read message history`, `view channel`
 
@@ -213,7 +209,7 @@ Executes Javascript code. Can only be used by the owner(s) of the bot.\
 
 Run a command as another user\
 **Aliases:** \
-**Arguments:** \<userID\>; \<command\>; [...args]\
+**Arguments:** \<userID\> \<command\> [...args]\
 **Cooldown:** 0 ms\
 **Permissions:** `send messages`, `read message history`, `view channel`
 
@@ -239,7 +235,7 @@ Gamble an amount of money, and you might earn some coins.\
 
 Buys an item from the shop. View available items through the `shop` command.\
 **Aliases:** \
-**Arguments:** \<item\>;\
+**Arguments:** \<item\>\
 **Cooldown:** 250 ms\
 **Permissions:** `send messages`, `read message history`, `view channel`
 
@@ -271,7 +267,7 @@ fortnite sucks. You have a 1% chance to gain 5 coins\
 
 Gives some coins to a specified user\
 **Aliases:** \
-**Arguments:** \<user ID or mentioned user\>; \<amount of coins\>;\
+**Arguments:** \<user ID or mentioned user\> \<amount of coins\>\
 **Cooldown:** 5 seconds\
 **Permissions:** `send messages`, `read message history`, `view channel`
 
@@ -303,7 +299,7 @@ Ranks people in order of wealth\
 
 (try) to rob someone!\
 **Aliases:** \
-**Arguments:** \<user ID or mentioned user to rob\>;\
+**Arguments:** \<user ID or mentioned user to rob\>\
 **Cooldown:** 1 minute\
 **Permissions:** `send messages`, `read message history`, `view channel`
 
@@ -316,15 +312,14 @@ The shop to get stuff from\
 **Permissions:** `send messages`, `read message history`, `view channel`
 
 ### ~~squidgame~~
-
 #### This command is disabled
-
 Plays Squid Game. In alpha stage.
-All dying results in your balance being reset to 0.
-How to play:
-_ Red light, green light:
-_ When the embed is green, you can click the 'Go Forwards' button to go forwards. \* If the embed is red while you hit that button, you die.
-\
+      All dying results in your balance being reset to 0.
+      How to play:
+        * Red light, green light:
+          * When the embed is green, you can click the 'Go Forwards' button to go forwards.
+          * If the embed is red while you hit that button, you die.
+      \
 **Aliases:** \
 **Arguments:** None\
 **Cooldown:** 5 minutes\
@@ -368,7 +363,7 @@ Pings the bot and returns response times.\
 
 starts a poll idk\
 **Aliases:** \
-**Arguments:** \<the poll\>;\
+**Arguments:** \<the poll\>\
 **Cooldown:** 10 seconds\
 **Permissions:** `send messages`, `read message history`, `view channel`
 
@@ -416,7 +411,7 @@ Turns text into math\
 
 Sets a timer. Updates every 5 seconds.\
 **Aliases:** \
-**Arguments:** \<timer length\>;\<unit (short or long; no spaces)\>; [timer description]\
+**Arguments:** \<timer length\>\<unit (short or long; no spaces)\> [timer description]\
 **Cooldown:** 5 seconds\
 **Permissions:** `send messages`, `read message history`, `view channel`
 
@@ -432,7 +427,7 @@ The author of the sniped message can delete the snipe with this command.\
 
 Gives options to vote for or something idk\
 **Aliases:** \
-**Arguments:** \<title\>; ...options separated by commas\
+**Arguments:** \<title\> ...options separated by commas\
 **Cooldown:** 5 seconds\
 **Permissions:** `send messages`, `read message history`, `view channel`
 
@@ -440,7 +435,7 @@ Gives options to vote for or something idk\
 
 shows the weather\
 **Aliases:** \
-**Arguments:** \<city\>; [time period (hourly, daily. defaults to daily)]\
+**Arguments:** \<city\> [time period (hourly, daily. defaults to daily)]\
 **Cooldown:** 5 seconds\
 **Permissions:** `send messages`, `read message history`, `view channel`
 
@@ -451,5 +446,4 @@ shows info about a user\
 **Arguments:** None\
 **Cooldown:** 3 seconds\
 **Permissions:** `send messages`, `read message history`, `view channel`
-
 <!-- end generation -->

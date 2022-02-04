@@ -35,9 +35,7 @@ ${cmd.disabled ? '#### This command is disabled' : ''}
 ${cmd.description}\\
 **Aliases:** ${cmd.aliases.join(', ')}\\
 **Arguments:** ${
-          cmd.args
-            ? cmd.args.replace(/</g, '\\<').replace(/>/g, '\\>;')
-            : 'None'
+          cmd.args ? cmd.args.replace(/</g, '\\<').replace(/>/g, '\\>') : 'None'
         }\\
 **Cooldown:** ${ms(cmd.cooldown, { long: true })}\\
 **Permissions:** ${cmd.permissions
