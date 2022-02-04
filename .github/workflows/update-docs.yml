@@ -8,5 +8,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: npx pnpm i && cd apps/docs && npm run update && git config --global user.email "harry_allen@outlook.com" && git config --global user.name "Docs bot" && git add . && git commit -m "Update docs"
+      - run: npx pnpm i && cd apps/docs && npm run update && git config --global user.email "harry_allen@outlook.com" && git config --global user.name "Docs bot" && git add . && git commit -m "Update docs && git push"
       
