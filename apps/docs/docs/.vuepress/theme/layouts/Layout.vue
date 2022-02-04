@@ -16,14 +16,22 @@ html.dark {
     --c-text: #2c3e50;
   }
 }
+.navbar *:not(.navbar-dropdown) {
+  --c-text-quote: var(--c-text);
+}
 .navbar {
   background-color: var(--c-brand);
   --c-text: #2c3e50;
-  --c-text-quote: var(--c-text);
-  --c-bg-arrow: var(--c-text);
+
   div > * {
     padding: 0;
     background: #0000;
+  }
+  .arrow.down {
+    --c-bg-arrow: var(--c-text);
+  }
+  .navbar-items .external-link-icon:not(.navbar-dropdown .external-link-icon) {
+    --c-bg-arrow: var(--c-text);
   }
   .navbar-items a:not(.navbar-dropdown a) {
     color: var(--c-text);

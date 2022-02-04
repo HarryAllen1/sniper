@@ -70,7 +70,8 @@ export async function registerCommands(client: DiscordClient, dir = '') {
       command.aliases.forEach((alias: string) => {
         client.commands.set(alias, command);
       });
-
+      if (!allCommandsJSON[command.category])
+        allCommandsJSON[command.category] = {};
       allCommandsJSON[command.category][command.name] = {
         name: command.name,
         aliases: command.aliases,
