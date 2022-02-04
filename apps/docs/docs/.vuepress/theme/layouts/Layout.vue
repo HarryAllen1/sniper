@@ -14,6 +14,9 @@ html.dark {
   --c-brand: #02b3f6;
   .navbar {
     --c-text: #2c3e50;
+    .navbar-dropdown {
+      --c-text: var(--c-text-light);
+    }
   }
 }
 .navbar *:not(.navbar-dropdown) {
