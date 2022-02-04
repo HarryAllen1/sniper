@@ -5,7 +5,3 @@ A general purpose Discord bot. Includes snipe, edit snipe, and reaction snipe co
 For basic functionality: [https://discord.com/oauth2/authorize?client_id=893619442712444970&permissions=533112155862&scope=bot%20applications.commands](https://discord.com/oauth2/authorize?client_id=893619442712444970&permissions=533112155862&scope=bot%20applications.commands)
 
 With more utility features: [https://discord.com/api/oauth2/authorize?client_id=893619442712444970&permissions=126016&scope=bot%20applications.commands](https://discord.com/api/oauth2/authorize?client_id=893619442712444970&permissions=126016&scope=bot%20applications.commands)
-
-```ts
-const test = '';
-```
