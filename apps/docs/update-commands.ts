@@ -1,61 +1,69 @@
-import { fetch, FetchResultTypes } from '@sapphire/fetch';
-import { load } from 'cheerio';
-import { readFileSync } from 'node:fs';
+import { fetch } from '@sapphire/fetch';
+import _ from 'lodash';
+import ms from 'ms';
+import { appendFileSync, readFileSync, writeFileSync } from 'node:fs';
 
-const commandsMD = readFileSync('./docs/commands/README.md');
+let commandsMD = readFileSync('./docs/commands/README.md').toString();
 (async () => {
-  interface CommandData {
-    [category: string]: {
-      [command: string]: {
-        name: string;
-        description: string;
-        cooldown: number;
-        aliases: string[];
-        args: string;
-        permissions: string[];
-        argsRequired: boolean;
-        disabled: boolean;
-      };
-    };
+  interface CommandCategories {
+    [category: string]: Command[];
   }
+  interface Command {
+    name: string;
+    aliases: string[];
+    args: string;
+    description: string;
+    cooldown: number;
+    disabled: boolean;
+    permissions: string[];
+    argsRequired: boolean;
+  }
+  const commands: CommandCategories = await fetch<CommandCategories>(
+    'https://raw.githubusercontent.com/MajesticString/sniper/main/apps/sniper/all-commands.json'
+  );
 
-  const commandData: CommandData = {};
-
-  const categories = await getTableData('commands/');
-  categories.forEach(async (cat) => {
-    commandData[cat] = {};
-    const commands = (await getTableData(`commands/${cat}/`)).filter((val) =>
-      val.endsWith('Command.ts')
-    );
-    commands.forEach(async (cmd) => {
-      const commandData = await fetch(
-        `https://cdn.jsdelivr.net/gh/majesticstring/sniper@5.0.0/src/commands/${cat}/${cmd}`,
-        FetchResultTypes.Text
-      );
-      const startOfCommandData: RegExp =
-        /constructor\(\)( )?{\t?\r?\n?( ){1,}?super\(\t?\r?\n?( ){1,}/gi;
-      const endOfCommandData: RegExp =
-        /constructor\(\)( )?{\t?\r?\n?( ){1,}?super\(\t?\r?\n?( ){1,}'[a-zA-Z]{1,}',?\t?\r?\n?( ){1,}'[a-zA-Z]{1,}',\t?\r?\n?( ){1,}\[('[a-zA-Z]{1,}',?\t?\r?\n?( )*)*\],?\t?\r?\n?( )*([0-9]*)?,\t?\r?\n?( )*'[^']*',?\t?\r?\n?( )*\{[^\}]*\}/gi;
-      const test = startOfCommandData.exec(commandData);
-      const test2 = endOfCommandData.exec(commandData);
-      console.log(
-        'end: ' + test !== null && test !== undefined ? test![0] : 'none'
+  const categories = Object.keys(commands).reverse();
+  resetCommandDocs();
+  categories.forEach((cat) => {
+    appendToDocs(`\n## ${capitalizeFirstLetter(camelToNormalCase(cat))}\n`);
+    const commandsInCategory = commands[cat];
+    commandsInCategory.forEach((cmd) => {
+      appendToDocs(
+        `
+### ${cmd.disabled ? `~~${cmd.name}~~` : cmd.name}
+${cmd.disabled ? '#### This command is disabled' : ''}
+${cmd.description}\\
+**Aliases:** ${cmd.aliases.join(', ')}\\
+**Arguments:** ${
+          cmd.args
+            ? cmd.args.replace(/</g, '\\<').replace(/>/g, '\\>;')
+            : 'None'
+        }\\
+**Cooldown:** ${ms(cmd.cooldown, { long: true })}\\
+**Permissions:** ${cmd.permissions
+          .map((perm) => `\`${_.lowerCase(perm)}\``)
+          .join(', ')}
+`
       );
     });
   });
+  cleanUp();
 })();
 
-async function getTableData(subURL: string): Promise<string[]> {
-  const data = await fetch(
-    `https://cdn.jsdelivr.net/gh/majesticstring/sniper@5.0.0/src/${subURL}`,
-    FetchResultTypes.Text
+function resetCommandDocs() {
+  commandsMD = commandsMD.replace(
+    /<!-- start generation -->[\s\S]*<!-- end generation -->/,
+    '<!-- start generation -->'
   );
-  const $ = load(data);
-  const dataContent: string[] = [];
-  $('.name > a').each(function (i, el) {
-    if (i === 0) return;
-    dataContent.push($(el).text());
-  });
-  return dataContent;
+  writeFileSync('./docs/commands/README.md', commandsMD);
 }
-document.querySelector('').setAttribute;
+function appendToDocs(data: string) {
+  appendFileSync('./docs/commands/README.md', data);
+}
+function cleanUp() {
+  appendToDocs('<!-- end generation -->');
+}
+const camelToNormalCase = (str: string) =>
+  str.replace(/[A-Z]/g, (letter) => ` ${letter.toLowerCase()}`);
+const capitalizeFirstLetter = (string: string) =>
+  string.charAt(0).toUpperCase() + string.slice(1);
