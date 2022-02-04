@@ -71,8 +71,8 @@ export async function registerCommands(client: DiscordClient, dir = '') {
         client.commands.set(alias, command);
       });
       if (!allCommandsJSON[command.category])
-        allCommandsJSON[command.category] = {};
-      allCommandsJSON[command.category][command.name] = {
+        allCommandsJSON[command.category] = [];
+      allCommandsJSON[command.category].push({
         name: command.name,
         aliases: command.aliases,
         description: command.description,
@@ -81,7 +81,7 @@ export async function registerCommands(client: DiscordClient, dir = '') {
         disabled: command.disabled,
         permissions: command.permissionsRequired,
         argsRequired: command.argsRequired,
-      };
+      });
       await fs.writeFile(
         './all-commands.json',
         JSON.stringify(allCommandsJSON, null, 2)

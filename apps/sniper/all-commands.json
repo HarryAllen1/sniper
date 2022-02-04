@@ -1,6 +1,6 @@
 {
-  "util": {
-    "bot": {
+  "util": [
+    {
       "name": "bot",
       "aliases": [],
       "description": "Shows information about the bot",
@@ -13,7 +13,7 @@
       ],
       "argsRequired": false
     },
-    "editsnipe": {
+    {
       "name": "editsnipe",
       "aliases": [
         "esnipe"
@@ -28,7 +28,7 @@
       ],
       "argsRequired": false
     },
-    "ping": {
+    {
       "name": "ping",
       "aliases": [],
       "description": "Pings the bot and returns response times.",
@@ -41,7 +41,7 @@
       ],
       "argsRequired": false
     },
-    "poll": {
+    {
       "name": "poll",
       "aliases": [],
       "description": "starts a poll idk",
@@ -55,7 +55,7 @@
       ],
       "argsRequired": false
     },
-    "reactionsnipe": {
+    {
       "name": "reactionsnipe",
       "aliases": [
         "rsnipe"
@@ -70,7 +70,7 @@
       ],
       "argsRequired": false
     },
-    "role": {
+    {
       "name": "role",
       "aliases": [],
       "description": "Gets information about a role.",
@@ -84,7 +84,7 @@
       ],
       "argsRequired": false
     },
-    "roles": {
+    {
       "name": "roles",
       "aliases": [],
       "description": "shows the roles of this server and their positions",
@@ -97,7 +97,7 @@
       ],
       "argsRequired": false
     },
-    "snipe": {
+    {
       "name": "snipe",
       "aliases": [],
       "description": "After a message is deleted, this command shows what it was. If the creator of the deleted message doesn't want that message to be shown, they can use the `unsnipe` command.",
@@ -111,7 +111,7 @@
       ],
       "argsRequired": false
     },
-    "tex": {
+    {
       "name": "tex",
       "aliases": [
         "math",
@@ -127,7 +127,7 @@
       ],
       "argsRequired": false
     },
-    "timer": {
+    {
       "name": "timer",
       "aliases": [],
       "description": "Sets a timer. Updates every 5 seconds.",
@@ -141,7 +141,7 @@
       ],
       "argsRequired": false
     },
-    "unsnipe": {
+    {
       "name": "unsnipe",
       "aliases": [],
       "description": "The author of the sniped message can delete the snipe with this command.",
@@ -154,7 +154,7 @@
       ],
       "argsRequired": false
     },
-    "vote2": {
+    {
       "name": "vote2",
       "aliases": [],
       "description": "Gives options to vote for or something idk",
@@ -168,7 +168,7 @@
       ],
       "argsRequired": false
     },
-    "weather": {
+    {
       "name": "weather",
       "aliases": [],
       "description": "shows the weather",
@@ -182,7 +182,7 @@
       ],
       "argsRequired": false
     },
-    "whois": {
+    {
       "name": "whois",
       "aliases": [],
       "description": "shows info about a user",
@@ -195,9 +195,9 @@
       ],
       "argsRequired": false
     }
-  },
-  "currency": {
-    "balance": {
+  ],
+  "currency": [
+    {
       "name": "balance",
       "aliases": [
         "bal"
@@ -213,7 +213,7 @@
       ],
       "argsRequired": false
     },
-    "bet": {
+    {
       "name": "bet",
       "aliases": [],
       "description": "Gamble an amount of money, and you might earn some coins.",
@@ -226,7 +226,7 @@
       ],
       "argsRequired": false
     },
-    "buy": {
+    {
       "name": "buy",
       "aliases": [],
       "description": "Buys an item from the shop. View available items through the `shop` command.",
@@ -240,7 +240,7 @@
       ],
       "argsRequired": false
     },
-    "crime": {
+    {
       "name": "crime",
       "aliases": [],
       "description": "Commits a crime to gain coins. There is 50/50 chance you lose coins and a 10% chance you go to jail.",
@@ -253,7 +253,7 @@
       ],
       "argsRequired": false
     },
-    "daily": {
+    {
       "name": "daily",
       "aliases": [],
       "description": "Collects daily coins",
@@ -266,7 +266,7 @@
       ],
       "argsRequired": false
     },
-    "fortnite": {
+    {
       "name": "fortnite",
       "aliases": [],
       "description": "fortnite sucks. You have a 1% chance to gain 5 coins",
@@ -279,7 +279,7 @@
       ],
       "argsRequired": false
     },
-    "give": {
+    {
       "name": "give",
       "aliases": [],
       "description": "Gives some coins to a specified user",
@@ -293,7 +293,7 @@
       ],
       "argsRequired": false
     },
-    "inv": {
+    {
       "name": "inv",
       "aliases": [],
       "description": "Shows the items that you currently have",
@@ -307,7 +307,7 @@
       ],
       "argsRequired": false
     },
-    "jailbreak": {
+    {
       "name": "jailbreak",
       "aliases": [],
       "description": "If you are in jail, this command will attempt to break you out. You could fail however, and have to be in jail for longer.",
@@ -320,7 +320,7 @@
       ],
       "argsRequired": false
     },
-    "lb": {
+    {
       "name": "lb",
       "aliases": [
         "leaderboards",
@@ -338,7 +338,7 @@
       ],
       "argsRequired": false
     },
-    "rob": {
+    {
       "name": "rob",
       "aliases": [],
       "description": "(try) to rob someone!",
@@ -352,7 +352,7 @@
       ],
       "argsRequired": false
     },
-    "shop": {
+    {
       "name": "shop",
       "aliases": [],
       "description": "The shop to get stuff from",
@@ -366,7 +366,7 @@
       ],
       "argsRequired": false
     },
-    "squidgame": {
+    {
       "name": "squidgame",
       "aliases": [],
       "description": "Plays Squid Game. In alpha stage.\n      All dying results in your balance being reset to 0.\n      How to play:\n        * Red light, green light:\n          * When the embed is green, you can click the 'Go Forwards' button to go forwards.\n          * If the embed is red while you hit that button, you die.\n      ",
@@ -379,7 +379,7 @@
       ],
       "argsRequired": false
     },
-    "use": {
+    {
       "name": "use",
       "aliases": [],
       "description": "Uses an item",
@@ -392,9 +392,9 @@
       ],
       "argsRequired": false
     }
-  },
-  "restricted": {
-    "addcoins": {
+  ],
+  "restricted": [
+    {
       "name": "addcoins",
       "aliases": [],
       "description": "Adds any amount of coins to a user. Can only be used by bot creators.",
@@ -408,7 +408,7 @@
       ],
       "argsRequired": false
     },
-    "eval": {
+    {
       "name": "eval",
       "aliases": [],
       "description": "Executes Javascript code. Can only be used by the owner(s) of the bot.",
@@ -421,7 +421,7 @@
       ],
       "argsRequired": false
     },
-    "sudo": {
+    {
       "name": "sudo",
       "aliases": [],
       "description": "Run a command as another user",
@@ -435,9 +435,9 @@
       ],
       "argsRequired": true
     }
-  },
-  "giveaways": {
-    "gcreate": {
+  ],
+  "giveaways": [
+    {
       "name": "gcreate",
       "aliases": [],
       "description": "Creates a giveaway. If no arguments are provided, Sniper will walk you through the creation.",
@@ -451,7 +451,7 @@
       ],
       "argsRequired": false
     },
-    "gEnd": {
+    {
       "name": "gEnd",
       "aliases": [],
       "description": "Ends a giveaway. You will need to obtain a message ID. If you don't know how to obtain a message ID, refer to this article: https://support.discord.com/hc/en-us/articles/206346498-Where-can-I-find-my-User-Server-Message-ID-",
@@ -465,9 +465,9 @@
       ],
       "argsRequired": true
     }
-  },
-  "moderation": {
-    "ban": {
+  ],
+  "moderation": [
+    {
       "name": "ban",
       "aliases": [],
       "description": "Bans any amount of members.",
@@ -479,7 +479,7 @@
       ],
       "argsRequired": false
     },
-    "clear": {
+    {
       "name": "clear",
       "aliases": [
         "purge"
@@ -495,7 +495,7 @@
       ],
       "argsRequired": false
     },
-    "kick": {
+    {
       "name": "kick",
       "aliases": [],
       "description": "Kicks a user/users",
@@ -507,9 +507,9 @@
       ],
       "argsRequired": false
     }
-  },
-  "general": {
-    "changelog": {
+  ],
+  "general": [
+    {
       "name": "changelog",
       "aliases": [],
       "description": "Shows changes made and plans for the bot.",
@@ -523,7 +523,7 @@
       ],
       "argsRequired": false
     },
-    "coinflip": {
+    {
       "name": "coinflip",
       "aliases": [],
       "description": "Flips a coin",
@@ -537,7 +537,7 @@
       ],
       "argsRequired": false
     },
-    "createissue": {
+    {
       "name": "createissue",
       "aliases": [
         "issue",
@@ -555,7 +555,7 @@
       ],
       "argsRequired": false
     },
-    "define": {
+    {
       "name": "define",
       "aliases": [],
       "description": "Gets a definition",
@@ -569,7 +569,7 @@
       ],
       "argsRequired": false
     },
-    "deletealldata": {
+    {
       "name": "deletealldata",
       "aliases": [
         "deletemydata"
@@ -584,7 +584,7 @@
       ],
       "argsRequired": false
     },
-    "faq": {
+    {
       "name": "faq",
       "aliases": [],
       "description": "faq... pretty obvious",
@@ -597,7 +597,7 @@
       ],
       "argsRequired": false
     },
-    "feature": {
+    {
       "name": "feature",
       "aliases": [
         "requestfeature",
@@ -614,7 +614,7 @@
       ],
       "argsRequired": false
     },
-    "github": {
+    {
       "name": "github",
       "aliases": [],
       "description": "Shows this bots Github repo",
@@ -627,7 +627,7 @@
       ],
       "argsRequired": false
     },
-    "help": {
+    {
       "name": "help",
       "aliases": [
         "commands",
@@ -644,7 +644,7 @@
       ],
       "argsRequired": false
     },
-    "invite": {
+    {
       "name": "invite",
       "aliases": [],
       "description": "Gives an invite link for this bot",
@@ -657,7 +657,7 @@
       ],
       "argsRequired": false
     },
-    "meme": {
+    {
       "name": "meme",
       "aliases": [],
       "description": "gets a meme from r/memes",
@@ -670,7 +670,7 @@
       ],
       "argsRequired": false
     },
-    "prefix": {
+    {
       "name": "prefix",
       "aliases": [
         "prefixes"
@@ -686,7 +686,7 @@
       ],
       "argsRequired": false
     },
-    "pronounce": {
+    {
       "name": "pronounce",
       "aliases": [],
       "description": "Pronounces anything.",
@@ -699,7 +699,7 @@
       ],
       "argsRequired": false
     },
-    "say": {
+    {
       "name": "say",
       "aliases": [],
       "description": "says something",
@@ -712,7 +712,7 @@
       ],
       "argsRequired": false
     },
-    "support": {
+    {
       "name": "support",
       "aliases": [
         "server",
@@ -728,7 +728,7 @@
       ],
       "argsRequired": false
     },
-    "vote": {
+    {
       "name": "vote",
       "aliases": [],
       "description": "Vote for the bot on top.gg",
@@ -741,5 +741,5 @@
       ],
       "argsRequired": false
     }
-  }
+  ]
 }
