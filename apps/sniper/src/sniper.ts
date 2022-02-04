@@ -1,4 +1,5 @@
 import { REST } from '@discordjs/rest';
+import { fetch } from '@sapphire/fetch';
 import { createColors } from 'colorette';
 import { Routes } from 'discord-api-types/v9';
 import { Intents } from 'discord.js';
@@ -61,6 +62,16 @@ export const main = async (): Promise<void> => {
     poster.on('error', (err) => {
       console.log('topgg autoposter: ' + err.message);
     });
+    fetch(`https://discordbotlist.com/api/v1/bots/sniper-6531/stats`, {
+      method: 'POST',
+      headers: {
+        Authorization: slappeyJSON.apiKeys.dbl.auth,
+      },
+      body: JSON.stringify({
+        guilds: client.guilds.cache.size + 2,
+        users: client.users.cache.size,
+      }),
+    }).then(console.log);
 
     await registerCommands(client, './out/commands');
     await registerEvents(client, './out/events');

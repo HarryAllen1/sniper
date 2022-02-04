@@ -14,4 +14,5 @@ export default defineConfig({
   sourcemap: false,
   shims: false,
   keepNames: true,
+  outDir: 'out',
 });
