@@ -10,6 +10,20 @@ import ParentLayout from '@vuepress/theme-default/lib/client/layouts/Layout.vue'
 :root {
   --c-brand: #02b3f6;
 }
+.sidebar .navbar-items .navbar-item {
+  background-color: var(--c-bg-sidebar);
+  transition: transform var(--t-transform), background-color var(--t-color),
+    border-color var(--t-color);
+}
+::-webkit-scrollbar {
+  width: 7px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: var(--c-brand);
+}
+::-webkit-scrollbar-track {
+  background-color: var(--c-border);
+}
 html.dark {
   --c-brand: #02b3f6;
   .navbar {
