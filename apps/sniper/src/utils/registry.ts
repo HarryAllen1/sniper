@@ -11,9 +11,7 @@ import BaseEvent from './structures/BaseEvent.js';
 //   [name: string]: CommandCategory;
 // }
 
-const allCommandsJSON = JSON.parse(
-  await fs.readFile('./all-commands.json', 'utf-8')
-);
+const allCommandsJSON = JSON.parse('{}');
 
 interface CommandCategory {
   commands: Array<Commands>;
@@ -82,16 +80,21 @@ export async function registerCommands(client: DiscordClient, dir = '') {
         permissions: command.permissionsRequired,
         argsRequired: command.argsRequired,
       });
-      await fs.writeFile(
-        './all-commands.json',
-        JSON.stringify(allCommandsJSON, null, 2)
-      );
 
       if (command.interactionData) {
         interactions.push(command.interactionData.toJSON());
       }
     }
   }
+  fs.writeFile('./all-commands.json', '').then(() => {
+    console.log('Wiped command registry');
+    fs.writeFile(
+      './all-commands.json',
+      JSON.stringify(allCommandsJSON, null, 2)
+    ).then(() => {
+      console.log('Wrote command registry');
+    });
+  });
 }
 
 export async function registerEvents(client: DiscordClient, dir = '') {

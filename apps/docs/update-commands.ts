@@ -1,4 +1,3 @@
-import { fetch } from '@sapphire/fetch';
 import _ from 'lodash';
 import ms from 'ms';
 import { appendFileSync, readFileSync, writeFileSync } from 'node:fs';
@@ -18,16 +17,14 @@ let commandsMD = readFileSync('./docs/commands/README.md').toString();
     permissions: string[];
     argsRequired: boolean;
   }
-  const commands: CommandCategories = await fetch<CommandCategories>(
-    'https://raw.githubusercontent.com/MajesticString/sniper/main/apps/sniper/all-commands.json'
-  );
+  const commands: any = await import('../sniper/all-commands.json');
 
   const categories = Object.keys(commands).reverse();
   resetCommandDocs();
   categories.forEach((cat) => {
     appendToDocs(`\n## ${capitalizeFirstLetter(camelToNormalCase(cat))}\n`);
     const commandsInCategory = commands[cat];
-    commandsInCategory.forEach((cmd) => {
+    commandsInCategory.forEach((cmd: any) => {
       appendToDocs(
         `
 ### ${cmd.disabled ? `~~${cmd.name}~~` : cmd.name}
@@ -39,27 +36,23 @@ ${cmd.description}\\
         }\\
 **Cooldown:** ${ms(cmd.cooldown, { long: true })}\\
 **Permissions:** ${cmd.permissions
-          .map((perm) => `\`${_.lowerCase(perm)}\``)
+          .map((perm: string) => `\`${_.lowerCase(perm)}\``)
           .join(', ')}
 `
       );
     });
   });
-  cleanUp();
 })();
 
 function resetCommandDocs() {
   commandsMD = commandsMD.replace(
-    /<!-- start generation -->[\s\S]*<!-- end generation -->/,
+    /<!-- start generation -->[\s\S]*/g,
     '<!-- start generation -->'
   );
   writeFileSync('./docs/commands/README.md', commandsMD);
 }
 function appendToDocs(data: string) {
   appendFileSync('./docs/commands/README.md', data);
-}
-function cleanUp() {
-  appendToDocs('<!-- end generation -->');
 }
 const camelToNormalCase = (str: string) =>
   str.replace(/[A-Z]/g, (letter) => ` ${letter.toLowerCase()}`);

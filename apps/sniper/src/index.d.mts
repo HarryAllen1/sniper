@@ -1,6 +1,8 @@
-// declare module 'ms';
-// declare module 'firebase-admin/firestore';
-declare module 'mathjax';
-// declare module 'discord-api-types/v9';
-// declare module '@discordjs/builders';
-// declare module '@discordjs/rest';
+declare module 'mathjax' {
+  declare function init(options: MathJaxInitOptions): Promise<any>;
+}
+interface MathJaxInitOptions {
+  loader: {
+    load: string[];
+  };
+}
