@@ -87,13 +87,10 @@ export async function registerCommands(client: DiscordClient, dir = '') {
     }
   }
   fs.writeFile('./all-commands.json', '').then(() => {
-    console.log('Wiped command registry');
     fs.writeFile(
       './all-commands.json',
       JSON.stringify(allCommandsJSON, null, 2)
-    ).then(() => {
-      console.log('Wrote command registry');
-    });
+    );
   });
 }
 

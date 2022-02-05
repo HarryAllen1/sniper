@@ -124,9 +124,10 @@ export default class SnipeCommand extends BaseCommand {
     } else if (type === 'attachments') {
       if (!snipe.attachments?.length)
         return reply(message, {
-          title: "This message doesn't have any attachments.",
+          title:
+            "This message doesn't have any attachments. Trying this command again with the `embeds` type....",
           color: 'RED',
-        });
+        }).then(() => this.run(client, message, ['embeds']));
       const paginator = new Paginator(
         snipe.attachments.map((a) => ({ content: a }))
       );

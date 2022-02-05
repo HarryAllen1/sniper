@@ -1,21 +1,27 @@
 import { APIEmbed } from 'discord-api-types/v9';
-import {
-  Message,
+import type {
   MessageEmbed,
   MessageEmbedOptions,
   ReplyMessageOptions,
-  TextChannel,
 } from 'discord.js';
-import ms from 'ms';
-import { sleep, StringValue } from './misc.js';
+import { Message, TextChannel } from 'discord.js';
+import './message.js';
+import randomNumber from './randomNumber.js';
 import { getUserData } from './user.js';
 
-export async function reply(
+const ads: string[] = [
+  'Join our support server for bot updates and support: https://discord.gg/wsEHfhzk54',
+  'This bot also has an (almost) full currency system. Check out the currency page of the help command for more info.',
+];
+
+export const reply = async (
   message: Message,
-  embed: string | MessageEmbed | MessageEmbedOptions | APIEmbed,
+  embed: MessageEmbed | MessageEmbedOptions | APIEmbed,
+
   otherOptions: ReplyMessageOptions = {},
   ephemeral?: boolean
-): Promise<Message> {
+): Promise<Message> => {
+  const ad = randomNumber(1, 30000000000000, true) === 1;
   if (otherOptions.attachments || otherOptions.files) {
     if (
       !(message.channel as TextChannel)
@@ -30,11 +36,8 @@ export async function reply(
   }
   const { files, attachments, components, content, tts, nonce, stickers } =
     otherOptions;
-  if (embed instanceof MessageEmbed) {
-    if (!embed.color) embed.setColor('WHITE');
-    if (embed.footer) embed.footer.text ||= 'Made by ||harry potter||#0014';
-  }
-
+  embed.color ||= 'WHITE';
+  if (embed.footer) embed.footer.text ||= 'Made by ||harry potter||#0014';
   if (
     (message.channel as TextChannel)
       // eslint-disable-next-line @typescript-eslint/no-non-null-asserted-optional-chain, @typescript-eslint/no-non-null-assertion -- You kind of have to do this
@@ -44,12 +47,12 @@ export async function reply(
       // eslint-disable-next-line @typescript-eslint/no-non-null-asserted-optional-chain, @typescript-eslint/no-non-null-assertion
       .permissionsFor(message.guild?.me!)
       .has('EMBED_LINKS')
-  ) {
-    return getUserData(message?.author?.id || message.member?.id || '')
-      .then((userData) =>
+  )
+    return getUserData(message?.author?.id || message.member?.id || '').then(
+      (userData) =>
         message.type !== 'APPLICATION_COMMAND'
           ? message.reply({
-              embeds: embed instanceof MessageEmbed ? [embed] : [],
+              embeds: [embed],
               allowedMentions: {
                 repliedUser: userData?.settings?.mentionAuthorOnReply
                   ? userData.settings?.mentionAuthorOnReply?.value
@@ -57,7 +60,8 @@ export async function reply(
               },
               files,
               attachments,
-              content: typeof embed === 'string' ? embed : content,
+              content:
+                content || ad ? ads[randomNumber(0, ads.length - 1)] : null,
               components,
               tts,
               failIfNotExists: false,
@@ -66,7 +70,7 @@ export async function reply(
             })
           : message
               .reply({
-                embeds: embed instanceof MessageEmbed ? [embed] : [],
+                embeds: [embed],
                 allowedMentions: {
                   repliedUser: userData?.settings?.mentionAuthorOnReply
                     ? userData.settings?.mentionAuthorOnReply?.value
@@ -74,7 +78,7 @@ export async function reply(
                 },
                 files,
                 attachments,
-                content: typeof embed === 'string' ? embed : content,
+                content,
                 components,
                 tts,
                 failIfNotExists: false,
@@ -90,30 +94,11 @@ export async function reply(
                 console.error(err);
                 return message.author.send('Something went wrong.');
               })
-      )
-      .catch(() => {
-        // console.error(err);
-        return message.reply({
-          embeds: embed instanceof MessageEmbed ? [embed] : [],
-          allowedMentions: {
-            repliedUser: true,
-          },
-          files,
-          attachments,
-          content: typeof embed === 'string' ? embed : content,
-          components,
-          tts,
-          failIfNotExists: false,
-          nonce,
-          stickers,
-        });
-      });
-  } else {
-    return message.author.send(
-      'I do not have the permissions to send messages in that channel. Contact a server admin and tell them to give Sniper the permission to send messages in that channel.'
     );
+  else {
+    return message.author.send("I can't send embeds in that channel.");
   }
-}
+};
 
 export async function send(
   messageOrChannel: TextChannel,
@@ -211,20 +196,3 @@ export const removeAllComponents = (message: Message) => {
     components: [],
   });
 };
-
-export class CreateAuthorOnlyMessageReactionCollector {
-  /**
-   * Equivalent to `Message.createMessageComponentCollector` but only allows the collector to be used by the author.`
-   * @param {Message} message The message to create the collector on.
-   * @param {Number | String} time  How long to run the collector for.
-   */
-  constructor(message: Message, time: number | StringValue) {
-    if (typeof time === 'string') {
-      time = ms(time);
-    }
-    // We checked for a string value, and converted it to a number if it was a string.
-    time = time as number;
-    sleep(time);
-    return message.createMessageComponentCollector({});
-  }
-}
