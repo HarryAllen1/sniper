@@ -16,6 +16,7 @@ export default class TimerCommand extends BaseCommand {
       {
         argsDescription:
           '<timer length><unit (short or long; no spaces)> [timer description]',
+        disabled: true,
       }
     );
   }
@@ -33,7 +34,7 @@ export default class TimerCommand extends BaseCommand {
         )
       )
         time = ms(args[0] + args[1]);
-      else return reply(message, 'Invalid time.');
+      else return reply(message, { title: 'Invalid time.', color: 'RED' });
     }
   }
 }
