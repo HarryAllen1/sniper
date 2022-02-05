@@ -1,3 +1,4 @@
+import { fetch } from '@sapphire/fetch';
 import _ from 'lodash';
 import ms from 'ms';
 import { appendFileSync, readFileSync, writeFileSync } from 'node:fs';
@@ -17,8 +18,9 @@ let commandsMD = readFileSync('./docs/commands/README.md').toString();
     permissions: string[];
     argsRequired: boolean;
   }
-  const commands: any = await import('../sniper/all-commands.json');
-
+  const commands: CommandCategories = await fetch<CommandCategories>(
+    'https://raw.githubusercontent.com/MajesticString/sniper/main/apps/sniper/all-commands.json'
+  );
   const categories = Object.keys(commands).reverse();
   resetCommandDocs();
   categories.forEach((cat) => {
