@@ -310,20 +310,6 @@ The shop to get stuff from\
 **Cooldown:** 1 ms\
 **Permissions:** `send messages`, `read message history`, `view channel`
 
-### ~~squidgame~~
-#### This command is disabled
-Plays Squid Game. In alpha stage.
-      All dying results in your balance being reset to 0.
-      How to play:
-        * Red light, green light:
-          * When the embed is green, you can click the 'Go Forwards' button to go forwards.
-          * If the embed is red while you hit that button, you die.
-      \
-**Aliases:** \
-**Arguments:** None\
-**Cooldown:** 5 minutes\
-**Permissions:** `send messages`, `read message history`, `view channel`
-
 ### use
 
 Uses an item\
@@ -410,7 +396,7 @@ Turns text into math\
 
 Sets a timer. Updates every 5 seconds.\
 **Aliases:** \
-**Arguments:** \<timer length\>\<unit (short or long; no spaces)\> [timer description]\
+**Arguments:** \<timer length\>\<unit (short or long)\> [timer description]\
 **Cooldown:** 5 seconds\
 **Permissions:** `send messages`, `read message history`, `view channel`
 

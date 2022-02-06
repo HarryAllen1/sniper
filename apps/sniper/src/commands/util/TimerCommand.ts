@@ -15,26 +15,90 @@ export default class TimerCommand extends BaseCommand {
 
       {
         argsDescription:
-          '<timer length><unit (short or long; no spaces)> [timer description]',
-        disabled: true,
+          '<timer length><unit (short or long)> [timer description]',
       }
     );
   }
 
   async run(client: DiscordClient, message: Message, args: Array<string>) {
-    if (message)
-      return message.reply(
-        'This message is currently being redone. Check back in a day or two.'
-      );
+    const msRegex =
+      /^(-?(?:\d+)?\.?\d+) *(milliseconds?|msecs?|ms|seconds?|secs?|s|minutes?|mins?|m|hours?|hrs?|h|days?|d|weeks?|w|years?|yrs?|y)?$/i;
+
     let time: number;
+    let descriptionArgStart = 1;
+
     if (isNaN(Number(args[0]))) {
-      if (
-        /^(-?(?:\d+)?\.?\d+) *(milliseconds?|msecs?|ms|seconds?|secs?|s|minutes?|mins?|m|hours?|hrs?|h|days?|d|weeks?|w|years?|yrs?|y)?$/i.test(
-          args[0] + args[1]
-        )
-      )
-        time = ms(args[0] + args[1]);
+      if (msRegex.test(args[0])) time = ms(args[0]);
       else return reply(message, { title: 'Invalid time.', color: 'RED' });
-    }
+    } else if (msRegex.test(args[0] + args[1])) {
+      time = ms(args[0] + args[1]);
+      descriptionArgStart = 2;
+    } else time = ms(args[0] + 'm');
+
+    if (time >= Number.MAX_SAFE_INTEGER)
+      return reply(message, {
+        title: `The time must not exceed ${ms(Number.MAX_SAFE_INTEGER, {
+          long: true,
+        })}`,
+        color: 'RED',
+      });
+    if (time <= 0)
+      return reply(message, {
+        title: 'The time must be positive.',
+        color: 'RED',
+      });
+
+    const staticTime = time;
+
+    const msg = await reply(message, {
+      title: args[descriptionArgStart]
+        ? `(${ms(time)}) ` + args.slice(descriptionArgStart).join(' ')
+        : 'Timer',
+      description: `${ms(time, { long: true })}`,
+      color: 'GREEN',
+      footer: {
+        text: `Timer for ${ms(staticTime, { long: true })}`,
+      },
+    });
+    msg;
+    let firstTime = true;
+
+    const interval = setInterval(() => {
+      msg.edit({
+        embeds: [
+          {
+            title: args[descriptionArgStart]
+              ? `(${ms(time)}) ` + args.slice(descriptionArgStart).join(' ')
+              : 'Timer',
+            description: `${ms(time, { long: true })}`,
+            color: time > 0 ? 'GREEN' : 'RED',
+            footer: {
+              text: `Timer for ${ms(staticTime, { long: true })}`,
+            },
+          },
+        ],
+      });
+      time -= firstTime ? 10000 : 5000;
+      firstTime = false;
+    }, ms('5 seconds'));
+    interval;
+    setTimeout(() => {
+      clearInterval(interval);
+      msg.edit({
+        embeds: [
+          {
+            title: args[descriptionArgStart]
+              ? `(${ms(time)}) ` + args.slice(descriptionArgStart).join(' ')
+              : 'Timer',
+            description: `Timer has ended`,
+            color: 'RED',
+            footer: {
+              text: `Timer for ${ms(staticTime, { long: true })}`,
+            },
+          },
+        ],
+      });
+      msg.reply(`${message.author.toString()} Your timer has ended.`);
+    }, time);
   }
 }

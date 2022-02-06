@@ -131,7 +131,7 @@
       "name": "timer",
       "aliases": [],
       "description": "Sets a timer. Updates every 5 seconds.",
-      "args": "<timer length><unit (short or long; no spaces)> [timer description]",
+      "args": "<timer length><unit (short or long)> [timer description]",
       "cooldown": 5000,
       "disabled": false,
       "permissions": [
@@ -359,19 +359,6 @@
       "args": "[category]",
       "cooldown": 1,
       "disabled": false,
-      "permissions": [
-        "SEND_MESSAGES",
-        "READ_MESSAGE_HISTORY",
-        "VIEW_CHANNEL"
-      ],
-      "argsRequired": false
-    },
-    {
-      "name": "squidgame",
-      "aliases": [],
-      "description": "Plays Squid Game. In alpha stage.\n      All dying results in your balance being reset to 0.\n      How to play:\n        * Red light, green light:\n          * When the embed is green, you can click the 'Go Forwards' button to go forwards.\n          * If the embed is red while you hit that button, you die.\n      ",
-      "cooldown": 300000,
-      "disabled": true,
       "permissions": [
         "SEND_MESSAGES",
         "READ_MESSAGE_HISTORY",
