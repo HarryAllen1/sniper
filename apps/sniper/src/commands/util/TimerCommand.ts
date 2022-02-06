@@ -52,6 +52,7 @@ export default class TimerCommand extends BaseCommand {
     const staticTime = time;
 
     const endTime = DateTime.now()
+      .setZone('America/Los_Angeles')
       .plus(Duration.fromDurationLike(time))
       .toLocaleString(DateTime.DATETIME_MED_WITH_SECONDS);
     const msg = await reply(message, {
