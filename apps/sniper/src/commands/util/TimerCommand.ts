@@ -1,4 +1,5 @@
 import { Message } from 'discord.js';
+import { DateTime, Duration } from 'luxon';
 import ms from 'ms';
 import DiscordClient from '../../client/client.js';
 import { reply } from '../../utils/helpers/message.js';
@@ -50,6 +51,9 @@ export default class TimerCommand extends BaseCommand {
 
     const staticTime = time;
 
+    const endTime = DateTime.now()
+      .plus(Duration.fromDurationLike(time))
+      .toLocaleString(DateTime.DATETIME_MED_WITH_SECONDS);
     const msg = await reply(message, {
       title: args[descriptionArgStart]
         ? `(${ms(time)}) ` + args.slice(descriptionArgStart).join(' ')
@@ -57,7 +61,9 @@ export default class TimerCommand extends BaseCommand {
       description: `${ms(time, { long: true })}`,
       color: 'GREEN',
       footer: {
-        text: `Timer for ${ms(staticTime, { long: true })}`,
+        text: `Timer for ${ms(staticTime, {
+          long: true,
+        })}. Ends at ${endTime} PST`,
       },
     });
     msg;
@@ -73,7 +79,9 @@ export default class TimerCommand extends BaseCommand {
             description: `${ms(time, { long: true })}`,
             color: time > 0 ? 'GREEN' : 'RED',
             footer: {
-              text: `Timer for ${ms(staticTime, { long: true })}`,
+              text: `Timer for ${ms(staticTime, {
+                long: true,
+              })}. Ends at ${endTime} PST`,
             },
           },
         ],
@@ -93,7 +101,9 @@ export default class TimerCommand extends BaseCommand {
             description: `Timer has ended`,
             color: 'RED',
             footer: {
-              text: `Timer for ${ms(staticTime, { long: true })}`,
+              text: `Timer for ${ms(staticTime, {
+                long: true,
+              })}. Ends at ${endTime} PST`,
             },
           },
         ],
