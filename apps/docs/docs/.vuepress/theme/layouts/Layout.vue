@@ -7,8 +7,14 @@ import ParentLayout from '@vuepress/theme-default/lib/client/layouts/Layout.vue'
 </template>
 
 <style lang="scss">
+@use 'sass:color' as color;
+
+$c-brand: #02b3f6;
+
 :root {
+  --scrollbar-border-radius: 3.5px;
   --c-brand: #02b3f6;
+  --c-brand-light: #{color.scale($c-brand, $lightness: 30%)};
 }
 .sidebar .navbar-items .navbar-item {
   background-color: var(--c-bg-sidebar);
@@ -20,12 +26,17 @@ import ParentLayout from '@vuepress/theme-default/lib/client/layouts/Layout.vue'
 }
 ::-webkit-scrollbar-thumb {
   background-color: var(--c-brand);
+  border-radius: var(--scrollbar-border-radius);
+  &:hover {
+    background-color: var(--c-brand-light);
+  }
 }
 ::-webkit-scrollbar-track {
   background-color: var(--c-border);
 }
 html.dark {
   --c-brand: #02b3f6;
+  --c-brand-light: #{color.scale($c-brand, $lightness: -30%)};
   .navbar {
     --c-text: #2c3e50;
     .navbar-dropdown {
