@@ -12,7 +12,7 @@ import ParentLayout from '@vuepress/theme-default/lib/client/layouts/Layout.vue'
 $c-brand: #02b3f6;
 
 :root {
-  --scrollbar-border-radius: 3.5px;
+  --scrollbar-border-radius: 4px;
   --c-brand: #02b3f6;
   --c-brand-light: #{color.scale($c-brand, $lightness: 30%)};
 }
@@ -21,8 +21,9 @@ $c-brand: #02b3f6;
   transition: transform var(--t-transform), background-color var(--t-color),
     border-color var(--t-color);
 }
-::-webkit-scrollbar {
-  width: 7px;
+::-webkit-scrollbar,
+.sidebar::-webkit-scrollbar {
+  width: 8px;
 }
 ::-webkit-scrollbar-thumb {
   background-color: var(--c-brand);
@@ -44,6 +45,7 @@ html.dark {
     }
   }
 }
+
 .navbar *:not(.navbar-dropdown) {
   --c-text-quote: var(--c-text);
 }
