@@ -35,7 +35,7 @@ export default class TimerCommand extends BaseCommand {
       descriptionArgStart = 2;
     } else time = ms(args[0] + 'm');
 
-    if (time >= Number.MAX_SAFE_INTEGER)
+    if (time >= Number.MAX_SAFE_INTEGER || time > ms('596h'))
       return reply(message, {
         title: `The time must not exceed ${ms(Number.MAX_SAFE_INTEGER, {
           long: true,
