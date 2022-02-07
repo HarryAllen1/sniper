@@ -104,7 +104,7 @@ export default class TimerCommand extends BaseCommand {
             footer: {
               text: `Timer for ${ms(staticTime, {
                 long: true,
-              })}. Ends at ${endTime} PST`,
+              })}. Ended at ${endTime} PST`,
             },
           },
         ],
