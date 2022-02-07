@@ -3,7 +3,6 @@ import { createColors } from 'colorette';
 import { Routes } from 'discord-api-types/v9';
 import { Intents } from 'discord.js';
 import admin from 'firebase-admin';
-// @ts-ignore
 import { getFirestore } from 'firebase-admin/firestore';
 import { readFileSync } from 'fs';
 import { AutoPoster } from 'topgg-autoposter';
@@ -23,14 +22,9 @@ admin.initializeApp({
 
 export const db = getFirestore();
 
-// import express from 'express';
-
 export const slappeyJSON = JSON.parse(
   readFileSync('./slappey-prod.json').toString()
 );
-
-// currently not used
-// const app = express();
 
 process.on('uncaughtException', console.error);
 
