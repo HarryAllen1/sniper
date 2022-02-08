@@ -27,6 +27,7 @@
     "@discordjs/builders": "^0.12.0",
     "@discordjs/rest": "^0.3.0",
     "@discordjs/voice": "^0.8.0",
+    "@sapphire/discord.js-utilities": "^4.6.2",
     "@sapphire/fetch": "^2.0.4",
     "@sapphire/framework": "^2.3.0",
     "@sapphire/type": "^2.1.2",
