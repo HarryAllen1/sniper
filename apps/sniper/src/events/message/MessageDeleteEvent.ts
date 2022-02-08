@@ -32,7 +32,6 @@ export default class MessageDeleteEvent extends BaseEvent {
       embeds: message.embeds,
       message,
     };
-    console.log(snipes[message.channelId]);
     // const snipeContent: any = {};
     // snipeContent[message.channel.id] = {
     //   author: message.author.id,
