@@ -119,18 +119,6 @@ export class Paginator {
     this.row.components.forEach((component) => component.setDisabled(true));
     // if (message && message.editable)
     await message.edit({ components: [this.row] });
-    // else if (message.deletable) message.delete();
-    // else
-    // message.reply({
-    // embeds: [
-    // {
-    // title:
-    // "Something went wrong, and I can't seem to stop the paginator.",
-    // description:
-    // 'If you have time, please open an issue on [Snipers Github issue page](https://github.com/MajesticString/sniper/issues) describing what happened up to this message.',
-    // },
-    // ],
-    // });
   }
 
   /**

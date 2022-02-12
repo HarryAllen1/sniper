@@ -1,7 +1,7 @@
+import { PaginatedMessage } from '@sapphire/discord.js-utilities';
 import { Message, MessageEmbed, TextChannel } from 'discord.js';
 import DiscordClient from '../../client/client.js';
 import { reply } from '../../utils/helpers/message.js';
-import { Paginator } from '../../utils/helpers/paginator.js';
 import BaseCommand from '../../utils/structures/BaseCommand.js';
 import { snipes, unSnipes } from './snipes.js';
 
@@ -108,18 +108,19 @@ export default class SnipeCommand extends BaseCommand {
         };
       });
     } else if (type === 'embeds') {
-      if (!snipe.embeds?.length)
+      if (snipe.embeds?.length === 0)
         return reply(message, {
           title:
             "This message doesn't have any embeds! Trying this command again with the `messages` type....",
           color: 'RED',
         }).then(() => this.run(client, message, ['messages']));
-      const paginator = new Paginator(
-        snipe.embeds.map((e) => ({ embeds: [e] }))
+      const paginator = new PaginatedMessage();
+      paginator.addPageEmbeds(
+        snipe.embeds ?? [new MessageEmbed().setTitle('No embeds')]
       );
-      const unSnipe = await paginator.start({ message });
-      unSnipes[message.channel.id] = {
-        msg: unSnipe,
+      const unSnipe = await paginator.run(message);
+      unSnipes[message.channelId] = {
+        msg: unSnipe.response as Message,
       };
     } else if (type === 'attachments') {
       if (!snipe.attachments?.length)
@@ -128,12 +129,11 @@ export default class SnipeCommand extends BaseCommand {
             "This message doesn't have any attachments. Trying this command again with the `embeds` type....",
           color: 'RED',
         }).then(() => this.run(client, message, ['embeds']));
-      const paginator = new Paginator(
-        snipe.attachments.map((a) => ({ content: a }))
-      );
-      const unSnipe = await paginator.start({ message });
+      const paginator = new PaginatedMessage();
+      paginator.addPages(snipe.attachments.map((a) => ({ content: a })));
+      const unSnipe = await paginator.run(message);
       unSnipes[message.channel.id] = {
-        msg: unSnipe,
+        msg: unSnipe.response as Message,
       };
     }
   }
