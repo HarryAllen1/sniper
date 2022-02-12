@@ -171,7 +171,9 @@ Kicks a user/users\
 ## Giveaways
 
 ### ~~gcreate~~
-#### This command is disabled
+::: warning
+This command is disabled
+:::
 Creates a giveaway. If no arguments are provided, Sniper will walk you through the creation.\
 **Aliases:** \
 **Arguments:** [time] [amount of winners] [prize]\
@@ -179,7 +181,9 @@ Creates a giveaway. If no arguments are provided, Sniper will walk you through t
 **Permissions:** `send messages`, `read message history`, `view channel`
 
 ### ~~gEnd~~
-#### This command is disabled
+::: warning
+This command is disabled
+:::
 Ends a giveaway. You will need to obtain a message ID. If you don't know how to obtain a message ID, refer to this article: https://support.discord.com/hc/en-us/articles/206346498-Where-can-I-find-my-User-Server-Message-ID-\
 **Aliases:** \
 **Arguments:** \<message id\>\
