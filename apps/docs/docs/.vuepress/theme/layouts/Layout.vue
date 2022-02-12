@@ -11,10 +11,15 @@ import ParentLayout from '@vuepress/theme-default/lib/client/layouts/Layout.vue'
 
 $c-brand: #02b3f6;
 
+.discord-messages {
+  border-radius: 18px;
+}
+
 :root {
   --scrollbar-border-radius: 4px;
   --c-brand: #02b3f6;
   --c-brand-light: #{color.scale($c-brand, $lightness: 30%)};
+  --c-tip: var(--c-brand);
 }
 .sidebar .navbar-items .navbar-item {
   background-color: var(--c-bg-sidebar);
@@ -38,6 +43,7 @@ $c-brand: #02b3f6;
 html.dark {
   --c-brand: #02b3f6;
   --c-brand-light: #{color.scale($c-brand, $lightness: -30%)};
+  --c-tip: var(--c-brand);
   .navbar {
     --c-text: #2c3e50;
     .navbar-dropdown {

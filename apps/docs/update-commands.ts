@@ -45,10 +45,16 @@ const capitalizeFirstLetter = (string: string) =>
         `
 ### ${cmd.disabled ? `~~${cmd.name}~~` : cmd.name}
 ${cmd.disabled ? '::: warning\nThis command is disabled\n:::' : ''}
-${cmd.description}\\
-**Aliases:** ${cmd.aliases.join(', ')}\\
-**Arguments:** ${
-          cmd.args ? cmd.args.replace(/</g, '\\<').replace(/>/g, '\\>') : 'None'
+${cmd.aliases.length ? cmd.description + '\\' : ''}
+${cmd.aliases.length ? `**Aliases:** ${cmd.aliases.join(', ')}\\` : ''}
+**Arguments/Usage:** ${
+          cmd.args
+            ? `<DiscordMessages><DiscordMessage profile="user">$${
+                cmd.name
+              } ${cmd.args
+                .replace(/</g, '\\<')
+                .replace(/>/g, '\\>')}</DiscordMessage></DiscordMessages>`
+            : 'None'
         }\\
 **Cooldown:** ${ms(cmd.cooldown, { long: true })}\\
 **Permissions:** ${cmd.permissions

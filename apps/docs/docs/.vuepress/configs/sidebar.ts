@@ -7,6 +7,14 @@ export const sidebar: SidebarConfig = {
       children: ['/'],
     },
     {
+      text: 'Setup',
+      children: ['/setup'],
+    },
+    {
+      text: 'Developers',
+      children: ['/self-hosting'],
+    },
+    {
       text: 'Commands',
       children: ['/commands/README.md'],
     },

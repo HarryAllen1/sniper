@@ -6,6 +6,13 @@ description: A guide for every command that Sniper has.
 
 # Command Reference
 
+Understanding the arguments:
+
+- `[argument]` Optional argument
+- `<argument>` Required argument
+- `[argument] ...` Repeat the argument as many times as needed
+- `[argument] <argument>` If the first argument is specified, the second argument _must_ be specified.
+
 [Jump to Snipe Command](#snipe)\
 [Jump to Edit Snipe Command](#editsnipe)\
 [Jump to Reaction Snipe Command](#reactionsnipe)
@@ -16,17 +23,17 @@ description: A guide for every command that Sniper has.
 
 ### changelog
 
-Shows changes made and plans for the bot.\
-**Aliases:** \
-**Arguments:** [number of changes to get. defaults to 5. this argument cannot go above 10.]\
+
+
+**Arguments/Usage:** <DiscordMessages><DiscordMessage profile="user">$changelog [number of changes to get. defaults to 5. this argument cannot go above 10.]</DiscordMessage></DiscordMessages>\
 **Cooldown:** 5 seconds\
 **Permissions:** `send messages`, `read message history`, `view channel`
 
 ### coinflip
 
-Flips a coin\
-**Aliases:** \
-**Arguments:** [heads or tails]\
+
+
+**Arguments/Usage:** <DiscordMessages><DiscordMessage profile="user">$coinflip [heads or tails]</DiscordMessage></DiscordMessages>\
 **Cooldown:** 500 ms\
 **Permissions:** `send messages`, `read message history`, `view channel`
 
@@ -34,15 +41,15 @@ Flips a coin\
 
 Submits an issue for this bot.\
 **Aliases:** issue, createproblem, problem\
-**Arguments:** \<issue\>: The issue with the bot.\
+**Arguments/Usage:** <DiscordMessages><DiscordMessage profile="user">$createissue \<issue\>: The issue with the bot.</DiscordMessage></DiscordMessages>\
 **Cooldown:** 15 minutes\
 **Permissions:** `send messages`, `read message history`, `view channel`
 
 ### define
 
-Gets a definition\
-**Aliases:** \
-**Arguments:** \<word or term\> [dictionary to use (can be oxford, urban, or mw (which stands for Merriam Webster)). Defaults to Oxford]\
+
+
+**Arguments/Usage:** <DiscordMessages><DiscordMessage profile="user">$define \<word or term\> [dictionary to use (can be oxford, urban, or mw (which stands for Merriam Webster)). Defaults to Oxford]</DiscordMessage></DiscordMessages>\
 **Cooldown:** 1 second\
 **Permissions:** `send messages`, `read message history`, `view channel`
 
@@ -50,15 +57,15 @@ Gets a definition\
 
 Deletes all data associated with the bot. The only thing that will remain is your user ID.\
 **Aliases:** deletemydata\
-**Arguments:** None\
+**Arguments/Usage:** None\
 **Cooldown:** 500 ms\
 **Permissions:** `send messages`, `read message history`, `view channel`
 
 ### faq
 
-faq... pretty obvious\
-**Aliases:** \
-**Arguments:** None\
+
+
+**Arguments/Usage:** None\
 **Cooldown:** 1 second\
 **Permissions:** `send messages`, `read message history`, `view channel`
 
@@ -66,15 +73,15 @@ faq... pretty obvious\
 
 Requests a feature\
 **Aliases:** requestfeature, featurerequest\
-**Arguments:** \<feature\>: The requested bot feature.\
+**Arguments/Usage:** <DiscordMessages><DiscordMessage profile="user">$feature \<feature\>: The requested bot feature.</DiscordMessage></DiscordMessages>\
 **Cooldown:** 15 minutes\
 **Permissions:** `send messages`, `read message history`, `view channel`
 
 ### github
 
-Shows this bots Github repo\
-**Aliases:** \
-**Arguments:** None\
+
+
+**Arguments/Usage:** None\
 **Cooldown:** 5 seconds\
 **Permissions:** `send messages`, `read message history`, `view channel`
 
@@ -82,23 +89,23 @@ Shows this bots Github repo\
 
 Shows all commands and their descriptions\
 **Aliases:** commands, command\
-**Arguments:** [category or command name]\
+**Arguments/Usage:** <DiscordMessages><DiscordMessage profile="user">$help [category or command name]</DiscordMessage></DiscordMessages>\
 **Cooldown:** 1 second\
 **Permissions:** `send messages`, `read message history`, `view channel`
 
 ### invite
 
-Gives an invite link for this bot\
-**Aliases:** \
-**Arguments:** None\
+
+
+**Arguments/Usage:** None\
 **Cooldown:** 1 second\
 **Permissions:** `send messages`, `read message history`, `view channel`
 
 ### meme
 
-gets a meme from r/memes\
-**Aliases:** \
-**Arguments:** None\
+
+
+**Arguments/Usage:** None\
 **Cooldown:** 3 seconds\
 **Permissions:** `send messages`, `read message history`, `view channel`
 
@@ -106,23 +113,23 @@ gets a meme from r/memes\
 
 Shows the prefixes that this bot has. Can also be used to set the prefixes. Prefixes must be separated by a space.\
 **Aliases:** prefixes\
-**Arguments:** [prefix] [prefix] ...\
+**Arguments/Usage:** <DiscordMessages><DiscordMessage profile="user">$prefix [prefix] [prefix] ...</DiscordMessage></DiscordMessages>\
 **Cooldown:** 5 seconds\
 **Permissions:** `send messages`, `read message history`, `view channel`
 
 ### pronounce
 
-Pronounces anything.\
-**Aliases:** \
-**Arguments:** None\
+
+
+**Arguments/Usage:** None\
 **Cooldown:** 1 second\
 **Permissions:** `send messages`, `read message history`, `view channel`
 
 ### say
 
-says something\
-**Aliases:** \
-**Arguments:** None\
+
+
+**Arguments/Usage:** None\
 **Cooldown:** 10 seconds\
 **Permissions:** `send messages`, `read message history`, `view channel`
 
@@ -130,15 +137,15 @@ says something\
 
 Gives an invite for the support server.\
 **Aliases:** server, community\
-**Arguments:** None\
+**Arguments/Usage:** None\
 **Cooldown:** 5 seconds\
 **Permissions:** `send messages`, `read message history`, `view channel`
 
 ### vote
 
-Vote for the bot on top.gg\
-**Aliases:** \
-**Arguments:** None\
+
+
+**Arguments/Usage:** None\
 **Cooldown:** 3 seconds\
 **Permissions:** `send messages`, `read message history`, `view channel`
 
@@ -146,9 +153,9 @@ Vote for the bot on top.gg\
 
 ### ban
 
-Bans any amount of members.\
-**Aliases:** \
-**Arguments:** \<@user or userID\> \<user\> \<user\> ...\
+
+
+**Arguments/Usage:** <DiscordMessages><DiscordMessage profile="user">$ban \<@user or userID\> \<user\> \<user\> ...</DiscordMessage></DiscordMessages>\
 **Cooldown:** 100 ms\
 **Permissions:** `ban members`
 
@@ -156,15 +163,15 @@ Bans any amount of members.\
 
 Clears messages from a channel\
 **Aliases:** purge\
-**Arguments:** \<# of messages to clear\>\
+**Arguments/Usage:** <DiscordMessages><DiscordMessage profile="user">$clear \<# of messages to clear\></DiscordMessage></DiscordMessages>\
 **Cooldown:** 0 ms\
 **Permissions:** `send messages`, `read message history`, `view channel`
 
 ### kick
 
-Kicks a user/users\
-**Aliases:** \
-**Arguments:** \<user (user mention or username or id)\> ....\
+
+
+**Arguments/Usage:** <DiscordMessages><DiscordMessage profile="user">$kick \<user (user mention or username or id)\> ....</DiscordMessage></DiscordMessages>\
 **Cooldown:** 100 ms\
 **Permissions:** `kick members`
 
@@ -174,9 +181,9 @@ Kicks a user/users\
 ::: warning
 This command is disabled
 :::
-Creates a giveaway. If no arguments are provided, Sniper will walk you through the creation.\
-**Aliases:** \
-**Arguments:** [time] [amount of winners] [prize]\
+
+
+**Arguments/Usage:** <DiscordMessages><DiscordMessage profile="user">$gcreate [time] [amount of winners] [prize]</DiscordMessage></DiscordMessages>\
 **Cooldown:** 3 seconds\
 **Permissions:** `send messages`, `read message history`, `view channel`
 
@@ -184,9 +191,9 @@ Creates a giveaway. If no arguments are provided, Sniper will walk you through t
 ::: warning
 This command is disabled
 :::
-Ends a giveaway. You will need to obtain a message ID. If you don't know how to obtain a message ID, refer to this article: https://support.discord.com/hc/en-us/articles/206346498-Where-can-I-find-my-User-Server-Message-ID-\
-**Aliases:** \
-**Arguments:** \<message id\>\
+
+
+**Arguments/Usage:** <DiscordMessages><DiscordMessage profile="user">$gEnd \<message id\></DiscordMessage></DiscordMessages>\
 **Cooldown:** 0 ms\
 **Permissions:** `send messages`, `read message history`, `view channel`
 
@@ -194,25 +201,25 @@ Ends a giveaway. You will need to obtain a message ID. If you don't know how to 
 
 ### addcoins
 
-Adds any amount of coins to a user. Can only be used by bot creators.\
-**Aliases:** \
-**Arguments:** \<userID OR mentioned user\>\
+
+
+**Arguments/Usage:** <DiscordMessages><DiscordMessage profile="user">$addcoins \<userID OR mentioned user\></DiscordMessage></DiscordMessages>\
 **Cooldown:** 0 ms\
 **Permissions:** `send messages`, `read message history`, `view channel`
 
 ### eval
 
-Executes Javascript code. Can only be used by the owner(s) of the bot.\
-**Aliases:** \
-**Arguments:** None\
+
+
+**Arguments/Usage:** None\
 **Cooldown:** 0 ms\
 **Permissions:** `send messages`, `read message history`, `view channel`
 
 ### sudo
 
-Run a command as another user\
-**Aliases:** \
-**Arguments:** \<userID\> \<command\> [...args]\
+
+
+**Arguments/Usage:** <DiscordMessages><DiscordMessage profile="user">$sudo \<userID\> \<command\> [...args]</DiscordMessage></DiscordMessages>\
 **Cooldown:** 0 ms\
 **Permissions:** `send messages`, `read message history`, `view channel`
 
@@ -222,71 +229,71 @@ Run a command as another user\
 
 Shows the current amount of coins you or someone else has.\
 **Aliases:** bal\
-**Arguments:** [mentioned user OR user ID]\
+**Arguments/Usage:** <DiscordMessages><DiscordMessage profile="user">$balance [mentioned user OR user ID]</DiscordMessage></DiscordMessages>\
 **Cooldown:** 1 second\
 **Permissions:** `send messages`, `read message history`, `view channel`
 
 ### bet
 
-Gamble an amount of money, and you might earn some coins.\
-**Aliases:** \
-**Arguments:** None\
+
+
+**Arguments/Usage:** None\
 **Cooldown:** 500 ms\
 **Permissions:** `send messages`, `read message history`, `view channel`
 
 ### buy
 
-Buys an item from the shop. View available items through the `shop` command.\
-**Aliases:** \
-**Arguments:** \<item\>\
+
+
+**Arguments/Usage:** <DiscordMessages><DiscordMessage profile="user">$buy \<item\></DiscordMessage></DiscordMessages>\
 **Cooldown:** 250 ms\
 **Permissions:** `send messages`, `read message history`, `view channel`
 
 ### crime
 
-Commits a crime to gain coins. There is 50/50 chance you lose coins and a 10% chance you go to jail.\
-**Aliases:** \
-**Arguments:** None\
+
+
+**Arguments/Usage:** None\
 **Cooldown:** 1 minute\
 **Permissions:** `send messages`, `read message history`, `view channel`
 
 ### daily
 
-Collects daily coins\
-**Aliases:** \
-**Arguments:** None\
+
+
+**Arguments/Usage:** None\
 **Cooldown:** 1 day\
 **Permissions:** `send messages`, `read message history`, `view channel`
 
 ### fortnite
 
-fortnite sucks. You have a 1% chance to gain 5 coins\
-**Aliases:** \
-**Arguments:** None\
+
+
+**Arguments/Usage:** None\
 **Cooldown:** 5 seconds\
 **Permissions:** `send messages`, `read message history`, `view channel`
 
 ### give
 
-Gives some coins to a specified user\
-**Aliases:** \
-**Arguments:** \<user ID or mentioned user\> \<amount of coins\>\
+
+
+**Arguments/Usage:** <DiscordMessages><DiscordMessage profile="user">$give \<user ID or mentioned user\> \<amount of coins\></DiscordMessage></DiscordMessages>\
 **Cooldown:** 5 seconds\
 **Permissions:** `send messages`, `read message history`, `view channel`
 
 ### inv
 
-Shows the items that you currently have\
-**Aliases:** \
-**Arguments:** [userID or mentioned user]\
+
+
+**Arguments/Usage:** <DiscordMessages><DiscordMessage profile="user">$inv [userID or mentioned user]</DiscordMessage></DiscordMessages>\
 **Cooldown:** 0 ms\
 **Permissions:** `send messages`, `read message history`, `view channel`
 
 ### jailbreak
 
-If you are in jail, this command will attempt to break you out. You could fail however, and have to be in jail for longer.\
-**Aliases:** \
-**Arguments:** None\
+
+
+**Arguments/Usage:** None\
 **Cooldown:** 15 minutes\
 **Permissions:** `send messages`, `read message history`, `view channel`
 
@@ -294,31 +301,31 @@ If you are in jail, this command will attempt to break you out. You could fail h
 
 Ranks people in order of wealth\
 **Aliases:** leaderboards, leaderboard, rich, richest\
-**Arguments:** None\
+**Arguments/Usage:** None\
 **Cooldown:** 3 seconds\
 **Permissions:** `send messages`, `read message history`, `view channel`
 
 ### rob
 
-(try) to rob someone!\
-**Aliases:** \
-**Arguments:** \<user ID or mentioned user to rob\>\
+
+
+**Arguments/Usage:** <DiscordMessages><DiscordMessage profile="user">$rob \<user ID or mentioned user to rob\></DiscordMessage></DiscordMessages>\
 **Cooldown:** 1 minute\
 **Permissions:** `send messages`, `read message history`, `view channel`
 
 ### shop
 
-The shop to get stuff from\
-**Aliases:** \
-**Arguments:** [category]\
+
+
+**Arguments/Usage:** <DiscordMessages><DiscordMessage profile="user">$shop [category]</DiscordMessage></DiscordMessages>\
 **Cooldown:** 1 ms\
 **Permissions:** `send messages`, `read message history`, `view channel`
 
 ### use
 
-Uses an item\
-**Aliases:** \
-**Arguments:** None\
+
+
+**Arguments/Usage:** None\
 **Cooldown:** 5 seconds\
 **Permissions:** `send messages`, `read message history`, `view channel`
 
@@ -326,9 +333,9 @@ Uses an item\
 
 ### bot
 
-Shows information about the bot\
-**Aliases:** \
-**Arguments:** None\
+
+
+**Arguments/Usage:** None\
 **Cooldown:** 15 seconds\
 **Permissions:** `send messages`, `read message history`, `view channel`
 
@@ -336,23 +343,23 @@ Shows information about the bot\
 
 After a message is edited, you can use this command to see the old message.\
 **Aliases:** esnipe\
-**Arguments:** None\
+**Arguments/Usage:** None\
 **Cooldown:** 0 ms\
 **Permissions:** `send messages`, `read message history`, `view channel`
 
 ### ping
 
-Pings the bot and returns response times.\
-**Aliases:** \
-**Arguments:** None\
+
+
+**Arguments/Usage:** None\
 **Cooldown:** 5 seconds\
 **Permissions:** `send messages`, `read message history`, `view channel`
 
 ### poll
 
-starts a poll idk\
-**Aliases:** \
-**Arguments:** \<the poll\>\
+
+
+**Arguments/Usage:** <DiscordMessages><DiscordMessage profile="user">$poll \<the poll\></DiscordMessage></DiscordMessages>\
 **Cooldown:** 10 seconds\
 **Permissions:** `send messages`, `read message history`, `view channel`
 
@@ -360,31 +367,31 @@ starts a poll idk\
 
 Shows the last removed reaction from a message in this channel\
 **Aliases:** rsnipe\
-**Arguments:** None\
+**Arguments/Usage:** None\
 **Cooldown:** 0 ms\
 **Permissions:** `send messages`, `read message history`, `view channel`
 
 ### role
 
-Gets information about a role.\
-**Aliases:** \
-**Arguments:** [mentioned role OR role id OR role name. defaults to @everyone]\
+
+
+**Arguments/Usage:** <DiscordMessages><DiscordMessage profile="user">$role [mentioned role OR role id OR role name. defaults to @everyone]</DiscordMessage></DiscordMessages>\
 **Cooldown:** 5 seconds\
 **Permissions:** `send messages`, `read message history`, `view channel`
 
 ### roles
 
-shows the roles of this server and their positions\
-**Aliases:** \
-**Arguments:** None\
+
+
+**Arguments/Usage:** None\
 **Cooldown:** 3 seconds\
 **Permissions:** `send messages`, `read message history`, `view channel`
 
 ### snipe
 
-After a message is deleted, this command shows what it was. If the creator of the deleted message doesn't want that message to be shown, they can use the `unsnipe` command.\
-**Aliases:** \
-**Arguments:** [type: embeds | attachments | messages]\
+
+
+**Arguments/Usage:** <DiscordMessages><DiscordMessage profile="user">$snipe [type: embeds | attachments | messages]</DiscordMessage></DiscordMessages>\
 **Cooldown:** 3 seconds\
 **Permissions:** `send messages`, `read message history`, `view channel`
 
@@ -392,46 +399,46 @@ After a message is deleted, this command shows what it was. If the creator of th
 
 Turns text into math\
 **Aliases:** math, latex\
-**Arguments:** None\
+**Arguments/Usage:** None\
 **Cooldown:** 1 second\
 **Permissions:** `send messages`, `read message history`, `view channel`
 
 ### timer
 
-Sets a timer. Updates every 5 seconds.\
-**Aliases:** \
-**Arguments:** \<timer length\>\<unit (short or long)\> [timer description]\
+
+
+**Arguments/Usage:** <DiscordMessages><DiscordMessage profile="user">$timer \<timer length\>\<unit (short or long)\> [timer description]</DiscordMessage></DiscordMessages>\
 **Cooldown:** 5 seconds\
 **Permissions:** `send messages`, `read message history`, `view channel`
 
 ### unsnipe
 
-The author of the sniped message can delete the snipe with this command.\
-**Aliases:** \
-**Arguments:** None\
+
+
+**Arguments/Usage:** None\
 **Cooldown:** 1 second\
 **Permissions:** `send messages`, `read message history`, `view channel`
 
 ### vote2
 
-Gives options to vote for or something idk\
-**Aliases:** \
-**Arguments:** \<title\> ...options separated by commas\
+
+
+**Arguments/Usage:** <DiscordMessages><DiscordMessage profile="user">$vote2 \<title\> ...options separated by commas</DiscordMessage></DiscordMessages>\
 **Cooldown:** 5 seconds\
 **Permissions:** `send messages`, `read message history`, `view channel`
 
 ### weather
 
-shows the weather\
-**Aliases:** \
-**Arguments:** \<city\> [time period (hourly, daily. defaults to daily)]\
+
+
+**Arguments/Usage:** <DiscordMessages><DiscordMessage profile="user">$weather \<city\> [time period (hourly, daily. defaults to daily)]</DiscordMessage></DiscordMessages>\
 **Cooldown:** 5 seconds\
 **Permissions:** `send messages`, `read message history`, `view channel`
 
 ### whois
 
-shows info about a user\
-**Aliases:** \
-**Arguments:** None\
+
+
+**Arguments/Usage:** None\
 **Cooldown:** 3 seconds\
 **Permissions:** `send messages`, `read message history`, `view channel`
