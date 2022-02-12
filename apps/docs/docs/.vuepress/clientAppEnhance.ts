@@ -13,7 +13,6 @@ import {
   DiscordReactions,
   install as DiscordMessageComponents,
 } from '@discord-message-components/vue';
-import '@discord-message-components/vue/dist/style.css';
 import { defineClientAppEnhance } from '@vuepress/client';
 
 export default defineClientAppEnhance(({ app }) => {

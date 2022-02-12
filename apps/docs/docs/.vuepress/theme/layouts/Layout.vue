@@ -8,6 +8,7 @@ import ParentLayout from '@vuepress/theme-default/lib/client/layouts/Layout.vue'
 
 <style lang="scss">
 @use 'sass:color' as color;
+@import "@discord-message-components/vue/dist/style.css";
 
 $c-brand: #02b3f6;
 
