@@ -44,7 +44,7 @@ const capitalizeFirstLetter = (string: string) =>
       appendToDocs(
         `
 ### ${cmd.disabled ? `~~${cmd.name}~~` : cmd.name}
-${cmd.disabled ? '#### This command is disabled' : ''}
+${cmd.disabled ? '::: warning\nThis command is disabled\n:::' : ''}
 ${cmd.description}\\
 **Aliases:** ${cmd.aliases.join(', ')}\\
 **Arguments:** ${
