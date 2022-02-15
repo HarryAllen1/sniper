@@ -56,6 +56,7 @@ ${cmd.aliases.length ? `**Aliases:** ${cmd.aliases.join(', ')}\\` : ''}
                 .replace(/</g, '&lt;')
                 .replace(/>/g, '&gt;')
                 .replace(/\[/g, '\\[')
+                .replace(/\\/g, '\\\\')
                 .replace(/\]/g, '\\]')}\n</DiscordMessage>\n</DiscordMessages>`
             : 'None'
         }\\
