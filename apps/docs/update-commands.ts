@@ -49,11 +49,14 @@ ${cmd.aliases.length ? cmd.description + '\\' : ''}
 ${cmd.aliases.length ? `**Aliases:** ${cmd.aliases.join(', ')}\\` : ''}
 **Arguments/Usage:** ${
           cmd.args
-            ? `<DiscordMessages><DiscordMessage profile="user">$${
+            ? `\n<DiscordMessages>\n<DiscordMessage profile="user">\n&#36;${
                 cmd.name
               } ${cmd.args
-                .replace(/</g, '\\<')
-                .replace(/>/g, '\\>')}</DiscordMessage></DiscordMessages>`
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/\[/g, '\\[')
+                .replace(/\]/g, '\\]')}\n</DiscordMessage>\n</DiscordMessages>`
             : 'None'
         }\\
 **Cooldown:** ${ms(cmd.cooldown, { long: true })}\\

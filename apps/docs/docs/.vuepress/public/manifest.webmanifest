@@ -1,0 +1,51 @@
+{
+  "name": "Sniper Discord Bot Docs",
+  "short_name": "Sniper Docs",
+  "description": "Sniper is a utility bot with a focus on snipe commands.",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#22272E",
+  "theme_color": "#02b3f6",
+  "icons": [
+    {
+      "src": "https://cdn.discordapp.com/avatars/893619442712444970/d5f43ef2880350c1fa5ddd288d927327.webp?size=1024",
+      "sizes": "1024x1024",
+      "type": "image/webp"
+    },
+    {
+      "src": "https://cdn.discordapp.com/avatars/893619442712444970/d5f43ef2880350c1fa5ddd288d927327.webp?size=96",
+      "sizes": "96x96",
+      "type": "image/webp"
+    },
+    {
+      "src": "https://cdn.discordapp.com/avatars/893619442712444970/d5f43ef2880350c1fa5ddd288d927327.webp?size=512",
+      "sizes": "512x512",
+      "type": "image/webp"
+    },
+    {
+      "src": "https://cdn.discordapp.com/avatars/893619442712444970/d5f43ef2880350c1fa5ddd288d927327.webp?size=56",
+      "sizes": "56x56",
+      "type": "image/webp"
+    },
+    {
+      "src": "https://cdn.discordapp.com/avatars/893619442712444970/d5f43ef2880350c1fa5ddd288d927327.png?size=1024",
+      "sizes": "1024x1024",
+      "type": "image/png"
+    },
+    {
+      "src": "https://cdn.discordapp.com/avatars/893619442712444970/d5f43ef2880350c1fa5ddd288d927327.png?size=96",
+      "sizes": "96x96",
+      "type": "image/png"
+    },
+    {
+      "src": "https://cdn.discordapp.com/avatars/893619442712444970/d5f43ef2880350c1fa5ddd288d927327.png?size=512",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "https://cdn.discordapp.com/avatars/893619442712444970/d5f43ef2880350c1fa5ddd288d927327.png?size=56",
+      "sizes": "56x56",
+      "type": "image/png"
+    }
+  ]
+}

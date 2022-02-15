@@ -27,6 +27,20 @@ export default defineUserConfig<DefaultThemeOptions, ViteBundlerOptions>({
         href: 'https://cdn.discordapp.com/avatars/893619442712444970/d5f43ef2880350c1fa5ddd288d927327.png',
       },
     ],
+    [
+      'link',
+      {
+        rel: 'manifest',
+        href: '/manifest.webmanifest',
+      },
+    ],
+    [
+      'meta',
+      {
+        name: 'theme-color',
+        content: '#02b3f6',
+      },
+    ],
   ],
 
   plugins: [
@@ -34,6 +48,20 @@ export default defineUserConfig<DefaultThemeOptions, ViteBundlerOptions>({
       '@vuepress/plugin-shiki',
       {
         theme: 'one-dark-pro',
+      },
+    ],
+    [
+      '@vuepress/plugin-google-analytics',
+      { id: process.env.GOOGLE_ANALYTICS_ID },
+    ],
+    [
+      '@vuepress/plugin-search',
+      {
+        locales: {
+          '/': {
+            placeholder: 'Search',
+          },
+        },
       },
     ],
   ],
