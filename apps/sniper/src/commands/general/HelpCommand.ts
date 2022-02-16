@@ -72,7 +72,7 @@ export default class HelpCommand extends BaseCommand {
         embeds: [
           {
             title: 'Command Help',
-            description: `Everything is case insensitive. Made using Discord.js v${version}.\n[View source code](https://github.com/MajesticString/sniper)\nThis bot is in its beta stage, so expect bugs.`,
+            description: `Everything is case insensitive. Made using Discord.js v${version}.\n[View source code](https://github.com/MajesticString/sniper)`,
             fields: [
               {
                 name: 'Catagories',
