@@ -1,17 +1,17 @@
 import { SlashCommandBuilder } from '@discordjs/builders';
+import { PaginatedMessage } from '@sapphire/discord.js-utilities';
 import {
   Message,
   MessageActionRow,
-  MessageEditOptions,
   MessageSelectMenu,
   MessageSelectOptionData,
   version,
+  WebhookEditMessageOptions,
 } from 'discord.js';
 import { camelCase, startCase } from 'lodash-es';
 import ms from 'ms';
 import DiscordClient from '../../client/client.js';
 import { reply } from '../../utils/helpers/message.js';
-import { Paginator } from '../../utils/helpers/paginator.js';
 import { capitalizeFirstLetter } from '../../utils/helpers/string.js';
 import { helpCommandHelperCollection } from '../../utils/registry.js';
 import BaseCommand from '../../utils/structures/BaseCommand.js';
@@ -43,7 +43,7 @@ export default class HelpCommand extends BaseCommand {
 
     const updateHelpMessageExceptItReturnsTheEmbed = (
       index: number
-    ): MessageEditOptions => {
+    ): WebhookEditMessageOptions => {
       const // descriptions = helpCommandHelper[categories[index]].commands;
         descriptions = helpCommandHelperCollection.get(
           categories[index]
@@ -67,7 +67,7 @@ export default class HelpCommand extends BaseCommand {
       };
     };
 
-    const pages: MessageEditOptions[] = [
+    const pages: WebhookEditMessageOptions[] = [
       {
         embeds: [
           {
@@ -149,7 +149,8 @@ export default class HelpCommand extends BaseCommand {
         await reply(
           message,
           // eslint-disable-next-line
-          pages[0].embeds![0],
+          // @ts-ignore
+          pages[0].embeds[0],
           {
             components: [
               new MessageActionRow().addComponents(
@@ -162,8 +163,8 @@ export default class HelpCommand extends BaseCommand {
           }
         );
       else {
-        const paginator = new Paginator(pages);
-        paginator.start({ message });
+        const paginator = new PaginatedMessage({ pages });
+        paginator.run(message);
       }
     } catch (error) {
       console.error(error);
