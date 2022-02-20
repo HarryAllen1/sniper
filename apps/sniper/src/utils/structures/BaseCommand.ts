@@ -7,6 +7,7 @@ import {
   PermissionString,
 } from 'discord.js';
 import DiscordClient from '../../client/client.js';
+import { client } from '../../sniper.js';
 
 interface ExtraCommandOptions {
   cooldownMessage?: string;
@@ -41,6 +42,8 @@ export default abstract class BaseCommand {
 
   message?: Message;
   client!: Client;
+
+  db = client.db;
 
   interactionData?: SlashCommandBuilder;
 

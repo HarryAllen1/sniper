@@ -31,3 +31,6 @@ yarn-error.log*
 
 # turbo
 .turbo
+
+# pnpm store bc of the devcontainer
+/.pnpm-store

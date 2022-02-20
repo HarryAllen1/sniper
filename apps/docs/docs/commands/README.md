@@ -18,7 +18,7 @@ Understanding the arguments:
 [Jump to Edit Snipe Command](#editsnipe)\
 [Jump to Reaction Snipe Command](#reactionsnipe)
 
-<!-- <Toc /> -->
+<Toc />
 
 <!-- DO NOT EDIT ANYTHING BELOW THIS LINE!!! -->
 <!-- start generation -->
@@ -29,10 +29,10 @@ Understanding the arguments:
 
 **Arguments/Usage:**
 <DiscordMessages>
-<DiscordMessage profile="user"> &#36;changelog \[number of changes to get.
-defaults to 5. this argument cannot go above 10.\]
+<DiscordMessage profile="user"> &#36;changelog [number of changes to get.
+defaults to 5. this argument cannot go above 10.]
 </DiscordMessage>
-</DiscordMessages>\
+</DiscordMessages>
 **Cooldown:** 5 seconds\
 **Permissions:** `send messages`, `read message history`, `view channel`
 
@@ -208,7 +208,11 @@ id)&gt; ....
 
 ### ~~gcreate~~
 
-::: warning This command is disabled :::
+::: warning
+
+This command is disabled
+
+:::
 
 **Arguments/Usage:**
 <DiscordMessages>
@@ -221,7 +225,11 @@ id)&gt; ....
 
 ### ~~gEnd~~
 
-::: warning This command is disabled :::
+::: warning
+
+This command is disabled
+
+:::
 
 **Arguments/Usage:**
 <DiscordMessages>

@@ -1,6 +1,5 @@
 import { red } from 'colorette';
 import { Collection, Message, MessageEmbedOptions } from 'discord.js';
-import { getFirestore } from 'firebase-admin/firestore';
 import ms from 'ms';
 import DiscordClient from '../../client/client.js';
 import { harrysDiscordID } from '../../sniper.js';
@@ -154,18 +153,34 @@ export default class MessageCreateEvent extends BaseEvent {
             }
           }
           try {
-            const db = getFirestore();
+            const db = this.db.db;
 
             const commandsIssued = await db
               .collection('bot')
               .doc('stats')
               .get();
+
             db.collection('bot')
               .doc('stats')
               .set(
                 { commandsIssued: commandsIssued.data()?.commandsIssued + 1 },
                 { merge: true }
               );
+            if (message.content.toLowerCase().startsWith('pls')) {
+              const plsCommandsIssued = await db
+                .collection('bot')
+                .doc('stats')
+                .get();
+              db.collection('bot')
+                .doc('stats')
+                .set(
+                  {
+                    plsCommandsIssued:
+                      plsCommandsIssued.data()?.commandsIssued + 1,
+                  },
+                  { merge: true }
+                );
+            }
             log('Begin command ' + command?.name + ' in ' + message.guild.name);
             if (!cmdArgs[0] && command.argsRequired) {
               reply(message, {

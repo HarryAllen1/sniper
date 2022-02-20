@@ -55,11 +55,9 @@ ${cmd.aliases.length ? `**Aliases:** ${cmd.aliases.join(', ')}\\` : ''}
                 .replace(/&/g, '&amp;')
                 .replace(/</g, '&lt;')
                 .replace(/>/g, '&gt;')
-                .replace(/\[/g, '\\[')
-                .replace(/\\/g, '\\\\')
-                .replace(/\]/g, '\\]')}\n</DiscordMessage>\n</DiscordMessages>`
+                .replace(/\\/g, '\\\\')}\n</DiscordMessage>\n</DiscordMessages>`
             : 'None'
-        }\\
+        }
 **Cooldown:** ${ms(cmd.cooldown, { long: true })}\\
 **Permissions:** ${cmd.permissions
           .map((perm: string) => `\`${_.lowerCase(perm)}\``)
