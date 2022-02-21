@@ -7,7 +7,15 @@ https://discord.com/oauth2/authorize?client_id=893619442712444970&permissions=53
 If you just want basic sniping functionality: \
 https://discord.com/api/oauth2/authorize?client_id=893619442712444970&permissions=126016&scope=bot%20applications.commands
 
+## Documentation
+
+There are 2 sites that contain documentation:
+
+- https://sniper-docs.web.app/
+- https://sniper.pages.dev/
+
 ## File structure
+
 ```
 |- apps      // All projects
   |- sniper    // The current live bot
@@ -17,4 +25,5 @@ https://discord.com/api/oauth2/authorize?client_id=893619442712444970&permission
 ```
 
 ## Self-hosting instructions
-The self hosting instructions are in the apps/sniper directory.
+
+The self hosting instructions are in the apps/sniper directory, or in the documentation: https://sniper-docs.web.app/self-hosting
