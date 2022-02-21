@@ -10,7 +10,7 @@ export default class CreateIssueCommand extends BaseCommand {
       'general',
       ['issue', 'createproblem', 'problem'],
       900000,
-      'Submits an issue for this bot.',
+      "Don't use this command. Just [submit a Github issue](https://github.com/MajesticString/sniper/issues).",
       {
         argsDescription: '<issue>: The issue with the bot.',
       }

@@ -8,7 +8,9 @@ import ParentLayout from '@vuepress/theme-default/lib/client/layouts/Layout.vue'
 
 <style lang="scss">
 @use 'sass:color' as color;
-@import "@discord-message-components/vue/dist/style.css";
+@import "@discord-message-components/core/dist/styles/discord-messages.css";
+@import "@discord-message-components/core/dist/styles/discord-message.css";
+@import "@discord-message-components/core/dist/styles/discord-author-info.css";
 
 $c-brand: #02b3f6;
 
@@ -42,6 +44,9 @@ $c-brand: #02b3f6;
   background-color: var(--c-border);
 }
 html.dark {
+  .search-box {
+    --search-text-color: #adbac7;
+  }
   --c-brand: #02b3f6;
   --c-brand-light: #{color.scale($c-brand, $lightness: -30%)};
   --c-tip: var(--c-brand);

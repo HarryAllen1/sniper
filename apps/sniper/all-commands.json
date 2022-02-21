@@ -380,49 +380,6 @@
       "argsRequired": false
     }
   ],
-  "restricted": [
-    {
-      "name": "addcoins",
-      "aliases": [],
-      "description": "Adds any amount of coins to a user. Can only be used by bot creators.",
-      "args": "<userID OR mentioned user>",
-      "cooldown": 0,
-      "disabled": false,
-      "permissions": [
-        "SEND_MESSAGES",
-        "READ_MESSAGE_HISTORY",
-        "VIEW_CHANNEL"
-      ],
-      "argsRequired": false
-    },
-    {
-      "name": "eval",
-      "aliases": [],
-      "description": "Executes Javascript code. Can only be used by the owner(s) of the bot.",
-      "cooldown": 0,
-      "disabled": false,
-      "permissions": [
-        "SEND_MESSAGES",
-        "READ_MESSAGE_HISTORY",
-        "VIEW_CHANNEL"
-      ],
-      "argsRequired": false
-    },
-    {
-      "name": "sudo",
-      "aliases": [],
-      "description": "Run a command as another user",
-      "args": "<userID> <command> [...args]",
-      "cooldown": 0,
-      "disabled": false,
-      "permissions": [
-        "SEND_MESSAGES",
-        "READ_MESSAGE_HISTORY",
-        "VIEW_CHANNEL"
-      ],
-      "argsRequired": true
-    }
-  ],
   "giveaways": [
     {
       "name": "gcreate",
@@ -495,11 +452,54 @@
       "argsRequired": false
     }
   ],
+  "restricted": [
+    {
+      "name": "addcoins",
+      "aliases": [],
+      "description": "Adds any amount of coins to a user. Can only be used by bot creators.",
+      "args": "<userID OR mentioned user>",
+      "cooldown": 0,
+      "disabled": false,
+      "permissions": [
+        "SEND_MESSAGES",
+        "READ_MESSAGE_HISTORY",
+        "VIEW_CHANNEL"
+      ],
+      "argsRequired": false
+    },
+    {
+      "name": "eval",
+      "aliases": [],
+      "description": "Executes Javascript code. Can only be used by the owner(s) of the bot.",
+      "cooldown": 0,
+      "disabled": false,
+      "permissions": [
+        "SEND_MESSAGES",
+        "READ_MESSAGE_HISTORY",
+        "VIEW_CHANNEL"
+      ],
+      "argsRequired": false
+    },
+    {
+      "name": "sudo",
+      "aliases": [],
+      "description": "Run a command as another user",
+      "args": "<userID> <command> [...args]",
+      "cooldown": 0,
+      "disabled": false,
+      "permissions": [
+        "SEND_MESSAGES",
+        "READ_MESSAGE_HISTORY",
+        "VIEW_CHANNEL"
+      ],
+      "argsRequired": true
+    }
+  ],
   "general": [
     {
       "name": "changelog",
       "aliases": [],
-      "description": "Shows changes made and plans for the bot.",
+      "description": "Literally just gets Github commits to this bot.",
       "args": "[number of changes to get. defaults to 5. this argument cannot go above 10.]",
       "cooldown": 5000,
       "disabled": false,
@@ -531,7 +531,7 @@
         "createproblem",
         "problem"
       ],
-      "description": "Submits an issue for this bot.",
+      "description": "Don't use this command. Just [submit a Github issue](https://github.com/MajesticString/sniper/issues).",
       "args": "<issue>: The issue with the bot.",
       "cooldown": 900000,
       "disabled": false,

@@ -12,7 +12,7 @@ export default class ChangelogCommand extends BaseCommand {
       'general',
       [],
       5000,
-      'Shows changes made and plans for the bot.',
+      'Literally just gets Github commits to this bot.',
       {
         cooldownMessage: 'this cooldown is to prevent spam.',
         argsDescription:

@@ -49,14 +49,30 @@ ${cmd.aliases.length ? cmd.description + '\\' : ''}
 ${cmd.aliases.length ? `**Aliases:** ${cmd.aliases.join(', ')}\\` : ''}
 **Arguments/Usage:** ${
           cmd.args
-            ? `\n<DiscordMessages>\n<DiscordMessage profile="user">\n&#36;${
-                cmd.name
-              } ${cmd.args
+            ? `
+<div class="discord-messages">
+  <div class="discord-message">
+    <div class="discord-message-content">
+      <div class="discord-author-avatar">
+				<img src="https://cdn.discordapp.com/embed/avatars/0.png" alt="" />
+			</div>
+      <div class="discord-message-body">
+          <span class="discord-author-info">
+            <span class="discord-author-username">
+              User
+            </span>
+          </span>
+          <span class="discord-message-timestamp">
+            {{ new Date().toLocaleDateString() }}
+					</span><br />
+      &#36;${cmd.name} ${cmd.args
                 .replace(/&/g, '&amp;')
                 .replace(/</g, '&lt;')
                 .replace(/>/g, '&gt;')
-                .replace(/\\/g, '\\\\')}\n</DiscordMessage>\n</DiscordMessages>`
-            : 'None'
+                .replace(/\\/g, '\\\\')}
+            </div>
+          </div>\n</div>\n</div>\n`
+            : 'None\n'
         }
 **Cooldown:** ${ms(cmd.cooldown, { long: true })}\\
 **Permissions:** ${cmd.permissions

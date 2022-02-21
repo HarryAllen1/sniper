@@ -5,8 +5,8 @@ import { navbar } from './configs/navbar';
 import { sidebar } from './configs/sidebar';
 
 export default defineUserConfig<DefaultThemeOptions, ViteBundlerOptions>({
-  // site config
   lang: 'en-US',
+
   title: 'Sniper Docs',
   description: 'Sniper is a utility bot with a focus on snipe commands.',
   theme: path.resolve(__dirname, 'theme', 'index.ts'),
