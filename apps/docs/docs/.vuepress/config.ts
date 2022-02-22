@@ -1,4 +1,3 @@
-import { path } from '@vuepress/utils';
 import type { DefaultThemeOptions, ViteBundlerOptions } from 'vuepress';
 import { defineUserConfig } from 'vuepress';
 import { navbar } from './configs/navbar';
@@ -9,7 +8,6 @@ export default defineUserConfig<DefaultThemeOptions, ViteBundlerOptions>({
 
   title: 'Sniper Docs',
   description: 'Sniper is a utility bot with a focus on snipe commands.',
-  theme: path.resolve(__dirname, 'theme', 'index.ts'),
   themeConfig: {
     repo: 'MajesticString/sniper',
     docsDir: 'apps/docs/docs',

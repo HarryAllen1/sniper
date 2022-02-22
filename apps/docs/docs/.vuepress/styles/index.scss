@@ -1,16 +1,7 @@
-<script setup>
-import ParentLayout from '@vuepress/theme-default/lib/client/layouts/Layout.vue';
-</script>
-
-<template>
-  <ParentLayout></ParentLayout>
-</template>
-
-<style lang="scss">
 @use 'sass:color' as color;
-@import "@discord-message-components/core/dist/styles/discord-messages.css";
-@import "@discord-message-components/core/dist/styles/discord-message.css";
-@import "@discord-message-components/core/dist/styles/discord-author-info.css";
+@import 'https://unpkg.com/@discord-message-components/core/dist/styles/discord-messages.css';
+@import 'https://unpkg.com/@discord-message-components/core/dist/styles/discord-message.css';
+@import 'https://unpkg.com/@discord-message-components/core/dist/styles/discord-author-info.css';
 
 $c-brand: #02b3f6;
 
@@ -83,4 +74,3 @@ html.dark {
     backdrop-filter: none;
   }
 }
-</style>
