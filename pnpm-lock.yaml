@@ -12,6 +12,7 @@ importers:
       '@vuepress/plugin-google-analytics': ^2.0.0-beta.35
       '@vuepress/plugin-pwa': ^2.0.0-beta.35
       '@vuepress/plugin-pwa-popup': ^2.0.0-beta.35
+      '@vuepress/plugin-search': ^2.0.0-beta.35
       '@vuepress/plugin-shiki': ^2.0.0-beta.35
       '@vuepress/plugin-toc': ^2.0.0-beta.35
       cheerio: ^1.0.0-rc.10
@@ -35,6 +36,7 @@ importers:
       '@vuepress/plugin-google-analytics': 2.0.0-beta.35
       '@vuepress/plugin-pwa': 2.0.0-beta.35
       '@vuepress/plugin-pwa-popup': 2.0.0-beta.35
+      '@vuepress/plugin-search': 2.0.0-beta.35
       '@vuepress/plugin-shiki': 2.0.0-beta.35
       '@vuepress/plugin-toc': 2.0.0-beta.35
       cheerio: 1.0.0-rc.10
