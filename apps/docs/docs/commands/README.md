@@ -18,17 +18,17 @@ Understanding the arguments:
 [Jump to Edit Snipe Command](#editsnipe)\
 [Jump to Reaction Snipe Command](#reactionsnipe)
 
-<!-- <Toc /> -->
+<Toc />
 
 <!-- DO NOT EDIT ANYTHING BELOW THIS LINE!!! -->
 <!-- start generation -->
+
 ## General
 
 ### changelog
 
+**Arguments/Usage:**
 
-
-**Arguments/Usage:** 
 <div class="discord-messages">
   <div class="discord-message">
     <div class="discord-message-content">
@@ -55,9 +55,8 @@ Understanding the arguments:
 
 ### coinflip
 
+**Arguments/Usage:**
 
-
-**Arguments/Usage:** 
 <div class="discord-messages">
   <div class="discord-message">
     <div class="discord-message-content">
@@ -86,7 +85,8 @@ Understanding the arguments:
 
 Don't use this command. Just [submit a Github issue](https://github.com/MajesticString/sniper/issues).\
 **Aliases:** issue, createproblem, problem\
-**Arguments/Usage:** 
+**Arguments/Usage:**
+
 <div class="discord-messages">
   <div class="discord-message">
     <div class="discord-message-content">
@@ -113,9 +113,8 @@ Don't use this command. Just [submit a Github issue](https://github.com/Majestic
 
 ### define
 
+**Arguments/Usage:**
 
-
-**Arguments/Usage:** 
 <div class="discord-messages">
   <div class="discord-message">
     <div class="discord-message-content">
@@ -151,8 +150,6 @@ Deletes all data associated with the bot. The only thing that will remain is you
 
 ### faq
 
-
-
 **Arguments/Usage:** None
 
 **Cooldown:** 1 second\
@@ -162,7 +159,8 @@ Deletes all data associated with the bot. The only thing that will remain is you
 
 Requests a feature\
 **Aliases:** requestfeature, featurerequest\
-**Arguments/Usage:** 
+**Arguments/Usage:**
+
 <div class="discord-messages">
   <div class="discord-message">
     <div class="discord-message-content">
@@ -189,8 +187,6 @@ Requests a feature\
 
 ### github
 
-
-
 **Arguments/Usage:** None
 
 **Cooldown:** 5 seconds\
@@ -200,7 +196,8 @@ Requests a feature\
 
 Shows all commands and their descriptions\
 **Aliases:** commands, command\
-**Arguments/Usage:** 
+**Arguments/Usage:**
+
 <div class="discord-messages">
   <div class="discord-message">
     <div class="discord-message-content">
@@ -227,16 +224,12 @@ Shows all commands and their descriptions\
 
 ### invite
 
-
-
 **Arguments/Usage:** None
 
 **Cooldown:** 1 second\
 **Permissions:** `send messages`, `read message history`, `view channel`
 
 ### meme
-
-
 
 **Arguments/Usage:** None
 
@@ -247,7 +240,8 @@ Shows all commands and their descriptions\
 
 Shows the prefixes that this bot has. Can also be used to set the prefixes. Prefixes must be separated by a space.\
 **Aliases:** prefixes\
-**Arguments/Usage:** 
+**Arguments/Usage:**
+
 <div class="discord-messages">
   <div class="discord-message">
     <div class="discord-message-content">
@@ -274,16 +268,12 @@ Shows the prefixes that this bot has. Can also be used to set the prefixes. Pref
 
 ### pronounce
 
-
-
 **Arguments/Usage:** None
 
 **Cooldown:** 1 second\
 **Permissions:** `send messages`, `read message history`, `view channel`
 
 ### say
-
-
 
 **Arguments/Usage:** None
 
@@ -301,8 +291,6 @@ Gives an invite for the support server.\
 
 ### vote
 
-
-
 **Arguments/Usage:** None
 
 **Cooldown:** 3 seconds\
@@ -312,9 +300,8 @@ Gives an invite for the support server.\
 
 ### addcoins
 
+**Arguments/Usage:**
 
-
-**Arguments/Usage:** 
 <div class="discord-messages">
   <div class="discord-message">
     <div class="discord-message-content">
@@ -341,8 +328,6 @@ Gives an invite for the support server.\
 
 ### eval
 
-
-
 **Arguments/Usage:** None
 
 **Cooldown:** 0 ms\
@@ -350,9 +335,8 @@ Gives an invite for the support server.\
 
 ### sudo
 
+**Arguments/Usage:**
 
-
-**Arguments/Usage:** 
 <div class="discord-messages">
   <div class="discord-message">
     <div class="discord-message-content">
@@ -381,9 +365,8 @@ Gives an invite for the support server.\
 
 ### ban
 
+**Arguments/Usage:**
 
-
-**Arguments/Usage:** 
 <div class="discord-messages">
   <div class="discord-message">
     <div class="discord-message-content">
@@ -412,7 +395,8 @@ Gives an invite for the support server.\
 
 Clears messages from a channel\
 **Aliases:** purge\
-**Arguments/Usage:** 
+**Arguments/Usage:**
+
 <div class="discord-messages">
   <div class="discord-message">
     <div class="discord-message-content">
@@ -439,9 +423,8 @@ Clears messages from a channel\
 
 ### kick
 
+**Arguments/Usage:**
 
-
-**Arguments/Usage:** 
 <div class="discord-messages">
   <div class="discord-message">
     <div class="discord-message-content">
@@ -469,12 +452,13 @@ Clears messages from a channel\
 ## Giveaways
 
 ### ~~gcreate~~
+
 ::: warning
 This command is disabled
 :::
 
+**Arguments/Usage:**
 
-**Arguments/Usage:** 
 <div class="discord-messages">
   <div class="discord-message">
     <div class="discord-message-content">
@@ -500,12 +484,13 @@ This command is disabled
 **Permissions:** `send messages`, `read message history`, `view channel`
 
 ### ~~gEnd~~
+
 ::: warning
 This command is disabled
 :::
 
+**Arguments/Usage:**
 
-**Arguments/Usage:** 
 <div class="discord-messages">
   <div class="discord-message">
     <div class="discord-message-content">
@@ -536,7 +521,8 @@ This command is disabled
 
 Shows the current amount of coins you or someone else has.\
 **Aliases:** bal\
-**Arguments/Usage:** 
+**Arguments/Usage:**
+
 <div class="discord-messages">
   <div class="discord-message">
     <div class="discord-message-content">
@@ -563,8 +549,6 @@ Shows the current amount of coins you or someone else has.\
 
 ### bet
 
-
-
 **Arguments/Usage:** None
 
 **Cooldown:** 500 ms\
@@ -572,9 +556,8 @@ Shows the current amount of coins you or someone else has.\
 
 ### buy
 
+**Arguments/Usage:**
 
-
-**Arguments/Usage:** 
 <div class="discord-messages">
   <div class="discord-message">
     <div class="discord-message-content">
@@ -601,16 +584,12 @@ Shows the current amount of coins you or someone else has.\
 
 ### crime
 
-
-
 **Arguments/Usage:** None
 
 **Cooldown:** 1 minute\
 **Permissions:** `send messages`, `read message history`, `view channel`
 
 ### daily
-
-
 
 **Arguments/Usage:** None
 
@@ -619,8 +598,6 @@ Shows the current amount of coins you or someone else has.\
 
 ### fortnite
 
-
-
 **Arguments/Usage:** None
 
 **Cooldown:** 5 seconds\
@@ -628,9 +605,8 @@ Shows the current amount of coins you or someone else has.\
 
 ### give
 
+**Arguments/Usage:**
 
-
-**Arguments/Usage:** 
 <div class="discord-messages">
   <div class="discord-message">
     <div class="discord-message-content">
@@ -657,9 +633,8 @@ Shows the current amount of coins you or someone else has.\
 
 ### inv
 
+**Arguments/Usage:**
 
-
-**Arguments/Usage:** 
 <div class="discord-messages">
   <div class="discord-message">
     <div class="discord-message-content">
@@ -686,8 +661,6 @@ Shows the current amount of coins you or someone else has.\
 
 ### jailbreak
 
-
-
 **Arguments/Usage:** None
 
 **Cooldown:** 15 minutes\
@@ -704,9 +677,8 @@ Ranks people in order of wealth\
 
 ### rob
 
+**Arguments/Usage:**
 
-
-**Arguments/Usage:** 
 <div class="discord-messages">
   <div class="discord-message">
     <div class="discord-message-content">
@@ -733,9 +705,8 @@ Ranks people in order of wealth\
 
 ### shop
 
+**Arguments/Usage:**
 
-
-**Arguments/Usage:** 
 <div class="discord-messages">
   <div class="discord-message">
     <div class="discord-message-content">
@@ -762,8 +733,6 @@ Ranks people in order of wealth\
 
 ### use
 
-
-
 **Arguments/Usage:** None
 
 **Cooldown:** 5 seconds\
@@ -772,8 +741,6 @@ Ranks people in order of wealth\
 ## Util
 
 ### bot
-
-
 
 **Arguments/Usage:** None
 
@@ -791,8 +758,6 @@ After a message is edited, you can use this command to see the old message.\
 
 ### ping
 
-
-
 **Arguments/Usage:** None
 
 **Cooldown:** 5 seconds\
@@ -800,9 +765,8 @@ After a message is edited, you can use this command to see the old message.\
 
 ### poll
 
+**Arguments/Usage:**
 
-
-**Arguments/Usage:** 
 <div class="discord-messages">
   <div class="discord-message">
     <div class="discord-message-content">
@@ -838,9 +802,8 @@ Shows the last removed reaction from a message in this channel\
 
 ### role
 
+**Arguments/Usage:**
 
-
-**Arguments/Usage:** 
 <div class="discord-messages">
   <div class="discord-message">
     <div class="discord-message-content">
@@ -867,8 +830,6 @@ Shows the last removed reaction from a message in this channel\
 
 ### roles
 
-
-
 **Arguments/Usage:** None
 
 **Cooldown:** 3 seconds\
@@ -876,9 +837,8 @@ Shows the last removed reaction from a message in this channel\
 
 ### snipe
 
+**Arguments/Usage:**
 
-
-**Arguments/Usage:** 
 <div class="discord-messages">
   <div class="discord-message">
     <div class="discord-message-content">
@@ -914,9 +874,8 @@ Turns text into math\
 
 ### timer
 
+**Arguments/Usage:**
 
-
-**Arguments/Usage:** 
 <div class="discord-messages">
   <div class="discord-message">
     <div class="discord-message-content">
@@ -943,8 +902,6 @@ Turns text into math\
 
 ### unsnipe
 
-
-
 **Arguments/Usage:** None
 
 **Cooldown:** 1 second\
@@ -952,9 +909,8 @@ Turns text into math\
 
 ### vote2
 
+**Arguments/Usage:**
 
-
-**Arguments/Usage:** 
 <div class="discord-messages">
   <div class="discord-message">
     <div class="discord-message-content">
@@ -981,9 +937,8 @@ Turns text into math\
 
 ### weather
 
+**Arguments/Usage:**
 
-
-**Arguments/Usage:** 
 <div class="discord-messages">
   <div class="discord-message">
     <div class="discord-message-content">
@@ -1009,8 +964,6 @@ Turns text into math\
 **Permissions:** `send messages`, `read message history`, `view channel`
 
 ### whois
-
-
 
 **Arguments/Usage:** None
 

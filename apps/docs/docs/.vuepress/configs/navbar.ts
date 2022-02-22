@@ -22,8 +22,4 @@ export const navbar: NavbarConfig = [
     text: 'Discord Bot List',
     link: 'https://discordbotlist.com/bots/sniper-6531',
   },
-  {
-    text: 'GitHub',
-    link: 'https://github.com/MajesticString/sniper',
-  },
 ];

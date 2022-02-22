@@ -11,9 +11,12 @@ export default defineUserConfig<DefaultThemeOptions, ViteBundlerOptions>({
   description: 'Sniper is a utility bot with a focus on snipe commands.',
   theme: path.resolve(__dirname, 'theme', 'index.ts'),
   themeConfig: {
+    repo: 'MajesticString/sniper',
+    docsDir: 'apps/docs/docs',
     logo: 'https://cdn.discordapp.com/avatars/893619442712444970/d5f43ef2880350c1fa5ddd288d927327.webp',
     locales: {
       '/': {
+        editLinkText: 'Edit this page on GitHub',
         navbar,
         sidebar,
       },
@@ -50,10 +53,7 @@ export default defineUserConfig<DefaultThemeOptions, ViteBundlerOptions>({
         theme: 'one-dark-pro',
       },
     ],
-    [
-      '@vuepress/plugin-google-analytics',
-      { id: process.env.GOOGLE_ANALYTICS_ID },
-    ],
+    ['@vuepress/plugin-google-analytics', { id: 'G-K31ECX4YK3' }],
     [
       '@vuepress/plugin-search',
       {
@@ -64,5 +64,8 @@ export default defineUserConfig<DefaultThemeOptions, ViteBundlerOptions>({
         },
       },
     ],
+    ['@vuepress/plugin-toc'],
+    ['@vuepress/plugin-pwa'],
+    ['@vuepress/plugin-pwa-popup'],
   ],
 });
