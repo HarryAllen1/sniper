@@ -34,3 +34,11 @@ yarn-error.log*
 
 # pnpm store bc of the devcontainer
 /.pnpm-store
+
+/.firebase
+
+.temp
+.cache
+docs/.vuepress/dist
+/.firebase
+.env

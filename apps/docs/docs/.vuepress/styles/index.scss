@@ -5,6 +5,10 @@
 
 $c-brand: #02b3f6;
 
+:root {
+  scroll-behavior: smooth;
+}
+
 .discord-messages {
   border-radius: 18px;
 }
