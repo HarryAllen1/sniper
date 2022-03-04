@@ -62,7 +62,7 @@
     "eslint-config-prettier": "8.4.0",
     "eslint-plugin-node": "11.1.0",
     "nodemon": "2.0.15",
-    "pnpm": "6.32.1",
+    "pnpm": "6.32.2",
     "prettier": "2.5.1",
     "ts-node": "10.5.0",
     "tsup": "5.11.13",
