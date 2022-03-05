@@ -7,23 +7,13 @@ $c-brand: #02b3f6;
 
 :root {
   scroll-behavior: smooth;
+  --scrollbar-border-radius: 4px;
 }
 
 .discord-messages {
   border-radius: 18px;
 }
 
-:root {
-  --scrollbar-border-radius: 4px;
-  --c-brand: #02b3f6;
-  --c-brand-light: #{color.scale($c-brand, $lightness: 30%)};
-  --c-tip: var(--c-brand);
-}
-.sidebar .navbar-items .navbar-item {
-  background-color: var(--c-bg-sidebar);
-  transition: transform var(--t-transform), background-color var(--t-color),
-    border-color var(--t-color);
-}
 ::-webkit-scrollbar,
 .sidebar::-webkit-scrollbar {
   width: 8px;
@@ -39,42 +29,11 @@ $c-brand: #02b3f6;
   background-color: var(--c-border);
 }
 html.dark {
-  .search-box {
-    --search-text-color: #adbac7;
-  }
+  // brand colors
   --c-brand: #02b3f6;
-  --c-brand-light: #{color.scale($c-brand, $lightness: -30%)};
-  --c-tip: var(--c-brand);
-  .navbar {
-    --c-text: #2c3e50;
-    .navbar-dropdown {
-      --c-text: var(--c-text-light);
-    }
-  }
+  --c-brand-light: #038ec0;
 }
-
-.navbar *:not(.navbar-dropdown) {
-  --c-text-quote: var(--c-text);
-}
-.navbar {
-  background-color: var(--c-brand);
-  --c-text: #2c3e50;
-
-  div > * {
-    padding: 0;
-    background: #0000;
-  }
-  .arrow.down {
-    --c-bg-arrow: var(--c-text);
-  }
-  .navbar-items .external-link-icon:not(.navbar-dropdown .external-link-icon) {
-    --c-bg-arrow: var(--c-text);
-  }
-  .navbar-items a:not(.navbar-dropdown a) {
-    color: var(--c-text);
-  }
-  .navbar-item {
-    background: #0000;
-    backdrop-filter: none;
-  }
+:root {
+  --c-brand: #02b3f6;
+  --c-brand-light: #3ac4f7;
 }

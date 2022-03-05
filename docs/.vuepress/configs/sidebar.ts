@@ -3,7 +3,8 @@ import type { SidebarConfig } from '@vuepress/theme-default';
 export const sidebar: SidebarConfig = {
   '/': [
     {
-      text: 'Introduction',
+      text: 'Home',
+
       children: ['/'],
     },
     {
@@ -16,6 +17,7 @@ export const sidebar: SidebarConfig = {
     },
     {
       text: 'Commands',
+
       children: ['/commands/README.md'],
     },
   ],
