@@ -1,8 +1,8 @@
 import { RESTPostAPIApplicationCommandsJSONBody } from 'discord-api-types/v9';
 import { Collection } from 'discord.js';
-import { default as ms } from 'ms';
-import { promises as fs } from 'node:fs';
-import path from 'node:path';
+import ms from 'ms';
+import * as fs from 'node:fs/promises';
+import * as path from 'node:path';
 import DiscordClient from '../client/client.js';
 import BaseCommand from './structures/BaseCommand.js';
 import BaseEvent from './structures/BaseEvent.js';
@@ -82,6 +82,7 @@ export async function registerCommands(client: DiscordClient, dir = '') {
       });
 
       if (command.interactionData) {
+        // @ts-ignore - Version incompatibility
         interactions.push(command.interactionData.toJSON());
       }
     }

@@ -129,7 +129,6 @@ export default class MessageCreateEvent extends BaseEvent {
         timeStamps.set(message.author.id, currentTime);
         setTimeout(() => timeStamps.delete(message.author.id), cooldownAmount);
         if (command) {
-          command.client = client;
           if (
             command.category === 'restricted' &&
             message.author.id !== harrysDiscordID
@@ -153,25 +152,25 @@ export default class MessageCreateEvent extends BaseEvent {
             }
           }
           try {
-            const db = this.db.db;
-
-            const commandsIssued = await db
+            const commandsIssued = await this.db.db
               .collection('bot')
               .doc('stats')
               .get();
 
-            db.collection('bot')
+            this.db.db
+              .collection('bot')
               .doc('stats')
               .set(
                 { commandsIssued: commandsIssued.data()?.commandsIssued + 1 },
                 { merge: true }
               );
             if (message.content.toLowerCase().startsWith('pls')) {
-              const plsCommandsIssued = await db
+              const plsCommandsIssued = await this.db.db
                 .collection('bot')
                 .doc('stats')
                 .get();
-              db.collection('bot')
+              this.db.db
+                .collection('bot')
                 .doc('stats')
                 .set(
                   {

@@ -1,13 +1,11 @@
 import { SlashCommandBuilder } from '@discordjs/builders';
-import {
-  Client,
+import type {
   CommandInteraction,
   CommandInteractionOptionResolver,
   Message,
   PermissionString,
 } from 'discord.js';
 import DiscordClient from '../../client/client.js';
-import { client } from '../../sniper.js';
 
 interface ExtraCommandOptions {
   cooldownMessage?: string;
@@ -39,11 +37,6 @@ export default abstract class BaseCommand {
       disabled: false,
     }
   ) {}
-
-  message?: Message;
-  client!: Client;
-
-  db = client.db;
 
   interactionData?: SlashCommandBuilder;
 

@@ -7,8 +7,8 @@ export const sidebar: SidebarConfig = {
       children: ['/'],
     },
     {
-      text: 'Setup',
-      children: ['/setup'],
+      text: 'Getting Started',
+      children: ['/invite', '/setup'],
     },
     {
       text: 'Developers',

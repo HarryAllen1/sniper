@@ -2,6 +2,10 @@ import type { NavbarConfig } from '@vuepress/theme-default';
 
 export const navbar: NavbarConfig = [
   {
+    text: 'Commands',
+    link: '/commands',
+  },
+  {
     text: 'Invite',
     children: [
       {
@@ -13,6 +17,10 @@ export const navbar: NavbarConfig = [
         link: 'https://discord.com/oauth2/authorize?client_id=893619442712444970&permissions=533112155862&scope=bot%20applications.commands',
       },
     ],
+  },
+  {
+    text: 'Support Server',
+    link: 'https://discord.gg/uShPGFDJCJ',
   },
   {
     text: 'Top.gg',

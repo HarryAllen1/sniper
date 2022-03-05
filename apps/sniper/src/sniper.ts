@@ -2,7 +2,7 @@ import { REST } from '@discordjs/rest';
 import { createColors } from 'colorette';
 import { Routes } from 'discord-api-types/v9';
 import { Intents } from 'discord.js';
-import admin from 'firebase-admin';
+import { cert, initializeApp } from 'firebase-admin/app';
 import { getFirestore } from 'firebase-admin/firestore';
 import { readFileSync } from 'fs';
 import { AutoPoster } from 'topgg-autoposter';
@@ -12,11 +12,15 @@ import {
   registerCommands,
   registerEvents,
 } from './utils/registry.js';
-export const firebaseCredentials = JSON.parse(
-  readFileSync('./firebase-credentials.json').toString()
+export const firebaseCredentials = await import(
+  '../firebase-credentials.json',
+  // @ts-ignore - We are using node 17
+  { assert: { type: 'json' } }
 );
-admin.initializeApp({
-  credential: admin.credential.cert(firebaseCredentials),
+
+const { projectId, clientEmail, privateKey } = firebaseCredentials;
+initializeApp({
+  credential: cert({ projectId, clientEmail, privateKey }),
   projectId: 'discord-sniper-5c7f0',
 });
 

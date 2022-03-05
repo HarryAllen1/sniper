@@ -52,6 +52,7 @@ export const reply = async (
       (userData) =>
         message.type !== 'APPLICATION_COMMAND'
           ? message.reply({
+              // @ts-ignore
               embeds: [embed],
               allowedMentions: {
                 repliedUser: userData?.settings?.mentionAuthorOnReply
@@ -70,6 +71,7 @@ export const reply = async (
             })
           : message
               .reply({
+                // @ts-ignore
                 embeds: [embed],
                 allowedMentions: {
                   repliedUser: userData?.settings?.mentionAuthorOnReply
