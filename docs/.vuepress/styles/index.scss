@@ -1,7 +1,8 @@
 @use 'sass:color' as color;
-@import 'https://unpkg.com/@discord-message-components/core/dist/styles/discord-messages.css';
-@import 'https://unpkg.com/@discord-message-components/core/dist/styles/discord-message.css';
-@import 'https://unpkg.com/@discord-message-components/core/dist/styles/discord-author-info.css';
+@import url('https://unpkg.com/@discord-message-components/core/dist/styles/discord-messages.css');
+@import url('https://unpkg.com/@discord-message-components/core/dist/styles/discord-message.css');
+@import url('https://unpkg.com/@discord-message-components/core/dist/styles/discord-author-info.css');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code&display=swap');
 
 $c-brand: #02b3f6;
 
@@ -36,4 +37,39 @@ html.dark {
 :root {
   --c-brand: #02b3f6;
   --c-brand-light: #3ac4f7;
+  --font-family-code: 'Fira Code', Consolas, Monaco, 'Andale Mono',
+    'Ubuntu Mono', monospace;
+}
+
+.details-overlay[open] > summary::before {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 80;
+  display: block;
+  cursor: default;
+  content: ' ';
+  background: transparent;
+}
+
+.details-overlay-dark[open] > summary::before {
+  z-index: 111;
+  background: var(--color-primer-canvas-backdrop);
+}
+
+.details-reset {
+  // Remove marker added by the display: list-item browser default
+  > summary {
+    list-style: none;
+  }
+  // Remove marker added by details polyfill
+  > summary::before {
+    display: none;
+  }
+  // Remove marker added by Chrome
+  > summary::-webkit-details-marker {
+    display: none;
+  }
 }

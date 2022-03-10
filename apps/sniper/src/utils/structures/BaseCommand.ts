@@ -1,4 +1,5 @@
 import { SlashCommandBuilder } from '@discordjs/builders';
+import { ApplicationCommandType } from 'discord-api-types/v9';
 import type {
   CommandInteraction,
   CommandInteractionOptionResolver,
@@ -13,6 +14,7 @@ interface ExtraCommandOptions {
   argsRequired?: boolean;
   permissions?: PermissionString[];
   disabled?: boolean;
+  slashCommandType?: ApplicationCommandType;
 }
 
 export default abstract class BaseCommand {
@@ -38,7 +40,9 @@ export default abstract class BaseCommand {
     }
   ) {}
 
-  interactionData?: SlashCommandBuilder;
+  interactionData?:
+    | Omit<SlashCommandBuilder, 'addSubcommand' | 'addSubcommandGroup'>
+    | SlashCommandBuilder;
 
   get name(): string {
     return this._name;
@@ -78,6 +82,9 @@ export default abstract class BaseCommand {
   }
   get disabled(): boolean {
     return this.extraCommandOptions?.disabled ?? false;
+  }
+  get slashCommandType(): ApplicationCommandType | undefined {
+    return this.extraCommandOptions?.slashCommandType;
   }
 
   /**

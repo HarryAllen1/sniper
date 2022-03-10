@@ -1,3 +1,4 @@
+import { SlashCommandBuilder } from '@discordjs/builders';
 import { Message } from 'discord.js';
 import DiscordClient from '../../client/client.js';
 import { getMentionedUser } from '../../utils/helpers/mention.js';
@@ -13,9 +14,23 @@ export default class BalanceCommand extends BaseCommand {
       ['bal'],
       1000,
       'Shows the current amount of coins you or someone else has.',
-      { argsDescription: '[mentioned user OR user ID]' }
+      {
+        argsDescription: '[mentioned user OR user ID]',
+        // slashCommandType: ApplicationCommandType.User,
+      }
     );
   }
+  interactionData = new SlashCommandBuilder()
+    .setName('balance')
+    .setDescription(
+      'Shows the current amount of coins you or someone else has.'
+    )
+    .addUserOption((usr) =>
+      usr
+        .setName('user')
+        .setRequired(false)
+        .setDescription('User to get balance of')
+    );
 
   async run(client: DiscordClient, message: Message, args: Array<string>) {
     message.channel.sendTyping();

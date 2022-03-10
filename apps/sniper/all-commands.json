@@ -11,7 +11,8 @@
         "READ_MESSAGE_HISTORY",
         "VIEW_CHANNEL"
       ],
-      "argsRequired": false
+      "argsRequired": false,
+      "filePath": "src/commands/util/BotCommand.ts"
     },
     {
       "name": "editsnipe",
@@ -26,7 +27,8 @@
         "READ_MESSAGE_HISTORY",
         "VIEW_CHANNEL"
       ],
-      "argsRequired": false
+      "argsRequired": false,
+      "filePath": "src/commands/util/EditsnipeCommand.ts"
     },
     {
       "name": "ping",
@@ -39,7 +41,8 @@
         "READ_MESSAGE_HISTORY",
         "VIEW_CHANNEL"
       ],
-      "argsRequired": false
+      "argsRequired": false,
+      "filePath": "src/commands/util/PingCommand.ts"
     },
     {
       "name": "poll",
@@ -53,7 +56,8 @@
         "READ_MESSAGE_HISTORY",
         "VIEW_CHANNEL"
       ],
-      "argsRequired": false
+      "argsRequired": false,
+      "filePath": "src/commands/util/PollCommand.ts"
     },
     {
       "name": "reactionsnipe",
@@ -68,7 +72,8 @@
         "READ_MESSAGE_HISTORY",
         "VIEW_CHANNEL"
       ],
-      "argsRequired": false
+      "argsRequired": false,
+      "filePath": "src/commands/util/ReactionsnipeCommand.ts"
     },
     {
       "name": "role",
@@ -82,7 +87,8 @@
         "READ_MESSAGE_HISTORY",
         "VIEW_CHANNEL"
       ],
-      "argsRequired": false
+      "argsRequired": false,
+      "filePath": "src/commands/util/RoleCommand.ts"
     },
     {
       "name": "roles",
@@ -95,7 +101,8 @@
         "READ_MESSAGE_HISTORY",
         "VIEW_CHANNEL"
       ],
-      "argsRequired": false
+      "argsRequired": false,
+      "filePath": "src/commands/util/RolesCommand.ts"
     },
     {
       "name": "snipe",
@@ -109,23 +116,8 @@
         "READ_MESSAGE_HISTORY",
         "VIEW_CHANNEL"
       ],
-      "argsRequired": false
-    },
-    {
-      "name": "tex",
-      "aliases": [
-        "math",
-        "latex"
-      ],
-      "description": "Turns text into math",
-      "cooldown": 1000,
-      "disabled": false,
-      "permissions": [
-        "SEND_MESSAGES",
-        "READ_MESSAGE_HISTORY",
-        "VIEW_CHANNEL"
-      ],
-      "argsRequired": false
+      "argsRequired": false,
+      "filePath": "src/commands/util/SnipeCommand.ts"
     },
     {
       "name": "timer",
@@ -139,7 +131,8 @@
         "READ_MESSAGE_HISTORY",
         "VIEW_CHANNEL"
       ],
-      "argsRequired": false
+      "argsRequired": false,
+      "filePath": "src/commands/util/TimerCommand.ts"
     },
     {
       "name": "unsnipe",
@@ -152,7 +145,8 @@
         "READ_MESSAGE_HISTORY",
         "VIEW_CHANNEL"
       ],
-      "argsRequired": false
+      "argsRequired": false,
+      "filePath": "src/commands/util/UnSnipeCommand.ts"
     },
     {
       "name": "vote2",
@@ -166,7 +160,8 @@
         "READ_MESSAGE_HISTORY",
         "VIEW_CHANNEL"
       ],
-      "argsRequired": false
+      "argsRequired": false,
+      "filePath": "src/commands/util/VoteCommand.ts"
     },
     {
       "name": "weather",
@@ -180,7 +175,8 @@
         "READ_MESSAGE_HISTORY",
         "VIEW_CHANNEL"
       ],
-      "argsRequired": false
+      "argsRequired": false,
+      "filePath": "src/commands/util/WeatherCommand.ts"
     },
     {
       "name": "whois",
@@ -193,7 +189,8 @@
         "READ_MESSAGE_HISTORY",
         "VIEW_CHANNEL"
       ],
-      "argsRequired": false
+      "argsRequired": false,
+      "filePath": "src/commands/util/WhoisCommand.ts"
     }
   ],
   "currency": [
@@ -211,7 +208,8 @@
         "READ_MESSAGE_HISTORY",
         "VIEW_CHANNEL"
       ],
-      "argsRequired": false
+      "argsRequired": false,
+      "filePath": "src/commands/currency/BalanceCommand.ts"
     },
     {
       "name": "bet",
@@ -224,7 +222,8 @@
         "READ_MESSAGE_HISTORY",
         "VIEW_CHANNEL"
       ],
-      "argsRequired": false
+      "argsRequired": false,
+      "filePath": "src/commands/currency/BetCommand.ts"
     },
     {
       "name": "buy",
@@ -238,7 +237,8 @@
         "READ_MESSAGE_HISTORY",
         "VIEW_CHANNEL"
       ],
-      "argsRequired": false
+      "argsRequired": false,
+      "filePath": "src/commands/currency/BuyCommand.ts"
     },
     {
       "name": "crime",
@@ -251,7 +251,8 @@
         "READ_MESSAGE_HISTORY",
         "VIEW_CHANNEL"
       ],
-      "argsRequired": false
+      "argsRequired": false,
+      "filePath": "src/commands/currency/CrimeCommand.ts"
     },
     {
       "name": "daily",
@@ -264,7 +265,8 @@
         "READ_MESSAGE_HISTORY",
         "VIEW_CHANNEL"
       ],
-      "argsRequired": false
+      "argsRequired": false,
+      "filePath": "src/commands/currency/DailyCommand.ts"
     },
     {
       "name": "fortnite",
@@ -277,7 +279,8 @@
         "READ_MESSAGE_HISTORY",
         "VIEW_CHANNEL"
       ],
-      "argsRequired": false
+      "argsRequired": false,
+      "filePath": "src/commands/currency/FortniteCommand.ts"
     },
     {
       "name": "give",
@@ -291,7 +294,8 @@
         "READ_MESSAGE_HISTORY",
         "VIEW_CHANNEL"
       ],
-      "argsRequired": false
+      "argsRequired": false,
+      "filePath": "src/commands/currency/GiveCommand.ts"
     },
     {
       "name": "inv",
@@ -305,7 +309,8 @@
         "READ_MESSAGE_HISTORY",
         "VIEW_CHANNEL"
       ],
-      "argsRequired": false
+      "argsRequired": false,
+      "filePath": "src/commands/currency/InvCommand.ts"
     },
     {
       "name": "jailbreak",
@@ -318,7 +323,8 @@
         "READ_MESSAGE_HISTORY",
         "VIEW_CHANNEL"
       ],
-      "argsRequired": false
+      "argsRequired": false,
+      "filePath": "src/commands/currency/JailBreakCommand.ts"
     },
     {
       "name": "lb",
@@ -336,7 +342,8 @@
         "READ_MESSAGE_HISTORY",
         "VIEW_CHANNEL"
       ],
-      "argsRequired": false
+      "argsRequired": false,
+      "filePath": "src/commands/currency/LbCommand.ts"
     },
     {
       "name": "rob",
@@ -350,7 +357,8 @@
         "READ_MESSAGE_HISTORY",
         "VIEW_CHANNEL"
       ],
-      "argsRequired": false
+      "argsRequired": false,
+      "filePath": "src/commands/currency/RobCommand.ts"
     },
     {
       "name": "shop",
@@ -364,7 +372,8 @@
         "READ_MESSAGE_HISTORY",
         "VIEW_CHANNEL"
       ],
-      "argsRequired": false
+      "argsRequired": false,
+      "filePath": "src/commands/currency/ShopCommand.ts"
     },
     {
       "name": "use",
@@ -377,79 +386,8 @@
         "READ_MESSAGE_HISTORY",
         "VIEW_CHANNEL"
       ],
-      "argsRequired": false
-    }
-  ],
-  "giveaways": [
-    {
-      "name": "gcreate",
-      "aliases": [],
-      "description": "Creates a giveaway. If no arguments are provided, Sniper will walk you through the creation.",
-      "args": "[time] [amount of winners] [prize]",
-      "cooldown": 3000,
-      "disabled": true,
-      "permissions": [
-        "SEND_MESSAGES",
-        "READ_MESSAGE_HISTORY",
-        "VIEW_CHANNEL"
-      ],
-      "argsRequired": false
-    },
-    {
-      "name": "gEnd",
-      "aliases": [],
-      "description": "Ends a giveaway. You will need to obtain a message ID. If you don't know how to obtain a message ID, refer to this article: https://support.discord.com/hc/en-us/articles/206346498-Where-can-I-find-my-User-Server-Message-ID-",
-      "args": "<message id>",
-      "cooldown": 0,
-      "disabled": true,
-      "permissions": [
-        "SEND_MESSAGES",
-        "READ_MESSAGE_HISTORY",
-        "VIEW_CHANNEL"
-      ],
-      "argsRequired": true
-    }
-  ],
-  "moderation": [
-    {
-      "name": "ban",
-      "aliases": [],
-      "description": "Bans any amount of members.",
-      "args": "<@user or userID> <user> <user> ...",
-      "cooldown": 100,
-      "disabled": false,
-      "permissions": [
-        "BAN_MEMBERS"
-      ],
-      "argsRequired": false
-    },
-    {
-      "name": "clear",
-      "aliases": [
-        "purge"
-      ],
-      "description": "Clears messages from a channel",
-      "args": "<# of messages to clear>",
-      "cooldown": 0,
-      "disabled": false,
-      "permissions": [
-        "SEND_MESSAGES",
-        "READ_MESSAGE_HISTORY",
-        "VIEW_CHANNEL"
-      ],
-      "argsRequired": false
-    },
-    {
-      "name": "kick",
-      "aliases": [],
-      "description": "Kicks a user/users",
-      "args": "<user (user mention or username or id)> ....",
-      "cooldown": 100,
-      "disabled": false,
-      "permissions": [
-        "KICK_MEMBERS"
-      ],
-      "argsRequired": false
+      "argsRequired": false,
+      "filePath": "src/commands/currency/UseCommand.ts"
     }
   ],
   "restricted": [
@@ -465,7 +403,8 @@
         "READ_MESSAGE_HISTORY",
         "VIEW_CHANNEL"
       ],
-      "argsRequired": false
+      "argsRequired": false,
+      "filePath": "src/commands/restricted/AddCoinsCommand.ts"
     },
     {
       "name": "eval",
@@ -478,7 +417,8 @@
         "READ_MESSAGE_HISTORY",
         "VIEW_CHANNEL"
       ],
-      "argsRequired": false
+      "argsRequired": false,
+      "filePath": "src/commands/restricted/EvalCommand.ts"
     },
     {
       "name": "sudo",
@@ -492,7 +432,85 @@
         "READ_MESSAGE_HISTORY",
         "VIEW_CHANNEL"
       ],
-      "argsRequired": true
+      "argsRequired": true,
+      "filePath": "src/commands/restricted/SudoCommand.ts"
+    }
+  ],
+  "giveaways": [
+    {
+      "name": "gcreate",
+      "aliases": [],
+      "description": "Creates a giveaway. If no arguments are provided, Sniper will walk you through the creation.",
+      "args": "[time] [amount of winners] [prize]",
+      "cooldown": 3000,
+      "disabled": true,
+      "permissions": [
+        "SEND_MESSAGES",
+        "READ_MESSAGE_HISTORY",
+        "VIEW_CHANNEL"
+      ],
+      "argsRequired": false,
+      "filePath": "src/commands/giveaways/GCreateCommand.ts"
+    },
+    {
+      "name": "gEnd",
+      "aliases": [],
+      "description": "Ends a giveaway. You will need to obtain a message ID. If you don't know how to obtain a message ID, refer to this article: https://support.discord.com/hc/en-us/articles/206346498-Where-can-I-find-my-User-Server-Message-ID-",
+      "args": "<message id>",
+      "cooldown": 0,
+      "disabled": true,
+      "permissions": [
+        "SEND_MESSAGES",
+        "READ_MESSAGE_HISTORY",
+        "VIEW_CHANNEL"
+      ],
+      "argsRequired": true,
+      "filePath": "src/commands/giveaways/GEndCommand.ts"
+    }
+  ],
+  "moderation": [
+    {
+      "name": "ban",
+      "aliases": [],
+      "description": "Bans any amount of members.",
+      "args": "<@user or userID> <user> <user> ...",
+      "cooldown": 100,
+      "disabled": false,
+      "permissions": [
+        "BAN_MEMBERS"
+      ],
+      "argsRequired": false,
+      "filePath": "src/commands/moderation/BanCommand.ts"
+    },
+    {
+      "name": "clear",
+      "aliases": [
+        "purge"
+      ],
+      "description": "Clears messages from a channel",
+      "args": "<# of messages to clear>",
+      "cooldown": 0,
+      "disabled": false,
+      "permissions": [
+        "SEND_MESSAGES",
+        "READ_MESSAGE_HISTORY",
+        "VIEW_CHANNEL"
+      ],
+      "argsRequired": false,
+      "filePath": "src/commands/moderation/ClearCommand.ts"
+    },
+    {
+      "name": "kick",
+      "aliases": [],
+      "description": "Kicks a user/users",
+      "args": "<user (user mention or username or id)> ....",
+      "cooldown": 100,
+      "disabled": false,
+      "permissions": [
+        "KICK_MEMBERS"
+      ],
+      "argsRequired": false,
+      "filePath": "src/commands/moderation/KickCommand.ts"
     }
   ],
   "general": [
@@ -508,7 +526,8 @@
         "READ_MESSAGE_HISTORY",
         "VIEW_CHANNEL"
       ],
-      "argsRequired": false
+      "argsRequired": false,
+      "filePath": "src/commands/general/ChangelogCommand.ts"
     },
     {
       "name": "coinflip",
@@ -522,7 +541,8 @@
         "READ_MESSAGE_HISTORY",
         "VIEW_CHANNEL"
       ],
-      "argsRequired": false
+      "argsRequired": false,
+      "filePath": "src/commands/general/CoinflipCommand.ts"
     },
     {
       "name": "createissue",
@@ -540,7 +560,8 @@
         "READ_MESSAGE_HISTORY",
         "VIEW_CHANNEL"
       ],
-      "argsRequired": false
+      "argsRequired": false,
+      "filePath": "src/commands/general/CreateIssueCommand.ts"
     },
     {
       "name": "define",
@@ -554,7 +575,8 @@
         "READ_MESSAGE_HISTORY",
         "VIEW_CHANNEL"
       ],
-      "argsRequired": false
+      "argsRequired": false,
+      "filePath": "src/commands/general/DefineCommand.ts"
     },
     {
       "name": "deletealldata",
@@ -569,7 +591,8 @@
         "READ_MESSAGE_HISTORY",
         "VIEW_CHANNEL"
       ],
-      "argsRequired": false
+      "argsRequired": false,
+      "filePath": "src/commands/general/DeleteAllDataCommand.ts"
     },
     {
       "name": "faq",
@@ -582,7 +605,8 @@
         "READ_MESSAGE_HISTORY",
         "VIEW_CHANNEL"
       ],
-      "argsRequired": false
+      "argsRequired": false,
+      "filePath": "src/commands/general/FaqCommand.ts"
     },
     {
       "name": "feature",
@@ -599,7 +623,8 @@
         "READ_MESSAGE_HISTORY",
         "VIEW_CHANNEL"
       ],
-      "argsRequired": false
+      "argsRequired": false,
+      "filePath": "src/commands/general/FeatureCommand.ts"
     },
     {
       "name": "github",
@@ -612,7 +637,8 @@
         "READ_MESSAGE_HISTORY",
         "VIEW_CHANNEL"
       ],
-      "argsRequired": false
+      "argsRequired": false,
+      "filePath": "src/commands/general/GithubCommand.ts"
     },
     {
       "name": "help",
@@ -629,7 +655,8 @@
         "READ_MESSAGE_HISTORY",
         "VIEW_CHANNEL"
       ],
-      "argsRequired": false
+      "argsRequired": false,
+      "filePath": "src/commands/general/HelpCommand.ts"
     },
     {
       "name": "invite",
@@ -642,7 +669,8 @@
         "READ_MESSAGE_HISTORY",
         "VIEW_CHANNEL"
       ],
-      "argsRequired": false
+      "argsRequired": false,
+      "filePath": "src/commands/general/InviteCommand.ts"
     },
     {
       "name": "meme",
@@ -655,7 +683,8 @@
         "READ_MESSAGE_HISTORY",
         "VIEW_CHANNEL"
       ],
-      "argsRequired": false
+      "argsRequired": false,
+      "filePath": "src/commands/general/MemeCommand.ts"
     },
     {
       "name": "prefix",
@@ -671,7 +700,8 @@
         "READ_MESSAGE_HISTORY",
         "VIEW_CHANNEL"
       ],
-      "argsRequired": false
+      "argsRequired": false,
+      "filePath": "src/commands/general/PrefixCommand.ts"
     },
     {
       "name": "pronounce",
@@ -684,7 +714,8 @@
         "READ_MESSAGE_HISTORY",
         "VIEW_CHANNEL"
       ],
-      "argsRequired": false
+      "argsRequired": false,
+      "filePath": "src/commands/general/PronounceCommand.ts"
     },
     {
       "name": "say",
@@ -697,7 +728,8 @@
         "READ_MESSAGE_HISTORY",
         "VIEW_CHANNEL"
       ],
-      "argsRequired": false
+      "argsRequired": false,
+      "filePath": "src/commands/general/SayCommand.ts"
     },
     {
       "name": "support",
@@ -713,7 +745,8 @@
         "READ_MESSAGE_HISTORY",
         "VIEW_CHANNEL"
       ],
-      "argsRequired": false
+      "argsRequired": false,
+      "filePath": "src/commands/general/SupportCommand.ts"
     },
     {
       "name": "vote",
@@ -726,7 +759,8 @@
         "READ_MESSAGE_HISTORY",
         "VIEW_CHANNEL"
       ],
-      "argsRequired": false
+      "argsRequired": false,
+      "filePath": "src/commands/general/VoteCommand.ts"
     }
   ]
 }

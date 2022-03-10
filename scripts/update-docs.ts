@@ -13,6 +13,7 @@ interface Command {
   disabled: boolean;
   permissions: string[];
   argsRequired: boolean;
+  filePath: string;
 }
 let commandsMD = readFileSync('./docs/commands/README.md').toString();
 const commands: CommandCategories = JSON.parse(
@@ -38,9 +39,11 @@ const capitalizeFirstLetter = (string: string) =>
   const categories = Object.keys(commands).reverse();
   resetCommandDocs();
   categories.forEach((cat) => {
-    appendToDocs(`\n## ${capitalizeFirstLetter(camelToNormalCase(cat))}\n`);
+    appendToDocs(`
+## ${capitalizeFirstLetter(camelToNormalCase(cat))}
+`);
     const commandsInCategory = commands[cat];
-    commandsInCategory.forEach((cmd: any) => {
+    commandsInCategory.forEach((cmd) => {
       appendToDocs(
         `
 ### ${cmd.disabled ? `~~${cmd.name}~~` : cmd.name}
@@ -78,6 +81,28 @@ ${cmd.aliases.length ? `**Aliases:** ${cmd.aliases.join(', ')}\\` : ''}
 **Permissions:** ${cmd.permissions
           .map((perm: string) => `\`${_.lowerCase(perm)}\``)
           .join(', ')}
+ 
+<details>
+  <summary>Source</summary>
+
+  [Source on Github](${cmd.filePath.replace(
+    /^src/,
+    'https://github.com/MajesticString/sniper/blob/main/apps/sniper/src'
+  )})
+  
+  [Edit in Github](${cmd.filePath.replace(
+    /^src/,
+    'https://github.com/MajesticString/sniper/edit/main/apps/sniper/src'
+  )})
+
+  [Edit in Github.dev](${cmd.filePath.replace(
+    /^src/,
+    'https://github.dev/MajesticString/sniper/blob/main/apps/sniper/src'
+  )})
+
+@[code ts](${cmd.filePath.replace(/^src/, '../../apps/sniper/src/')})
+
+</details>
 `
       );
     });

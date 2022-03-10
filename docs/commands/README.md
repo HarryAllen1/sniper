@@ -52,6 +52,19 @@ Understanding the arguments:
 
 **Cooldown:** 5 seconds\
 **Permissions:** `send messages`, `read message history`, `view channel`
+ 
+<details>
+  <summary>Source</summary>
+
+  [Source on Github](https://github.com/MajesticString/sniper/blob/main/apps/sniper/src/commands/general/ChangelogCommand.ts)
+  
+  [Edit in Github](https://github.com/MajesticString/sniper/edit/main/apps/sniper/src/commands/general/ChangelogCommand.ts)
+
+  [Edit in Github.dev](https://github.dev/MajesticString/sniper/blob/main/apps/sniper/src/commands/general/ChangelogCommand.ts)
+
+@[code ts](../../apps/sniper/src//commands/general/ChangelogCommand.ts)
+
+</details>
 
 ### coinflip
 
@@ -81,6 +94,19 @@ Understanding the arguments:
 
 **Cooldown:** 500 ms\
 **Permissions:** `send messages`, `read message history`, `view channel`
+ 
+<details>
+  <summary>Source</summary>
+
+  [Source on Github](https://github.com/MajesticString/sniper/blob/main/apps/sniper/src/commands/general/CoinflipCommand.ts)
+  
+  [Edit in Github](https://github.com/MajesticString/sniper/edit/main/apps/sniper/src/commands/general/CoinflipCommand.ts)
+
+  [Edit in Github.dev](https://github.dev/MajesticString/sniper/blob/main/apps/sniper/src/commands/general/CoinflipCommand.ts)
+
+@[code ts](../../apps/sniper/src//commands/general/CoinflipCommand.ts)
+
+</details>
 
 ### createissue
 
@@ -110,6 +136,19 @@ Don't use this command. Just [submit a Github issue](https://github.com/Majestic
 
 **Cooldown:** 15 minutes\
 **Permissions:** `send messages`, `read message history`, `view channel`
+ 
+<details>
+  <summary>Source</summary>
+
+  [Source on Github](https://github.com/MajesticString/sniper/blob/main/apps/sniper/src/commands/general/CreateIssueCommand.ts)
+  
+  [Edit in Github](https://github.com/MajesticString/sniper/edit/main/apps/sniper/src/commands/general/CreateIssueCommand.ts)
+
+  [Edit in Github.dev](https://github.dev/MajesticString/sniper/blob/main/apps/sniper/src/commands/general/CreateIssueCommand.ts)
+
+@[code ts](../../apps/sniper/src//commands/general/CreateIssueCommand.ts)
+
+</details>
 
 ### define
 
@@ -139,6 +178,19 @@ Don't use this command. Just [submit a Github issue](https://github.com/Majestic
 
 **Cooldown:** 1 second\
 **Permissions:** `send messages`, `read message history`, `view channel`
+ 
+<details>
+  <summary>Source</summary>
+
+  [Source on Github](https://github.com/MajesticString/sniper/blob/main/apps/sniper/src/commands/general/DefineCommand.ts)
+  
+  [Edit in Github](https://github.com/MajesticString/sniper/edit/main/apps/sniper/src/commands/general/DefineCommand.ts)
+
+  [Edit in Github.dev](https://github.dev/MajesticString/sniper/blob/main/apps/sniper/src/commands/general/DefineCommand.ts)
+
+@[code ts](../../apps/sniper/src//commands/general/DefineCommand.ts)
+
+</details>
 
 ### deletealldata
 
@@ -148,6 +200,19 @@ Deletes all data associated with the bot. The only thing that will remain is you
 
 **Cooldown:** 500 ms\
 **Permissions:** `send messages`, `read message history`, `view channel`
+ 
+<details>
+  <summary>Source</summary>
+
+  [Source on Github](https://github.com/MajesticString/sniper/blob/main/apps/sniper/src/commands/general/DeleteAllDataCommand.ts)
+  
+  [Edit in Github](https://github.com/MajesticString/sniper/edit/main/apps/sniper/src/commands/general/DeleteAllDataCommand.ts)
+
+  [Edit in Github.dev](https://github.dev/MajesticString/sniper/blob/main/apps/sniper/src/commands/general/DeleteAllDataCommand.ts)
+
+@[code ts](../../apps/sniper/src//commands/general/DeleteAllDataCommand.ts)
+
+</details>
 
 ### faq
 
@@ -157,6 +222,19 @@ Deletes all data associated with the bot. The only thing that will remain is you
 
 **Cooldown:** 1 second\
 **Permissions:** `send messages`, `read message history`, `view channel`
+ 
+<details>
+  <summary>Source</summary>
+
+  [Source on Github](https://github.com/MajesticString/sniper/blob/main/apps/sniper/src/commands/general/FaqCommand.ts)
+  
+  [Edit in Github](https://github.com/MajesticString/sniper/edit/main/apps/sniper/src/commands/general/FaqCommand.ts)
+
+  [Edit in Github.dev](https://github.dev/MajesticString/sniper/blob/main/apps/sniper/src/commands/general/FaqCommand.ts)
+
+@[code ts](../../apps/sniper/src//commands/general/FaqCommand.ts)
+
+</details>
 
 ### feature
 
@@ -186,6 +264,19 @@ Requests a feature\
 
 **Cooldown:** 15 minutes\
 **Permissions:** `send messages`, `read message history`, `view channel`
+ 
+<details>
+  <summary>Source</summary>
+
+  [Source on Github](https://github.com/MajesticString/sniper/blob/main/apps/sniper/src/commands/general/FeatureCommand.ts)
+  
+  [Edit in Github](https://github.com/MajesticString/sniper/edit/main/apps/sniper/src/commands/general/FeatureCommand.ts)
+
+  [Edit in Github.dev](https://github.dev/MajesticString/sniper/blob/main/apps/sniper/src/commands/general/FeatureCommand.ts)
+
+@[code ts](../../apps/sniper/src//commands/general/FeatureCommand.ts)
+
+</details>
 
 ### github
 
@@ -195,6 +286,19 @@ Requests a feature\
 
 **Cooldown:** 5 seconds\
 **Permissions:** `send messages`, `read message history`, `view channel`
+ 
+<details>
+  <summary>Source</summary>
+
+  [Source on Github](https://github.com/MajesticString/sniper/blob/main/apps/sniper/src/commands/general/GithubCommand.ts)
+  
+  [Edit in Github](https://github.com/MajesticString/sniper/edit/main/apps/sniper/src/commands/general/GithubCommand.ts)
+
+  [Edit in Github.dev](https://github.dev/MajesticString/sniper/blob/main/apps/sniper/src/commands/general/GithubCommand.ts)
+
+@[code ts](../../apps/sniper/src//commands/general/GithubCommand.ts)
+
+</details>
 
 ### help
 
@@ -224,6 +328,19 @@ Shows all commands and their descriptions\
 
 **Cooldown:** 1 second\
 **Permissions:** `send messages`, `read message history`, `view channel`
+ 
+<details>
+  <summary>Source</summary>
+
+  [Source on Github](https://github.com/MajesticString/sniper/blob/main/apps/sniper/src/commands/general/HelpCommand.ts)
+  
+  [Edit in Github](https://github.com/MajesticString/sniper/edit/main/apps/sniper/src/commands/general/HelpCommand.ts)
+
+  [Edit in Github.dev](https://github.dev/MajesticString/sniper/blob/main/apps/sniper/src/commands/general/HelpCommand.ts)
+
+@[code ts](../../apps/sniper/src//commands/general/HelpCommand.ts)
+
+</details>
 
 ### invite
 
@@ -233,6 +350,19 @@ Shows all commands and their descriptions\
 
 **Cooldown:** 1 second\
 **Permissions:** `send messages`, `read message history`, `view channel`
+ 
+<details>
+  <summary>Source</summary>
+
+  [Source on Github](https://github.com/MajesticString/sniper/blob/main/apps/sniper/src/commands/general/InviteCommand.ts)
+  
+  [Edit in Github](https://github.com/MajesticString/sniper/edit/main/apps/sniper/src/commands/general/InviteCommand.ts)
+
+  [Edit in Github.dev](https://github.dev/MajesticString/sniper/blob/main/apps/sniper/src/commands/general/InviteCommand.ts)
+
+@[code ts](../../apps/sniper/src//commands/general/InviteCommand.ts)
+
+</details>
 
 ### meme
 
@@ -242,6 +372,19 @@ Shows all commands and their descriptions\
 
 **Cooldown:** 3 seconds\
 **Permissions:** `send messages`, `read message history`, `view channel`
+ 
+<details>
+  <summary>Source</summary>
+
+  [Source on Github](https://github.com/MajesticString/sniper/blob/main/apps/sniper/src/commands/general/MemeCommand.ts)
+  
+  [Edit in Github](https://github.com/MajesticString/sniper/edit/main/apps/sniper/src/commands/general/MemeCommand.ts)
+
+  [Edit in Github.dev](https://github.dev/MajesticString/sniper/blob/main/apps/sniper/src/commands/general/MemeCommand.ts)
+
+@[code ts](../../apps/sniper/src//commands/general/MemeCommand.ts)
+
+</details>
 
 ### prefix
 
@@ -271,6 +414,19 @@ Shows the prefixes that this bot has. Can also be used to set the prefixes. Pref
 
 **Cooldown:** 5 seconds\
 **Permissions:** `send messages`, `read message history`, `view channel`
+ 
+<details>
+  <summary>Source</summary>
+
+  [Source on Github](https://github.com/MajesticString/sniper/blob/main/apps/sniper/src/commands/general/PrefixCommand.ts)
+  
+  [Edit in Github](https://github.com/MajesticString/sniper/edit/main/apps/sniper/src/commands/general/PrefixCommand.ts)
+
+  [Edit in Github.dev](https://github.dev/MajesticString/sniper/blob/main/apps/sniper/src/commands/general/PrefixCommand.ts)
+
+@[code ts](../../apps/sniper/src//commands/general/PrefixCommand.ts)
+
+</details>
 
 ### pronounce
 
@@ -280,6 +436,19 @@ Shows the prefixes that this bot has. Can also be used to set the prefixes. Pref
 
 **Cooldown:** 1 second\
 **Permissions:** `send messages`, `read message history`, `view channel`
+ 
+<details>
+  <summary>Source</summary>
+
+  [Source on Github](https://github.com/MajesticString/sniper/blob/main/apps/sniper/src/commands/general/PronounceCommand.ts)
+  
+  [Edit in Github](https://github.com/MajesticString/sniper/edit/main/apps/sniper/src/commands/general/PronounceCommand.ts)
+
+  [Edit in Github.dev](https://github.dev/MajesticString/sniper/blob/main/apps/sniper/src/commands/general/PronounceCommand.ts)
+
+@[code ts](../../apps/sniper/src//commands/general/PronounceCommand.ts)
+
+</details>
 
 ### say
 
@@ -289,6 +458,19 @@ Shows the prefixes that this bot has. Can also be used to set the prefixes. Pref
 
 **Cooldown:** 10 seconds\
 **Permissions:** `send messages`, `read message history`, `view channel`
+ 
+<details>
+  <summary>Source</summary>
+
+  [Source on Github](https://github.com/MajesticString/sniper/blob/main/apps/sniper/src/commands/general/SayCommand.ts)
+  
+  [Edit in Github](https://github.com/MajesticString/sniper/edit/main/apps/sniper/src/commands/general/SayCommand.ts)
+
+  [Edit in Github.dev](https://github.dev/MajesticString/sniper/blob/main/apps/sniper/src/commands/general/SayCommand.ts)
+
+@[code ts](../../apps/sniper/src//commands/general/SayCommand.ts)
+
+</details>
 
 ### support
 
@@ -298,6 +480,19 @@ Gives an invite for the support server.\
 
 **Cooldown:** 5 seconds\
 **Permissions:** `send messages`, `read message history`, `view channel`
+ 
+<details>
+  <summary>Source</summary>
+
+  [Source on Github](https://github.com/MajesticString/sniper/blob/main/apps/sniper/src/commands/general/SupportCommand.ts)
+  
+  [Edit in Github](https://github.com/MajesticString/sniper/edit/main/apps/sniper/src/commands/general/SupportCommand.ts)
+
+  [Edit in Github.dev](https://github.dev/MajesticString/sniper/blob/main/apps/sniper/src/commands/general/SupportCommand.ts)
+
+@[code ts](../../apps/sniper/src//commands/general/SupportCommand.ts)
+
+</details>
 
 ### vote
 
@@ -307,75 +502,19 @@ Gives an invite for the support server.\
 
 **Cooldown:** 3 seconds\
 **Permissions:** `send messages`, `read message history`, `view channel`
+ 
+<details>
+  <summary>Source</summary>
 
-## Restricted
+  [Source on Github](https://github.com/MajesticString/sniper/blob/main/apps/sniper/src/commands/general/VoteCommand.ts)
+  
+  [Edit in Github](https://github.com/MajesticString/sniper/edit/main/apps/sniper/src/commands/general/VoteCommand.ts)
 
-### addcoins
+  [Edit in Github.dev](https://github.dev/MajesticString/sniper/blob/main/apps/sniper/src/commands/general/VoteCommand.ts)
 
+@[code ts](../../apps/sniper/src//commands/general/VoteCommand.ts)
 
-
-**Arguments/Usage:** 
-<div class="discord-messages">
-  <div class="discord-message">
-    <div class="discord-message-content">
-      <div class="discord-author-avatar">
-				<img src="https://cdn.discordapp.com/embed/avatars/0.png" alt="" />
-			</div>
-      <div class="discord-message-body">
-          <span class="discord-author-info">
-            <span class="discord-author-username">
-              User
-            </span>
-          </span>
-          <span class="discord-message-timestamp">
-            {{ new Date().toLocaleDateString() }}
-					</span><br />
-      &#36;addcoins &lt;userID OR mentioned user&gt;
-            </div>
-          </div>
-</div>
-</div>
-
-**Cooldown:** 0 ms\
-**Permissions:** `send messages`, `read message history`, `view channel`
-
-### eval
-
-
-
-**Arguments/Usage:** None
-
-**Cooldown:** 0 ms\
-**Permissions:** `send messages`, `read message history`, `view channel`
-
-### sudo
-
-
-
-**Arguments/Usage:** 
-<div class="discord-messages">
-  <div class="discord-message">
-    <div class="discord-message-content">
-      <div class="discord-author-avatar">
-				<img src="https://cdn.discordapp.com/embed/avatars/0.png" alt="" />
-			</div>
-      <div class="discord-message-body">
-          <span class="discord-author-info">
-            <span class="discord-author-username">
-              User
-            </span>
-          </span>
-          <span class="discord-message-timestamp">
-            {{ new Date().toLocaleDateString() }}
-					</span><br />
-      &#36;sudo &lt;userID&gt; &lt;command&gt; [...args]
-            </div>
-          </div>
-</div>
-</div>
-
-**Cooldown:** 0 ms\
-**Permissions:** `send messages`, `read message history`, `view channel`
+</details>
 
 ## Moderation
 
@@ -407,6 +546,19 @@ Gives an invite for the support server.\
 
 **Cooldown:** 100 ms\
 **Permissions:** `ban members`
+ 
+<details>
+  <summary>Source</summary>
+
+  [Source on Github](https://github.com/MajesticString/sniper/blob/main/apps/sniper/src/commands/moderation/BanCommand.ts)
+  
+  [Edit in Github](https://github.com/MajesticString/sniper/edit/main/apps/sniper/src/commands/moderation/BanCommand.ts)
+
+  [Edit in Github.dev](https://github.dev/MajesticString/sniper/blob/main/apps/sniper/src/commands/moderation/BanCommand.ts)
+
+@[code ts](../../apps/sniper/src//commands/moderation/BanCommand.ts)
+
+</details>
 
 ### clear
 
@@ -436,6 +588,19 @@ Clears messages from a channel\
 
 **Cooldown:** 0 ms\
 **Permissions:** `send messages`, `read message history`, `view channel`
+ 
+<details>
+  <summary>Source</summary>
+
+  [Source on Github](https://github.com/MajesticString/sniper/blob/main/apps/sniper/src/commands/moderation/ClearCommand.ts)
+  
+  [Edit in Github](https://github.com/MajesticString/sniper/edit/main/apps/sniper/src/commands/moderation/ClearCommand.ts)
+
+  [Edit in Github.dev](https://github.dev/MajesticString/sniper/blob/main/apps/sniper/src/commands/moderation/ClearCommand.ts)
+
+@[code ts](../../apps/sniper/src//commands/moderation/ClearCommand.ts)
+
+</details>
 
 ### kick
 
@@ -465,6 +630,19 @@ Clears messages from a channel\
 
 **Cooldown:** 100 ms\
 **Permissions:** `kick members`
+ 
+<details>
+  <summary>Source</summary>
+
+  [Source on Github](https://github.com/MajesticString/sniper/blob/main/apps/sniper/src/commands/moderation/KickCommand.ts)
+  
+  [Edit in Github](https://github.com/MajesticString/sniper/edit/main/apps/sniper/src/commands/moderation/KickCommand.ts)
+
+  [Edit in Github.dev](https://github.dev/MajesticString/sniper/blob/main/apps/sniper/src/commands/moderation/KickCommand.ts)
+
+@[code ts](../../apps/sniper/src//commands/moderation/KickCommand.ts)
+
+</details>
 
 ## Giveaways
 
@@ -498,6 +676,19 @@ This command is disabled
 
 **Cooldown:** 3 seconds\
 **Permissions:** `send messages`, `read message history`, `view channel`
+ 
+<details>
+  <summary>Source</summary>
+
+  [Source on Github](https://github.com/MajesticString/sniper/blob/main/apps/sniper/src/commands/giveaways/GCreateCommand.ts)
+  
+  [Edit in Github](https://github.com/MajesticString/sniper/edit/main/apps/sniper/src/commands/giveaways/GCreateCommand.ts)
+
+  [Edit in Github.dev](https://github.dev/MajesticString/sniper/blob/main/apps/sniper/src/commands/giveaways/GCreateCommand.ts)
+
+@[code ts](../../apps/sniper/src//commands/giveaways/GCreateCommand.ts)
+
+</details>
 
 ### ~~gEnd~~
 ::: warning
@@ -529,6 +720,127 @@ This command is disabled
 
 **Cooldown:** 0 ms\
 **Permissions:** `send messages`, `read message history`, `view channel`
+ 
+<details>
+  <summary>Source</summary>
+
+  [Source on Github](https://github.com/MajesticString/sniper/blob/main/apps/sniper/src/commands/giveaways/GEndCommand.ts)
+  
+  [Edit in Github](https://github.com/MajesticString/sniper/edit/main/apps/sniper/src/commands/giveaways/GEndCommand.ts)
+
+  [Edit in Github.dev](https://github.dev/MajesticString/sniper/blob/main/apps/sniper/src/commands/giveaways/GEndCommand.ts)
+
+@[code ts](../../apps/sniper/src//commands/giveaways/GEndCommand.ts)
+
+</details>
+
+## Restricted
+
+### addcoins
+
+
+
+**Arguments/Usage:** 
+<div class="discord-messages">
+  <div class="discord-message">
+    <div class="discord-message-content">
+      <div class="discord-author-avatar">
+				<img src="https://cdn.discordapp.com/embed/avatars/0.png" alt="" />
+			</div>
+      <div class="discord-message-body">
+          <span class="discord-author-info">
+            <span class="discord-author-username">
+              User
+            </span>
+          </span>
+          <span class="discord-message-timestamp">
+            {{ new Date().toLocaleDateString() }}
+					</span><br />
+      &#36;addcoins &lt;userID OR mentioned user&gt;
+            </div>
+          </div>
+</div>
+</div>
+
+**Cooldown:** 0 ms\
+**Permissions:** `send messages`, `read message history`, `view channel`
+ 
+<details>
+  <summary>Source</summary>
+
+  [Source on Github](https://github.com/MajesticString/sniper/blob/main/apps/sniper/src/commands/restricted/AddCoinsCommand.ts)
+  
+  [Edit in Github](https://github.com/MajesticString/sniper/edit/main/apps/sniper/src/commands/restricted/AddCoinsCommand.ts)
+
+  [Edit in Github.dev](https://github.dev/MajesticString/sniper/blob/main/apps/sniper/src/commands/restricted/AddCoinsCommand.ts)
+
+@[code ts](../../apps/sniper/src//commands/restricted/AddCoinsCommand.ts)
+
+</details>
+
+### eval
+
+
+
+**Arguments/Usage:** None
+
+**Cooldown:** 0 ms\
+**Permissions:** `send messages`, `read message history`, `view channel`
+ 
+<details>
+  <summary>Source</summary>
+
+  [Source on Github](https://github.com/MajesticString/sniper/blob/main/apps/sniper/src/commands/restricted/EvalCommand.ts)
+  
+  [Edit in Github](https://github.com/MajesticString/sniper/edit/main/apps/sniper/src/commands/restricted/EvalCommand.ts)
+
+  [Edit in Github.dev](https://github.dev/MajesticString/sniper/blob/main/apps/sniper/src/commands/restricted/EvalCommand.ts)
+
+@[code ts](../../apps/sniper/src//commands/restricted/EvalCommand.ts)
+
+</details>
+
+### sudo
+
+
+
+**Arguments/Usage:** 
+<div class="discord-messages">
+  <div class="discord-message">
+    <div class="discord-message-content">
+      <div class="discord-author-avatar">
+				<img src="https://cdn.discordapp.com/embed/avatars/0.png" alt="" />
+			</div>
+      <div class="discord-message-body">
+          <span class="discord-author-info">
+            <span class="discord-author-username">
+              User
+            </span>
+          </span>
+          <span class="discord-message-timestamp">
+            {{ new Date().toLocaleDateString() }}
+					</span><br />
+      &#36;sudo &lt;userID&gt; &lt;command&gt; [...args]
+            </div>
+          </div>
+</div>
+</div>
+
+**Cooldown:** 0 ms\
+**Permissions:** `send messages`, `read message history`, `view channel`
+ 
+<details>
+  <summary>Source</summary>
+
+  [Source on Github](https://github.com/MajesticString/sniper/blob/main/apps/sniper/src/commands/restricted/SudoCommand.ts)
+  
+  [Edit in Github](https://github.com/MajesticString/sniper/edit/main/apps/sniper/src/commands/restricted/SudoCommand.ts)
+
+  [Edit in Github.dev](https://github.dev/MajesticString/sniper/blob/main/apps/sniper/src/commands/restricted/SudoCommand.ts)
+
+@[code ts](../../apps/sniper/src//commands/restricted/SudoCommand.ts)
+
+</details>
 
 ## Currency
 
@@ -560,6 +872,19 @@ Shows the current amount of coins you or someone else has.\
 
 **Cooldown:** 1 second\
 **Permissions:** `send messages`, `read message history`, `view channel`
+ 
+<details>
+  <summary>Source</summary>
+
+  [Source on Github](https://github.com/MajesticString/sniper/blob/main/apps/sniper/src/commands/currency/BalanceCommand.ts)
+  
+  [Edit in Github](https://github.com/MajesticString/sniper/edit/main/apps/sniper/src/commands/currency/BalanceCommand.ts)
+
+  [Edit in Github.dev](https://github.dev/MajesticString/sniper/blob/main/apps/sniper/src/commands/currency/BalanceCommand.ts)
+
+@[code ts](../../apps/sniper/src//commands/currency/BalanceCommand.ts)
+
+</details>
 
 ### bet
 
@@ -569,6 +894,19 @@ Shows the current amount of coins you or someone else has.\
 
 **Cooldown:** 500 ms\
 **Permissions:** `send messages`, `read message history`, `view channel`
+ 
+<details>
+  <summary>Source</summary>
+
+  [Source on Github](https://github.com/MajesticString/sniper/blob/main/apps/sniper/src/commands/currency/BetCommand.ts)
+  
+  [Edit in Github](https://github.com/MajesticString/sniper/edit/main/apps/sniper/src/commands/currency/BetCommand.ts)
+
+  [Edit in Github.dev](https://github.dev/MajesticString/sniper/blob/main/apps/sniper/src/commands/currency/BetCommand.ts)
+
+@[code ts](../../apps/sniper/src//commands/currency/BetCommand.ts)
+
+</details>
 
 ### buy
 
@@ -598,6 +936,19 @@ Shows the current amount of coins you or someone else has.\
 
 **Cooldown:** 250 ms\
 **Permissions:** `send messages`, `read message history`, `view channel`
+ 
+<details>
+  <summary>Source</summary>
+
+  [Source on Github](https://github.com/MajesticString/sniper/blob/main/apps/sniper/src/commands/currency/BuyCommand.ts)
+  
+  [Edit in Github](https://github.com/MajesticString/sniper/edit/main/apps/sniper/src/commands/currency/BuyCommand.ts)
+
+  [Edit in Github.dev](https://github.dev/MajesticString/sniper/blob/main/apps/sniper/src/commands/currency/BuyCommand.ts)
+
+@[code ts](../../apps/sniper/src//commands/currency/BuyCommand.ts)
+
+</details>
 
 ### crime
 
@@ -607,6 +958,19 @@ Shows the current amount of coins you or someone else has.\
 
 **Cooldown:** 1 minute\
 **Permissions:** `send messages`, `read message history`, `view channel`
+ 
+<details>
+  <summary>Source</summary>
+
+  [Source on Github](https://github.com/MajesticString/sniper/blob/main/apps/sniper/src/commands/currency/CrimeCommand.ts)
+  
+  [Edit in Github](https://github.com/MajesticString/sniper/edit/main/apps/sniper/src/commands/currency/CrimeCommand.ts)
+
+  [Edit in Github.dev](https://github.dev/MajesticString/sniper/blob/main/apps/sniper/src/commands/currency/CrimeCommand.ts)
+
+@[code ts](../../apps/sniper/src//commands/currency/CrimeCommand.ts)
+
+</details>
 
 ### daily
 
@@ -616,6 +980,19 @@ Shows the current amount of coins you or someone else has.\
 
 **Cooldown:** 1 day\
 **Permissions:** `send messages`, `read message history`, `view channel`
+ 
+<details>
+  <summary>Source</summary>
+
+  [Source on Github](https://github.com/MajesticString/sniper/blob/main/apps/sniper/src/commands/currency/DailyCommand.ts)
+  
+  [Edit in Github](https://github.com/MajesticString/sniper/edit/main/apps/sniper/src/commands/currency/DailyCommand.ts)
+
+  [Edit in Github.dev](https://github.dev/MajesticString/sniper/blob/main/apps/sniper/src/commands/currency/DailyCommand.ts)
+
+@[code ts](../../apps/sniper/src//commands/currency/DailyCommand.ts)
+
+</details>
 
 ### fortnite
 
@@ -625,6 +1002,19 @@ Shows the current amount of coins you or someone else has.\
 
 **Cooldown:** 5 seconds\
 **Permissions:** `send messages`, `read message history`, `view channel`
+ 
+<details>
+  <summary>Source</summary>
+
+  [Source on Github](https://github.com/MajesticString/sniper/blob/main/apps/sniper/src/commands/currency/FortniteCommand.ts)
+  
+  [Edit in Github](https://github.com/MajesticString/sniper/edit/main/apps/sniper/src/commands/currency/FortniteCommand.ts)
+
+  [Edit in Github.dev](https://github.dev/MajesticString/sniper/blob/main/apps/sniper/src/commands/currency/FortniteCommand.ts)
+
+@[code ts](../../apps/sniper/src//commands/currency/FortniteCommand.ts)
+
+</details>
 
 ### give
 
@@ -654,6 +1044,19 @@ Shows the current amount of coins you or someone else has.\
 
 **Cooldown:** 5 seconds\
 **Permissions:** `send messages`, `read message history`, `view channel`
+ 
+<details>
+  <summary>Source</summary>
+
+  [Source on Github](https://github.com/MajesticString/sniper/blob/main/apps/sniper/src/commands/currency/GiveCommand.ts)
+  
+  [Edit in Github](https://github.com/MajesticString/sniper/edit/main/apps/sniper/src/commands/currency/GiveCommand.ts)
+
+  [Edit in Github.dev](https://github.dev/MajesticString/sniper/blob/main/apps/sniper/src/commands/currency/GiveCommand.ts)
+
+@[code ts](../../apps/sniper/src//commands/currency/GiveCommand.ts)
+
+</details>
 
 ### inv
 
@@ -683,6 +1086,19 @@ Shows the current amount of coins you or someone else has.\
 
 **Cooldown:** 0 ms\
 **Permissions:** `send messages`, `read message history`, `view channel`
+ 
+<details>
+  <summary>Source</summary>
+
+  [Source on Github](https://github.com/MajesticString/sniper/blob/main/apps/sniper/src/commands/currency/InvCommand.ts)
+  
+  [Edit in Github](https://github.com/MajesticString/sniper/edit/main/apps/sniper/src/commands/currency/InvCommand.ts)
+
+  [Edit in Github.dev](https://github.dev/MajesticString/sniper/blob/main/apps/sniper/src/commands/currency/InvCommand.ts)
+
+@[code ts](../../apps/sniper/src//commands/currency/InvCommand.ts)
+
+</details>
 
 ### jailbreak
 
@@ -692,6 +1108,19 @@ Shows the current amount of coins you or someone else has.\
 
 **Cooldown:** 15 minutes\
 **Permissions:** `send messages`, `read message history`, `view channel`
+ 
+<details>
+  <summary>Source</summary>
+
+  [Source on Github](https://github.com/MajesticString/sniper/blob/main/apps/sniper/src/commands/currency/JailBreakCommand.ts)
+  
+  [Edit in Github](https://github.com/MajesticString/sniper/edit/main/apps/sniper/src/commands/currency/JailBreakCommand.ts)
+
+  [Edit in Github.dev](https://github.dev/MajesticString/sniper/blob/main/apps/sniper/src/commands/currency/JailBreakCommand.ts)
+
+@[code ts](../../apps/sniper/src//commands/currency/JailBreakCommand.ts)
+
+</details>
 
 ### lb
 
@@ -701,6 +1130,19 @@ Ranks people in order of wealth\
 
 **Cooldown:** 3 seconds\
 **Permissions:** `send messages`, `read message history`, `view channel`
+ 
+<details>
+  <summary>Source</summary>
+
+  [Source on Github](https://github.com/MajesticString/sniper/blob/main/apps/sniper/src/commands/currency/LbCommand.ts)
+  
+  [Edit in Github](https://github.com/MajesticString/sniper/edit/main/apps/sniper/src/commands/currency/LbCommand.ts)
+
+  [Edit in Github.dev](https://github.dev/MajesticString/sniper/blob/main/apps/sniper/src/commands/currency/LbCommand.ts)
+
+@[code ts](../../apps/sniper/src//commands/currency/LbCommand.ts)
+
+</details>
 
 ### rob
 
@@ -730,6 +1172,19 @@ Ranks people in order of wealth\
 
 **Cooldown:** 1 minute\
 **Permissions:** `send messages`, `read message history`, `view channel`
+ 
+<details>
+  <summary>Source</summary>
+
+  [Source on Github](https://github.com/MajesticString/sniper/blob/main/apps/sniper/src/commands/currency/RobCommand.ts)
+  
+  [Edit in Github](https://github.com/MajesticString/sniper/edit/main/apps/sniper/src/commands/currency/RobCommand.ts)
+
+  [Edit in Github.dev](https://github.dev/MajesticString/sniper/blob/main/apps/sniper/src/commands/currency/RobCommand.ts)
+
+@[code ts](../../apps/sniper/src//commands/currency/RobCommand.ts)
+
+</details>
 
 ### shop
 
@@ -759,6 +1214,19 @@ Ranks people in order of wealth\
 
 **Cooldown:** 1 ms\
 **Permissions:** `send messages`, `read message history`, `view channel`
+ 
+<details>
+  <summary>Source</summary>
+
+  [Source on Github](https://github.com/MajesticString/sniper/blob/main/apps/sniper/src/commands/currency/ShopCommand.ts)
+  
+  [Edit in Github](https://github.com/MajesticString/sniper/edit/main/apps/sniper/src/commands/currency/ShopCommand.ts)
+
+  [Edit in Github.dev](https://github.dev/MajesticString/sniper/blob/main/apps/sniper/src/commands/currency/ShopCommand.ts)
+
+@[code ts](../../apps/sniper/src//commands/currency/ShopCommand.ts)
+
+</details>
 
 ### use
 
@@ -768,6 +1236,19 @@ Ranks people in order of wealth\
 
 **Cooldown:** 5 seconds\
 **Permissions:** `send messages`, `read message history`, `view channel`
+ 
+<details>
+  <summary>Source</summary>
+
+  [Source on Github](https://github.com/MajesticString/sniper/blob/main/apps/sniper/src/commands/currency/UseCommand.ts)
+  
+  [Edit in Github](https://github.com/MajesticString/sniper/edit/main/apps/sniper/src/commands/currency/UseCommand.ts)
+
+  [Edit in Github.dev](https://github.dev/MajesticString/sniper/blob/main/apps/sniper/src/commands/currency/UseCommand.ts)
+
+@[code ts](../../apps/sniper/src//commands/currency/UseCommand.ts)
+
+</details>
 
 ## Util
 
@@ -779,6 +1260,19 @@ Ranks people in order of wealth\
 
 **Cooldown:** 15 seconds\
 **Permissions:** `send messages`, `read message history`, `view channel`
+ 
+<details>
+  <summary>Source</summary>
+
+  [Source on Github](https://github.com/MajesticString/sniper/blob/main/apps/sniper/src/commands/util/BotCommand.ts)
+  
+  [Edit in Github](https://github.com/MajesticString/sniper/edit/main/apps/sniper/src/commands/util/BotCommand.ts)
+
+  [Edit in Github.dev](https://github.dev/MajesticString/sniper/blob/main/apps/sniper/src/commands/util/BotCommand.ts)
+
+@[code ts](../../apps/sniper/src//commands/util/BotCommand.ts)
+
+</details>
 
 ### editsnipe
 
@@ -788,6 +1282,19 @@ After a message is edited, you can use this command to see the old message.\
 
 **Cooldown:** 0 ms\
 **Permissions:** `send messages`, `read message history`, `view channel`
+ 
+<details>
+  <summary>Source</summary>
+
+  [Source on Github](https://github.com/MajesticString/sniper/blob/main/apps/sniper/src/commands/util/EditsnipeCommand.ts)
+  
+  [Edit in Github](https://github.com/MajesticString/sniper/edit/main/apps/sniper/src/commands/util/EditsnipeCommand.ts)
+
+  [Edit in Github.dev](https://github.dev/MajesticString/sniper/blob/main/apps/sniper/src/commands/util/EditsnipeCommand.ts)
+
+@[code ts](../../apps/sniper/src//commands/util/EditsnipeCommand.ts)
+
+</details>
 
 ### ping
 
@@ -797,6 +1304,19 @@ After a message is edited, you can use this command to see the old message.\
 
 **Cooldown:** 5 seconds\
 **Permissions:** `send messages`, `read message history`, `view channel`
+ 
+<details>
+  <summary>Source</summary>
+
+  [Source on Github](https://github.com/MajesticString/sniper/blob/main/apps/sniper/src/commands/util/PingCommand.ts)
+  
+  [Edit in Github](https://github.com/MajesticString/sniper/edit/main/apps/sniper/src/commands/util/PingCommand.ts)
+
+  [Edit in Github.dev](https://github.dev/MajesticString/sniper/blob/main/apps/sniper/src/commands/util/PingCommand.ts)
+
+@[code ts](../../apps/sniper/src//commands/util/PingCommand.ts)
+
+</details>
 
 ### poll
 
@@ -826,6 +1346,19 @@ After a message is edited, you can use this command to see the old message.\
 
 **Cooldown:** 10 seconds\
 **Permissions:** `send messages`, `read message history`, `view channel`
+ 
+<details>
+  <summary>Source</summary>
+
+  [Source on Github](https://github.com/MajesticString/sniper/blob/main/apps/sniper/src/commands/util/PollCommand.ts)
+  
+  [Edit in Github](https://github.com/MajesticString/sniper/edit/main/apps/sniper/src/commands/util/PollCommand.ts)
+
+  [Edit in Github.dev](https://github.dev/MajesticString/sniper/blob/main/apps/sniper/src/commands/util/PollCommand.ts)
+
+@[code ts](../../apps/sniper/src//commands/util/PollCommand.ts)
+
+</details>
 
 ### reactionsnipe
 
@@ -835,6 +1368,19 @@ Shows the last removed reaction from a message in this channel\
 
 **Cooldown:** 0 ms\
 **Permissions:** `send messages`, `read message history`, `view channel`
+ 
+<details>
+  <summary>Source</summary>
+
+  [Source on Github](https://github.com/MajesticString/sniper/blob/main/apps/sniper/src/commands/util/ReactionsnipeCommand.ts)
+  
+  [Edit in Github](https://github.com/MajesticString/sniper/edit/main/apps/sniper/src/commands/util/ReactionsnipeCommand.ts)
+
+  [Edit in Github.dev](https://github.dev/MajesticString/sniper/blob/main/apps/sniper/src/commands/util/ReactionsnipeCommand.ts)
+
+@[code ts](../../apps/sniper/src//commands/util/ReactionsnipeCommand.ts)
+
+</details>
 
 ### role
 
@@ -864,6 +1410,19 @@ Shows the last removed reaction from a message in this channel\
 
 **Cooldown:** 5 seconds\
 **Permissions:** `send messages`, `read message history`, `view channel`
+ 
+<details>
+  <summary>Source</summary>
+
+  [Source on Github](https://github.com/MajesticString/sniper/blob/main/apps/sniper/src/commands/util/RoleCommand.ts)
+  
+  [Edit in Github](https://github.com/MajesticString/sniper/edit/main/apps/sniper/src/commands/util/RoleCommand.ts)
+
+  [Edit in Github.dev](https://github.dev/MajesticString/sniper/blob/main/apps/sniper/src/commands/util/RoleCommand.ts)
+
+@[code ts](../../apps/sniper/src//commands/util/RoleCommand.ts)
+
+</details>
 
 ### roles
 
@@ -873,6 +1432,19 @@ Shows the last removed reaction from a message in this channel\
 
 **Cooldown:** 3 seconds\
 **Permissions:** `send messages`, `read message history`, `view channel`
+ 
+<details>
+  <summary>Source</summary>
+
+  [Source on Github](https://github.com/MajesticString/sniper/blob/main/apps/sniper/src/commands/util/RolesCommand.ts)
+  
+  [Edit in Github](https://github.com/MajesticString/sniper/edit/main/apps/sniper/src/commands/util/RolesCommand.ts)
+
+  [Edit in Github.dev](https://github.dev/MajesticString/sniper/blob/main/apps/sniper/src/commands/util/RolesCommand.ts)
+
+@[code ts](../../apps/sniper/src//commands/util/RolesCommand.ts)
+
+</details>
 
 ### snipe
 
@@ -902,15 +1474,19 @@ Shows the last removed reaction from a message in this channel\
 
 **Cooldown:** 3 seconds\
 **Permissions:** `send messages`, `read message history`, `view channel`
+ 
+<details>
+  <summary>Source</summary>
 
-### tex
+  [Source on Github](https://github.com/MajesticString/sniper/blob/main/apps/sniper/src/commands/util/SnipeCommand.ts)
+  
+  [Edit in Github](https://github.com/MajesticString/sniper/edit/main/apps/sniper/src/commands/util/SnipeCommand.ts)
 
-Turns text into math\
-**Aliases:** math, latex\
-**Arguments/Usage:** None
+  [Edit in Github.dev](https://github.dev/MajesticString/sniper/blob/main/apps/sniper/src/commands/util/SnipeCommand.ts)
 
-**Cooldown:** 1 second\
-**Permissions:** `send messages`, `read message history`, `view channel`
+@[code ts](../../apps/sniper/src//commands/util/SnipeCommand.ts)
+
+</details>
 
 ### timer
 
@@ -940,6 +1516,19 @@ Turns text into math\
 
 **Cooldown:** 5 seconds\
 **Permissions:** `send messages`, `read message history`, `view channel`
+ 
+<details>
+  <summary>Source</summary>
+
+  [Source on Github](https://github.com/MajesticString/sniper/blob/main/apps/sniper/src/commands/util/TimerCommand.ts)
+  
+  [Edit in Github](https://github.com/MajesticString/sniper/edit/main/apps/sniper/src/commands/util/TimerCommand.ts)
+
+  [Edit in Github.dev](https://github.dev/MajesticString/sniper/blob/main/apps/sniper/src/commands/util/TimerCommand.ts)
+
+@[code ts](../../apps/sniper/src//commands/util/TimerCommand.ts)
+
+</details>
 
 ### unsnipe
 
@@ -949,6 +1538,19 @@ Turns text into math\
 
 **Cooldown:** 1 second\
 **Permissions:** `send messages`, `read message history`, `view channel`
+ 
+<details>
+  <summary>Source</summary>
+
+  [Source on Github](https://github.com/MajesticString/sniper/blob/main/apps/sniper/src/commands/util/UnSnipeCommand.ts)
+  
+  [Edit in Github](https://github.com/MajesticString/sniper/edit/main/apps/sniper/src/commands/util/UnSnipeCommand.ts)
+
+  [Edit in Github.dev](https://github.dev/MajesticString/sniper/blob/main/apps/sniper/src/commands/util/UnSnipeCommand.ts)
+
+@[code ts](../../apps/sniper/src//commands/util/UnSnipeCommand.ts)
+
+</details>
 
 ### vote2
 
@@ -978,6 +1580,19 @@ Turns text into math\
 
 **Cooldown:** 5 seconds\
 **Permissions:** `send messages`, `read message history`, `view channel`
+ 
+<details>
+  <summary>Source</summary>
+
+  [Source on Github](https://github.com/MajesticString/sniper/blob/main/apps/sniper/src/commands/util/VoteCommand.ts)
+  
+  [Edit in Github](https://github.com/MajesticString/sniper/edit/main/apps/sniper/src/commands/util/VoteCommand.ts)
+
+  [Edit in Github.dev](https://github.dev/MajesticString/sniper/blob/main/apps/sniper/src/commands/util/VoteCommand.ts)
+
+@[code ts](../../apps/sniper/src//commands/util/VoteCommand.ts)
+
+</details>
 
 ### weather
 
@@ -1007,6 +1622,19 @@ Turns text into math\
 
 **Cooldown:** 5 seconds\
 **Permissions:** `send messages`, `read message history`, `view channel`
+ 
+<details>
+  <summary>Source</summary>
+
+  [Source on Github](https://github.com/MajesticString/sniper/blob/main/apps/sniper/src/commands/util/WeatherCommand.ts)
+  
+  [Edit in Github](https://github.com/MajesticString/sniper/edit/main/apps/sniper/src/commands/util/WeatherCommand.ts)
+
+  [Edit in Github.dev](https://github.dev/MajesticString/sniper/blob/main/apps/sniper/src/commands/util/WeatherCommand.ts)
+
+@[code ts](../../apps/sniper/src//commands/util/WeatherCommand.ts)
+
+</details>
 
 ### whois
 
@@ -1016,3 +1644,16 @@ Turns text into math\
 
 **Cooldown:** 3 seconds\
 **Permissions:** `send messages`, `read message history`, `view channel`
+ 
+<details>
+  <summary>Source</summary>
+
+  [Source on Github](https://github.com/MajesticString/sniper/blob/main/apps/sniper/src/commands/util/WhoisCommand.ts)
+  
+  [Edit in Github](https://github.com/MajesticString/sniper/edit/main/apps/sniper/src/commands/util/WhoisCommand.ts)
+
+  [Edit in Github.dev](https://github.dev/MajesticString/sniper/blob/main/apps/sniper/src/commands/util/WhoisCommand.ts)
+
+@[code ts](../../apps/sniper/src//commands/util/WhoisCommand.ts)
+
+</details>

@@ -79,18 +79,7 @@ export default class WhoisCommand extends BaseCommand {
             .toISOString()
             .slice(11, -1),
         },
-        {
-          name: 'Status',
-          value:
-            'Presences cannot be tracked by Sniper since the intent is not enabled, and presences are not crucial for the bot to function. For more info, visit the [Discord article](https://support-dev.discord.com/hc/en-us/articles/360056426994-Gateway-Update-FAQ).',
-          inline: true,
-        },
-        {
-          name: 'Activity',
-          // @ts-ignore
-          value: activity || 'No activity',
-          inline: true,
-        },
+
         {
           name: 'Display Color',
           value: member.displayHexColor,

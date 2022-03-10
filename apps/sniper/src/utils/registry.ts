@@ -21,7 +21,6 @@ interface Commands {
   name: string;
   value: string;
 }
-// export const helpCommandHelper: CommandHelper = {};
 export const helpCommandHelperCollection = new Collection<
   string,
   CommandCategory
@@ -45,9 +44,6 @@ export async function registerCommands(client: DiscordClient, dir = '') {
       const Command = (await import('../../' + path.join(dir, file))).default;
       const command = new Command() as BaseCommand;
 
-      // if (!command.permissionsRequired) {
-      //   command.permissionsRequired = [];
-      // }
       if (helpCommandHelperCollection.has(command.category)) {
         helpCommandHelperCollection.get(command.category)?.commands.push({
           name: command.name,
@@ -56,13 +52,6 @@ export async function registerCommands(client: DiscordClient, dir = '') {
           }Cooldown: ${ms(command.cooldown)}`,
         });
       }
-      // if (helpCommandHelper[command.category])
-      //   helpCommandHelper[command.category].commands.push({
-      //     name: command.name,
-      //     value: `${command.description}\n${
-      //       command.argsDescription ? `Args: ${command.argsDescription}\n` : ''
-      //     }Cooldown: ${ms(command.cooldown)}`,
-      //   });
 
       client.commands.set(command.name, command);
       command.aliases.forEach((alias: string) => {
@@ -79,11 +68,18 @@ export async function registerCommands(client: DiscordClient, dir = '') {
         disabled: command.disabled,
         permissions: command.permissionsRequired,
         argsRequired: command.argsRequired,
+        // relative to sniper root
+        filePath: `${dir.replace('out', 'src')}/${file.replace('.js', '.ts')}`
+          .replaceAll('\\', '/')
+          .replaceAll('\\\\', '/'),
       });
 
       if (command.interactionData) {
+        const data = command.interactionData.toJSON();
+        // @ts-ignore
+        if (command.slashCommandType) data.type = command.slashCommandType;
         // @ts-ignore - Version incompatibility
-        interactions.push(command.interactionData.toJSON());
+        interactions.push();
       }
     }
   }

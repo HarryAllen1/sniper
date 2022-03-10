@@ -20,6 +20,7 @@ export default defineUserConfig<DefaultThemeOptions, ViteBundlerOptions>({
       },
     },
   },
+
   head: [
     [
       'link',
