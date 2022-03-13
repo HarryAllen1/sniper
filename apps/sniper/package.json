@@ -19,7 +19,7 @@
     "dev": "tsup --watch --onSuccess \"node . --experimental-json-modules\"",
     "build": "tsup",
     "watch": "tsup --watch",
-    "start": "node .",
+    "start": "pm2 start ./out/sniper.js",
     "lint": "eslint . --ext .ts,.js",
     "format": "prettier --write ."
   },
@@ -60,6 +60,7 @@
     "eslint-config-prettier": "8.5.0",
     "eslint-plugin-node": "11.1.0",
     "nodemon": "2.0.15",
+    "pm2": "^5.2.0",
     "prettier": "2.5.1",
     "ts-node": "10.7.0",
     "tsup": "5.12.0",

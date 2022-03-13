@@ -193,6 +193,52 @@
       "filePath": "src/commands/util/WhoisCommand.ts"
     }
   ],
+  "restricted": [
+    {
+      "name": "addcoins",
+      "aliases": [],
+      "description": "Adds any amount of coins to a user. Can only be used by bot creators.",
+      "args": "<userID OR mentioned user>",
+      "cooldown": 0,
+      "disabled": false,
+      "permissions": [
+        "SEND_MESSAGES",
+        "READ_MESSAGE_HISTORY",
+        "VIEW_CHANNEL"
+      ],
+      "argsRequired": false,
+      "filePath": "src/commands/restricted/AddCoinsCommand.ts"
+    },
+    {
+      "name": "eval",
+      "aliases": [],
+      "description": "Executes Javascript code. Can only be used by the owner(s) of the bot.",
+      "cooldown": 0,
+      "disabled": false,
+      "permissions": [
+        "SEND_MESSAGES",
+        "READ_MESSAGE_HISTORY",
+        "VIEW_CHANNEL"
+      ],
+      "argsRequired": false,
+      "filePath": "src/commands/restricted/EvalCommand.ts"
+    },
+    {
+      "name": "sudo",
+      "aliases": [],
+      "description": "Run a command as another user",
+      "args": "<userID> <command> [...args]",
+      "cooldown": 0,
+      "disabled": false,
+      "permissions": [
+        "SEND_MESSAGES",
+        "READ_MESSAGE_HISTORY",
+        "VIEW_CHANNEL"
+      ],
+      "argsRequired": true,
+      "filePath": "src/commands/restricted/SudoCommand.ts"
+    }
+  ],
   "currency": [
     {
       "name": "balance",
@@ -388,52 +434,6 @@
       ],
       "argsRequired": false,
       "filePath": "src/commands/currency/UseCommand.ts"
-    }
-  ],
-  "restricted": [
-    {
-      "name": "addcoins",
-      "aliases": [],
-      "description": "Adds any amount of coins to a user. Can only be used by bot creators.",
-      "args": "<userID OR mentioned user>",
-      "cooldown": 0,
-      "disabled": false,
-      "permissions": [
-        "SEND_MESSAGES",
-        "READ_MESSAGE_HISTORY",
-        "VIEW_CHANNEL"
-      ],
-      "argsRequired": false,
-      "filePath": "src/commands/restricted/AddCoinsCommand.ts"
-    },
-    {
-      "name": "eval",
-      "aliases": [],
-      "description": "Executes Javascript code. Can only be used by the owner(s) of the bot.",
-      "cooldown": 0,
-      "disabled": false,
-      "permissions": [
-        "SEND_MESSAGES",
-        "READ_MESSAGE_HISTORY",
-        "VIEW_CHANNEL"
-      ],
-      "argsRequired": false,
-      "filePath": "src/commands/restricted/EvalCommand.ts"
-    },
-    {
-      "name": "sudo",
-      "aliases": [],
-      "description": "Run a command as another user",
-      "args": "<userID> <command> [...args]",
-      "cooldown": 0,
-      "disabled": false,
-      "permissions": [
-        "SEND_MESSAGES",
-        "READ_MESSAGE_HISTORY",
-        "VIEW_CHANNEL"
-      ],
-      "argsRequired": true,
-      "filePath": "src/commands/restricted/SudoCommand.ts"
     }
   ],
   "giveaways": [
