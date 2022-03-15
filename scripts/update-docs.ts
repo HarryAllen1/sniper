@@ -1,6 +1,7 @@
 import _ from 'lodash';
 import ms from 'ms';
 import { appendFileSync, readFileSync, writeFileSync } from 'node:fs';
+
 interface CommandCategories {
   [category: string]: Command[];
 }
