@@ -23,71 +23,6 @@ Understanding the arguments:
 <!-- DO NOT EDIT ANYTHING BELOW THIS LINE!!! -->
 <!-- start generation -->
 
-## Currency
-
-### balance
-
-Shows the current amount of coins you or someone else has.\
-**Aliases:** bal\
-**Arguments/Usage:**
-
-<div class="discord-messages">
-  <div class="discord-message">
-    <div class="discord-message-content">
-      <div class="discord-author-avatar">
-				<img src="https://cdn.discordapp.com/embed/avatars/0.png" alt="" />
-			</div>
-      <div class="discord-message-body">
-          <span class="discord-author-info">
-            <span class="discord-author-username">
-              User
-            </span>
-          </span>
-          <span class="discord-message-timestamp">
-            {{ new Date().toLocaleDateString() }}
-					</span><br />
-      &#36;balance [mentioned user OR user ID]
-            </div>
-          </div>
-</div>
-</div>
-
-**Cooldown:** 1 second\
-**Permissions:** `send messages`, `read message history`, `view channel`
-
-<details>
-  <summary>Source</summary>
-
-[Source on Github](https://github.com/MajesticString/sniper/blob/main/apps/sniper/src/commands/currency/BalanceCommand.ts)
-
-[Edit in Github](https://github.com/MajesticString/sniper/edit/main/apps/sniper/src/commands/currency/BalanceCommand.ts)
-
-[Edit in Github.dev](https://github.dev/MajesticString/sniper/blob/main/apps/sniper/src/commands/currency/BalanceCommand.ts)
-
-@[code ts](../../apps/sniper/src//commands/currency/BalanceCommand.ts)
-
-</details>
-
-### bet
-
-**Arguments/Usage:** None
-
-**Cooldown:** 500 ms\
-**Permissions:** `send messages`, `read message history`, `view channel`
-
-<details>
-  <summary>Source</summary>
-
-[Source on Github](https://github.com/MajesticString/sniper/blob/main/apps/sniper/src/commands/currency/BetCommand.ts)
-
-[Edit in Github](https://github.com/MajesticString/sniper/edit/main/apps/sniper/src/commands/currency/BetCommand.ts)
-
-[Edit in Github.dev](https://github.dev/MajesticString/sniper/blob/main/apps/sniper/src/commands/currency/BetCommand.ts)
-
-@[code ts](../../apps/sniper/src//commands/currency/BetCommand.ts)
-
-</details>
-
 ## General
 
 ### changelog
@@ -390,6 +325,71 @@ This command is disabled
 [Edit in Github.dev](https://github.dev/MajesticString/sniper/blob/main/apps/sniper/src/commands/restricted/AddCoinsCommand.ts)
 
 @[code ts](../../apps/sniper/src//commands/restricted/AddCoinsCommand.ts)
+
+</details>
+
+## Currency
+
+### balance
+
+Shows the current amount of coins you or someone else has.\
+**Aliases:** bal\
+**Arguments/Usage:**
+
+<div class="discord-messages">
+  <div class="discord-message">
+    <div class="discord-message-content">
+      <div class="discord-author-avatar">
+				<img src="https://cdn.discordapp.com/embed/avatars/0.png" alt="" />
+			</div>
+      <div class="discord-message-body">
+          <span class="discord-author-info">
+            <span class="discord-author-username">
+              User
+            </span>
+          </span>
+          <span class="discord-message-timestamp">
+            {{ new Date().toLocaleDateString() }}
+					</span><br />
+      &#36;balance [mentioned user OR user ID]
+            </div>
+          </div>
+</div>
+</div>
+
+**Cooldown:** 1 second\
+**Permissions:** `send messages`, `read message history`, `view channel`
+
+<details>
+  <summary>Source</summary>
+
+[Source on Github](https://github.com/MajesticString/sniper/blob/main/apps/sniper/src/commands/currency/BalanceCommand.ts)
+
+[Edit in Github](https://github.com/MajesticString/sniper/edit/main/apps/sniper/src/commands/currency/BalanceCommand.ts)
+
+[Edit in Github.dev](https://github.dev/MajesticString/sniper/blob/main/apps/sniper/src/commands/currency/BalanceCommand.ts)
+
+@[code ts](../../apps/sniper/src//commands/currency/BalanceCommand.ts)
+
+</details>
+
+### bet
+
+**Arguments/Usage:** None
+
+**Cooldown:** 500 ms\
+**Permissions:** `send messages`, `read message history`, `view channel`
+
+<details>
+  <summary>Source</summary>
+
+[Source on Github](https://github.com/MajesticString/sniper/blob/main/apps/sniper/src/commands/currency/BetCommand.ts)
+
+[Edit in Github](https://github.com/MajesticString/sniper/edit/main/apps/sniper/src/commands/currency/BetCommand.ts)
+
+[Edit in Github.dev](https://github.dev/MajesticString/sniper/blob/main/apps/sniper/src/commands/currency/BetCommand.ts)
+
+@[code ts](../../apps/sniper/src//commands/currency/BetCommand.ts)
 
 </details>
 

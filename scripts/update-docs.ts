@@ -17,7 +17,9 @@ interface Command {
 }
 let commandsMD = readFileSync('./docs/commands/README.md').toString();
 const commands: CommandCategories = JSON.parse(
-  readFileSync('./apps/sniper/all-commands.json').toString()
+  readFileSync('./apps/sniper/all-commands.json').toString() === ''
+    ? '{}'
+    : readFileSync('./apps/sniper/all-commands.json').toString()
 );
 
 function resetCommandDocs() {
