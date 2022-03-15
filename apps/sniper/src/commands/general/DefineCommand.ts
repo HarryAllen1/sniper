@@ -5,7 +5,6 @@ import { MWResponse, OxfordRes } from '../../typings/types.js';
 import { reply } from '../../utils/helpers/message.js';
 import BaseCommand from '../../utils/structures/BaseCommand.js';
 
-
 export default class DefineCommand extends BaseCommand {
   constructor() {
     super('define', 'general', [], 1000, 'Gets a definition', {

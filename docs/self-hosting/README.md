@@ -7,7 +7,6 @@ It is not recommended to self-host this bot. It is also assumed that basic devel
 Node.JS 16 and NPM (included with Node.JS) must be installed. [Here is a link to the download page.](https://nodejs.org/en/download/current/)
 :::
 
-
 - Run `git clone https://github.com/MajesticString/sniper.git`
 - Run `cd sniper/apps/sniper`
 - Run `npx pnpm i` to flood your hard drive with files needed for the bot.
@@ -29,4 +28,3 @@ Node.JS 16 and NPM (included with Node.JS) must be installed. [Here is a link to
 - Go to "Service Accounts", and under "firebase admin sdk", hit "Generate new private key" and save it in the project root (this folder.)
 
 - run `npm run build` then `node start.js`
-

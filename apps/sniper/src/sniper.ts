@@ -43,6 +43,7 @@ export const client = new DiscordClient({
     Intents.FLAGS.DIRECT_MESSAGE_REACTIONS,
   ],
   partials: ['CHANNEL'],
+  shards: 'auto',
 });
 
 client.db.db = db;
@@ -67,7 +68,18 @@ export const main = async (): Promise<void> => {
     // }).then(console.log);
 
     await registerCommands(client, './out/commands');
+
     await registerEvents(client, './out/events');
+
+    if (
+      process.env.ONLY_UPDATE_COMMANDS &&
+      process.env.ONLY_UPDATE_COMMANDS === 'y'
+    ) {
+      console.log('Only registering commands');
+
+      // eslint-disable-next-line no-process-exit
+      process.exit(0);
+    }
     const rest = new REST({ version: '9' }).setToken(slappeyJSON.token);
     try {
       console.log('Registering interactions....');

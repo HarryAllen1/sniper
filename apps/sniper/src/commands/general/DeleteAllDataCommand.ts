@@ -1,18 +1,18 @@
-import { Message } from "discord.js";
-import { getFirestore } from "firebase-admin/firestore";
-import DiscordClient from "../../client/client.js";
-import { reply } from "../../utils/helpers/message.js";
-import BaseCommand from "../../utils/structures/BaseCommand.js";
+import { Message } from 'discord.js';
+import { getFirestore } from 'firebase-admin/firestore';
+import DiscordClient from '../../client/client.js';
+import { reply } from '../../utils/helpers/message.js';
+import BaseCommand from '../../utils/structures/BaseCommand.js';
 const db = getFirestore();
 
 export default class DeleteAllDataCommand extends BaseCommand {
   constructor() {
     super(
-      "deletealldata",
-      "general",
-      ["deletemydata"],
+      'deletealldata',
+      'general',
+      ['deletemydata'],
       500,
-      "Deletes all data associated with the bot. The only thing that will remain is your user ID.",
+      'Deletes all data associated with the bot. The only thing that will remain is your user ID.',
       {
         argsRequired: false,
       }
@@ -22,10 +22,10 @@ export default class DeleteAllDataCommand extends BaseCommand {
   async run(client: DiscordClient, message: Message) {
     let responded = false;
     await reply(message, {
-      title: "Are you sure you want to delete all of your data?",
+      title: 'Are you sure you want to delete all of your data?',
       description:
         'This means all coins, xp and settings. This cannot be undone. Type "DELETE ALL DATA" to confirm (not case sensitive). Type literally anything else to cancel.',
-      color: "YELLOW",
+      color: 'YELLOW',
     });
     message.channel
       .createMessageCollector({
@@ -33,22 +33,22 @@ export default class DeleteAllDataCommand extends BaseCommand {
 
         time: 10000,
       })
-      .on("collect", async (msg) => {
-        if (msg.content.toLowerCase() === "delete all data") {
-          await db.collection("users").doc(message.author.id).delete();
-          reply(message, { title: "All data deleted." });
+      .on('collect', async (msg) => {
+        if (msg.content.toLowerCase() === 'delete all data') {
+          await db.collection('users').doc(message.author.id).delete();
+          reply(message, { title: 'All data deleted.' });
           responded = true;
           return;
         } else {
-          reply(message, { title: "Canceled." });
+          reply(message, { title: 'Canceled.' });
           responded = true;
           return;
         }
       })
-      .on("end", async () => {
+      .on('end', async () => {
         if (!responded)
           reply(message, {
-            title: "Canceled because you took too long to respond.",
+            title: 'Canceled because you took too long to respond.',
           });
         return;
       });

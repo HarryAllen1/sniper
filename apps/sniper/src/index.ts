@@ -1,13 +1,19 @@
 import { ShardingManager } from 'discord.js';
-import { readFileSync } from 'fs';
+import { readFileSync } from 'node:fs';
 import { log } from './utils/helpers/console.js';
-const { token } = JSON.parse(readFileSync('./slappey.json').toString());
+const { token } = JSON.parse(readFileSync('./slappey-prod.json').toString());
 
-const manager = new ShardingManager('./src/sniper.js', {
+const manager = new ShardingManager('./out/sniper.js', {
   totalShards: 'auto',
-  token: token,
+  token,
 });
 
-manager.on('shardCreate', (shard) => log(`launched shard ${shard.id}`));
+manager.on('shardCreate', (shard) => {
+  log(`Launched shard ${shard.id}`);
+  shard.on('error', console.error);
+});
 
-manager.spawn({ amount: 20, delay: 5500 });
+manager.spawn({
+  amount: 'auto',
+  timeout: 1500,
+});

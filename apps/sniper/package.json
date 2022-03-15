@@ -6,7 +6,7 @@
   "types": "./src/types/types.d.ts",
   "exports": {
     ".": {
-      "import": "./out-esm/src/sniper.js",
+      "import": "./out/src/sniper.js",
       "require": "./out/src/sniper.js"
     }
   },
@@ -20,6 +20,8 @@
     "build": "tsup",
     "watch": "tsup --watch",
     "start": "pm2 start ./out/sniper.js",
+    "dev:start": "npm run build && node ./out/sniper.js",
+    "register-commands": "npm run build && env ONLY_UPDATE_COMMANDS=y node ./out/sniper.js",
     "lint": "eslint . --ext .ts,.js",
     "format": "prettier --write ."
   },

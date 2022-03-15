@@ -9,7 +9,7 @@ import {
   deleteFieldFromUserData,
   getTotalCoins,
   getUserData,
-  setUserData
+  setUserData,
 } from '../../utils/helpers/user.js';
 import BaseCommand from '../../utils/structures/BaseCommand.js';
 
