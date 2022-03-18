@@ -45,7 +45,7 @@
     "topgg-autoposter": "^2.0.1"
   },
   "devDependencies": {
-    "@firebase/app-compat": "0.1.19",
+    "@firebase/app-compat": "0.1.20",
     "@firebase/app-types": "0.7.0",
     "@types/body-parser": "1.19.2",
     "@types/lodash-es": "4.17.6",
