@@ -20,7 +20,7 @@ export const firebaseCredentials = ONLY_UPDATE_COMMANDS
   ? {}
   : JSON.parse(readFileSync('./firebase-credentials.json').toString());
 
-if (ONLY_UPDATE_COMMANDS)
+if (!ONLY_UPDATE_COMMANDS)
   admin.initializeApp({
     credential: admin.credential.cert(firebaseCredentials),
     projectId: 'discord-sniper-5c7f0',
