@@ -16,6 +16,11 @@ interface Command {
   argsRequired: boolean;
   filePath: string;
 }
+// add template to command docs
+writeFileSync(
+  './docs/commands/README.md',
+  readFileSync('./command-docs-template.md').toString()
+);
 let commandsMD = readFileSync('./docs/commands/README.md').toString();
 const commands: CommandCategories = JSON.parse(
   readFileSync('./apps/sniper/all-commands.json').toString() === ''
