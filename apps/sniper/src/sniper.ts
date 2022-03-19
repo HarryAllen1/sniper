@@ -4,7 +4,7 @@ import { Routes } from 'discord-api-types/v9';
 import { Intents } from 'discord.js';
 import admin from 'firebase-admin';
 import { getFirestore } from 'firebase-admin/firestore';
-import { readFileSync } from 'fs';
+import { readFileSync, writeFileSync } from 'node:fs';
 import { AutoPoster } from 'topgg-autoposter';
 import DiscordClient from './client/client.js';
 import {
@@ -66,6 +66,7 @@ export const main = async (): Promise<void> => {
     //     users: client.users.cache.size,
     //   }),
     // }).then(console.log);
+    writeFileSync('./all-commands.json', '');
 
     await registerCommands(client, './out/commands');
 
