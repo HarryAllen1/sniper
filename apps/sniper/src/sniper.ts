@@ -30,9 +30,9 @@ export const db = ONLY_UPDATE_COMMANDS
   ? <admin.firestore.Firestore>{}
   : getFirestore();
 
-export const slappeyJSON = JSON.parse(
-  readFileSync('./slappey-prod.json').toString()
-);
+export const slappeyJSON = ONLY_UPDATE_COMMANDS
+  ? {}
+  : JSON.parse(readFileSync('./slappey-prod.json').toString());
 
 process.on('uncaughtException', console.error);
 
