@@ -58,12 +58,14 @@ client.db.db = db;
 
 export const main = async (): Promise<void> => {
   try {
-    client.prefix = slappeyJSON.prefixes;
+    if (!ONLY_UPDATE_COMMANDS) {
+      client.prefix = slappeyJSON.prefixes;
 
-    const poster = AutoPoster(slappeyJSON.secrets.topggToken, client);
-    poster.on('error', (err) => {
-      console.log('topgg autoposter: ' + err.message);
-    });
+      const poster = AutoPoster(slappeyJSON.secrets.topggToken, client);
+      poster.on('error', (err) => {
+        console.log('topgg autoposter: ' + err.message);
+      });
+    }
     // fetch(`https://discordbotlist.com/api/v1/bots/sniper-6531/stats`, {
     //   method: 'POST',
     //   headers: {
@@ -89,17 +91,19 @@ export const main = async (): Promise<void> => {
       // eslint-disable-next-line no-process-exit
       process.exit(0);
     }
-    const rest = new REST({ version: '9' }).setToken(slappeyJSON.token);
-    try {
-      console.log('Registering interactions....');
-      await rest.put(Routes.applicationCommands(slappeyJSON.clientID), {
-        body: interactions,
-      });
-      console.log('Interactions registered.');
-    } catch (error) {
-      console.log(error);
+    if (!ONLY_UPDATE_COMMANDS) {
+      const rest = new REST({ version: '9' }).setToken(slappeyJSON.token);
+      try {
+        console.log('Registering interactions....');
+        await rest.put(Routes.applicationCommands(slappeyJSON.clientID), {
+          body: interactions,
+        });
+        console.log('Interactions registered.');
+      } catch (error) {
+        console.log(error);
+      }
+      await client.login(slappeyJSON.token);
     }
-    await client.login(slappeyJSON.token);
   } catch (error) {
     console.error(error);
 
