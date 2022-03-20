@@ -39,11 +39,50 @@ export default class MessageCreateEvent extends BaseEvent {
     }
     if (message.content.toLowerCase().startsWith('pls snipe')) {
       const command = client.commands.get('snipe');
+      const plsCommandsIssued = await this.db.db
+        .collection('bot')
+        .doc('stats')
+        .get();
+      this.db.db
+        .collection('bot')
+        .doc('stats')
+        .set(
+          {
+            plsCommandsIssued: plsCommandsIssued.data()?.commandsIssued + 1,
+          },
+          { merge: true }
+        );
       command?.run(client, message, []);
     } else if (message.content.toLowerCase().startsWith('pls reactionsnipe')) {
+      const plsCommandsIssued = await this.db.db
+        .collection('bot')
+        .doc('stats')
+        .get();
+      this.db.db
+        .collection('bot')
+        .doc('stats')
+        .set(
+          {
+            plsCommandsIssued: plsCommandsIssued.data()?.commandsIssued + 1,
+          },
+          { merge: true }
+        );
       const command = client.commands.get('reactionsnipe');
       command?.run(client, message, []);
     } else if (message.content.toLowerCase().startsWith('pls editsnipe')) {
+      const plsCommandsIssued = await this.db.db
+        .collection('bot')
+        .doc('stats')
+        .get();
+      this.db.db
+        .collection('bot')
+        .doc('stats')
+        .set(
+          {
+            plsCommandsIssued: plsCommandsIssued.data()?.commandsIssued + 1,
+          },
+          { merge: true }
+        );
       const command = client.commands.get('editsnipe');
       command?.run(client, message, []);
     }
@@ -164,22 +203,7 @@ export default class MessageCreateEvent extends BaseEvent {
                 { commandsIssued: commandsIssued.data()?.commandsIssued + 1 },
                 { merge: true }
               );
-            if (message.content.toLowerCase().startsWith('pls')) {
-              const plsCommandsIssued = await this.db.db
-                .collection('bot')
-                .doc('stats')
-                .get();
-              this.db.db
-                .collection('bot')
-                .doc('stats')
-                .set(
-                  {
-                    plsCommandsIssued:
-                      plsCommandsIssued.data()?.commandsIssued + 1,
-                  },
-                  { merge: true }
-                );
-            }
+
             log('Begin command ' + command?.name + ' in ' + message.guild.name);
             if (!cmdArgs[0] && command.argsRequired) {
               reply(message, {
