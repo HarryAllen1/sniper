@@ -28,7 +28,9 @@ ONLY_UPDATE_COMMANDS
       projectId: 'discord-sniper-5c7f0',
     });
 
-export const db = getFirestore();
+export const db = ONLY_UPDATE_COMMANDS
+  ? <FirebaseFirestore.Firestore>{}
+  : getFirestore();
 
 export const slappeyJSON = ONLY_UPDATE_COMMANDS
   ? {}
