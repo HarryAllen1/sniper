@@ -1,9 +1,7 @@
 import { GuildMember, User } from 'discord.js';
-// @ts-ignore
 import { FieldValue } from 'firebase-admin/firestore';
 import DiscordClient from '../../client/client.js';
-import { client, db } from '../../sniper.js';
-
+import { db } from '../../sniper.js';
 export interface UserData {
   coins: number;
   inJailUntil: number;
@@ -59,7 +57,6 @@ export const addCoinsToTotal = async (
           .set(
             {
               coins: coins + addedCoins,
-              tag: client.users.cache.get(userID)?.tag,
             },
             { merge: true }
           );

@@ -7,6 +7,7 @@ import { getFirestore } from 'firebase-admin/firestore';
 import { readFileSync, writeFileSync } from 'node:fs';
 import { AutoPoster } from 'topgg-autoposter';
 import DiscordClient from './client/client.js';
+import { sleep } from './utils/helpers/misc.js';
 import {
   interactions,
   registerCommands,
@@ -16,23 +17,20 @@ import {
 export const ONLY_UPDATE_COMMANDS =
   process.env.ONLY_UPDATE_COMMANDS && process.env.ONLY_UPDATE_COMMANDS === 'y';
 
-export const firebaseCredentials = ONLY_UPDATE_COMMANDS
-  ? {}
-  : JSON.parse(readFileSync('./firebase-credentials.json').toString());
+export const firebaseCredentials = JSON.parse(
+  readFileSync('./firebase-credentials.json').toString()
+);
 
-if (!ONLY_UPDATE_COMMANDS)
-  admin.initializeApp({
-    credential: admin.credential.cert(firebaseCredentials),
-    projectId: 'discord-sniper-5c7f0',
-  });
+admin.initializeApp({
+  credential: admin.credential.cert(firebaseCredentials),
+  projectId: 'discord-sniper-5c7f0',
+});
 
-export const db = ONLY_UPDATE_COMMANDS
-  ? <admin.firestore.Firestore>{}
-  : getFirestore();
+export const db = getFirestore();
 
-export const slappeyJSON = ONLY_UPDATE_COMMANDS
-  ? {}
-  : JSON.parse(readFileSync('./slappey-prod.json').toString());
+export const slappeyJSON = JSON.parse(
+  readFileSync('./slappey-prod.json').toString()
+);
 
 process.on('uncaughtException', console.error);
 
@@ -58,14 +56,13 @@ client.db.db = db;
 
 export const main = async (): Promise<void> => {
   try {
-    if (!ONLY_UPDATE_COMMANDS) {
-      client.prefix = slappeyJSON.prefixes;
+    if (ONLY_UPDATE_COMMANDS) writeFileSync('./all-commands.json', '');
+    client.prefix = slappeyJSON.prefixes;
 
-      const poster = AutoPoster(slappeyJSON.secrets.topggToken, client);
-      poster.on('error', (err) => {
-        console.log('topgg autoposter: ' + err.message);
-      });
-    }
+    const poster = AutoPoster(slappeyJSON.secrets.topggToken, client);
+    poster.on('error', (err) => {
+      console.log('topgg autoposter: ' + err.message);
+    });
     // fetch(`https://discordbotlist.com/api/v1/bots/sniper-6531/stats`, {
     //   method: 'POST',
     //   headers: {
@@ -76,11 +73,11 @@ export const main = async (): Promise<void> => {
     //     users: client.users.cache.size,
     //   }),
     // }).then(console.log);
-    writeFileSync('./all-commands.json', '');
 
     await registerCommands(client, './out/commands');
 
     await registerEvents(client, './out/events');
+    await sleep(2000);
 
     if (
       process.env.ONLY_UPDATE_COMMANDS &&
@@ -91,19 +88,17 @@ export const main = async (): Promise<void> => {
       // eslint-disable-next-line no-process-exit
       process.exit(0);
     }
-    if (!ONLY_UPDATE_COMMANDS) {
-      const rest = new REST({ version: '9' }).setToken(slappeyJSON.token);
-      try {
-        console.log('Registering interactions....');
-        await rest.put(Routes.applicationCommands(slappeyJSON.clientID), {
-          body: interactions,
-        });
-        console.log('Interactions registered.');
-      } catch (error) {
-        console.log(error);
-      }
-      await client.login(slappeyJSON.token);
+    const rest = new REST({ version: '9' }).setToken(slappeyJSON.token);
+    try {
+      console.log('Registering interactions....');
+      await rest.put(Routes.applicationCommands(slappeyJSON.clientID), {
+        body: interactions,
+      });
+      console.log('Interactions registered.');
+    } catch (error) {
+      console.log(error);
     }
+    await client.login(slappeyJSON.token);
   } catch (error) {
     console.error(error);
 

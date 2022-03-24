@@ -83,11 +83,12 @@ export async function registerCommands(client: DiscordClient, dir = '') {
       }
     }
   }
-  await fs.writeFile('./all-commands.json', '');
-  await fs.writeFile(
-    './all-commands.json',
-    JSON.stringify(allCommandsJSON, null, 2)
-  );
+  fs.writeFile('./all-commands.json', '').then(() => {
+    fs.writeFile(
+      './all-commands.json',
+      JSON.stringify(allCommandsJSON, null, 2)
+    );
+  });
 }
 
 export async function registerEvents(client: DiscordClient, dir = '') {
