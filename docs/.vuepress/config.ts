@@ -64,17 +64,5 @@ export default defineUserConfig<DefaultThemeOptions, ViteBundlerOptions>({
       },
     ],
     ['@vuepress/plugin-toc'],
-    ['@vuepress/plugin-pwa'],
-    [
-      '@vuepress/plugin-pwa-popup',
-      {
-        locales: {
-          '/': {
-            message: 'New content is available.',
-            buttonText: 'Refresh',
-          },
-        },
-      },
-    ],
   ],
 });
