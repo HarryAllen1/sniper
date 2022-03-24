@@ -17,9 +17,9 @@ import {
 export const ONLY_UPDATE_COMMANDS =
   process.env.ONLY_UPDATE_COMMANDS && process.env.ONLY_UPDATE_COMMANDS === 'y';
 
-export const firebaseCredentials = JSON.parse(
-  readFileSync('./firebase-credentials.json').toString()
-);
+export const firebaseCredentials = ONLY_UPDATE_COMMANDS
+  ? {}
+  : JSON.parse(readFileSync('./firebase-credentials.json').toString());
 
 admin.initializeApp({
   credential: admin.credential.cert(firebaseCredentials),
@@ -28,9 +28,9 @@ admin.initializeApp({
 
 export const db = getFirestore();
 
-export const slappeyJSON = JSON.parse(
-  readFileSync('./slappey-prod.json').toString()
-);
+export const slappeyJSON = ONLY_UPDATE_COMMANDS
+  ? {}
+  : JSON.parse(readFileSync('./slappey-prod.json').toString());
 
 process.on('uncaughtException', console.error);
 
