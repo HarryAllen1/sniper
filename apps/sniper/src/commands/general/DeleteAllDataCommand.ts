@@ -1,9 +1,8 @@
 import { Message } from 'discord.js';
-import { getFirestore } from 'firebase-admin/firestore';
 import DiscordClient from '../../client/client.js';
+import { db } from '../../sniper.js';
 import { reply } from '../../utils/helpers/message.js';
 import BaseCommand from '../../utils/structures/BaseCommand.js';
-const db = getFirestore();
 
 export default class DeleteAllDataCommand extends BaseCommand {
   constructor() {

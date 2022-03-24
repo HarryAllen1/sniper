@@ -63,10 +63,12 @@ export const main = async (): Promise<void> => {
     if (ONLY_UPDATE_COMMANDS) writeFileSync('./all-commands.json', '');
     client.prefix = slappeyJSON.prefixes;
 
-    const poster = AutoPoster(slappeyJSON.secrets.topggToken, client);
-    poster.on('error', (err) => {
-      console.log('topgg autoposter: ' + err.message);
-    });
+    if (!ONLY_UPDATE_COMMANDS) {
+      const poster = AutoPoster(slappeyJSON.secrets.topggToken, client);
+      poster.on('error', (err) => {
+        console.log('topgg autoposter: ' + err.message);
+      });
+    }
     // fetch(`https://discordbotlist.com/api/v1/bots/sniper-6531/stats`, {
     //   method: 'POST',
     //   headers: {
