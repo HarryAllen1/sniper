@@ -33,14 +33,6 @@ export default class BalanceCommand extends BaseCommand {
     );
 
   async run(client: DiscordClient, message: Message, args: Array<string>) {
-    message.guild?.members.cache.forEach((member) => {
-      member.roles.cache.forEach((r) => {
-        if (r.id === '888556041321721917') {
-          member.roles.remove('888556041321721917');
-          member.roles.add('957131711077031946');
-        }
-      });
-    });
     message.channel.sendTyping();
     const user = getMentionedUser(message, args);
 
