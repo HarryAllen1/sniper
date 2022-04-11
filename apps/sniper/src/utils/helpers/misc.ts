@@ -43,3 +43,18 @@ export declare type StringValue =
   | `${number}`
   | `${number}${UnitAnyCase}`
   | `${number} ${UnitAnyCase}`;
+
+/**
+ * @param callback What to fire x amount of times
+ * @param interval Timeout interval
+ * @param x Times to fire
+ */
+export function setIntervalLimited(
+  callback: () => any,
+  interval: number,
+  x: number
+) {
+  for (let i = 0; i < x; i++) {
+    setTimeout(callback, i * interval);
+  }
+}

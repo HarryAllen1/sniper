@@ -16,12 +16,12 @@ const ads: string[] = [
 
 export const reply = async (
   message: Message,
-  embed: MessageEmbed | MessageEmbedOptions | APIEmbed,
-
+  embed: MessageEmbed | MessageEmbedOptions | APIEmbed | string,
   otherOptions: ReplyMessageOptions = {},
   ephemeral?: boolean
 ): Promise<Message> => {
-  const ad = randomNumber(1, 30000000000000, true) === 1;
+  if (typeof embed === 'string') embed = { title: embed };
+  const ad = false;
   if (otherOptions.attachments || otherOptions.files) {
     if (
       !(message.channel as TextChannel)

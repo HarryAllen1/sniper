@@ -157,7 +157,10 @@ export default class MessageCreateEvent extends BaseEvent {
             const timeLeft = expirationTime - currentTime;
 
             return reply(message, {
-              title: cooldownMessage,
+              title: cooldownMessage.replaceAll(
+                /\{\{\s?time\s?\}\}/gi,
+                ms(timeLeft, { long: true })
+              ),
               description: `Wait ${ms(timeLeft, {
                 long: true,
               })} before using this command`,

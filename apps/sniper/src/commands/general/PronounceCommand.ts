@@ -9,7 +9,8 @@ export default class PronounceCommand extends BaseCommand {
   }
 
   async run(client: DiscordClient, message: Message, args: Array<string>) {
-    if (!args[0]) return;
+    if (!args[0])
+      return reply(message, 'Please provide a word/sentence to pronounce.');
     message.channel.sendTyping();
 
     reply(

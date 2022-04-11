@@ -1,8 +1,8 @@
 import { ApplyOptions } from '@sapphire/decorators';
-import { Args, Command } from '@sapphire/framework';
-import { reply } from '@sapphire/plugin-editable-commands';
-import type { Message } from 'discord.js';
-import { snipes } from '../../lib/snipes.js';
+import { PaginatedMessage } from '@sapphire/discord.js-utilities';
+import { Command } from '@sapphire/framework';
+import { MessageEmbed } from 'discord.js';
+import { snipes, unSnipes } from '../../lib/snipes.js';
 
 @ApplyOptions<Command.Options>({
   name: 'snipe',
@@ -12,16 +12,117 @@ import { snipes } from '../../lib/snipes.js';
   cooldownDelay: 3000,
 })
 export class SnipeCommand extends Command {
-  public async messageRun(message: Message, args: Args) {
-    snipes;
-    reply(message, await args.pick('string').catch(() => 'no args'));
-    reply(
-      message,
-      (await args.pick('boolean').catch(() => 'no args')).toString()
-    );
-    reply(
-      message,
-      (await args.pick('channel').catch(() => 'no adfs args')).toString()
-    );
+  public async chatInputRunRun(message: Command.ChatInputInteraction) {
+    type SnipeType = 'messages' | 'embeds' | 'attachments';
+    let type: SnipeType = 'messages';
+    if (args[0] && /^(embeds|attachments|messages)$/i.test(args[0]))
+      // we know that its the same because of the regex test.
+      type = args[0] as SnipeType;
+
+    const snipe = snipes[message.channelId];
+    if (!snipe)
+      return reply(message, {
+        title: "There's nothing to snipe!",
+        description:
+          'Deleted messages can only be sniped within 1 hour of deletion.',
+        color: 'RED',
+      });
+
+    if (
+      !snipe.content &&
+      snipe.embeds &&
+      Array.isArray(snipe.embeds) &&
+      snipe.embeds[0] &&
+      !args[0]
+    )
+      type = 'embeds';
+
+    if (
+      !snipe.content &&
+      !snipe.embeds?.length &&
+      snipe.attachments &&
+      !args[0]
+    )
+      type = 'attachments';
+
+    if (type === 'messages') {
+      if (!snipe.content && snipe.embeds?.length) {
+        return reply(message, {
+          title:
+            "This message didn't have any content, but it did have an embed. Trying this command again with the `embeds` type....",
+        }).then(() => this.run(client, message, ['embeds']));
+      }
+      await reply(
+        message,
+        snipe
+          ? new MessageEmbed()
+              .setDescription(
+                `${
+                  message.author.bot
+                    ? "(if there is nothing here, the message was probably an embed and i can't send embeds in embeds)\n"
+                    : ''
+                }${snipe.content}${
+                  snipe.attachments?.length
+                    ? `\n\nAttachment(s): ${snipe.attachments
+                        .map((val) => ` ${val} `)
+                        .toString()}`
+                    : ``
+                }`
+              )
+              .setAuthor({ name: snipe.author?.tag ?? '' })
+              .setColor('GREEN')
+              .setFooter({
+                text: `#${
+                  (message.channel as TextChannel).name
+                } | If the original author wants to remove this message, they can use the \`unsnipe\` command.`,
+              })
+              .setTimestamp(snipe?.createdAt ? snipe.createdAt : 0)
+          : {
+              title: "There's nothing to snipe!",
+              description:
+                'Deleted messages can only be sniped within 1 hour of deletion.',
+              color: 'RED',
+            },
+
+        // snipe?.message?.attachments.first()
+        //   ? {
+        //       attachments: snipe.message.attachments.toJSON(),
+        //     }
+        //   :
+        {}
+      ).then((msg) => {
+        unSnipes[message.channel.id] = {
+          msg,
+        };
+      });
+    } else if (type === 'embeds') {
+      if (snipe.embeds?.length === 0)
+        return reply(message, {
+          title:
+            "This message doesn't have any embeds! Trying this command again with the `messages` type....",
+          color: 'RED',
+        }).then(() => this.run(client, message, ['messages']));
+      const paginator = new PaginatedMessage();
+      paginator.addPageEmbeds(
+        snipe.embeds ?? [new MessageEmbed().setTitle('No embeds')]
+      );
+      const unSnipe = await paginator.run(message);
+      unSnipes[message.channelId] = {
+        msg: unSnipe.response as Message,
+      };
+    } else if (type === 'attachments') {
+      if (!snipe.attachments?.length)
+        return reply(message, {
+          title:
+            "This message doesn't have any attachments. Trying this command again with the `embeds` type....",
+          color: 'RED',
+        }).then(() => this.run(client, message, ['embeds']));
+      const paginator = new PaginatedMessage();
+      paginator.addPages(snipe.attachments.map((a) => ({ content: a })));
+      const unSnipe = await paginator.run(message);
+      unSnipes[message.channel.id] = {
+        msg: unSnipe.response as Message,
+      };
+    }
   }
 }

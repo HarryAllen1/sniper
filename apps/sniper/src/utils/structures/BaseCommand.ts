@@ -62,7 +62,7 @@ export default abstract class BaseCommand {
   get cooldownMessage(): string {
     return (
       this.extraCommandOptions?.cooldownMessage ||
-      "you can't use this command yet"
+      "You can't use this command yet"
     );
   }
   get argsDescription(): string | undefined {
