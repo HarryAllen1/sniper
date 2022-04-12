@@ -48,7 +48,7 @@ export default class MessageCreateEvent extends BaseEvent {
         .doc('stats')
         .set(
           {
-            plsCommandsIssued: plsCommandsIssued.data()?.commandsIssued + 1,
+            plsCommandsIssued: plsCommandsIssued.data()?.plsCommandsIssued + 1,
           },
           { merge: true }
         );
@@ -63,7 +63,7 @@ export default class MessageCreateEvent extends BaseEvent {
         .doc('stats')
         .set(
           {
-            plsCommandsIssued: plsCommandsIssued.data()?.commandsIssued + 1,
+            plsCommandsIssued: plsCommandsIssued.data()?.plsCommandsIssued + 1,
           },
           { merge: true }
         );
@@ -79,7 +79,7 @@ export default class MessageCreateEvent extends BaseEvent {
         .doc('stats')
         .set(
           {
-            plsCommandsIssued: plsCommandsIssued.data()?.commandsIssued + 1,
+            plsCommandsIssued: plsCommandsIssued.data()?.plsCommandsIssued + 1,
           },
           { merge: true }
         );
