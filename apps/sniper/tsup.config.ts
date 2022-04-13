@@ -11,7 +11,7 @@ export default defineConfig({
   target: 'esnext',
   splitting: false,
   skipNodeModulesBundle: true,
-  sourcemap: false,
+  sourcemap: true,
   shims: false,
   keepNames: true,
   outDir: 'out',
