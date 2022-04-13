@@ -19,7 +19,7 @@
     "dev": "tsup --watch --onSuccess \"node . --experimental-json-modules --enable-source-maps",
     "build": "tsup",
     "watch": "tsup --watch",
-    "start": "npm run build && pm2 start ./out/sniper.js --enable-source-maps --node-args=\"--enable-source-maps\"",
+    "start": "npm run build && pm2 start ./out/sniper.js --node-args=\"--enable-source-maps\"",
     "dev:start": "npm run build && node ./out/sniper.js --enable-source-maps",
     "register-commands": "npm run build && env ONLY_UPDATE_COMMANDS=y node ./out/sniper.js --enable-source-maps",
     "lint": "eslint . --ext .ts,.js",
