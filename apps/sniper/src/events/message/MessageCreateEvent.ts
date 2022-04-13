@@ -39,8 +39,12 @@ export default class MessageCreateEvent extends BaseEvent {
 
     if (
       message.content.toLowerCase().startsWith('pls snipe') &&
-      (await client.db.getGuildSettings(message.guildId ?? ''))?.prefixes[0] !==
-        'pls '
+      (
+        ((await client.db.getGuildSettings(message.guildId ?? ''))?.prefixes &&
+        (await client.db.getGuildSettings(message.guildId ?? ''))?.prefixes[0]
+          ? (await client.db.getGuildSettings(message.guildId ?? ''))?.prefixes
+          : client.prefix) as string[]
+      )[0] !== 'pls '
     ) {
       message.reply(
         'Please avoid using the `pls` prefix when using snipe commands. This is the prefix Dank Memer uses, and will make Sniper commands interfere with Dank memer commands.\nPlease use one of the following prefixes instead:\n' +
@@ -73,8 +77,12 @@ export default class MessageCreateEvent extends BaseEvent {
       command?.run(client, message, []);
     } else if (
       message.content.toLowerCase().startsWith('pls reactionsnipe') &&
-      (await client.db.getGuildSettings(message.guildId ?? ''))?.prefixes[0] !==
-        'pls '
+      (
+        ((await client.db.getGuildSettings(message.guildId ?? ''))?.prefixes &&
+        (await client.db.getGuildSettings(message.guildId ?? ''))?.prefixes[0]
+          ? (await client.db.getGuildSettings(message.guildId ?? ''))?.prefixes
+          : client.prefix) as string[]
+      )[0] !== 'pls '
     ) {
       const plsCommandsIssued = await this.db.db
         .collection('bot')
@@ -93,8 +101,12 @@ export default class MessageCreateEvent extends BaseEvent {
       command?.run(client, message, []);
     } else if (
       message.content.toLowerCase().startsWith('pls editsnipe') &&
-      (await client.db.getGuildSettings(message.guildId ?? ''))?.prefixes[0] !==
-        'pls '
+      (
+        ((await client.db.getGuildSettings(message.guildId ?? ''))?.prefixes &&
+        (await client.db.getGuildSettings(message.guildId ?? ''))?.prefixes[0]
+          ? (await client.db.getGuildSettings(message.guildId ?? ''))?.prefixes
+          : client.prefix) as string[]
+      )[0] !== 'pls '
     ) {
       const plsCommandsIssued = await this.db.db
         .collection('bot')
