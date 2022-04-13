@@ -97,17 +97,17 @@ export class ConfirmationMessage extends EventEmitter {
     collector.on('collect', async (i) => {
       switch (i.customId) {
         case this.options?.confirmButtonCustomId ?? 'confirm':
-          if (this.options?.disableComponentsOnConfirm)
+          if (this.options?.disableComponentsOnConfirm !== false)
             disableAllComponents(<Message>i.message);
-          if (this.options?.deleteComponentsOnConfirm)
+          if (this.options?.deleteComponentsOnConfirm !== false)
             removeAllComponents(<Message>i.message);
           this.emit('confirm', i);
           break;
         case this.options?.denyButtonCustomId ?? 'deny':
           collector.stop();
-          if (this.options?.disableComponentsOnDeny)
+          if (this.options?.disableComponentsOnDeny !== false)
             disableAllComponents(<Message>i.message);
-          if (this.options?.deleteComponentsOnDeny)
+          if (this.options?.deleteComponentsOnDeny !== false)
             removeAllComponents(<Message>i.message);
           this.emit('deny', i);
           break;
