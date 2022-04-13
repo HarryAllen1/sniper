@@ -177,24 +177,3 @@ export async function send(
     }
   }
 }
-
-export const disableAllComponents = (message: Message) => {
-  if (!message.components && !message.components[0]) return message;
-
-  message.components.forEach((component) => {
-    component.components.forEach((v) => {
-      v.disabled = true;
-    });
-  });
-  return message.edit({
-    components: message.components,
-  });
-};
-
-export const removeAllComponents = (message: Message) => {
-  if (!message.components && !message.components[0]) return message;
-
-  return message.edit({
-    components: [],
-  });
-};
