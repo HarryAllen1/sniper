@@ -1,9 +1,7 @@
 // https://discord.js.org/#/docs/main/stable/class/Client?scrollTo=e-guildMemberAdd
-import { greenBright } from 'colorette';
-import { GuildMember } from 'discord.js';
+import { GuildMember, VoiceChannel } from 'discord.js';
 import DiscordClient from '../../client/client.js';
 import { sendMessageInBorderSecurity } from '../../utils/helpers/cambridge-server.js';
-import { log } from '../../utils/helpers/console.js';
 import BaseEvent from '../../utils/structures/BaseEvent.js';
 
 export default class GuildMemberAddEvent extends BaseEvent {
@@ -12,24 +10,10 @@ export default class GuildMemberAddEvent extends BaseEvent {
   }
 
   async run(client: DiscordClient, member: GuildMember) {
-    if (member.user.id === '893619442712444970') {
-      log(
-        greenBright(
-          `Joined server ${member.guild.name}. Now in ${client.guilds.cache.size} guilds.`
-        )
-      );
-    }
-    if (member.user.id === '529193628569042946') {
-      member.ban({ reason: 'e' });
-    }
-    // const invites = await member.guild.invites.fetch();
-    // console.log(invites);
     if (member.guild.id === '882695828140073052') {
-      const channel = client.channels.cache.get('891408397570818098');
-
-      if (channel?.isVoice()) {
-        channel.setName(`👥 members: ${channel.guild.memberCount}`);
-      }
+      (client.channels.cache.get('891408397570818098') as VoiceChannel).setName(
+        '👥 members: ' + member.guild.memberCount
+      );
     }
     setTimeout(() => {
       if (member.guild.id === '882695828140073052' && !member.user.bot)

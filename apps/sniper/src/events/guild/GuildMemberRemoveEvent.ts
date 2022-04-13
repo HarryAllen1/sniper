@@ -1,5 +1,5 @@
 // https://discord.js.org/#/docs/main/stable/class/Client?scrollTo=e-guildMemberRemove
-import { GuildMember, TextChannel } from 'discord.js';
+import { GuildMember, TextChannel, VoiceChannel } from 'discord.js';
 import BaseEvent from '../../utils/structures/BaseEvent.js';
 import DiscordClient from '../../client/client.js';
 import { sendMessageInBorderSecurity } from '../../utils/helpers/cambridge-server.js';
@@ -14,6 +14,11 @@ export default class GuildMemberRemoveEvent extends BaseEvent {
       (
         member.guild.channels.cache.get('631262532677533726') as TextChannel
       ).send(`${member.user.tag} has left the server.`);
+    }
+    if (member.guild.id === '882695828140073052') {
+      (client.channels.cache.get('891408397570818098') as VoiceChannel).setName(
+        '👥 members: ' + member.guild.memberCount
+      );
     }
     if (member.guild.id === '882695828140073052') {
       const fetchedLogs = await member.guild.fetchAuditLogs({
