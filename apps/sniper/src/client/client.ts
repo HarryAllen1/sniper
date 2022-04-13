@@ -3,7 +3,7 @@ import BaseEvent from '../utils/structures/BaseEvent.js';
 import BaseCommand from '../utils/structures/BaseCommand.js';
 
 import { Db } from './Db.js';
-class DiscordClient extends Client {
+class DiscordClient<Ready extends boolean = boolean> extends Client<Ready> {
   private _commands = new Collection<string, BaseCommand>();
   private _events = new Collection<string, BaseEvent>();
   private _prefix: string[] = ['!'];
