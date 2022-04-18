@@ -1,10 +1,10 @@
-import { REST } from '@discordjs/rest';
+// import { REST } from '@discordjs/rest';
 import { green } from 'colorette';
-import { Routes } from 'discord-api-types/v9';
+// import { Routes } from 'discord-api-types/v9';
 import DiscordClient from '../client/client.js';
-import { slappeyJSON } from '../sniper.js';
+// import { slappeyJSON } from '../sniper.js';
 import { log } from '../utils/helpers/console.js';
-import { interactions } from '../utils/registry.js';
+// import { interactions } from '../utils/registry.js';
 import BaseEvent from '../utils/structures/BaseEvent.js';
 
 export default class ReadyEvent extends BaseEvent {
@@ -23,25 +23,25 @@ export default class ReadyEvent extends BaseEvent {
       type: 'WATCHING',
     });
 
-    const rest = new REST({ version: '9' }).setToken(slappeyJSON.token);
+    // const rest = new REST({ version: '9' }).setToken(slappeyJSON.token);
 
-    await rest
-      .put(Routes.applicationCommands(slappeyJSON.clientID), {
-        body: interactions,
-      })
-      .then(() => {
-        console.log('globally registered commands');
-      });
-    await rest
-      .put(
-        Routes.applicationGuildCommands(
-          slappeyJSON.clientID,
-          '892256861947064341'
-        ),
-        {
-          body: interactions,
-        }
-      )
-      .then(() => console.log('registered commands in test server'));
+    // await rest
+    //   .put(Routes.applicationCommands(slappeyJSON.clientID), {
+    //     body: interactions,
+    //   })
+    //   .then(() => {
+    //     console.log('globally registered commands');
+    //   });
+    // await rest
+    //   .put(
+    //     Routes.applicationGuildCommands(
+    //       slappeyJSON.clientID,
+    //       '892256861947064341'
+    //     ),
+    //     {
+    //       body: interactions,
+    //     }
+    //   )
+    //   .then(() => console.log('registered commands in test server'));
   }
 }

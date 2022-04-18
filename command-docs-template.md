@@ -18,7 +18,5 @@ Understanding the arguments:
 [Jump to Edit Snipe Command](#editsnipe)\
 [Jump to Reaction Snipe Command](#reactionsnipe)
 
-<Toc />
-
 <!-- DO NOT EDIT ANYTHING BELOW THIS LINE!!! -->
 <!-- start generation -->

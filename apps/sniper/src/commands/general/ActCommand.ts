@@ -24,7 +24,7 @@ export default class ActCommand extends BaseCommand {
       return reply(message, {
         title: 'This command is restricted',
         description:
-          'This command is restricted to certain servers. [Open an issue here to apply](https://github.com/MajesticString/sniper/issues)',
+          'This command is restricted to certain servers. If you are a server admin, [open an issue here to apply](https://github.com/MajesticString/sniper/issues)',
       });
 
     if (
@@ -45,7 +45,7 @@ export default class ActCommand extends BaseCommand {
       return reply(message, 'This command can only be used in text channels');
     const wh = await (message.channel as TextChannel).createWebhook(
       // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-      message.member?.nickname ?? user!.username,
+      message.mentions.members?.first()?.nickname ?? user!.username,
       {
         avatar: user?.displayAvatarURL({ dynamic: false }),
         reason: 'sniper command',
