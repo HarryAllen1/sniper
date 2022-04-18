@@ -1,5 +1,6 @@
 import { PaginatedMessage } from '@sapphire/discord.js-utilities';
 import { Message, MessageEmbed, TextChannel } from 'discord.js';
+import ms from 'ms';
 import DiscordClient from '../../client/client.js';
 import { reply } from '../../utils/helpers/message.js';
 import BaseCommand from '../../utils/structures/BaseCommand.js';
@@ -36,7 +37,9 @@ export default class SnipeCommand extends BaseCommand {
       return reply(message, {
         title: "There's nothing to snipe!",
         description:
-          'Deleted messages can only be sniped within 1 hour of deletion.',
+          client.uptime && client.uptime < ms('1m')
+            ? 'The bot was just restarted less than a minute ago. All snipes are wiped after every restart.'
+            : 'Deleted messages can only be sniped within 1 hour of deletion.',
         color: 'RED',
       });
 
