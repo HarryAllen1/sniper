@@ -258,11 +258,24 @@ export default class MessageCreateEvent extends BaseEvent {
               message.channel
                 .permissionsFor(client.user ?? '')
                 ?.has('SEND_MESSAGES')
-            )
+            ) {
               command.run(client, message, cmdArgs).then(() => {
                 log('End Command ' + command?.name);
               });
-            else message.author.send("I can't send messages in that channel.");
+              client.db.db
+                .collection('stats')
+                .doc(command.category)
+                .set({
+                  used:
+                    (
+                      await client.db.db
+                        .collection('stats')
+                        .doc(command.category)
+                        .get()
+                    ).data()?.used + 1,
+                });
+            } else
+              message.author.send("I can't send messages in that channel.");
           } catch (error) {
             log(red(error as any));
             reply(message, {

@@ -1,0 +1,22 @@
+import { Message } from 'discord.js';
+import BaseCommand from '../../utils/structures/BaseCommand.js';
+import DiscordClient from '../../client/client.js';
+import { reply } from '../../utils/helpers/message.js';
+import { users } from './annoy.js';
+
+export default class AnnoyCommand extends BaseCommand {
+  constructor() {
+    super('annoy', 'general', [], 5000, '');
+  }
+
+  async run(client: DiscordClient, message: Message) {
+    if (message.guildId !== '631138980322344960') return;
+
+    const user = message.mentions.users.first();
+    if (!user) reply(message, 'You must mention a user');
+
+    users.push(user?.id ?? '');
+
+    reply(message, 'Added user to annoy list');
+  }
+}
