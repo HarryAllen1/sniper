@@ -12,7 +12,8 @@
     "moduleResolution": "node",
     "baseUrl": "src",
     "paths": {
-      "#lib/*": ["./utils/helpers/*"]
+      "#lib/*": ["./utils/helpers/*"],
+      "#fetch": ["./utils/helpers/fetch.js"]
     }
   },
   "exclude": ["out-esm/", "out/", "old/", "lib/"],

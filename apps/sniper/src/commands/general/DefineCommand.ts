@@ -1,4 +1,4 @@
-import { fetch } from '@sapphire/fetch';
+import { fetch } from '../../utils/helpers/fetch.js';
 import { Message } from 'discord.js';
 import DiscordClient from '../../client/client.js';
 import { MWResponse, OxfordRes } from '../../typings/types.js';
@@ -68,8 +68,9 @@ export default class DefineCommand extends BaseCommand {
         );
 
         if (data) {
+          const json = await data.json();
           const examples =
-            data.results[0].lexicalEntries[0].entries[0].senses[0].examples;
+            json.results[0].lexicalEntries[0].entries[0].senses[0].examples;
           let examplesValue = '';
           if (examples)
             examples.forEach((example) => {
@@ -78,11 +79,11 @@ export default class DefineCommand extends BaseCommand {
           reply(
             message,
             {
-              title: `[${data.results[0].lexicalEntries[0].lexicalCategory.id}] ${data.word}`,
+              title: `[${json.results[0].lexicalEntries[0].lexicalCategory.id}] ${json.word}`,
               fields: [
                 {
                   name: 'Definition',
-                  value: `${data.results[0].lexicalEntries[0].entries[0].senses[0].definitions[0]}`,
+                  value: `${json.results[0].lexicalEntries[0].entries[0].senses[0].definitions[0]}`,
                 },
                 {
                   name: 'Examples',
@@ -94,9 +95,9 @@ export default class DefineCommand extends BaseCommand {
             {
               files: [
                 {
-                  attachment: data.results[0].lexicalEntries[0]?.entries[0]
+                  attachment: json.results[0].lexicalEntries[0]?.entries[0]
                     ?.pronunciations
-                    ? data.results[0].lexicalEntries[0]?.entries[0]
+                    ? json.results[0].lexicalEntries[0]?.entries[0]
                         ?.pronunciations[1].audioFile
                     : 'https://www.google.com/speech-api/v1/synthesize?text=nothing.&enc=mpeg&lang=en-us&speed=0.4&client=lr-language-tts&use_google_only_voices=1',
                   name: 'pron.mp3',
@@ -124,19 +125,20 @@ export default class DefineCommand extends BaseCommand {
             thumbs_down: number;
           }>;
         }
+        const json = await data.json();
 
         reply(message, {
-          title: `Definition of ${data.list[0].word}`,
-          description: `From Urban Dictionary\nPermalink: ${data.list[0].permalink}`,
+          title: `Definition of ${json.list[0].word}`,
+          description: `From Urban Dictionary\nPermalink: ${json.list[0].permalink}`,
           fields: [
             {
               name: 'Definition',
-              value: `${data.list[0].definition}`,
+              value: `${json.list[0].definition}`,
             },
-            { name: 'Example', value: data.list[0].example },
+            { name: 'Example', value: json.list[0].example },
           ],
           footer: {
-            text: `Thumbs up: ${data.list[0].thumbs_up}\nThumbs down: ${data.list[0].thumbs_down}\nAuthor: ${data.list[0].author}`,
+            text: `Thumbs up: ${json.list[0].thumbs_up}\nThumbs down: ${json.list[0].thumbs_down}\nAuthor: ${json.list[0].author}`,
           },
         });
       } else if (defaultDictionary === 'mw') {
@@ -145,28 +147,28 @@ export default class DefineCommand extends BaseCommand {
             args[0]
           )}?key=${apiKeys.mw.apiKey}`
         );
-
+        const json = await data.json();
         // no word found
-        if (!data[0]) {
+        if (!json[0]) {
           reply(message, {
             title: "Couldn't find that word",
             description: 'try again with a different term',
             color: 'RED',
           });
-        } else if (typeof data[0] === 'string') {
+        } else if (typeof json[0] === 'string') {
           reply(message, {
             title: "Couldn't find that word",
-            description: `Did you mean one of these?\n${data}`,
+            description: `Did you mean one of these?\n${json}`,
           });
         } else {
           reply(
             message,
             {
-              title: `[${data[0].fl}] ${data[0].hwi.hw.replaceAll('*', '•')}`,
+              title: `[${json[0].fl}] ${json[0].hwi.hw.replaceAll('*', '•')}`,
               fields: [
                 {
                   name: 'Definitions',
-                  value: data[0].shortdef.map((val) => `\n${val}`).toString(),
+                  value: json[0].shortdef.map((val) => `\n${val}`).toString(),
                 },
               ],
             },
@@ -174,17 +176,17 @@ export default class DefineCommand extends BaseCommand {
               files: [
                 {
                   attachment: `https://media.merriam-webster.com/audio/prons/en/us/mp3/${
-                    data[0].hwi.prs[0].sound.audio.startsWith('bix')
+                    json[0].hwi.prs[0].sound.audio.startsWith('bix')
                       ? 'bix'
-                      : data[0].hwi.prs[0].sound.audio.startsWith('gg')
+                      : json[0].hwi.prs[0].sound.audio.startsWith('gg')
                       ? 'gg'
-                      : data[0].hwi.prs[0].sound.audio
+                      : json[0].hwi.prs[0].sound.audio
                           .charAt(0)
                           .toLowerCase() ===
-                        data[0].hwi.prs[0].sound.audio.charAt(0).toUpperCase()
+                        json[0].hwi.prs[0].sound.audio.charAt(0).toUpperCase()
                       ? 'number'
-                      : data[0].hwi.prs[0].sound.audio.charAt(0)
-                  }/${data[0].hwi.prs[0].sound.audio}.mp3`,
+                      : json[0].hwi.prs[0].sound.audio.charAt(0)
+                  }/${json[0].hwi.prs[0].sound.audio}.mp3`,
                   name: 'pron.mp3',
                 },
               ],

@@ -1,4 +1,4 @@
-import { fetch } from '@sapphire/fetch';
+import { fetch } from '../../utils/helpers/fetch.js';
 import { Message } from 'discord.js';
 import DiscordClient from '../../client/client.js';
 import { GithubCommits } from '../../typings/types.js';
@@ -26,8 +26,8 @@ export default class ChangelogCommand extends BaseCommand {
       `https://api.github.com/repos/MajesticString/sniper/commits?per_page=${
         args[0] ? (parseInt(args[0]) > 10 ? '10' : args[0]) : '5'
       }`
-    ).then((res) => {
-      const data = res as GithubCommits;
+    ).then(async (res) => {
+      const data = await res.json();
       const toReadableDate = (date: string) => {
         return new Date(date).toUTCString();
       };

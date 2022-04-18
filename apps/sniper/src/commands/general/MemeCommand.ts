@@ -1,4 +1,4 @@
-import { fetch } from '@sapphire/fetch';
+import { fetch } from '../../utils/helpers/fetch.js';
 import { Message } from 'discord.js';
 import DiscordClient from '../../client/client.js';
 import { RedditRes } from '../../typings/types.js';
@@ -22,8 +22,8 @@ export default class MemeCommand extends BaseCommand {
     );
     // setMemes(res);
     // }
-
-    const body = res.data;
+    const json = await res.json();
+    const body = json.data;
     if (!body) {
       reply(message, { title: 'something happened' });
     }
