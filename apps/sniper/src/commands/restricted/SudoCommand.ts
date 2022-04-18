@@ -11,7 +11,10 @@ export default class SudoCommand extends BaseCommand {
   }
 
   async run(client: DiscordClient, message: Message, args: Array<string>) {
-    message.author = await client.users.fetch(args[0]);
+    message.author =
+      args[0].startsWith('<@') && args[0].endsWith('>')
+        ? await client.users.fetch(args[0].substring(2).slice(0, -1))
+        : await client.users.fetch(args[0]);
 
     client.commands.get(args[1])?.run(client, message, args.slice(2));
   }
