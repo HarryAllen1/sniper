@@ -14,7 +14,7 @@ export const navbar: NavbarConfig = [
       },
       {
         text: 'For basic functionality',
-        link: 'https://discord.com/oauth2/authorize?client_id=893619442712444970&permissions=533112155862&scope=bot%20applications.commands',
+        link: 'https://discord.com/api/oauth2/authorize?client_id=893619442712444970&permissions=533112155862&scope=bot%20applications.commands',
       },
     ],
   },
