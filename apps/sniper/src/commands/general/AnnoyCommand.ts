@@ -13,7 +13,7 @@ export default class AnnoyCommand extends BaseCommand {
     if (message.guildId !== '631138980322344960') return;
 
     const user = message.mentions.users.first();
-    if (!user) reply(message, 'You must mention a user');
+    if (!user) return reply(message, 'You must mention a user');
 
     users.push(user?.id ?? '');
 
