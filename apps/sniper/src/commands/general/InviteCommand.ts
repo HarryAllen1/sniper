@@ -8,8 +8,6 @@ export default class InviteCommand extends BaseCommand {
   }
 
   async run(client: DiscordClient, message: Message) {
-    message.channel.send(
-      'https://discord.com/api/oauth2/authorize?client_id=893619442712444970&permissions=533112155862&scope=bot%20applications.commands'
-    );
+    message.channel.send('https://sniper.pages.dev/invite/');
   }
 }
