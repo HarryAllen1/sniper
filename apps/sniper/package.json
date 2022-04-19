@@ -31,7 +31,7 @@
   "dependencies": {
     "@discordjs/builders": "^0.12.0",
     "@discordjs/rest": "^0.4.1",
-    "@discordjs/voice": "^0.8.0",
+    "@discordjs/voice": "^0.9.0",
     "@sapphire/discord.js-utilities": "^4.9.3",
     "@sapphire/fetch": "^2.3.0",
     "@sapphire/type": "^2.2.0",
