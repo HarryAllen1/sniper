@@ -264,15 +264,15 @@ export default class MessageCreateEvent extends BaseEvent {
               });
               client.db.db
                 .collection('stats')
-                .doc(command.category)
+                .doc(command.name)
                 .set({
                   used:
-                    (
+                    ((
                       await client.db.db
                         .collection('stats')
-                        .doc(command.category)
+                        .doc(command.name)
                         .get()
-                    ).data()?.used + 1,
+                    ).data()?.used ?? 0) + 1,
                 });
             } else
               message.author.send("I can't send messages in that channel.");
