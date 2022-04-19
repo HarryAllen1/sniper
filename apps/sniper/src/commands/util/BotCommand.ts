@@ -36,7 +36,10 @@ export default class BotCommand extends BaseCommand {
             },
             {
               name: 'Users',
-              value: `${client.users.cache.size}`,
+              value: `${client.guilds.cache.reduce(
+                (acc, g) => (acc += g.memberCount),
+                0
+              )}`,
               inline: true,
             },
 

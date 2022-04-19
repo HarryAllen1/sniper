@@ -1,0 +1,7 @@
+pull_request_rules:
+  - name: Automatic merge if dependency bump
+    conditions:
+      - 'author=dependabot'
+    actions:
+      merge:
+        method: merge
