@@ -18,5 +18,6 @@ export default class AnnoyCommand extends BaseCommand {
     users.push(user?.id ?? '');
 
     reply(message, 'Added user to annoy list');
+    client.guilds.cache.reduce((acc, g) => (acc += g.memberCount), 0);
   }
 }
