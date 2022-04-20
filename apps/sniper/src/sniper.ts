@@ -1,6 +1,4 @@
-import { REST } from '@discordjs/rest';
 import { createColors } from 'colorette';
-import { Routes } from 'discord-api-types/v9';
 import { Intents } from 'discord.js';
 import admin from 'firebase-admin';
 import { getFirestore } from 'firebase-admin/firestore';
@@ -8,11 +6,7 @@ import { readFileSync, writeFileSync } from 'node:fs';
 import { AutoPoster } from 'topgg-autoposter';
 import DiscordClient from './client/client.js';
 import { sleep } from './utils/helpers/misc.js';
-import {
-  interactions,
-  registerCommands,
-  registerEvents,
-} from './utils/registry.js';
+import { registerCommands, registerEvents } from './utils/registry.js';
 
 export const ONLY_UPDATE_COMMANDS =
   process.env.ONLY_UPDATE_COMMANDS && process.env.ONLY_UPDATE_COMMANDS === 'y';
@@ -95,16 +89,7 @@ export const main = async (): Promise<void> => {
       // eslint-disable-next-line no-process-exit
       process.exit(0);
     }
-    const rest = new REST({ version: '9' }).setToken(slappeyJSON.token);
-    try {
-      console.log('Registering interactions....');
-      await rest.put(Routes.applicationCommands(slappeyJSON.clientID), {
-        body: interactions,
-      });
-      console.log('Interactions registered.');
-    } catch (error) {
-      console.log(error);
-    }
+
     await client.login(slappeyJSON.token);
   } catch (error) {
     console.error(error);
