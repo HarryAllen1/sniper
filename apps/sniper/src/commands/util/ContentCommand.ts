@@ -1,7 +1,7 @@
 import { Message } from 'discord.js';
 import BaseCommand from '../../utils/structures/BaseCommand.js';
 import DiscordClient from '../../client/client.js';
-import { reply } from '#lib/message.js';
+import { reply } from '../../utils/helpers/message.js';
 
 export default class ContentCommand extends BaseCommand {
   constructor() {
@@ -19,6 +19,11 @@ export default class ContentCommand extends BaseCommand {
   }
 
   async run(client: DiscordClient, message: Message, args: Array<string>) {
-    reply(message, message.channel.messages.cache.get(args[0])?.content ?? '');
+    reply(
+      message,
+      `\`\`\`\n${message.channel.messages.cache
+        .get(args[0])
+        ?.content.replaceAll('`', '\\`')}\n\`\`\`` ?? '(no content)'
+    );
   }
 }
