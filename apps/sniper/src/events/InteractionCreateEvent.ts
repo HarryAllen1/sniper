@@ -18,14 +18,17 @@ export default class InteractionCreateEvent extends BaseEvent {
           (<GuildMemberRoleManager>interaction.member?.roles).cache.has(
             '966129132566093955'
           )
-        )
+        ) {
           (<GuildMemberRoleManager>interaction.member?.roles).remove(
             '966129132566093955'
           );
-        else
+          interaction.reply('Added role `Random shit ping`');
+        } else {
           (<GuildMemberRoleManager>interaction.member?.roles).add(
             '966129132566093955'
           );
+          interaction.reply('Removed role `Random shit ping`');
+        }
       }
     }
   }
