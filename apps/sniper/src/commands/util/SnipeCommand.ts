@@ -32,7 +32,7 @@ export default class SnipeCommand extends BaseCommand {
       // we know that its the same because of the regex test.
       type = args[0] as SnipeType;
 
-    const snipe = snipes[message.channel.id];
+    const snipe = snipes[message.channelId];
     if (!snipe)
       return reply(message, {
         title: "There's nothing to snipe!",
@@ -42,6 +42,11 @@ export default class SnipeCommand extends BaseCommand {
             : 'Deleted messages can only be sniped within 1 hour of deletion.',
         color: 'RED',
       });
+
+    snipes[message.channelId] = {
+      ...snipes[message.channelId],
+      requesterId: message.author.id,
+    };
 
     if (
       !snipe.content &&
@@ -89,7 +94,7 @@ export default class SnipeCommand extends BaseCommand {
               .setFooter({
                 text: `#${
                   (message.channel as TextChannel).name
-                } | If the original author wants to remove this message, they can use the \`unsnipe\` command.`,
+                } | If the original author or the person who requested this snipe wants to remove this message, they can use the \`unsnipe\` command.`,
               })
               .setTimestamp(snipe?.createdAt ? snipe.createdAt : 0)
           : {

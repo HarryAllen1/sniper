@@ -20,6 +20,7 @@ interface SnipeContent {
   messageURL?: string;
   user?: User | PartialUser;
   message?: Message;
+  requesterId: string;
   embeds?: MessageEmbed[];
 }
 

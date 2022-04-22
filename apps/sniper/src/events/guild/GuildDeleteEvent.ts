@@ -26,14 +26,14 @@ export default class GuildDeleteEvent extends BaseEvent {
       .catch(() => console.log('cant fetch guild owner'));
 
     client.users.cache.get(harrysDiscordID)?.send({
-      content: `Now in ${client.guilds.cache.size} guilds.`,
+      content: `(-) Now in ${client.guilds.cache.size} guilds.`,
       embeds: [
         {
           title: 'Removed from Guild',
           description: [
             `**Guild Name:** ${guild.name}`,
             `**Guild ID:** ${guild.id}`,
-            `**Guild Owner:** ${owner?.user.tag} [<@${owner?.user.id}>]`,
+            `**Guild Owner:** ${owner?.user.tag}`,
             `**Guild Member Count:** ${guild.memberCount?.toLocaleString()}`,
           ].join('\n'),
           image: {

@@ -29,7 +29,8 @@ export default class UnSnipeCommand extends BaseCommand {
     if (
       msgToDelete &&
       snipe &&
-      message.author.id === snipes[message.channel.id].author?.id
+      (message.author.id === snipes[message.channel.id].author?.id ||
+        message.author.id === snipes[message.channel.id].requesterId)
     ) {
       await msgToDelete.delete();
       delete snipes[message.channel.id];
