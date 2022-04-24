@@ -11,6 +11,10 @@ import { registerCommands, registerEvents } from './utils/registry.js';
 export const ONLY_UPDATE_COMMANDS =
   process.env.ONLY_UPDATE_COMMANDS && process.env.ONLY_UPDATE_COMMANDS === 'y';
 
+export const slappeyJSON = ONLY_UPDATE_COMMANDS
+  ? {}
+  : JSON.parse(readFileSync('./slappey-prod.json').toString());
+
 export const firebaseCredentials = ONLY_UPDATE_COMMANDS
   ? {}
   : JSON.parse(readFileSync('./firebase-credentials.json').toString());
@@ -25,10 +29,6 @@ ONLY_UPDATE_COMMANDS
 export const db = ONLY_UPDATE_COMMANDS
   ? <FirebaseFirestore.Firestore>{}
   : getFirestore();
-
-export const slappeyJSON = ONLY_UPDATE_COMMANDS
-  ? {}
-  : JSON.parse(readFileSync('./slappey-prod.json').toString());
 
 process.on('uncaughtException', console.error);
 
