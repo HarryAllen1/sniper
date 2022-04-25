@@ -1,5 +1,11 @@
 // https://discord.js.org/#/docs/main/stable/class/Client?scrollTo=e-interactionCreate
-import { GuildMemberRoleManager, Interaction } from 'discord.js';
+import {
+  GuildMemberRoleManager,
+  Interaction,
+  MessageActionRow,
+  MessageButton,
+  TextChannel,
+} from 'discord.js';
 import BaseEvent from '../utils/structures/BaseEvent.js';
 import DiscordClient from '../client/client.js';
 
@@ -35,6 +41,33 @@ export default class InteractionCreateEvent extends BaseEvent {
             ephemeral: true,
           });
         }
+        (
+          client.channels.cache.get('888555667248521216') as TextChannel
+        ).messages.cache
+          .get('966129049720213525')
+          ?.edit({
+            embeds: [
+              {
+                title: 'Random shit ping',
+                description:
+                  "Anyone can ping this role for whatever reason... it's random.",
+                footer: {
+                  text: `${
+                    interaction.guild?.roles.cache.get('966129132566093955')
+                      ?.members.size
+                  } members have this role`,
+                },
+              },
+            ],
+            components: [
+              new MessageActionRow().addComponents(
+                new MessageButton()
+                  .setCustomId('pingRole')
+                  .setStyle('PRIMARY')
+                  .setLabel('Add/remove role')
+              ),
+            ],
+          });
       }
     }
   }
