@@ -1,0 +1,9 @@
+pull_request_rules:
+  - name: Automatic merge if dependabot
+    conditions:
+      - and:
+        - author~=dependabot
+        - label=dependencies
+    actions:
+      merge:
+        method: merge
