@@ -1,4 +1,3 @@
-// https://discord.js.org/#/docs/main/stable/class/Client?scrollTo=e-interactionCreate
 import {
   GuildMemberRoleManager,
   Interaction,
@@ -25,23 +24,23 @@ export default class InteractionCreateEvent extends BaseEvent {
             '966129132566093955'
           )
         ) {
-          (<GuildMemberRoleManager>interaction.member?.roles).remove(
+          await (<GuildMemberRoleManager>interaction.member?.roles).remove(
             '966129132566093955'
           );
-          interaction.reply({
+          await interaction.reply({
             content: 'Removed role `Random shit ping`',
             ephemeral: true,
           });
         } else {
-          (<GuildMemberRoleManager>interaction.member?.roles).add(
+          await (<GuildMemberRoleManager>interaction.member?.roles).add(
             '966129132566093955'
           );
-          interaction.reply({
+          await interaction.reply({
             content: 'Added role `Random shit ping`',
             ephemeral: true,
           });
         }
-        (
+        await (
           client.channels.cache.get('888555667248521216') as TextChannel
         ).messages.cache
           .get('966129049720213525')

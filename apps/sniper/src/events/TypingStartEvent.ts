@@ -1,4 +1,3 @@
-// https://discord.js.org/#/docs/main/stable/class/Client?scrollTo=e-typingStart
 import { Typing } from 'discord.js';
 import BaseEvent from '../utils/structures/BaseEvent.js';
 import DiscordClient from '../client/client.js';

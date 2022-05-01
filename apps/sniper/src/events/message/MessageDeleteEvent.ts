@@ -1,4 +1,3 @@
-// https://discord.js.org/#/docs/main/stable/class/Client?scrollTo=e-messageDelete
 import { Message, Util } from 'discord.js';
 import ms from 'ms';
 import DiscordClient from '../../client/client.js';

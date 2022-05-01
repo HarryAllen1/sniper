@@ -1,4 +1,3 @@
-// https://discord.js.org/#/docs/main/stable/class/Client?scrollTo=e-guildDelete
 import { redBright } from 'colorette';
 import { Guild } from 'discord.js';
 import DiscordClient from '../../client/client.js';
