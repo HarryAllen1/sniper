@@ -17,8 +17,11 @@ export const sidebar: SidebarConfig = {
     },
     {
       text: 'Commands',
-
       children: ['/commands/README.md'],
+    },
+    {
+      text: 'Legal',
+      children: ['/privacy.md', '/terms.md'],
     },
   ],
 };
