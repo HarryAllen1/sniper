@@ -1,5 +1,4 @@
-import { defaultTheme } from 'vuepress';
-import { defineUserConfig } from 'vuepress';
+import { defaultTheme, defineUserConfig } from 'vuepress';
 import { navbar } from './configs/navbar';
 import { sidebar } from './configs/sidebar';
 import { googleAnalyticsPlugin } from '@vuepress/plugin-google-analytics';
@@ -14,7 +13,7 @@ export default defineUserConfig({
   description: 'Sniper is a utility bot with a focus on snipe commands.',
   theme: defaultTheme({
     repo: 'MajesticString/sniper',
-    docsDir: 'apps/docs/docs',
+    docsDir: 'docs',
     logo: 'https://cdn.discordapp.com/avatars/893619442712444970/d5f43ef2880350c1fa5ddd288d927327.webp',
     locales: {
       '/': {
