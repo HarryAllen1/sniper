@@ -1,7 +1,7 @@
-import { fetch } from '../../utils/helpers/fetch.js';
 import { Message } from 'discord.js';
 import DiscordClient from '../../client/client.js';
 import { GithubCommits } from '../../typings/types.js';
+import { fetch } from '../../utils/helpers/fetch.js';
 import { reply } from '../../utils/helpers/message.js';
 import BaseCommand from '../../utils/structures/BaseCommand.js';
 
@@ -27,7 +27,7 @@ export default class ChangelogCommand extends BaseCommand {
         args[0] ? (parseInt(args[0]) > 10 ? '10' : args[0]) : '5'
       }`
     ).then(async (res) => {
-      const data = await res.json();
+      const data = res;
       const toReadableDate = (date: string) => {
         return new Date(date).toUTCString();
       };

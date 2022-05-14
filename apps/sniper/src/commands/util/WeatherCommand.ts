@@ -1,4 +1,3 @@
-import { fetch } from '../../utils/helpers/fetch.js';
 import { Message } from 'discord.js';
 import DiscordClient from '../../client/client.js';
 import {
@@ -7,6 +6,7 @@ import {
   WeatherGovGridpointHourlyForecastRes,
   WeatherGovPointRes,
 } from '../../typings/types.js';
+import { fetch } from '../../utils/helpers/fetch.js';
 import { reply } from '../../utils/helpers/message.js';
 import BaseCommand from '../../utils/structures/BaseCommand.js';
 
@@ -34,7 +34,7 @@ export default class WeatherCommand extends BaseCommand {
       const res = await fetch<BingMapsAddressRes>(
         `https://dev.virtualearth.net/REST/v1/Locations/?locality=${args[0]}&maxResults=1&key=AkH0Laj3oJme_UaDRn7TD4EqBGJB0S9JYUMiHLfY574bJQc51PHPBezMon2rRvQE`
       );
-      const bingRes = await res.json();
+      const bingRes = await res;
       if (!bingRes.resourceSets[0]?.resources[0]?.point) {
         reply(message, {
           title: "That city wasn't found",
@@ -57,10 +57,10 @@ export default class WeatherCommand extends BaseCommand {
       }
       const geoPoint = bingRes.resourceSets[0].resources[0].point.coordinates;
 
-      const resourceInfo = await fetch(
+      const resourceInfo = await fetch<WeatherGovPointRes>(
         `https://api.weather.gov/points/${geoPoint[0]},${geoPoint[1]}`
       );
-      if (resourceInfo.status === 404) {
+      if (!resourceInfo || !Object.keys(resourceInfo).length) {
         reply(message, {
           title: 'Only US cities are supported at the moment',
           description: 'sorry',
@@ -71,21 +71,14 @@ export default class WeatherCommand extends BaseCommand {
       const forecast =
         args[1] === 'hourly'
           ? (
-              await (
-                await fetch<WeatherGovGridpointHourlyForecastRes>(
-                  ((await resourceInfo.json()) as WeatherGovPointRes).properties
-                    .forecastHourly
-                )
-              ).json()
+              await fetch<WeatherGovGridpointHourlyForecastRes>(
+                resourceInfo.properties.forecastHourly
+              )
             ).properties.periods
           : (
-              await (
-                await fetch<WeatherGovGridpointHourlyForecastRes>(
-                  (
-                    (await resourceInfo.json()) as WeatherGovGridpointHourlyForecastRes
-                  ).properties.forecast
-                )
-              ).json()
+              await fetch<WeatherGovGridpointHourlyForecastRes>(
+                resourceInfo.properties.forecast
+              )
             ).properties.periods;
       const fields: Array<{ name: string; value: string; inline?: boolean }> =
         [];

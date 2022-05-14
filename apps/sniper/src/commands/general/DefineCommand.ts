@@ -1,7 +1,7 @@
-import { fetch } from '../../utils/helpers/fetch.js';
 import { Message } from 'discord.js';
 import DiscordClient from '../../client/client.js';
 import { MWResponse, OxfordRes } from '../../typings/types.js';
+import { fetch } from '../../utils/helpers/fetch.js';
 import { reply } from '../../utils/helpers/message.js';
 import BaseCommand from '../../utils/structures/BaseCommand.js';
 
@@ -68,7 +68,7 @@ export default class DefineCommand extends BaseCommand {
         );
 
         if (data) {
-          const json = await data.json();
+          const json = data;
           const examples =
             json.results[0].lexicalEntries[0].entries[0].senses[0].examples;
           let examplesValue = '';
@@ -125,7 +125,7 @@ export default class DefineCommand extends BaseCommand {
             thumbs_down: number;
           }>;
         }
-        const json = await data.json();
+        const json = data;
 
         reply(message, {
           title: `Definition of ${json.list[0].word}`,
@@ -147,7 +147,7 @@ export default class DefineCommand extends BaseCommand {
             args[0]
           )}?key=${apiKeys.mw.apiKey}`
         );
-        const json = await data.json();
+        const json = data;
         // no word found
         if (!json[0]) {
           reply(message, {
