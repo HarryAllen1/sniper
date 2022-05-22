@@ -1,6 +1,6 @@
 import { container, SapphireClient } from '@sapphire/framework';
 import type { ClientOptions } from 'discord.js';
-import { initializeApp, cert } from 'firebase-admin/app';
+import { cert, initializeApp } from 'firebase-admin/app';
 import { getFirestore } from 'firebase-admin/firestore';
 
 export class SniperClient extends SapphireClient {
@@ -10,7 +10,7 @@ export class SniperClient extends SapphireClient {
 
   public async initDB() {
     initializeApp({
-      credential: cert(require('../firebase-credentials.json')),
+      credential: cert(await import('../firebase-credentials.json')),
       projectId: 'discord-sniper-5c7f0',
     });
     container.db = getFirestore();
@@ -18,7 +18,7 @@ export class SniperClient extends SapphireClient {
 }
 
 declare module '@sapphire/pieces' {
-  interface Container {
+  export interface Container {
     db: FirebaseFirestore.Firestore;
   }
 }

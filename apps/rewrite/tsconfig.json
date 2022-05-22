@@ -2,7 +2,7 @@
   "compilerOptions": {
     "baseUrl": "./src",
     "typeRoots": ["node_modules/@types"],
-    "outDir": "out",
+    "outDir": "dist",
     "allowSyntheticDefaultImports": true,
     "alwaysStrict": true,
     "emitDecoratorMetadata": true,
@@ -27,7 +27,11 @@
     "resolveJsonModule": true,
     "strict": true,
     "target": "ES2021",
-    "useDefineForClassFields": true
+    "useDefineForClassFields": true,
+    "paths": {
+      "#lib": ["./lib/index.js"],
+      "#lib/*": ["./lib/*"]
+    }
   },
   "include": ["src"]
 }

@@ -1,9 +1,9 @@
+import { sleep } from '#lib';
+import { snipes } from '#lib/snipes.js';
 import { ApplyOptions } from '@sapphire/decorators';
 import { Events, Listener, ListenerOptions } from '@sapphire/framework';
 import { Message, Util } from 'discord.js';
-import { snipes } from '../../lib/snipes.js';
 import ms from 'ms';
-import { sleep } from '../../lib/sleep.js';
 
 @ApplyOptions<ListenerOptions>({
   event: Events.MessageDelete,

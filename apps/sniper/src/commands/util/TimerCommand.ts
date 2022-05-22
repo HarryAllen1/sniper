@@ -11,7 +11,7 @@ export default class TimerCommand extends BaseCommand {
       'timer',
       'util',
       [],
-      5000,
+      ms('1m'),
       'Sets a timer. Updates every 5 seconds.',
 
       {
