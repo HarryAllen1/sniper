@@ -1,12 +1,22 @@
-import { LogLevel } from '@sapphire/framework';
-import '@sapphire/plugin-hmr/register';
+import {
+  ApplicationCommandRegistries,
+  container,
+  LogLevel,
+  RegisterBehavior,
+} from '@sapphire/framework';
 import '@sapphire/plugin-editable-commands/register';
-import { token } from '../config.json';
-import { SniperClient } from './client';
+import '@sapphire/plugin-hmr/register';
+import type { Message } from 'discord.js';
+import { SniperClient } from './client.js';
+import { config } from './config.js';
 
 export const harrysDiscordID = '696554549418262548';
 
-export const client = new SniperClient({
+ApplicationCommandRegistries.setDefaultBehaviorWhenNotIdentical(
+  RegisterBehavior.Overwrite
+);
+
+export const client: SniperClient = new SniperClient({
   intents: [
     'GUILD_MEMBERS',
     'GUILD_MESSAGES',
@@ -14,8 +24,18 @@ export const client = new SniperClient({
     'GUILD_MESSAGE_REACTIONS',
     'GUILDS',
   ],
-  defaultPrefix: ['$', '%'],
-  regexPrefix: /^[$|%]/,
+  defaultPrefix: ['$'],
+  fetchPrefix: async (message: Message) => {
+    const getGuildSettings = async (guildID: string) => {
+      const val = await container.db.collection('guilds').doc(guildID).get();
+      return val.data();
+    };
+
+    return (await getGuildSettings(message.guildId ?? ''))?.prefixes &&
+      (await getGuildSettings(message.guildId ?? ''))?.prefixes[0]
+      ? (await getGuildSettings(message.guildId ?? ''))?.prefixes
+      : client.options.defaultPrefix;
+  },
   allowedMentions: {
     repliedUser: true,
     parse: ['users'],
@@ -28,7 +48,6 @@ export const client = new SniperClient({
       },
     ],
   },
-  disableMentionPrefix: true,
   failIfNotExists: true,
   caseInsensitiveCommands: true,
   logger: {
@@ -42,5 +61,5 @@ export const client = new SniperClient({
 
 (async () => {
   await client.initDB();
-  void client.login(token);
+  void client.login(config.discordToken);
 })();
