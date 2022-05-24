@@ -1,4 +1,6 @@
-import { db } from '../../sniper.js';
+import { container } from '@sapphire/framework';
+
+const { db } = container;
 
 export const getGuildSettings = async (guildID: string) => {
   const val = await db.collection('guilds').doc(guildID).get();

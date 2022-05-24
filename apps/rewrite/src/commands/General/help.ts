@@ -1,25 +1,27 @@
-import { ApplyOptions } from '@sapphire/decorators';
+import { ApplyOptions, RequiresGuildContext } from '@sapphire/decorators';
 import {
   ApplicationCommandRegistry,
   Command,
-  CommandOptions,
   RegisterBehavior,
 } from '@sapphire/framework';
-import type { CommandInteraction } from 'discord.js';
 import { createHelpCommand } from 'discord-help-command-creator';
+import type { CommandInteraction, Message } from 'discord.js';
 
-@ApplyOptions<CommandOptions>({
+@ApplyOptions<Command.Options>({
   description: 'Displays commands',
-  chatInputCommand: {
-    register: true,
-  },
-  aliases: ['commands'],
   requiredClientPermissions: ['EMBED_LINKS', 'SEND_MESSAGES'],
 })
 export class UserCommand extends Command {
+  @RequiresGuildContext()
   public async chatInputRun(interaction: CommandInteraction) {
     createHelpCommand(this.container.stores.get('commands'), interaction);
   }
+
+  @RequiresGuildContext()
+  public async messageRun(message: Message) {
+    createHelpCommand(this.container.stores.get('commands'), message);
+  }
+
   public override registerApplicationCommands(
     registry: ApplicationCommandRegistry
   ) {
@@ -30,7 +32,7 @@ export class UserCommand extends Command {
       },
       {
         behaviorWhenNotIdentical: RegisterBehavior.Overwrite,
-        idHints: ['956774097906462730'],
+        idHints: ['978003059479314483'],
       }
     );
   }

@@ -1,6 +1,6 @@
 import { ApplyOptions } from '@sapphire/decorators';
 import type {
-  CommandSuccessPayload,
+  ChatInputCommandSuccessPayload,
   ListenerOptions,
 } from '@sapphire/framework';
 import { Command, Events, Listener, LogLevel } from '@sapphire/framework';
@@ -9,19 +9,20 @@ import { cyan } from 'colorette';
 import type { Guild, User } from 'discord.js';
 
 @ApplyOptions<ListenerOptions>({
-  event: Events.CommandSuccess,
+  event: Events.ChatInputCommandSuccess,
 })
-export class UserEvent extends Listener<typeof Events.CommandSuccess> {
-  public run({ message, command }: CommandSuccessPayload) {
-    const shard = this.shard(message.guild?.shardId ?? 0);
+export class UserEvent extends Listener<typeof Events.ChatInputCommandSuccess> {
+  public run({ interaction, command }: ChatInputCommandSuccessPayload) {
+    const shard = this.shard(interaction.guild?.shardId ?? 0);
     const commandName = this.command(command);
-    const author = this.author(message.author);
-    const sentAt = message.guild ? this.guild(message.guild) : this.direct();
+    const author = this.author(interaction.user);
+    const sentAt = interaction.guild
+      ? this.guild(interaction.guild)
+      : this.direct();
     this.container.logger.debug(
       `${shard} - ${commandName} ${author} ${sentAt}`
     );
   }
-
   public onLoad() {
     this.enabled = (this.container.logger as Logger).level <= LogLevel.Debug;
     return super.onLoad();
@@ -40,7 +41,7 @@ export class UserEvent extends Listener<typeof Events.CommandSuccess> {
   }
 
   private direct() {
-    return cyan('Direct Messages');
+    return cyan('Direct interactions');
   }
 
   private guild(guild: Guild) {

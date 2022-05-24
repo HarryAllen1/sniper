@@ -1726,7 +1726,7 @@ Shows the last removed reaction from a message in this channel\
 </div>
 </div>
 
-**Cooldown:** 5 seconds\
+**Cooldown:** 1 minute\
 **Permissions:** `send messages`, `read message history`, `view channel`
  
 <details>

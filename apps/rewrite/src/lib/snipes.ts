@@ -7,9 +7,6 @@ import type {
   ReactionEmoji,
   User,
 } from 'discord.js';
-import { container } from '@sapphire/pieces';
-
-const db = container.db;
 
 export type UniversalEmoji = GuildEmoji | ReactionEmoji | Emoji;
 interface SnipeContent {
@@ -23,6 +20,7 @@ interface SnipeContent {
   messageURL?: string;
   user?: User | PartialUser;
   message?: Message;
+  requesterId?: string;
   embeds?: MessageEmbed[];
 }
 
@@ -40,9 +38,3 @@ export const snipes: Snipe = {};
 export const editSnipes: Snipe = {};
 export const reactionSnipes: Snipe = {};
 export const unSnipes: UnSnipe = {};
-
-export const setSnipe = (snipe: Snipe) =>
-  db.collection('snipes').doc('snipes').set(snipe, { merge: true });
-export const getSnipes = (): Promise<
-  FirebaseFirestore.DocumentSnapshot<Snipe>
-> => db.collection('snipes').doc('snipes').get();

@@ -2,3 +2,5 @@
 /config.json
 /dist
 firebase-credentials.json
+src/config.ts
+src/config.js
