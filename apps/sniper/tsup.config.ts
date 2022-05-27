@@ -12,6 +12,7 @@ export default defineConfig({
   splitting: false,
   skipNodeModulesBundle: true,
   sourcemap: true,
+  silent: true,
   shims: false,
   keepNames: true,
   outDir: 'out',

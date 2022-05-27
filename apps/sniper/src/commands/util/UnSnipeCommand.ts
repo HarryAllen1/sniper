@@ -1,4 +1,4 @@
-import { Message } from 'discord.js';
+import { ContextMenuInteraction, Message } from 'discord.js';
 import DiscordClient from '../../client/client.js';
 import { reply } from '../../utils/helpers/message.js';
 import BaseCommand from '../../utils/structures/BaseCommand.js';
@@ -11,7 +11,10 @@ export default class UnSnipeCommand extends BaseCommand {
       'util',
       [],
       1000,
-      'The author of the sniped message can delete the snipe with this command.'
+      'The author of the sniped message can delete the snipe with this command.',
+      {
+        tip: 'You can also use this command by context menus. Right click/long press the message, click apps, and click `unsnipe`.',
+      }
     );
   }
 
@@ -34,6 +37,55 @@ export default class UnSnipeCommand extends BaseCommand {
     ) {
       await msgToDelete.delete();
       delete snipes[message.channel.id];
+    }
+  }
+
+  override async contextMenuRun(
+    client: DiscordClient,
+    interaction: ContextMenuInteraction
+  ) {
+    if (interaction.isMessageContextMenu()) {
+      if (interaction.targetMessage.author.id !== client.user?.id)
+        return interaction.reply({
+          embeds: [
+            {
+              title: "This command must be used on one of Sniper's messages.",
+              color: 'RED',
+            },
+          ],
+          ephemeral: true,
+        });
+      const snipe = unSnipes[interaction.channelId]?.msg;
+      if (!snipe) {
+        interaction.reply({
+          embeds: [
+            {
+              title:
+                'This snipe does not exist. This usually happens after a bot restart.',
+              color: 'RED',
+            },
+          ],
+          ephemeral: true,
+        });
+        return;
+      }
+      const msgToDelete = interaction.channel?.messages.cache.get(snipe?.id);
+      if (
+        msgToDelete &&
+        snipe &&
+        // eslint-disable-next-line -- it exists
+        (interaction.user.id === snipes[interaction.channel!.id].author?.id ||
+          // eslint-disable-next-line -- it exists
+          interaction.user.id === snipes[interaction.channel!.id].requesterId)
+      ) {
+        await msgToDelete.delete();
+        // eslint-disable-next-line -- it exists
+        delete snipes[interaction.channel!.id];
+        interaction.reply({
+          content: 'Deleted snipe.',
+          ephemeral: true,
+        });
+      }
     }
   }
 }

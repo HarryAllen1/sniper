@@ -1,8 +1,10 @@
 import { SlashCommandBuilder } from '@discordjs/builders';
 import { ApplicationCommandType } from 'discord-api-types/v9';
 import type {
+  Awaitable,
   CommandInteraction,
   CommandInteractionOptionResolver,
+  ContextMenuInteraction,
   Message,
   PermissionString,
 } from 'discord.js';
@@ -15,6 +17,10 @@ interface ExtraCommandOptions {
   permissions?: PermissionString[];
   disabled?: boolean;
   slashCommandType?: ApplicationCommandType;
+  /**
+   * The tip shown in the docs
+   */
+  tip?: string;
 }
 
 export default abstract class BaseCommand {
@@ -86,6 +92,9 @@ export default abstract class BaseCommand {
   get slashCommandType(): ApplicationCommandType | undefined {
     return this.extraCommandOptions?.slashCommandType;
   }
+  get tip(): string {
+    return this.extraCommandOptions?.tip ?? '';
+  }
 
   /**
    *
@@ -99,4 +108,9 @@ export default abstract class BaseCommand {
     message: Message | CommandInteraction,
     args: Array<string> | CommandInteractionOptionResolver | null
   ): Promise<void | Message>;
+
+  contextMenuRun?(
+    client: DiscordClient,
+    interaction: ContextMenuInteraction
+  ): Awaitable<unknown>;
 }

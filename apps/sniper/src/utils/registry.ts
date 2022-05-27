@@ -72,6 +72,7 @@ export async function registerCommands(client: DiscordClient, dir = '') {
         filePath: `${dir.replace('out', 'src')}/${file.replace('.js', '.ts')}`
           .replaceAll('\\', '/')
           .replaceAll('\\\\', '/'),
+        tip: command.tip,
       });
 
       if (command.interactionData) {

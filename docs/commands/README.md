@@ -26,6 +26,7 @@ Understanding the arguments:
 
 
 
+
 **Arguments/Usage:** 
 <div class="discord-messages">
   <div class="discord-message">
@@ -65,6 +66,7 @@ Understanding the arguments:
 </details>
 
 ### clear
+
 
 Clears messages from a channel\
 **Aliases:** purge\
@@ -107,6 +109,7 @@ Clears messages from a channel\
 </details>
 
 ### kick
+
 
 
 
@@ -156,6 +159,7 @@ This command is disabled
 :::
 
 
+
 **Arguments/Usage:** 
 <div class="discord-messages">
   <div class="discord-message">
@@ -198,6 +202,7 @@ This command is disabled
 ::: warning
 This command is disabled
 :::
+
 
 
 **Arguments/Usage:** 
@@ -244,6 +249,7 @@ This command is disabled
 
 
 
+
 **Arguments/Usage:** 
 <div class="discord-messages">
   <div class="discord-message">
@@ -286,6 +292,7 @@ This command is disabled
 
 
 
+
 **Arguments/Usage:** None
 
 **Cooldown:** 0 ms\
@@ -305,6 +312,7 @@ This command is disabled
 </details>
 
 ### restart
+
 
 
 
@@ -330,6 +338,7 @@ This command is disabled
 
 
 
+
 **Arguments/Usage:** None
 
 **Cooldown:** 5 seconds\
@@ -349,6 +358,7 @@ This command is disabled
 </details>
 
 ### sudo
+
 
 
 
@@ -394,6 +404,7 @@ This command is disabled
 
 
 
+
 **Arguments/Usage:** None
 
 **Cooldown:** 5 seconds\
@@ -415,6 +426,7 @@ This command is disabled
 ## General
 
 ### act
+
 
 
 
@@ -460,6 +472,7 @@ This command is disabled
 
 
 
+
 **Arguments/Usage:** None
 
 **Cooldown:** 5 seconds\
@@ -479,6 +492,7 @@ This command is disabled
 </details>
 
 ### cancel
+
 
 
 
@@ -524,6 +538,7 @@ This command is disabled
 
 
 
+
 **Arguments/Usage:** 
 <div class="discord-messages">
   <div class="discord-message">
@@ -566,6 +581,7 @@ This command is disabled
 
 
 
+
 **Arguments/Usage:** 
 <div class="discord-messages">
   <div class="discord-message">
@@ -605,6 +621,7 @@ This command is disabled
 </details>
 
 ### createissue
+
 
 Don't use this command. Just [submit a Github issue](https://github.com/MajesticString/sniper/issues).\
 **Aliases:** issue, createproblem, problem\
@@ -650,6 +667,7 @@ Don't use this command. Just [submit a Github issue](https://github.com/Majestic
 
 
 
+
 **Arguments/Usage:** 
 <div class="discord-messages">
   <div class="discord-message">
@@ -690,6 +708,7 @@ Don't use this command. Just [submit a Github issue](https://github.com/Majestic
 
 ### deletealldata
 
+
 Deletes all data associated with the bot. The only thing that will remain is your user ID.\
 **Aliases:** deletemydata\
 **Arguments/Usage:** None
@@ -714,6 +733,7 @@ Deletes all data associated with the bot. The only thing that will remain is you
 
 
 
+
 **Arguments/Usage:** None
 
 **Cooldown:** 1 second\
@@ -733,6 +753,7 @@ Deletes all data associated with the bot. The only thing that will remain is you
 </details>
 
 ### feature
+
 
 Requests a feature\
 **Aliases:** requestfeature, featurerequest\
@@ -778,6 +799,7 @@ Requests a feature\
 
 
 
+
 **Arguments/Usage:** None
 
 **Cooldown:** 5 seconds\
@@ -797,6 +819,7 @@ Requests a feature\
 </details>
 
 ### help
+
 
 Shows all commands and their descriptions\
 **Aliases:** commands, command\
@@ -842,6 +865,7 @@ Shows all commands and their descriptions\
 
 
 
+
 **Arguments/Usage:** None
 
 **Cooldown:** 1 second\
@@ -864,6 +888,7 @@ Shows all commands and their descriptions\
 
 
 
+
 **Arguments/Usage:** None
 
 **Cooldown:** 3 seconds\
@@ -883,6 +908,7 @@ Shows all commands and their descriptions\
 </details>
 
 ### prefix
+
 
 Shows the prefixes that this bot has. Can also be used to set the prefixes. Prefixes must be separated by a space.\
 **Aliases:** prefixes\
@@ -928,6 +954,7 @@ Shows the prefixes that this bot has. Can also be used to set the prefixes. Pref
 
 
 
+
 **Arguments/Usage:** None
 
 **Cooldown:** 1 second\
@@ -950,6 +977,7 @@ Shows the prefixes that this bot has. Can also be used to set the prefixes. Pref
 
 
 
+
 **Arguments/Usage:** None
 
 **Cooldown:** 10 seconds\
@@ -969,6 +997,7 @@ Shows the prefixes that this bot has. Can also be used to set the prefixes. Pref
 </details>
 
 ### support
+
 
 Gives an invite for the support server.\
 **Aliases:** server, community\
@@ -994,6 +1023,7 @@ Gives an invite for the support server.\
 
 
 
+
 **Arguments/Usage:** None
 
 **Cooldown:** 3 seconds\
@@ -1015,6 +1045,7 @@ Gives an invite for the support server.\
 ## Currency
 
 ### balance
+
 
 Shows the current amount of coins you or someone else has.\
 **Aliases:** bal\
@@ -1060,6 +1091,7 @@ Shows the current amount of coins you or someone else has.\
 
 
 
+
 **Arguments/Usage:** None
 
 **Cooldown:** 500 ms\
@@ -1079,6 +1111,7 @@ Shows the current amount of coins you or someone else has.\
 </details>
 
 ### buy
+
 
 
 
@@ -1124,6 +1157,7 @@ Shows the current amount of coins you or someone else has.\
 
 
 
+
 **Arguments/Usage:** None
 
 **Cooldown:** 1 minute\
@@ -1143,6 +1177,7 @@ Shows the current amount of coins you or someone else has.\
 </details>
 
 ### daily
+
 
 
 
@@ -1168,6 +1203,7 @@ Shows the current amount of coins you or someone else has.\
 
 
 
+
 **Arguments/Usage:** None
 
 **Cooldown:** 5 seconds\
@@ -1187,6 +1223,7 @@ Shows the current amount of coins you or someone else has.\
 </details>
 
 ### give
+
 
 
 
@@ -1232,6 +1269,7 @@ Shows the current amount of coins you or someone else has.\
 
 
 
+
 **Arguments/Usage:** 
 <div class="discord-messages">
   <div class="discord-message">
@@ -1274,6 +1312,7 @@ Shows the current amount of coins you or someone else has.\
 
 
 
+
 **Arguments/Usage:** None
 
 **Cooldown:** 15 minutes\
@@ -1293,6 +1332,7 @@ Shows the current amount of coins you or someone else has.\
 </details>
 
 ### lb
+
 
 Ranks people in order of wealth\
 **Aliases:** leaderboards, leaderboard, rich, richest\
@@ -1315,6 +1355,7 @@ Ranks people in order of wealth\
 </details>
 
 ### rob
+
 
 
 
@@ -1360,6 +1401,7 @@ Ranks people in order of wealth\
 
 
 
+
 **Arguments/Usage:** 
 <div class="discord-messages">
   <div class="discord-message">
@@ -1402,6 +1444,7 @@ Ranks people in order of wealth\
 
 
 
+
 **Arguments/Usage:** None
 
 **Cooldown:** 5 seconds\
@@ -1426,6 +1469,7 @@ Ranks people in order of wealth\
 
 
 
+
 **Arguments/Usage:** None
 
 **Cooldown:** 15 seconds\
@@ -1445,6 +1489,7 @@ Ranks people in order of wealth\
 </details>
 
 ### content
+
 
 
 
@@ -1488,6 +1533,7 @@ Ranks people in order of wealth\
 
 ### editsnipe
 
+
 After a message is edited, you can use this command to see the old message.\
 **Aliases:** esnipe\
 **Arguments/Usage:** None
@@ -1512,6 +1558,7 @@ After a message is edited, you can use this command to see the old message.\
 
 
 
+
 **Arguments/Usage:** None
 
 **Cooldown:** 5 seconds\
@@ -1531,6 +1578,7 @@ After a message is edited, you can use this command to see the old message.\
 </details>
 
 ### poll
+
 
 
 
@@ -1574,6 +1622,7 @@ After a message is edited, you can use this command to see the old message.\
 
 ### reactionsnipe
 
+
 Shows the last removed reaction from a message in this channel\
 **Aliases:** rsnipe\
 **Arguments/Usage:** None
@@ -1595,6 +1644,7 @@ Shows the last removed reaction from a message in this channel\
 </details>
 
 ### role
+
 
 
 
@@ -1640,6 +1690,7 @@ Shows the last removed reaction from a message in this channel\
 
 
 
+
 **Arguments/Usage:** None
 
 **Cooldown:** 3 seconds\
@@ -1659,6 +1710,7 @@ Shows the last removed reaction from a message in this channel\
 </details>
 
 ### snipe
+
 
 
 
@@ -1704,6 +1756,7 @@ Shows the last removed reaction from a message in this channel\
 
 
 
+
 **Arguments/Usage:** 
 <div class="discord-messages">
   <div class="discord-message">
@@ -1744,6 +1797,9 @@ Shows the last removed reaction from a message in this channel\
 
 ### unsnipe
 
+::: tip
+You can also use this command by context menus. Right click/long press the message, click apps, and click `unsnipe`.
+:::
 
 
 **Arguments/Usage:** None
@@ -1765,6 +1821,7 @@ Shows the last removed reaction from a message in this channel\
 </details>
 
 ### vote2
+
 
 
 
@@ -1810,6 +1867,7 @@ Shows the last removed reaction from a message in this channel\
 
 
 
+
 **Arguments/Usage:** 
 <div class="discord-messages">
   <div class="discord-message">
@@ -1849,6 +1907,7 @@ Shows the last removed reaction from a message in this channel\
 </details>
 
 ### whois
+
 
 
 

@@ -5,8 +5,8 @@ import {
   MessageButton,
   TextChannel,
 } from 'discord.js';
-import BaseEvent from '../utils/structures/BaseEvent.js';
 import DiscordClient from '../client/client.js';
+import BaseEvent from '../utils/structures/BaseEvent.js';
 
 export default class InteractionCreateEvent extends BaseEvent {
   constructor() {
@@ -14,7 +14,13 @@ export default class InteractionCreateEvent extends BaseEvent {
   }
 
   async run(client: DiscordClient, interaction: Interaction) {
-    if (interaction.isButton()) {
+    if (interaction.isMessageContextMenu()) {
+      client.commands.get(interaction.commandName)?.contextMenuRun &&
+        // @ts-ignore
+        client.commands
+          .get(interaction.commandName)
+          ?.contextMenuRun(client, interaction);
+    } else if (interaction.isButton()) {
       if (
         interaction.customId === 'pingRole' &&
         interaction.guildId === '882695828140073052'

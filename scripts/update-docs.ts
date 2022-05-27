@@ -15,6 +15,7 @@ interface Command {
   permissions: string[];
   argsRequired: boolean;
   filePath: string;
+  tip: string;
 }
 // add template to command docs
 writeFileSync(
@@ -56,6 +57,7 @@ const capitalizeFirstLetter = (string: string) =>
         `
 ### ${cmd.disabled ? `~~${cmd.name}~~` : cmd.name}
 ${cmd.disabled ? '::: warning\nThis command is disabled\n:::' : ''}
+${cmd.tip !== '' ? `::: tip\n${cmd.tip}\n:::` : ''}
 ${cmd.aliases.length ? cmd.description + '\\' : ''}
 ${cmd.aliases.length ? `**Aliases:** ${cmd.aliases.join(', ')}\\` : ''}
 **Arguments/Usage:** ${

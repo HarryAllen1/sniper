@@ -8,8 +8,7 @@ export const sidebar: SidebarConfig = {
     },
     {
       text: 'Home',
-
-      children: ['/'],
+      link: '../../README.md',
     },
     {
       text: 'Getting Started',
@@ -21,7 +20,7 @@ export const sidebar: SidebarConfig = {
     },
     {
       text: 'Commands',
-      children: ['/commands/README.md'],
+      link: '/commands/README.md',
     },
     {
       text: 'Legal',
