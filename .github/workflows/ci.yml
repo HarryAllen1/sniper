@@ -20,7 +20,7 @@ jobs:
       - name: Install Dependencies
         run: npx pnpm i --no-frozen-lockfile --strict-peer-dependencies=false
       - name: Run ESLint
-        run: pnpm lint
+        run: npx pnpm lint
 
   Building:
     name: Building NodeJS
@@ -37,4 +37,4 @@ jobs:
       - name: Install Dependencies
         run: npx pnpm i --no-frozen-lockfile --strict-peer-dependencies=false
       - name: Build code
-        run: pnpm build
+        run: npx pnpm build
