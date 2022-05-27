@@ -1,0 +1,44 @@
+name: Continuous Integration
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  Linting:
+    name: Linting NodeJS
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Project
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b # tag=v3
+      - name: Add problem matchers
+        run: echo "::add-matcher::.github/problemMatchers/eslint.json"
+      - name: Use Node.js v16
+        uses: actions/setup-node@17f8bd926464a1afa4c6a11669539e9c1ba77048 # tag=v3
+        with:
+          node-version: 16
+      - name: Install Dependencies
+        run: npx pnpm i --no-frozen-lockfile --strict-peer-dependencies=false
+      - name: Run ESLint
+        run: pnpm lint
+
+  Building:
+    name: Building NodeJS
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Project
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b # tag=v3
+        with:
+          submodules: true
+      - name: Add problem matchers
+        run: echo "::add-matcher::.github/problemMatchers/tsc.json"
+      - name: Use Node.js v16
+        uses: actions/setup-node@17f8bd926464a1afa4c6a11669539e9c1ba77048 # tag=v3
+        with:
+          node-version: 16
+      - name: Install Dependencies
+        run: npx pnpm i --no-frozen-lockfile --strict-peer-dependencies=false
+      - name: Build code
+        run: pnpm build

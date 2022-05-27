@@ -1,10 +1,10 @@
-// import { REST } from '@discordjs/rest';
+import { REST } from '@discordjs/rest';
 import { green } from 'colorette';
-// import { Routes } from 'discord-api-types/v9';
+import { Routes } from 'discord-api-types/v10';
 import DiscordClient from '../client/client.js';
-// import { slappeyJSON } from '../sniper.js';
+import { slappeyJSON } from '../sniper.js';
 import { log } from '../utils/helpers/console.js';
-// import { interactions } from '../utils/registry.js';
+import { unsnipeContextMenu } from '../utils/interactions.js';
 import BaseEvent from '../utils/structures/BaseEvent.js';
 
 export default class ReadyEvent extends BaseEvent {
@@ -23,7 +23,12 @@ export default class ReadyEvent extends BaseEvent {
       type: 'WATCHING',
     });
 
-    // const rest = new REST({ version: '9' }).setToken(slappeyJSON.token);
+    const rest = new REST({ version: '10' }).setToken(slappeyJSON.token);
+    await rest
+      .put(Routes.applicationCommands(client.user?.id ?? ''), {
+        body: [unsnipeContextMenu],
+      })
+      .catch((e) => console.log(`Failure to register interactions:\n${e}`));
 
     // await rest
     //   .put(Routes.applicationCommands(slappeyJSON.clientID), {
