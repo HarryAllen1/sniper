@@ -46,6 +46,7 @@ export default class SnipeCommand extends BaseCommand {
     snipes[message.channelId] = {
       ...snipes[message.channelId],
       requesterId: message.author.id,
+      cmdId: message.id,
     };
 
     if (

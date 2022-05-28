@@ -1,4 +1,11 @@
-import { ContextMenuInteraction, Message } from 'discord.js';
+import { PermissionFlagsBits } from 'discord-api-types/v10';
+import {
+  ContextMenuInteraction,
+  Message,
+  MessageActionRow,
+  MessageButton,
+  TextChannel,
+} from 'discord.js';
 import DiscordClient from '../../client/client.js';
 import { reply } from '../../utils/helpers/message.js';
 import BaseCommand from '../../utils/structures/BaseCommand.js';
@@ -77,53 +84,68 @@ export default class UnSnipeCommand extends BaseCommand {
           interaction.user.id === snipes[interaction.channelId].requesterId)
       ) {
         await msgToDelete.delete();
-        // const originalCmd = snipes[interaction.channelId].message;
+        const originalCmd = await interaction.channel?.messages.fetch(
+          snipes[interaction.channelId]?.cmdId
+        );
         delete snipes[interaction.channelId];
 
-        // if (
-        //   (<TextChannel>interaction.channel)
-        //     // eslint-disable-next-line -- it exists
-        //     .permissionsFor(interaction.guild!.me!)
-        //     .has(PermissionFlagsBits.ManageMessages)
-        // ) {
-        //   const msg = <Message>await interaction.reply({
-        //     embeds: [
-        //       {
-        //         title: 'Snipe deleted.',
-        //         description:
-        //           'Would you like to also delete the original command?',
-        //       },
-        //     ],
-        //     ephemeral: true,
-        //     fetchReply: true,
-        //     components: [
-        //       new MessageActionRow().addComponents(
-        //         new MessageButton()
-        //           .setStyle('PRIMARY')
-        //           .setLabel('Yes')
-        //           .setCustomId('yes')
-        //       ),
-        //     ],
-        //   });
-        //   const collector = msg.createMessageComponentCollector({
-        //     componentType: 'BUTTON',
-        //   });
-        //   collector.on('collect', (c) => {
-        //     if (c.customId === 'yes') {
-        //       originalCmd?.delete();
-        //     }
-        //   });
-        // } else
-        return interaction.reply({
-          embeds: [
-            {
-              title: 'Deleted Snipe',
-              // description:
-              //   'Could not delete original command because of missing permissions.',
-            },
-          ],
-          ephemeral: true,
-        });
+        if (
+          (<TextChannel>interaction.channel)
+            // eslint-disable-next-line -- it exists
+            .permissionsFor(interaction.guild!.me!)
+            .has(PermissionFlagsBits.ManageMessages)
+        ) {
+          const msg = <Message>await interaction.reply({
+            embeds: [
+              {
+                title: 'Snipe deleted.',
+                description:
+                  'Would you like to also delete the original command?',
+              },
+            ],
+            ephemeral: true,
+            fetchReply: true,
+            components: [
+              new MessageActionRow().addComponents(
+                new MessageButton()
+                  .setStyle('PRIMARY')
+                  .setLabel('Yes')
+                  .setCustomId('yes')
+              ),
+            ],
+          });
+          const collector = msg.createMessageComponentCollector({
+            componentType: 'BUTTON',
+          });
+          collector.on('collect', (c) => {
+            if (c.customId === 'yes') {
+              originalCmd
+                ?.delete()
+                .catch(() =>
+                  interaction.followUp({
+                    content: 'Error deleting command',
+                    ephemeral: true,
+                  })
+                )
+                .then(() => {
+                  interaction.followUp({
+                    content: 'Command deleted.',
+                    ephemeral: true,
+                  });
+                });
+            }
+          });
+        } else
+          return interaction.reply({
+            embeds: [
+              {
+                title: 'Deleted Snipe',
+                description:
+                  'Could not delete original command because of missing permissions.',
+              },
+            ],
+            ephemeral: true,
+          });
       }
     }
   }

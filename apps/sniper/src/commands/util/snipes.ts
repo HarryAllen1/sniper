@@ -22,6 +22,7 @@ interface SnipeContent {
   message?: Message;
   requesterId?: string;
   embeds?: MessageEmbed[];
+  cmdId: string;
 }
 
 export interface Snipe {

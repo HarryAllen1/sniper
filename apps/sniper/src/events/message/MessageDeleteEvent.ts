@@ -30,6 +30,7 @@ export default class MessageDeleteEvent extends BaseEvent {
       attachments: [...message.attachments.values()]?.map((a) => a.proxyURL),
       embeds: message.embeds,
       message,
+      cmdId: message.id,
     };
     // const snipeContent: any = {};
     // snipeContent[message.channel.id] = {
