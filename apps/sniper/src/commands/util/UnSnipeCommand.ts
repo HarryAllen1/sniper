@@ -73,16 +73,55 @@ export default class UnSnipeCommand extends BaseCommand {
       if (
         msgToDelete &&
         snipe &&
-        // eslint-disable-next-line -- it exists
-        (interaction.user.id === snipes[interaction.channel!.id].author?.id ||
-          // eslint-disable-next-line -- it exists
-          interaction.user.id === snipes[interaction.channel!.id].requesterId)
+        (interaction.user.id === snipes[interaction.channelId].author?.id ||
+          interaction.user.id === snipes[interaction.channelId].requesterId)
       ) {
         await msgToDelete.delete();
-        // eslint-disable-next-line -- it exists
-        delete snipes[interaction.channel!.id];
-        interaction.reply({
-          content: 'Deleted snipe.',
+        // const originalCmd = snipes[interaction.channelId].message;
+        delete snipes[interaction.channelId];
+
+        // if (
+        //   (<TextChannel>interaction.channel)
+        //     // eslint-disable-next-line -- it exists
+        //     .permissionsFor(interaction.guild!.me!)
+        //     .has(PermissionFlagsBits.ManageMessages)
+        // ) {
+        //   const msg = <Message>await interaction.reply({
+        //     embeds: [
+        //       {
+        //         title: 'Snipe deleted.',
+        //         description:
+        //           'Would you like to also delete the original command?',
+        //       },
+        //     ],
+        //     ephemeral: true,
+        //     fetchReply: true,
+        //     components: [
+        //       new MessageActionRow().addComponents(
+        //         new MessageButton()
+        //           .setStyle('PRIMARY')
+        //           .setLabel('Yes')
+        //           .setCustomId('yes')
+        //       ),
+        //     ],
+        //   });
+        //   const collector = msg.createMessageComponentCollector({
+        //     componentType: 'BUTTON',
+        //   });
+        //   collector.on('collect', (c) => {
+        //     if (c.customId === 'yes') {
+        //       originalCmd?.delete();
+        //     }
+        //   });
+        // } else
+        return interaction.reply({
+          embeds: [
+            {
+              title: 'Deleted Snipe',
+              // description:
+              //   'Could not delete original command because of missing permissions.',
+            },
+          ],
           ephemeral: true,
         });
       }
