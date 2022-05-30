@@ -1,7 +1,7 @@
 import { PaginatedMessage } from '@sapphire/discord.js-utilities';
 import { Message, MessageEmbed, TextChannel } from 'discord.js';
 import ms from 'ms';
-import DiscordClient from '../../client/client.js';
+import type DiscordClient from '../../client/client.js';
 import { reply } from '../../utils/helpers/message.js';
 import BaseCommand from '../../utils/structures/BaseCommand.js';
 import { snipes, unSnipes } from './snipes.js';

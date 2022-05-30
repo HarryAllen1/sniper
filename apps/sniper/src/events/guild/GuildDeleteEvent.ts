@@ -1,6 +1,6 @@
 import { redBright } from 'colorette';
-import { Guild } from 'discord.js';
-import DiscordClient from '../../client/client.js';
+import type { Guild } from 'discord.js';
+import type DiscordClient from '../../client/client.js';
 import { harrysDiscordID } from '../../sniper.js';
 import { log } from '../../utils/helpers/console.js';
 import BaseEvent from '../../utils/structures/BaseEvent.js';

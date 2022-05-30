@@ -1,11 +1,11 @@
 import {
-  GuildMemberRoleManager,
-  Interaction,
   MessageActionRow,
   MessageButton,
-  TextChannel,
+  type GuildMemberRoleManager,
+  type Interaction,
+  type TextChannel,
 } from 'discord.js';
-import DiscordClient from '../client/client.js';
+import type DiscordClient from '../client/client.js';
 import BaseEvent from '../utils/structures/BaseEvent.js';
 
 export default class InteractionCreateEvent extends BaseEvent {

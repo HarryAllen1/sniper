@@ -1,6 +1,6 @@
-import { EmbedField, Message } from 'discord.js';
+import type { EmbedField, Message } from 'discord.js';
 import { getFirestore } from 'firebase-admin/firestore';
-import DiscordClient from '../../client/client.js';
+import type DiscordClient from '../../client/client.js';
 import { reply } from '../../utils/helpers/message.js';
 import BaseCommand from '../../utils/structures/BaseCommand.js';
 

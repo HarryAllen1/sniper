@@ -1,12 +1,12 @@
 import { PermissionFlagsBits } from 'discord-api-types/v10';
 import {
-  ContextMenuInteraction,
-  Message,
   MessageActionRow,
   MessageButton,
-  TextChannel,
+  type ContextMenuInteraction,
+  type Message,
+  type TextChannel,
 } from 'discord.js';
-import DiscordClient from '../../client/client.js';
+import type DiscordClient from '../../client/client.js';
 import { reply } from '../../utils/helpers/message.js';
 import BaseCommand from '../../utils/structures/BaseCommand.js';
 import { snipes, unSnipes } from './snipes.js';

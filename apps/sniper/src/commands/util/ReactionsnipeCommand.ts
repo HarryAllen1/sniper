@@ -1,5 +1,5 @@
 import { GuildEmoji, Message, MessageEmbed, TextChannel } from 'discord.js';
-import DiscordClient from '../../client/client.js';
+import type DiscordClient from '../../client/client.js';
 import { reply } from '../../utils/helpers/message.js';
 import BaseCommand from '../../utils/structures/BaseCommand.js';
 import { reactionSnipes, UniversalEmoji } from './snipes.js';

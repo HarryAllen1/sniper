@@ -11,7 +11,7 @@ import {
 } from 'discord.js';
 import { camelCase, startCase } from 'lodash-es';
 import ms from 'ms';
-import DiscordClient from '../../client/client.js';
+import type DiscordClient from '../../client/client.js';
 import { reply } from '../../utils/helpers/message.js';
 import { capitalizeFirstLetter } from '../../utils/helpers/string.js';
 import { helpCommandHelperCollection } from '../../utils/registry.js';

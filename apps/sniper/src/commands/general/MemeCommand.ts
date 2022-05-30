@@ -1,6 +1,6 @@
-import { Message } from 'discord.js';
-import DiscordClient from '../../client/client.js';
-import { RedditRes } from '../../typings/types.js';
+import type { Message } from 'discord.js';
+import type DiscordClient from '../../client/client.js';
+import type { RedditRes } from '../../typings/types.js';
 import { fetch } from '../../utils/helpers/fetch.js';
 import { reply } from '../../utils/helpers/message.js';
 import randomNumber from '../../utils/helpers/randomNumber.js';

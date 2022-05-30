@@ -1,6 +1,6 @@
 import { SlashCommandBuilder } from '@discordjs/builders';
-import { Message } from 'discord.js';
-import DiscordClient from '../../client/client.js';
+import type { Message } from 'discord.js';
+import type DiscordClient from '../../client/client.js';
 import { getMentionedUser } from '../../utils/helpers/mention.js';
 import { reply } from '../../utils/helpers/message.js';
 import { getTotalCoins } from '../../utils/helpers/user.js';

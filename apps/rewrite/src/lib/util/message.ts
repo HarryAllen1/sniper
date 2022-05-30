@@ -1,10 +1,11 @@
-import { APIEmbed } from 'discord-api-types/v9';
-import type {
+import type { APIEmbed } from 'discord-api-types/v10';
+import {
+  Message,
   MessageEmbed,
-  MessageEmbedOptions,
-  ReplyMessageOptions,
+  TextChannel,
+  type MessageEmbedOptions,
+  type ReplyMessageOptions,
 } from 'discord.js';
-import { Message, TextChannel } from 'discord.js';
 import './message.js';
 import randomNumber from './randomNumber.js';
 import { getUserData } from './user.js';

@@ -1,8 +1,8 @@
-import { Message } from 'discord.js';
-import BaseCommand from '../../utils/structures/BaseCommand.js';
-import DiscordClient from '../../client/client.js';
-import { ConfirmationMessage } from '../../utils/helpers/interactions.js';
 import { exec } from 'child_process';
+import type { Message } from 'discord.js';
+import type DiscordClient from '../../client/client.js';
+import { ConfirmationMessage } from '../../utils/helpers/interactions.js';
+import BaseCommand from '../../utils/structures/BaseCommand.js';
 
 export default class UpdateCommand extends BaseCommand {
   constructor() {

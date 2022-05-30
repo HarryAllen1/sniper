@@ -1,4 +1,4 @@
-import { GuildMember, Message, User } from 'discord.js';
+import type { GuildMember, Message, User } from 'discord.js';
 
 export const getMentionedUser = (message: Message, args: string[]): User => {
   return (

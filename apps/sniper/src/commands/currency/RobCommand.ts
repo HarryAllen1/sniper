@@ -1,5 +1,5 @@
-import { Message, User } from 'discord.js';
-import DiscordClient from '../../client/client.js';
+import type { Message, User } from 'discord.js';
+import type DiscordClient from '../../client/client.js';
 import { reply } from '../../utils/helpers/message.js';
 import randomNumber from '../../utils/helpers/randomNumber.js';
 import { getUserData, setUserData } from '../../utils/helpers/user.js';

@@ -1,6 +1,6 @@
-import { Message } from 'discord.js';
-import DiscordClient from '../../client/client.js';
-import {
+import type { Message } from 'discord.js';
+import type DiscordClient from '../../client/client.js';
+import type {
   BingMapsAddressRes,
   Period,
   WeatherGovGridpointHourlyForecastRes,

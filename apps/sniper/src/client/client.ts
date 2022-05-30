@@ -1,8 +1,8 @@
 import { Client, ClientOptions, Collection } from 'discord.js';
-import BaseEvent from '../utils/structures/BaseEvent.js';
-import BaseCommand from '../utils/structures/BaseCommand.js';
-
+import type BaseCommand from '../utils/structures/BaseCommand.js';
+import type BaseEvent from '../utils/structures/BaseEvent.js';
 import { Db } from './Db.js';
+
 class DiscordClient<Ready extends boolean = boolean> extends Client<Ready> {
   private _commands = new Collection<string, BaseCommand>();
   private _events = new Collection<string, BaseEvent>();

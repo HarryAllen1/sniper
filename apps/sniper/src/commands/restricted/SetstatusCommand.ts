@@ -1,7 +1,7 @@
-import { Message } from 'discord.js';
-import BaseCommand from '../../utils/structures/BaseCommand.js';
-import DiscordClient from '../../client/client.js';
+import type { Message } from 'discord.js';
+import type DiscordClient from '../../client/client.js';
 import { harrysDiscordID } from '../../sniper.js';
+import BaseCommand from '../../utils/structures/BaseCommand.js';
 
 export default class SetstatusCommand extends BaseCommand {
   constructor() {

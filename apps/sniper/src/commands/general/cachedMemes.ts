@@ -1,4 +1,4 @@
-import { RedditRes } from '../../typings/types.js';
+import type { RedditRes } from '../../typings/types.js';
 
 export interface LiteRedditRes {
   title: string;

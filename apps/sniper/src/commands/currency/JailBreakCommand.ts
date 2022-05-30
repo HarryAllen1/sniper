@@ -1,5 +1,5 @@
-import { Message, MessageActionRow, MessageButton } from 'discord.js';
-import DiscordClient from '../../client/client.js';
+import { MessageActionRow, MessageButton, type Message } from 'discord.js';
+import type DiscordClient from '../../client/client.js';
 import { reply } from '../../utils/helpers/message.js';
 import randomNumber from '../../utils/helpers/randomNumber.js';
 import { getUserData, setUserData } from '../../utils/helpers/user.js';

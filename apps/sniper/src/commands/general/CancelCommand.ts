@@ -1,8 +1,9 @@
-import { Message } from 'discord.js';
-import BaseCommand from '../../utils/structures/BaseCommand.js';
-import DiscordClient from '../../client/client.js';
+import type { Message } from 'discord.js';
 import ms from 'ms';
+import type DiscordClient from '../../client/client.js';
+import { reply } from '../../utils/helpers/message.js';
 import { setIntervalLimited } from '../../utils/helpers/misc.js';
+import BaseCommand from '../../utils/structures/BaseCommand.js';
 
 export default class CancelCommand extends BaseCommand {
   constructor() {
@@ -23,6 +24,7 @@ export default class CancelCommand extends BaseCommand {
 
   async run(client: DiscordClient, message: Message) {
     const channel = message.mentions.channels.first() ?? message.channel;
+    if (!channel.isText()) return reply(message, 'That is not a text channel!');
     const user = message.mentions.users.first() ?? message.author;
     message.reply({ content: `${user.toString()} aight, you got it` });
     setIntervalLimited(

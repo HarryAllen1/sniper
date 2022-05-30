@@ -1,5 +1,5 @@
-import { SlashCommandBuilder } from '@discordjs/builders';
-import { ApplicationCommandType } from 'discord-api-types/v9';
+import type { SlashCommandBuilder } from '@discordjs/builders';
+import type { ApplicationCommandType } from 'discord-api-types/v10';
 import type {
   Awaitable,
   CommandInteraction,
@@ -8,7 +8,7 @@ import type {
   Message,
   PermissionString,
 } from 'discord.js';
-import DiscordClient from '../../client/client.js';
+import type DiscordClient from '../../client/client.js';
 
 interface ExtraCommandOptions {
   cooldownMessage?: string;

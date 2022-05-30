@@ -1,10 +1,10 @@
-import {
+import type {
   Message,
   MessageOptions,
   MessagePayload,
   TextChannel,
 } from 'discord.js';
-import DiscordClient from '../../client/client.js';
+import type DiscordClient from '../../client/client.js';
 
 export const sendMessageInBorderSecurity = (
   client: DiscordClient,

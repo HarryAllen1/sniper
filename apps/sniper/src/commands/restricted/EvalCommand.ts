@@ -1,8 +1,8 @@
 import { Type } from '@sapphire/type';
 import { codeBlock, isThenable } from '@sapphire/utilities';
-import { Message } from 'discord.js';
+import type { Message } from 'discord.js';
 import { inspect } from 'node:util';
-import DiscordClient from '../../client/client.js';
+import type DiscordClient from '../../client/client.js';
 import { reply } from '../../utils/helpers/message.js';
 import * as userImport from '../../utils/helpers/user.js';
 import BaseCommand from '../../utils/structures/BaseCommand.js';

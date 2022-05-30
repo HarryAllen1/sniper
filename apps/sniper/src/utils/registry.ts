@@ -1,11 +1,11 @@
-import { RESTPostAPIApplicationCommandsJSONBody } from 'discord-api-types/v9';
+import type { RESTPostAPIApplicationCommandsJSONBody } from 'discord-api-types/v10';
 import { Collection } from 'discord.js';
 import ms from 'ms';
 import * as fs from 'node:fs/promises';
 import * as path from 'node:path';
-import DiscordClient from '../client/client.js';
-import BaseCommand from './structures/BaseCommand.js';
-import BaseEvent from './structures/BaseEvent.js';
+import type DiscordClient from '../client/client.js';
+import type BaseCommand from './structures/BaseCommand.js';
+import type BaseEvent from './structures/BaseEvent.js';
 
 // interface CommandHelper {
 //   [name: string]: CommandCategory;

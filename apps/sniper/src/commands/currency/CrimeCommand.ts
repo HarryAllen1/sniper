@@ -1,6 +1,6 @@
-import { Message } from 'discord.js';
-import { default as ms } from 'ms';
-import DiscordClient from '../../client/client.js';
+import type { Message } from 'discord.js';
+import ms from 'ms';
+import type DiscordClient from '../../client/client.js';
 import { msToTime } from '../../utils/helpers/date.js';
 import { reply } from '../../utils/helpers/message.js';
 import { randomNumber } from '../../utils/helpers/randomNumber.js';

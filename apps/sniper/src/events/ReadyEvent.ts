@@ -1,7 +1,7 @@
 import { REST } from '@discordjs/rest';
 import { green } from 'colorette';
 import { Routes } from 'discord-api-types/v10';
-import DiscordClient from '../client/client.js';
+import type DiscordClient from '../client/client.js';
 import { slappeyJSON } from '../sniper.js';
 import { log } from '../utils/helpers/console.js';
 import { unsnipeContextMenu } from '../utils/interactions.js';

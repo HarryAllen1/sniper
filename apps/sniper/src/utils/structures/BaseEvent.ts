@@ -1,4 +1,4 @@
-import DiscordClient from '../../client/client.js';
+import type DiscordClient from '../../client/client.js';
 import { client } from '../../sniper.js';
 
 export default abstract class BaseEvent {

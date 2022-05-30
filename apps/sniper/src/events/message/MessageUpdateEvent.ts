@@ -1,7 +1,7 @@
 // https://discord.js.org/#/docs/main/stable/class/Client?scrollTo=e-messageUpdate
 import { Message, Util } from 'discord.js';
 import ms from 'ms';
-import DiscordClient from '../../client/client.js';
+import type DiscordClient from '../../client/client.js';
 import { editSnipes } from '../../commands/util/snipes.js';
 import { log } from '../../utils/helpers/console.js';
 import { sleep } from '../../utils/helpers/misc.js';
@@ -30,6 +30,7 @@ export default class MessageUpdateEvent extends BaseEvent {
         content: oldMessage.content,
         createdAt: newMessage.editedTimestamp,
         id: newMessage.id,
+        cmdId: '',
       };
       await sleep(ms('1h'));
 
