@@ -20,7 +20,9 @@ export default class UnSnipeCommand extends BaseCommand {
       1000,
       'The author of the sniped message can delete the snipe with this command.',
       {
-        tip: 'You can also use this command by context menus. Right click/long press the message, click apps, and click `unsnipe`.\n\nThis has the added effect of allowing the original `snipe` command to be deleted.',
+        tip: `You can also use this command by context menus. Right click/long press the message, click apps, and click \`unsnipe\`.
+
+This has the added effect of allowing the original \`snipe\` command to be deleted.`,
       }
     );
   }
