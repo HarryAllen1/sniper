@@ -20,13 +20,10 @@ export default class GuildMemberAddEvent extends BaseEvent {
           embeds: [
             {
               title:
-                "This server is for people in the Cambridge Program only. If you don't know what that is, you probably aren't in it.\n\nAlso, please state either your name in this channel.",
+                "This server is for people in the Cambridge Program only. If you don't know what that is, you probably aren't in it.\n\nAlso, please state your preferred name in this channel.",
               description:
                 '[More info on the cambridge program](https://jhs.lwsd.org/academics/cambridge-program)',
               color: 'RED',
-              footer: {
-                text: `Invited by ${''}`,
-              },
             },
           ],
         });
