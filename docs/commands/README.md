@@ -1799,6 +1799,8 @@ Shows the last removed reaction from a message in this channel\
 
 ::: tip
 You can also use this command by context menus. Right click/long press the message, click apps, and click `unsnipe`.
+
+This has the added effect of allowing the original `snipe` command to be deleted.
 :::
 
 

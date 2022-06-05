@@ -1,14 +1,13 @@
-import { defaultTheme, defineUserConfig } from 'vuepress';
-import { navbar } from './configs/navbar';
-import { sidebar } from './configs/sidebar';
 import { googleAnalyticsPlugin } from '@vuepress/plugin-google-analytics';
 import { searchPlugin } from '@vuepress/plugin-search';
 import { shikiPlugin } from '@vuepress/plugin-shiki';
 import { tocPlugin } from '@vuepress/plugin-toc';
+import { defaultTheme, defineUserConfig } from 'vuepress-vite';
+import { navbar } from './configs/navbar';
+import { sidebar } from './configs/sidebar';
 
 export default defineUserConfig({
   lang: 'en-US',
-
   title: 'Sniper Docs',
   description: 'Sniper is a utility bot with a focus on snipe commands.',
   theme: defaultTheme({
@@ -22,8 +21,9 @@ export default defineUserConfig({
         sidebar,
       },
     },
+    navbar,
+    sidebar,
   }),
-
   head: [
     [
       'link',
