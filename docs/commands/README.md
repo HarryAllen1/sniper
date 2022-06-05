@@ -20,6 +20,427 @@ Understanding the arguments:
 
 <!-- DO NOT EDIT ANYTHING BELOW THIS LINE!!! -->
 <!-- start generation -->
+## Currency
+
+### balance
+
+
+Shows the current amount of coins you or someone else has.\
+**Aliases:** bal\
+**Arguments/Usage:** 
+<div class="discord-messages">
+  <div class="discord-message">
+    <div class="discord-message-content">
+      <div class="discord-author-avatar">
+				<img src="https://cdn.discordapp.com/embed/avatars/0.png" alt="" />
+			</div>
+      <div class="discord-message-body">
+          <span class="discord-author-info">
+            <span class="discord-author-username">
+              User
+            </span>
+          </span>
+          <span class="discord-message-timestamp">
+            {{ new Date().toLocaleDateString() }}
+					</span><br />
+      &#36;balance [mentioned user OR user ID]
+            </div>
+          </div>
+</div>
+</div>
+
+**Cooldown:** 1 second\
+**Permissions:** `send messages`, `read message history`, `view channel`
+ 
+<details>
+  <summary>Source</summary>
+
+  [Source on Github](https://github.com/MajesticString/sniper/blob/main/apps/sniper/src/commands/currency/BalanceCommand.ts)
+  
+  [Edit in Github](https://github.com/MajesticString/sniper/edit/main/apps/sniper/src/commands/currency/BalanceCommand.ts)
+
+  [Edit in Github.dev](https://github.dev/MajesticString/sniper/blob/main/apps/sniper/src/commands/currency/BalanceCommand.ts)
+
+@[code ts](../../apps/sniper/src//commands/currency/BalanceCommand.ts)
+
+</details>
+
+### bet
+
+
+
+
+**Arguments/Usage:** None
+
+**Cooldown:** 500 ms\
+**Permissions:** `send messages`, `read message history`, `view channel`
+ 
+<details>
+  <summary>Source</summary>
+
+  [Source on Github](https://github.com/MajesticString/sniper/blob/main/apps/sniper/src/commands/currency/BetCommand.ts)
+  
+  [Edit in Github](https://github.com/MajesticString/sniper/edit/main/apps/sniper/src/commands/currency/BetCommand.ts)
+
+  [Edit in Github.dev](https://github.dev/MajesticString/sniper/blob/main/apps/sniper/src/commands/currency/BetCommand.ts)
+
+@[code ts](../../apps/sniper/src//commands/currency/BetCommand.ts)
+
+</details>
+
+### buy
+
+
+
+
+**Arguments/Usage:** 
+<div class="discord-messages">
+  <div class="discord-message">
+    <div class="discord-message-content">
+      <div class="discord-author-avatar">
+				<img src="https://cdn.discordapp.com/embed/avatars/0.png" alt="" />
+			</div>
+      <div class="discord-message-body">
+          <span class="discord-author-info">
+            <span class="discord-author-username">
+              User
+            </span>
+          </span>
+          <span class="discord-message-timestamp">
+            {{ new Date().toLocaleDateString() }}
+					</span><br />
+      &#36;buy &lt;item&gt;
+            </div>
+          </div>
+</div>
+</div>
+
+**Cooldown:** 250 ms\
+**Permissions:** `send messages`, `read message history`, `view channel`
+ 
+<details>
+  <summary>Source</summary>
+
+  [Source on Github](https://github.com/MajesticString/sniper/blob/main/apps/sniper/src/commands/currency/BuyCommand.ts)
+  
+  [Edit in Github](https://github.com/MajesticString/sniper/edit/main/apps/sniper/src/commands/currency/BuyCommand.ts)
+
+  [Edit in Github.dev](https://github.dev/MajesticString/sniper/blob/main/apps/sniper/src/commands/currency/BuyCommand.ts)
+
+@[code ts](../../apps/sniper/src//commands/currency/BuyCommand.ts)
+
+</details>
+
+### crime
+
+
+
+
+**Arguments/Usage:** None
+
+**Cooldown:** 1 minute\
+**Permissions:** `send messages`, `read message history`, `view channel`
+ 
+<details>
+  <summary>Source</summary>
+
+  [Source on Github](https://github.com/MajesticString/sniper/blob/main/apps/sniper/src/commands/currency/CrimeCommand.ts)
+  
+  [Edit in Github](https://github.com/MajesticString/sniper/edit/main/apps/sniper/src/commands/currency/CrimeCommand.ts)
+
+  [Edit in Github.dev](https://github.dev/MajesticString/sniper/blob/main/apps/sniper/src/commands/currency/CrimeCommand.ts)
+
+@[code ts](../../apps/sniper/src//commands/currency/CrimeCommand.ts)
+
+</details>
+
+### daily
+
+
+
+
+**Arguments/Usage:** None
+
+**Cooldown:** 1 day\
+**Permissions:** `send messages`, `read message history`, `view channel`
+ 
+<details>
+  <summary>Source</summary>
+
+  [Source on Github](https://github.com/MajesticString/sniper/blob/main/apps/sniper/src/commands/currency/DailyCommand.ts)
+  
+  [Edit in Github](https://github.com/MajesticString/sniper/edit/main/apps/sniper/src/commands/currency/DailyCommand.ts)
+
+  [Edit in Github.dev](https://github.dev/MajesticString/sniper/blob/main/apps/sniper/src/commands/currency/DailyCommand.ts)
+
+@[code ts](../../apps/sniper/src//commands/currency/DailyCommand.ts)
+
+</details>
+
+### fortnite
+
+
+
+
+**Arguments/Usage:** None
+
+**Cooldown:** 5 seconds\
+**Permissions:** `send messages`, `read message history`, `view channel`
+ 
+<details>
+  <summary>Source</summary>
+
+  [Source on Github](https://github.com/MajesticString/sniper/blob/main/apps/sniper/src/commands/currency/FortniteCommand.ts)
+  
+  [Edit in Github](https://github.com/MajesticString/sniper/edit/main/apps/sniper/src/commands/currency/FortniteCommand.ts)
+
+  [Edit in Github.dev](https://github.dev/MajesticString/sniper/blob/main/apps/sniper/src/commands/currency/FortniteCommand.ts)
+
+@[code ts](../../apps/sniper/src//commands/currency/FortniteCommand.ts)
+
+</details>
+
+### give
+
+
+
+
+**Arguments/Usage:** 
+<div class="discord-messages">
+  <div class="discord-message">
+    <div class="discord-message-content">
+      <div class="discord-author-avatar">
+				<img src="https://cdn.discordapp.com/embed/avatars/0.png" alt="" />
+			</div>
+      <div class="discord-message-body">
+          <span class="discord-author-info">
+            <span class="discord-author-username">
+              User
+            </span>
+          </span>
+          <span class="discord-message-timestamp">
+            {{ new Date().toLocaleDateString() }}
+					</span><br />
+      &#36;give &lt;user ID or mentioned user&gt; &lt;amount of coins&gt;
+            </div>
+          </div>
+</div>
+</div>
+
+**Cooldown:** 5 seconds\
+**Permissions:** `send messages`, `read message history`, `view channel`
+ 
+<details>
+  <summary>Source</summary>
+
+  [Source on Github](https://github.com/MajesticString/sniper/blob/main/apps/sniper/src/commands/currency/GiveCommand.ts)
+  
+  [Edit in Github](https://github.com/MajesticString/sniper/edit/main/apps/sniper/src/commands/currency/GiveCommand.ts)
+
+  [Edit in Github.dev](https://github.dev/MajesticString/sniper/blob/main/apps/sniper/src/commands/currency/GiveCommand.ts)
+
+@[code ts](../../apps/sniper/src//commands/currency/GiveCommand.ts)
+
+</details>
+
+### inv
+
+
+
+
+**Arguments/Usage:** 
+<div class="discord-messages">
+  <div class="discord-message">
+    <div class="discord-message-content">
+      <div class="discord-author-avatar">
+				<img src="https://cdn.discordapp.com/embed/avatars/0.png" alt="" />
+			</div>
+      <div class="discord-message-body">
+          <span class="discord-author-info">
+            <span class="discord-author-username">
+              User
+            </span>
+          </span>
+          <span class="discord-message-timestamp">
+            {{ new Date().toLocaleDateString() }}
+					</span><br />
+      &#36;inv [userID or mentioned user]
+            </div>
+          </div>
+</div>
+</div>
+
+**Cooldown:** 0 ms\
+**Permissions:** `send messages`, `read message history`, `view channel`
+ 
+<details>
+  <summary>Source</summary>
+
+  [Source on Github](https://github.com/MajesticString/sniper/blob/main/apps/sniper/src/commands/currency/InvCommand.ts)
+  
+  [Edit in Github](https://github.com/MajesticString/sniper/edit/main/apps/sniper/src/commands/currency/InvCommand.ts)
+
+  [Edit in Github.dev](https://github.dev/MajesticString/sniper/blob/main/apps/sniper/src/commands/currency/InvCommand.ts)
+
+@[code ts](../../apps/sniper/src//commands/currency/InvCommand.ts)
+
+</details>
+
+### jailbreak
+
+
+
+
+**Arguments/Usage:** None
+
+**Cooldown:** 15 minutes\
+**Permissions:** `send messages`, `read message history`, `view channel`
+ 
+<details>
+  <summary>Source</summary>
+
+  [Source on Github](https://github.com/MajesticString/sniper/blob/main/apps/sniper/src/commands/currency/JailBreakCommand.ts)
+  
+  [Edit in Github](https://github.com/MajesticString/sniper/edit/main/apps/sniper/src/commands/currency/JailBreakCommand.ts)
+
+  [Edit in Github.dev](https://github.dev/MajesticString/sniper/blob/main/apps/sniper/src/commands/currency/JailBreakCommand.ts)
+
+@[code ts](../../apps/sniper/src//commands/currency/JailBreakCommand.ts)
+
+</details>
+
+### lb
+
+
+Ranks people in order of wealth\
+**Aliases:** leaderboards, leaderboard, rich, richest\
+**Arguments/Usage:** None
+
+**Cooldown:** 3 seconds\
+**Permissions:** `send messages`, `read message history`, `view channel`
+ 
+<details>
+  <summary>Source</summary>
+
+  [Source on Github](https://github.com/MajesticString/sniper/blob/main/apps/sniper/src/commands/currency/LbCommand.ts)
+  
+  [Edit in Github](https://github.com/MajesticString/sniper/edit/main/apps/sniper/src/commands/currency/LbCommand.ts)
+
+  [Edit in Github.dev](https://github.dev/MajesticString/sniper/blob/main/apps/sniper/src/commands/currency/LbCommand.ts)
+
+@[code ts](../../apps/sniper/src//commands/currency/LbCommand.ts)
+
+</details>
+
+### rob
+
+
+
+
+**Arguments/Usage:** 
+<div class="discord-messages">
+  <div class="discord-message">
+    <div class="discord-message-content">
+      <div class="discord-author-avatar">
+				<img src="https://cdn.discordapp.com/embed/avatars/0.png" alt="" />
+			</div>
+      <div class="discord-message-body">
+          <span class="discord-author-info">
+            <span class="discord-author-username">
+              User
+            </span>
+          </span>
+          <span class="discord-message-timestamp">
+            {{ new Date().toLocaleDateString() }}
+					</span><br />
+      &#36;rob &lt;user ID or mentioned user to rob&gt;
+            </div>
+          </div>
+</div>
+</div>
+
+**Cooldown:** 1 minute\
+**Permissions:** `send messages`, `read message history`, `view channel`
+ 
+<details>
+  <summary>Source</summary>
+
+  [Source on Github](https://github.com/MajesticString/sniper/blob/main/apps/sniper/src/commands/currency/RobCommand.ts)
+  
+  [Edit in Github](https://github.com/MajesticString/sniper/edit/main/apps/sniper/src/commands/currency/RobCommand.ts)
+
+  [Edit in Github.dev](https://github.dev/MajesticString/sniper/blob/main/apps/sniper/src/commands/currency/RobCommand.ts)
+
+@[code ts](../../apps/sniper/src//commands/currency/RobCommand.ts)
+
+</details>
+
+### shop
+
+
+
+
+**Arguments/Usage:** 
+<div class="discord-messages">
+  <div class="discord-message">
+    <div class="discord-message-content">
+      <div class="discord-author-avatar">
+				<img src="https://cdn.discordapp.com/embed/avatars/0.png" alt="" />
+			</div>
+      <div class="discord-message-body">
+          <span class="discord-author-info">
+            <span class="discord-author-username">
+              User
+            </span>
+          </span>
+          <span class="discord-message-timestamp">
+            {{ new Date().toLocaleDateString() }}
+					</span><br />
+      &#36;shop [category]
+            </div>
+          </div>
+</div>
+</div>
+
+**Cooldown:** 1 ms\
+**Permissions:** `send messages`, `read message history`, `view channel`
+ 
+<details>
+  <summary>Source</summary>
+
+  [Source on Github](https://github.com/MajesticString/sniper/blob/main/apps/sniper/src/commands/currency/ShopCommand.ts)
+  
+  [Edit in Github](https://github.com/MajesticString/sniper/edit/main/apps/sniper/src/commands/currency/ShopCommand.ts)
+
+  [Edit in Github.dev](https://github.dev/MajesticString/sniper/blob/main/apps/sniper/src/commands/currency/ShopCommand.ts)
+
+@[code ts](../../apps/sniper/src//commands/currency/ShopCommand.ts)
+
+</details>
+
+### use
+
+
+
+
+**Arguments/Usage:** None
+
+**Cooldown:** 5 seconds\
+**Permissions:** `send messages`, `read message history`, `view channel`
+ 
+<details>
+  <summary>Source</summary>
+
+  [Source on Github](https://github.com/MajesticString/sniper/blob/main/apps/sniper/src/commands/currency/UseCommand.ts)
+  
+  [Edit in Github](https://github.com/MajesticString/sniper/edit/main/apps/sniper/src/commands/currency/UseCommand.ts)
+
+  [Edit in Github.dev](https://github.dev/MajesticString/sniper/blob/main/apps/sniper/src/commands/currency/UseCommand.ts)
+
+@[code ts](../../apps/sniper/src//commands/currency/UseCommand.ts)
+
+</details>
+
 ## Moderation
 
 ### ban
@@ -1039,427 +1460,6 @@ Gives an invite for the support server.\
   [Edit in Github.dev](https://github.dev/MajesticString/sniper/blob/main/apps/sniper/src/commands/general/VoteCommand.ts)
 
 @[code ts](../../apps/sniper/src//commands/general/VoteCommand.ts)
-
-</details>
-
-## Currency
-
-### balance
-
-
-Shows the current amount of coins you or someone else has.\
-**Aliases:** bal\
-**Arguments/Usage:** 
-<div class="discord-messages">
-  <div class="discord-message">
-    <div class="discord-message-content">
-      <div class="discord-author-avatar">
-				<img src="https://cdn.discordapp.com/embed/avatars/0.png" alt="" />
-			</div>
-      <div class="discord-message-body">
-          <span class="discord-author-info">
-            <span class="discord-author-username">
-              User
-            </span>
-          </span>
-          <span class="discord-message-timestamp">
-            {{ new Date().toLocaleDateString() }}
-					</span><br />
-      &#36;balance [mentioned user OR user ID]
-            </div>
-          </div>
-</div>
-</div>
-
-**Cooldown:** 1 second\
-**Permissions:** `send messages`, `read message history`, `view channel`
- 
-<details>
-  <summary>Source</summary>
-
-  [Source on Github](https://github.com/MajesticString/sniper/blob/main/apps/sniper/src/commands/currency/BalanceCommand.ts)
-  
-  [Edit in Github](https://github.com/MajesticString/sniper/edit/main/apps/sniper/src/commands/currency/BalanceCommand.ts)
-
-  [Edit in Github.dev](https://github.dev/MajesticString/sniper/blob/main/apps/sniper/src/commands/currency/BalanceCommand.ts)
-
-@[code ts](../../apps/sniper/src//commands/currency/BalanceCommand.ts)
-
-</details>
-
-### bet
-
-
-
-
-**Arguments/Usage:** None
-
-**Cooldown:** 500 ms\
-**Permissions:** `send messages`, `read message history`, `view channel`
- 
-<details>
-  <summary>Source</summary>
-
-  [Source on Github](https://github.com/MajesticString/sniper/blob/main/apps/sniper/src/commands/currency/BetCommand.ts)
-  
-  [Edit in Github](https://github.com/MajesticString/sniper/edit/main/apps/sniper/src/commands/currency/BetCommand.ts)
-
-  [Edit in Github.dev](https://github.dev/MajesticString/sniper/blob/main/apps/sniper/src/commands/currency/BetCommand.ts)
-
-@[code ts](../../apps/sniper/src//commands/currency/BetCommand.ts)
-
-</details>
-
-### buy
-
-
-
-
-**Arguments/Usage:** 
-<div class="discord-messages">
-  <div class="discord-message">
-    <div class="discord-message-content">
-      <div class="discord-author-avatar">
-				<img src="https://cdn.discordapp.com/embed/avatars/0.png" alt="" />
-			</div>
-      <div class="discord-message-body">
-          <span class="discord-author-info">
-            <span class="discord-author-username">
-              User
-            </span>
-          </span>
-          <span class="discord-message-timestamp">
-            {{ new Date().toLocaleDateString() }}
-					</span><br />
-      &#36;buy &lt;item&gt;
-            </div>
-          </div>
-</div>
-</div>
-
-**Cooldown:** 250 ms\
-**Permissions:** `send messages`, `read message history`, `view channel`
- 
-<details>
-  <summary>Source</summary>
-
-  [Source on Github](https://github.com/MajesticString/sniper/blob/main/apps/sniper/src/commands/currency/BuyCommand.ts)
-  
-  [Edit in Github](https://github.com/MajesticString/sniper/edit/main/apps/sniper/src/commands/currency/BuyCommand.ts)
-
-  [Edit in Github.dev](https://github.dev/MajesticString/sniper/blob/main/apps/sniper/src/commands/currency/BuyCommand.ts)
-
-@[code ts](../../apps/sniper/src//commands/currency/BuyCommand.ts)
-
-</details>
-
-### crime
-
-
-
-
-**Arguments/Usage:** None
-
-**Cooldown:** 1 minute\
-**Permissions:** `send messages`, `read message history`, `view channel`
- 
-<details>
-  <summary>Source</summary>
-
-  [Source on Github](https://github.com/MajesticString/sniper/blob/main/apps/sniper/src/commands/currency/CrimeCommand.ts)
-  
-  [Edit in Github](https://github.com/MajesticString/sniper/edit/main/apps/sniper/src/commands/currency/CrimeCommand.ts)
-
-  [Edit in Github.dev](https://github.dev/MajesticString/sniper/blob/main/apps/sniper/src/commands/currency/CrimeCommand.ts)
-
-@[code ts](../../apps/sniper/src//commands/currency/CrimeCommand.ts)
-
-</details>
-
-### daily
-
-
-
-
-**Arguments/Usage:** None
-
-**Cooldown:** 1 day\
-**Permissions:** `send messages`, `read message history`, `view channel`
- 
-<details>
-  <summary>Source</summary>
-
-  [Source on Github](https://github.com/MajesticString/sniper/blob/main/apps/sniper/src/commands/currency/DailyCommand.ts)
-  
-  [Edit in Github](https://github.com/MajesticString/sniper/edit/main/apps/sniper/src/commands/currency/DailyCommand.ts)
-
-  [Edit in Github.dev](https://github.dev/MajesticString/sniper/blob/main/apps/sniper/src/commands/currency/DailyCommand.ts)
-
-@[code ts](../../apps/sniper/src//commands/currency/DailyCommand.ts)
-
-</details>
-
-### fortnite
-
-
-
-
-**Arguments/Usage:** None
-
-**Cooldown:** 5 seconds\
-**Permissions:** `send messages`, `read message history`, `view channel`
- 
-<details>
-  <summary>Source</summary>
-
-  [Source on Github](https://github.com/MajesticString/sniper/blob/main/apps/sniper/src/commands/currency/FortniteCommand.ts)
-  
-  [Edit in Github](https://github.com/MajesticString/sniper/edit/main/apps/sniper/src/commands/currency/FortniteCommand.ts)
-
-  [Edit in Github.dev](https://github.dev/MajesticString/sniper/blob/main/apps/sniper/src/commands/currency/FortniteCommand.ts)
-
-@[code ts](../../apps/sniper/src//commands/currency/FortniteCommand.ts)
-
-</details>
-
-### give
-
-
-
-
-**Arguments/Usage:** 
-<div class="discord-messages">
-  <div class="discord-message">
-    <div class="discord-message-content">
-      <div class="discord-author-avatar">
-				<img src="https://cdn.discordapp.com/embed/avatars/0.png" alt="" />
-			</div>
-      <div class="discord-message-body">
-          <span class="discord-author-info">
-            <span class="discord-author-username">
-              User
-            </span>
-          </span>
-          <span class="discord-message-timestamp">
-            {{ new Date().toLocaleDateString() }}
-					</span><br />
-      &#36;give &lt;user ID or mentioned user&gt; &lt;amount of coins&gt;
-            </div>
-          </div>
-</div>
-</div>
-
-**Cooldown:** 5 seconds\
-**Permissions:** `send messages`, `read message history`, `view channel`
- 
-<details>
-  <summary>Source</summary>
-
-  [Source on Github](https://github.com/MajesticString/sniper/blob/main/apps/sniper/src/commands/currency/GiveCommand.ts)
-  
-  [Edit in Github](https://github.com/MajesticString/sniper/edit/main/apps/sniper/src/commands/currency/GiveCommand.ts)
-
-  [Edit in Github.dev](https://github.dev/MajesticString/sniper/blob/main/apps/sniper/src/commands/currency/GiveCommand.ts)
-
-@[code ts](../../apps/sniper/src//commands/currency/GiveCommand.ts)
-
-</details>
-
-### inv
-
-
-
-
-**Arguments/Usage:** 
-<div class="discord-messages">
-  <div class="discord-message">
-    <div class="discord-message-content">
-      <div class="discord-author-avatar">
-				<img src="https://cdn.discordapp.com/embed/avatars/0.png" alt="" />
-			</div>
-      <div class="discord-message-body">
-          <span class="discord-author-info">
-            <span class="discord-author-username">
-              User
-            </span>
-          </span>
-          <span class="discord-message-timestamp">
-            {{ new Date().toLocaleDateString() }}
-					</span><br />
-      &#36;inv [userID or mentioned user]
-            </div>
-          </div>
-</div>
-</div>
-
-**Cooldown:** 0 ms\
-**Permissions:** `send messages`, `read message history`, `view channel`
- 
-<details>
-  <summary>Source</summary>
-
-  [Source on Github](https://github.com/MajesticString/sniper/blob/main/apps/sniper/src/commands/currency/InvCommand.ts)
-  
-  [Edit in Github](https://github.com/MajesticString/sniper/edit/main/apps/sniper/src/commands/currency/InvCommand.ts)
-
-  [Edit in Github.dev](https://github.dev/MajesticString/sniper/blob/main/apps/sniper/src/commands/currency/InvCommand.ts)
-
-@[code ts](../../apps/sniper/src//commands/currency/InvCommand.ts)
-
-</details>
-
-### jailbreak
-
-
-
-
-**Arguments/Usage:** None
-
-**Cooldown:** 15 minutes\
-**Permissions:** `send messages`, `read message history`, `view channel`
- 
-<details>
-  <summary>Source</summary>
-
-  [Source on Github](https://github.com/MajesticString/sniper/blob/main/apps/sniper/src/commands/currency/JailBreakCommand.ts)
-  
-  [Edit in Github](https://github.com/MajesticString/sniper/edit/main/apps/sniper/src/commands/currency/JailBreakCommand.ts)
-
-  [Edit in Github.dev](https://github.dev/MajesticString/sniper/blob/main/apps/sniper/src/commands/currency/JailBreakCommand.ts)
-
-@[code ts](../../apps/sniper/src//commands/currency/JailBreakCommand.ts)
-
-</details>
-
-### lb
-
-
-Ranks people in order of wealth\
-**Aliases:** leaderboards, leaderboard, rich, richest\
-**Arguments/Usage:** None
-
-**Cooldown:** 3 seconds\
-**Permissions:** `send messages`, `read message history`, `view channel`
- 
-<details>
-  <summary>Source</summary>
-
-  [Source on Github](https://github.com/MajesticString/sniper/blob/main/apps/sniper/src/commands/currency/LbCommand.ts)
-  
-  [Edit in Github](https://github.com/MajesticString/sniper/edit/main/apps/sniper/src/commands/currency/LbCommand.ts)
-
-  [Edit in Github.dev](https://github.dev/MajesticString/sniper/blob/main/apps/sniper/src/commands/currency/LbCommand.ts)
-
-@[code ts](../../apps/sniper/src//commands/currency/LbCommand.ts)
-
-</details>
-
-### rob
-
-
-
-
-**Arguments/Usage:** 
-<div class="discord-messages">
-  <div class="discord-message">
-    <div class="discord-message-content">
-      <div class="discord-author-avatar">
-				<img src="https://cdn.discordapp.com/embed/avatars/0.png" alt="" />
-			</div>
-      <div class="discord-message-body">
-          <span class="discord-author-info">
-            <span class="discord-author-username">
-              User
-            </span>
-          </span>
-          <span class="discord-message-timestamp">
-            {{ new Date().toLocaleDateString() }}
-					</span><br />
-      &#36;rob &lt;user ID or mentioned user to rob&gt;
-            </div>
-          </div>
-</div>
-</div>
-
-**Cooldown:** 1 minute\
-**Permissions:** `send messages`, `read message history`, `view channel`
- 
-<details>
-  <summary>Source</summary>
-
-  [Source on Github](https://github.com/MajesticString/sniper/blob/main/apps/sniper/src/commands/currency/RobCommand.ts)
-  
-  [Edit in Github](https://github.com/MajesticString/sniper/edit/main/apps/sniper/src/commands/currency/RobCommand.ts)
-
-  [Edit in Github.dev](https://github.dev/MajesticString/sniper/blob/main/apps/sniper/src/commands/currency/RobCommand.ts)
-
-@[code ts](../../apps/sniper/src//commands/currency/RobCommand.ts)
-
-</details>
-
-### shop
-
-
-
-
-**Arguments/Usage:** 
-<div class="discord-messages">
-  <div class="discord-message">
-    <div class="discord-message-content">
-      <div class="discord-author-avatar">
-				<img src="https://cdn.discordapp.com/embed/avatars/0.png" alt="" />
-			</div>
-      <div class="discord-message-body">
-          <span class="discord-author-info">
-            <span class="discord-author-username">
-              User
-            </span>
-          </span>
-          <span class="discord-message-timestamp">
-            {{ new Date().toLocaleDateString() }}
-					</span><br />
-      &#36;shop [category]
-            </div>
-          </div>
-</div>
-</div>
-
-**Cooldown:** 1 ms\
-**Permissions:** `send messages`, `read message history`, `view channel`
- 
-<details>
-  <summary>Source</summary>
-
-  [Source on Github](https://github.com/MajesticString/sniper/blob/main/apps/sniper/src/commands/currency/ShopCommand.ts)
-  
-  [Edit in Github](https://github.com/MajesticString/sniper/edit/main/apps/sniper/src/commands/currency/ShopCommand.ts)
-
-  [Edit in Github.dev](https://github.dev/MajesticString/sniper/blob/main/apps/sniper/src/commands/currency/ShopCommand.ts)
-
-@[code ts](../../apps/sniper/src//commands/currency/ShopCommand.ts)
-
-</details>
-
-### use
-
-
-
-
-**Arguments/Usage:** None
-
-**Cooldown:** 5 seconds\
-**Permissions:** `send messages`, `read message history`, `view channel`
- 
-<details>
-  <summary>Source</summary>
-
-  [Source on Github](https://github.com/MajesticString/sniper/blob/main/apps/sniper/src/commands/currency/UseCommand.ts)
-  
-  [Edit in Github](https://github.com/MajesticString/sniper/edit/main/apps/sniper/src/commands/currency/UseCommand.ts)
-
-  [Edit in Github.dev](https://github.dev/MajesticString/sniper/blob/main/apps/sniper/src/commands/currency/UseCommand.ts)
-
-@[code ts](../../apps/sniper/src//commands/currency/UseCommand.ts)
 
 </details>
 
