@@ -1,10 +1,4 @@
-import {
-  GuildMember,
-  GuildMemberRoleManager,
-  MessageActionRow,
-  MessageButton,
-  VoiceChannel,
-} from 'discord.js';
+import type { GuildMember, VoiceChannel } from 'discord.js';
 import type DiscordClient from '../../client/client.js';
 import { sendMessageInBorderSecurity } from '../../utils/helpers/cambridge-server.js';
 import { sleep } from '../../utils/helpers/misc.js';
@@ -33,48 +27,48 @@ export default class GuildMemberAddEvent extends BaseEvent {
           },
         ],
       });
-      const msg = await sendMessageInBorderSecurity(client, {
-        embeds: [
-          {
-            title: 'The next message you send will be your server nickname',
-          },
-        ],
-      });
-      const collector = msg.channel.createMessageCollector({
-        filter: (m) =>
-          m.author.id === member.user.id &&
-          m.channelId === '882695828140073054',
-        idle: 1000,
-      });
-      collector.on('collect', async (msg) => {
-        const nickMsg = await msg.channel.send({
-          embeds: [
-            {
-              title: 'A moderator/admin must approve the following nickname',
-              description: `${msg.content}`,
-            },
-          ],
-          components: [
-            new MessageActionRow().addComponents(
-              new MessageButton()
-                .setLabel('Approve')
-                .setStyle('PRIMARY')
-                .setCustomId('approve')
-            ),
-          ],
-        });
-        const approveCollector = nickMsg.createMessageComponentCollector({
-          filter: (m) =>
-            (m.member?.roles as GuildMemberRoleManager).cache.hasAny(
-              '890611099689451530',
-              '883163151657480212'
-            ) ?? false,
-        });
-        approveCollector.on('collect', async (interaction) => {
-          if (interaction.customId === 'approve')
-            member.roles.add(['882696320144531476', '892242857862254652']);
-        });
-      });
+      // const msg = await sendMessageInBorderSecurity(client, {
+      //   embeds: [
+      //     {
+      //       title: 'The next message you send will be your server nickname',
+      //     },
+      //   ],
+      // });
+      // const collector = msg.channel.createMessageCollector({
+      //   filter: (m) =>
+      //     m.author.id === member.user.id &&
+      //     m.channelId === '882695828140073054',
+      //   idle: 1000,
+      // });
+      // collector.on('collect', async (msg) => {
+      //   const nickMsg = await msg.channel.send({
+      //     embeds: [
+      //       {
+      //         title: 'A moderator/admin must approve the following nickname',
+      //         description: `${msg.content}`,
+      //       },
+      //     ],
+      //     components: [
+      //       new MessageActionRow().addComponents(
+      //         new MessageButton()
+      //           .setLabel('Approve')
+      //           .setStyle('PRIMARY')
+      //           .setCustomId('approve')
+      //       ),
+      //     ],
+      //   });
+      //   const approveCollector = nickMsg.createMessageComponentCollector({
+      //     filter: (m) =>
+      //       (m.member?.roles as GuildMemberRoleManager).cache.hasAny(
+      //         '890611099689451530',
+      //         '883163151657480212'
+      //       ) ?? false,
+      //   });
+      //   approveCollector.on('collect', async (interaction) => {
+      //     if (interaction.customId === 'approve')
+      //       member.roles.add(['882696320144531476', '892242857862254652']);
+      //   });
+      // });
     }
   }
 }
