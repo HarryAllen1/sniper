@@ -6,7 +6,6 @@ importers:
     specifiers:
       '@discord-message-components/core': ^0.2.1
       '@sapphire/fetch': ^2.4.0
-      '@skyra/discord-components-core': ^3.4.0
       '@types/glob': ^7.2.0
       '@types/node': 17.0.40
       '@vuepress/client': 2.0.0-beta.46
@@ -32,7 +31,6 @@ importers:
     devDependencies:
       '@discord-message-components/core': 0.2.1
       '@sapphire/fetch': 2.4.0
-      '@skyra/discord-components-core': 3.4.0
       '@types/glob': 7.2.0
       '@types/node': 17.0.40
       '@vuepress/client': 2.0.0-beta.46
@@ -883,25 +881,10 @@ packages:
     engines: {node: '>=10'}
     dev: false
 
-  /@skyra/discord-components-core/3.4.0:
-    resolution: {integrity: sha512-n6J30JPHC4mDWUOSDNsZeJimCTepGvVKggpP7oG1teTgGVb8i/JRN9JT6l3pzgLCXk3YMAj5F3BFEgQleXl6PQ==}
-    engines: {node: '>=v14.0.0'}
-    dependencies:
-      '@stencil/core': 2.16.1
-      clsx: 1.1.1
-      hex-to-rgba: 2.0.1
-    dev: true
-
   /@skyra/editable-commands/2.1.2:
     resolution: {integrity: sha512-oS1fwZ/lIreqjw3V2fZthxxBWijAl+wZInExWjw1kC3eeF1ZKr/Sz9kqt554Aop9f7DjDtdV8vVqKbGl5iOx6A==}
     engines: {node: '>=16.6', npm: '>=7.24.2'}
     dev: false
-
-  /@stencil/core/2.16.1:
-    resolution: {integrity: sha512-s/UJp9qxExL3DyQPT70kiuWeb3AdjbUZM+5lEIXn30I2DLcLYPOPXfsoWJODieQywq+3vPiLZeIdkoqjf6jcSw==}
-    engines: {node: '>=12.10.0', npm: '>=6.0.0'}
-    hasBin: true
-    dev: true
 
   /@szmarczak/http-timer/1.1.2:
     resolution: {integrity: sha512-XIB2XbzHTN6ieIjfIMV9hlVcfPU26s2vafYWQcZHWXHOxiaRZYEDKEwdl129Zyg50+foYV2jCgtrqSA6qNuNSA==}
@@ -2152,11 +2135,6 @@ packages:
   /clone/1.0.4:
     resolution: {integrity: sha512-JQHZ2QMW6l3aH/j6xCqQThY/9OH4D/9ls34cgkUBiEeocRTU04tHfKPBsUK1PqZCUQM7GiA0IIXJSuXHI64Kbg==}
     engines: {node: '>=0.8'}
-    dev: true
-
-  /clsx/1.1.1:
-    resolution: {integrity: sha512-6/bPho624p3S2pMyvP5kKBPXnI3ufHLObBFCfgx+LkeR5lg2XYy2hqZqUf45ypD8COn2bhgGJSUE+l5dhNBieA==}
-    engines: {node: '>=6'}
     dev: true
 
   /color-convert/2.0.1:
@@ -3566,10 +3544,6 @@ packages:
 
   /hash-sum/2.0.0:
     resolution: {integrity: sha512-WdZTbAByD+pHfl/g9QSsBIIwy8IT+EsPiKDs0KNX+zSHhdDLFKdZu0BQHljvO+0QI/BasbMSUa8wYNCZTvhslg==}
-    dev: true
-
-  /hex-to-rgba/2.0.1:
-    resolution: {integrity: sha512-5XqPJBpsEUMsseJUi2w2Hl7cHFFi3+OO10M2pzAvKB1zL6fc+koGMhmBqoDOCB4GemiRM/zvDMRIhVw6EkB8dQ==}
     dev: true
 
   /htmlparser2/8.0.1:
