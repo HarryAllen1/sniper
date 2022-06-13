@@ -40,7 +40,7 @@
     "turbo": "1.2.16",
     "typescript": "4.7.3",
     "vue": "^3.2.36",
-    "vuepress-vite": "2.0.0-beta.46"
+    "vuepress-vite": "2.0.0-beta.48"
   },
   "engines": {
     "npm": ">=7.0.0",
