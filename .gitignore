@@ -42,3 +42,6 @@ yarn-error.log*
 docs/.vuepress/dist
 /.firebase
 .env
+
+# generated commands file
+docs/commands/README.md
