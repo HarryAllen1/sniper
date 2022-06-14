@@ -199,6 +199,16 @@ export default class MessageCreateEvent extends BaseEvent {
                 .permissionsFor(client.user ?? '')
                 ?.has('SEND_MESSAGES')
             ) {
+              if (command.category === 'currency') {
+                reply(message, {
+                  title:
+                    'The currency commands are deprecated and will be removed in a future release.',
+                  description: `Currency commands are too hard to maintain.
+Currency commands are also not the focus of this bot.
+If you want to use a currency bot, try the [Dank Memer](https://dankmemer.lol/) bot.`,
+                  color: 'RED',
+                });
+              }
               command.run(client, message, cmdArgs).then(() => {
                 log('End Command ' + command?.name);
               });
@@ -224,14 +234,6 @@ export default class MessageCreateEvent extends BaseEvent {
             });
           }
         }
-      } else if (!message.content.startsWith('$')) {
-        // const $ = getFromBetween.get(message.content, '$', '$');
-        // for (let thing of $) {
-        //   if (thing.length > 1) {
-        //     const [cmdName, ...cmdArgs] = message.content.trim().split(/\s+/);
-        //     client.commands.get('tex')!.run(client, message, $);
-        //   }
-        // }
       }
     }
   }
