@@ -38,7 +38,10 @@ export default class MessageCreateEvent extends BaseEvent {
       client.commands.get('help')?.run(client, message, []);
 
     if (
-      message.content.toLowerCase().startsWith('pls snipe') &&
+      message.content.toLowerCase().startsWith('pls ') &&
+      ['snipe', 'editsnipe', 'reactionsnipe', 'esnipe', 'rsnipe'].includes(
+        message.content.toLowerCase().slice(4)
+      ) &&
       (
         ((await client.db.getGuildSettings(message.guildId ?? ''))?.prefixes &&
         (await client.db.getGuildSettings(message.guildId ?? ''))?.prefixes[0]
@@ -47,7 +50,7 @@ export default class MessageCreateEvent extends BaseEvent {
       )[0] !== 'pls '
     ) {
       message.reply(
-        'Please avoid using the `pls` prefix when using snipe commands. This is the prefix Dank Memer uses, and will make Sniper commands interfere with Dank memer commands.\nPlease use one of the following prefixes instead:\n' +
+        'Sniper running commands with the `pls` prefix has been removed.\nPlease use one of the following prefixes instead:\n' +
           (
             ((await client.db.getGuildSettings(message.guildId ?? ''))
               ?.prefixes &&
@@ -60,69 +63,6 @@ export default class MessageCreateEvent extends BaseEvent {
             .map((p) => `\`${p}\``)
             .join(', ')
       );
-      const command = client.commands.get('snipe');
-      const plsCommandsIssued = await this.db.db
-        .collection('bot')
-        .doc('stats')
-        .get();
-      this.db.db
-        .collection('bot')
-        .doc('stats')
-        .set(
-          {
-            plsCommandsIssued: plsCommandsIssued.data()?.plsCommandsIssued + 1,
-          },
-          { merge: true }
-        );
-      command?.run(client, message, []);
-    } else if (
-      message.content.toLowerCase().startsWith('pls reactionsnipe') &&
-      (
-        ((await client.db.getGuildSettings(message.guildId ?? ''))?.prefixes &&
-        (await client.db.getGuildSettings(message.guildId ?? ''))?.prefixes[0]
-          ? (await client.db.getGuildSettings(message.guildId ?? ''))?.prefixes
-          : client.prefix) as string[]
-      )[0] !== 'pls '
-    ) {
-      const plsCommandsIssued = await this.db.db
-        .collection('bot')
-        .doc('stats')
-        .get();
-      this.db.db
-        .collection('bot')
-        .doc('stats')
-        .set(
-          {
-            plsCommandsIssued: plsCommandsIssued.data()?.plsCommandsIssued + 1,
-          },
-          { merge: true }
-        );
-      const command = client.commands.get('reactionsnipe');
-      command?.run(client, message, []);
-    } else if (
-      message.content.toLowerCase().startsWith('pls editsnipe') &&
-      (
-        ((await client.db.getGuildSettings(message.guildId ?? ''))?.prefixes &&
-        (await client.db.getGuildSettings(message.guildId ?? ''))?.prefixes[0]
-          ? (await client.db.getGuildSettings(message.guildId ?? ''))?.prefixes
-          : client.prefix) as string[]
-      )[0] !== 'pls '
-    ) {
-      const plsCommandsIssued = await this.db.db
-        .collection('bot')
-        .doc('stats')
-        .get();
-      this.db.db
-        .collection('bot')
-        .doc('stats')
-        .set(
-          {
-            plsCommandsIssued: plsCommandsIssued.data()?.plsCommandsIssued + 1,
-          },
-          { merge: true }
-        );
-      const command = client.commands.get('editsnipe');
-      command?.run(client, message, []);
     }
     const prefixes =
       (await client.db.getGuildSettings(message.guildId ?? ''))?.prefixes &&
