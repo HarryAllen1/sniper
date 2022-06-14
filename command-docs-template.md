@@ -6,7 +6,7 @@ description: A guide for every command that Sniper has.
 
 # Command Reference
 
-Understanding the arguments:
+## Understanding the arguments
 
 - `[argument]` Optional argument
 - `<argument>` Required argument
