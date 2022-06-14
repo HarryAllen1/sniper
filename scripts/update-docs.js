@@ -1,6 +1,6 @@
-import _ from 'lodash';
-import ms from 'ms';
-import { appendFileSync, readFileSync, writeFileSync } from 'node:fs';
+const _ = require('lodash');
+const ms = require('ms');
+const { appendFileSync, readFileSync, writeFileSync } = require('node:fs');
 
 // add template to command docs
 writeFileSync(
