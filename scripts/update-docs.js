@@ -2,28 +2,13 @@ import _ from 'lodash';
 import ms from 'ms';
 import { appendFileSync, readFileSync, writeFileSync } from 'node:fs';
 
-interface CommandCategories {
-  [category: string]: Command[];
-}
-interface Command {
-  name: string;
-  aliases: string[];
-  args: string;
-  description: string;
-  cooldown: number;
-  disabled: boolean;
-  permissions: string[];
-  argsRequired: boolean;
-  filePath: string;
-  tip: string;
-}
 // add template to command docs
 writeFileSync(
   './docs/commands/README.md',
   readFileSync('./command-docs-template.md').toString()
 );
 let commandsMD = readFileSync('./docs/commands/README.md').toString();
-const commands: CommandCategories = JSON.parse(
+const commands = JSON.parse(
   readFileSync('./apps/sniper/all-commands.json').toString() === ''
     ? '{}'
     : readFileSync('./apps/sniper/all-commands.json').toString()
@@ -36,12 +21,12 @@ function resetCommandDocs() {
   );
   writeFileSync('./docs/commands/README.md', commandsMD);
 }
-function appendToDocs(data: string) {
+function appendToDocs(data) {
   appendFileSync('./docs/commands/README.md', data);
 }
-const camelToNormalCase = (str: string) =>
+const camelToNormalCase = (str) =>
   str.replace(/[A-Z]/g, (letter) => ` ${letter.toLowerCase()}`);
-const capitalizeFirstLetter = (string: string) =>
+const capitalizeFirstLetter = (string) =>
   string.charAt(0).toUpperCase() + string.slice(1);
 
 (async () => {
@@ -89,7 +74,7 @@ ${cmd.aliases.length ? `**Aliases:** ${cmd.aliases.join(', ')}\\` : ''}
         }
 **Cooldown:** ${ms(cmd.cooldown, { long: true })}\\
 **Permissions:** ${cmd.permissions
-          .map((perm: string) => `\`${_.lowerCase(perm)}\``)
+          .map((perm) => `\`${_.lowerCase(perm)}\``)
           .join(', ')}
  
 <details>
