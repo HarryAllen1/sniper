@@ -41,7 +41,7 @@
     "colorette": "^2.0.17",
     "discord-api-types": "^0.34.0",
     "discord.js": "^13.8.0",
-    "firebase-admin": "^10.2.0",
+    "firebase-admin": "^11.0.0",
     "lodash-es": "^4.17.21",
     "luxon": "^2.4.0",
     "ms": "^2.1.3",
