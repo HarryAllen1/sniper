@@ -46,10 +46,6 @@ export default abstract class BaseCommand {
     }
   ) {}
 
-  interactionData?:
-    | Omit<SlashCommandBuilder, 'addSubcommand' | 'addSubcommandGroup'>
-    | SlashCommandBuilder;
-
   get name(): string {
     return this._name;
   }
@@ -113,4 +109,22 @@ export default abstract class BaseCommand {
     client: DiscordClient,
     interaction: ContextMenuInteraction
   ): Awaitable<unknown>;
+
+  /**
+   * thanks sapphire
+   */
+  registerApplicationCommands?(
+    client: DiscordClient,
+    registry: ApplicationCommandRegistry
+  ): Awaitable<void>;
+}
+
+export class ApplicationCommandRegistry {
+  static registerChatInputCommand(builder: SlashCommandBuilder) {
+    return builder;
+  }
+
+  static registerContextMenuCommand(builder: SlashCommandBuilder) {
+    return builder;
+  }
 }

@@ -74,14 +74,6 @@ export async function registerCommands(client: DiscordClient, dir = '') {
           .replaceAll('\\\\', '/'),
         tip: command.tip,
       });
-
-      if (command.interactionData) {
-        const data = command.interactionData.toJSON();
-        // @ts-ignore
-        if (command.slashCommandType) data.type = command.slashCommandType;
-        // @ts-ignore - Version incompatibility
-        interactions.push();
-      }
     }
   }
   fs.writeFile('./all-commands.json', '').then(() => {

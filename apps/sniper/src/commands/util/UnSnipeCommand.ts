@@ -124,13 +124,13 @@ This has the added effect of allowing the original \`snipe\` command to be delet
               originalCmd
                 ?.delete()
                 .catch(() =>
-                  interaction.followUp({
+                  c.reply({
                     content: 'Error deleting command',
                     ephemeral: true,
                   })
                 )
                 .then(() => {
-                  interaction.followUp({
+                  c.reply({
                     content: 'Command deleted.',
                     ephemeral: true,
                   });

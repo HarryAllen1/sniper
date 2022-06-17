@@ -1,4 +1,3 @@
-import { SlashCommandBuilder } from '@discordjs/builders';
 import { PaginatedMessage } from '@sapphire/discord.js-utilities';
 import {
   Constants,
@@ -31,13 +30,6 @@ export default class HelpCommand extends BaseCommand {
       }
     );
   }
-
-  interactionData = new SlashCommandBuilder()
-    .setName('help')
-    .setDescription(
-      'DONT USES THIS. SLASH COMMANDS WILL BE AVAILABLE AFTER A REWRITE'
-    );
-
   async run(client: DiscordClient, message: Message, args: Array<string>) {
     const categories = [...helpCommandHelperCollection.keys()];
     const menu: MessageSelectOptionData[] = [];
@@ -78,6 +70,12 @@ export default class HelpCommand extends BaseCommand {
               {
                 name: 'Catagories',
                 value: `${categories.map((category) => `\`${category}\``)}`,
+              },
+              {
+                name: 'Looking for currency commands?',
+                value: `Currency commands are too hard to maintain, so have been removed.
+Currency commands are also not the focus of this bot.
+If you want to use a currency bot, try the [Dank Memer](https://dankmemer.lol/) bot.`,
               },
             ],
             color: 'WHITE',
