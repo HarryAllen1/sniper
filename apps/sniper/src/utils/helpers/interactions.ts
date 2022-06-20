@@ -69,7 +69,7 @@ export class ConfirmationMessage extends EventEmitter {
   }
 
   private async createCollector() {
-    const msg = await reply(this.message, this.embed, {
+    const msg = (await reply(this.message, this.embed, {
       components: [
         new MessageActionRow().addComponents(
           this.options?.customConfirmButton ??
@@ -84,7 +84,7 @@ export class ConfirmationMessage extends EventEmitter {
               .setStyle(this.options?.denyButtonStyle ?? 'DANGER')
         ),
       ],
-    });
+    })) as Message;
     const collector = msg.createMessageComponentCollector({
       componentType: 'BUTTON',
       dispose: this.options?.collectorOptions?.dispose,
