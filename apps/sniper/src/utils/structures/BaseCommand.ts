@@ -134,6 +134,12 @@ export default abstract class BaseCommand {
   ): Awaitable<unknown>;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-namespace
+namespace BaseCommand {
+  export type CommandInteraction = import('discord.js').CommandInteraction;
+  export type CommandsRegistry = ApplicationCommandsRegistry;
+}
+
 export class ApplicationCommandsRegistry {
   registerChatInputCommand(
     builder:
@@ -142,7 +148,8 @@ export class ApplicationCommandsRegistry {
           builder: SlashCommandBuilder
         ) =>
           | SlashCommandBuilder
-          | Omit<SlashCommandBuilder, 'addSubcommand' | 'addSubcommandGroup'>)
+          | Omit<SlashCommandBuilder, 'addSubcommand' | 'addSubcommandGroup'>),
+    guildIds?: string[]
   ) {
     let builtBuilder: RESTPostAPIApplicationCommandsJSONBody;
     if (builder instanceof SlashCommandBuilder) {
@@ -150,7 +157,7 @@ export class ApplicationCommandsRegistry {
     } else {
       builtBuilder = builder(new SlashCommandBuilder()).toJSON();
     }
-    commands.push(builtBuilder);
+    commands.push({ command: builtBuilder, guildIds });
   }
 
   registerContextMenuCommand(
@@ -168,6 +175,6 @@ export class ApplicationCommandsRegistry {
     } else {
       builtBuilder = builder(new ContextMenuCommandBuilder()).toJSON();
     }
-    commands.push(builtBuilder);
+    commands.push({ command: builtBuilder });
   }
 }

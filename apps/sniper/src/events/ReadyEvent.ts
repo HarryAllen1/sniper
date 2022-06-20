@@ -50,8 +50,12 @@ export default class ReadyEvent extends BaseEvent {
     //   )
     //   .then(() => console.log('registered commands in test server'));
     for (const command of commands) {
-      console.log('creating command from command: ' + command.name);
-      client.guilds.cache.get('892256861947064341')?.commands.create(command);
+      console.log('creating command from command: ' + command.command.name);
+      if (command.guildIds)
+        command.guildIds.forEach((guildId) => {
+          client.guilds.cache.get(guildId)?.commands.create(command.command);
+        });
+      else client.application?.commands.create(command.command);
     }
   }
 }

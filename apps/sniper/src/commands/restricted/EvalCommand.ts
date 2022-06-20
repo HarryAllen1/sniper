@@ -1,11 +1,14 @@
 import { Type } from '@sapphire/type';
 import { codeBlock, isThenable } from '@sapphire/utilities';
-import type { Message } from 'discord.js';
+import type { CommandInteraction, Message } from 'discord.js';
 import { inspect } from 'node:util';
 import type DiscordClient from '../../client/client.js';
+import { goodServers } from '../../sniper.js';
 import { reply } from '../../utils/helpers/message.js';
 import * as userImport from '../../utils/helpers/user.js';
-import BaseCommand from '../../utils/structures/BaseCommand.js';
+import BaseCommand, {
+  ApplicationCommandsRegistry,
+} from '../../utils/structures/BaseCommand.js';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import * as snipesImport from '../util/snipes.js';
 
@@ -20,6 +23,73 @@ export default class EvalCommand extends BaseCommand {
     );
   }
 
+  registerApplicationCommands(
+    client: DiscordClient,
+    registry: ApplicationCommandsRegistry
+  ) {
+    registry.registerChatInputCommand(
+      (b) =>
+        b
+          .setName(this.name)
+          .setDescription(this.description)
+          .addStringOption((i) =>
+            i
+              .setName('code')
+              .setDescription('The code to execute.')
+              .setRequired(true)
+          ),
+      goodServers
+    );
+  }
+  async chatInputRun(client: DiscordClient, interaction: CommandInteraction) {
+    if (interaction.user.id === '696554549418262548') {
+      const { result, success, type } = await this.eval(
+        client,
+        interaction,
+        interaction.options.getString('code', true),
+        {
+          async: true,
+          depth: 10,
+          showHidden: false,
+        }
+      );
+
+      const output = success
+        ? codeBlock('js', result)
+        : `**ERROR**: ${codeBlock('bash', result)}`;
+
+      const typeFooter = `**Type**: ${codeBlock('typescript', type)}`;
+
+      if (output.length > 2000) {
+        return interaction.reply({
+          content: `Output was too long... sent the result as a file.\n\n${typeFooter}`,
+          files: [{ attachment: Buffer.from(output), name: 'output.js' }],
+        });
+      }
+      return interaction.reply(`${output}\n${typeFooter}`);
+      // try {
+      //   const evalScript = async () => {
+      //     eval(args.join(' '));
+      //   };
+      //   evalScript().catch(console.error);
+      //   reply(interaction, { title: 'success', color: 'GREEN' }).then((msg) =>
+      //     setTimeout(() => msg.delete(), 3000)
+      //   );
+      // } catch (err) {
+      //   reply(interaction, {
+      //     title: 'you messed up your code:\n' + err,
+      //     color: 'RED',
+      //   });
+      // }
+    } else {
+      reply(interaction, {
+        title: "You can't use this command.",
+        description:
+          'This command is so dangerous (it could literally wipe all files of the server this bot is running on) that only the creator of the bot can use it.',
+        color: 'RED',
+      });
+    }
+  }
   async run(client: DiscordClient, message: Message, args: Array<string>) {
     if (message.author.id === '696554549418262548') {
       const { result, success, type } = await this.eval(
@@ -71,7 +141,7 @@ export default class EvalCommand extends BaseCommand {
   }
   private async eval(
     client: DiscordClient,
-    message: Message,
+    message: Message | CommandInteraction,
     code: string,
     flags: { async: boolean; depth: number; showHidden: boolean }
   ) {

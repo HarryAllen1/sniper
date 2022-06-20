@@ -1,6 +1,7 @@
 import type { APIEmbed } from 'discord-api-types/v10';
 import {
   ButtonInteraction,
+  CommandInteraction,
   Message,
   MessageActionRow,
   MessageButton,
@@ -59,7 +60,7 @@ export declare interface ConfirmationMessage {
 
 export class ConfirmationMessage extends EventEmitter {
   constructor(
-    private message: Message,
+    private message: Message | CommandInteraction,
     private embed: MessageEmbed | APIEmbed,
     private options?: ConfirmationMessageOptions
   ) {
@@ -92,7 +93,12 @@ export class ConfirmationMessage extends EventEmitter {
       max: this.options?.collectorOptions?.max,
       filter:
         this.options?.collectorOptions?.filter ??
-        ((m) => m.user.id === this.message.author.id),
+        ((m) =>
+          m.user.id ===
+          (this.message instanceof Message
+            ? this.message.author
+            : this.message.user
+          ).id),
     });
     collector.on('collect', async (i) => {
       switch (i.customId) {

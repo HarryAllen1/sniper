@@ -1,3 +1,8 @@
 import type { RESTPostAPIApplicationCommandsJSONBody } from 'discord-api-types/v10';
 
-export const commands: Array<RESTPostAPIApplicationCommandsJSONBody> = [];
+export interface Commands {
+  command: RESTPostAPIApplicationCommandsJSONBody;
+  guildIds?: string[];
+}
+
+export const commands: Array<Commands> = [];

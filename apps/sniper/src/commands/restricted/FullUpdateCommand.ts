@@ -1,5 +1,5 @@
 import { exec } from 'child_process';
-import type { CommandInteraction, Message } from 'discord.js';
+import { CommandInteraction, Message, MessageEmbed } from 'discord.js';
 import type DiscordClient from '../../client/client.js';
 import { goodServers } from '../../sniper.js';
 import { ConfirmationMessage } from '../../utils/helpers/interactions.js';
@@ -7,9 +7,9 @@ import BaseCommand, {
   ApplicationCommandsRegistry,
 } from '../../utils/structures/BaseCommand.js';
 
-export default class UpdateCommand extends BaseCommand {
+export default class RestartCommand extends BaseCommand {
   constructor() {
-    super('update', 'restricted', [], 5000, '');
+    super('fullupdate', 'restricted', [], 5000, '');
   }
   registerApplicationCommands(
     client: DiscordClient,
@@ -23,15 +23,17 @@ export default class UpdateCommand extends BaseCommand {
   chatInputRun(client: DiscordClient, interaction: CommandInteraction) {
     this.run(client, interaction);
   }
-
   async run(client: DiscordClient, message: Message | CommandInteraction) {
-    new ConfirmationMessage(message, {
-      title: 'Are you sure you want to update Sniper?',
-      description: 'This will also restart the bot.',
-    }).on('confirm', (i) => {
-      i.reply('Updating sniper....');
+    new ConfirmationMessage(
+      message,
+      new MessageEmbed()
+        .setTitle('Are you sure you want to update Sniper?')
+        .setDescription('This will also restart the VM')
+        .setColor('GREEN')
+    ).on('confirm', (i) => {
+      i.reply('updating sniper....');
       exec(
-        'rm ../../pnpm-lock.yaml && git pull && pnpm i && npm run build && pm2 restart sniper'
+        'rm ../../pnpm-lock.yaml && git pull && pnpm i && npm run build && sudo apt update && sudo apt upgrade -y && sudo reboot'
       );
     });
   }

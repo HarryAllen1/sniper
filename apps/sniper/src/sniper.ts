@@ -35,6 +35,8 @@ process.on('uncaughtException', console.error);
 export const FIREBASE_PROJECT_ID = firebaseCredentials.project_id;
 export const harrysDiscordID = '696554549418262548';
 
+export const goodServers = ['882695828140073052', '892256861947064341'];
+
 createColors();
 
 export const client = new DiscordClient({
