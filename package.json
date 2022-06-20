@@ -29,7 +29,7 @@
     "@vuepress/plugin-toc": "2.0.0-beta.48",
     "cheerio": "^1.0.0-rc.11",
     "colorette": "^2.0.17",
-    "eslint": "8.17.0",
+    "eslint": "8.18.0",
     "eslint-plugin-vue": "^9.1.0",
     "glob": "^8.0.3",
     "lodash": "^4.17.21",
