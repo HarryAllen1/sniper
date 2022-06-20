@@ -14,7 +14,7 @@ import type {
   Message,
   PermissionString,
 } from 'discord.js';
-import type DiscordClient from '../../client/client.js';
+import type { DiscordClient } from '../../client/client.js';
 import { commands } from '../commands.js';
 
 interface ExtraCommandOptions {
@@ -30,7 +30,7 @@ interface ExtraCommandOptions {
   tip?: string;
 }
 
-export default abstract class BaseCommand {
+export abstract class BaseCommand {
   /**
    * @param _name the name of the command
    * @param _category category
@@ -135,10 +135,11 @@ export default abstract class BaseCommand {
 }
 
 // eslint-disable-next-line @typescript-eslint/no-namespace
-namespace BaseCommand {
+export namespace BaseCommand {
   export type CommandInteraction = import('discord.js').CommandInteraction;
   export type CommandsRegistry = ApplicationCommandsRegistry;
 }
+export default BaseCommand;
 
 export class ApplicationCommandsRegistry {
   registerChatInputCommand(

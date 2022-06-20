@@ -1,8 +1,8 @@
 import { exec } from 'child_process';
 import { Message, MessageEmbed } from 'discord.js';
-import type DiscordClient from '../../client/client.js';
+import type { DiscordClient } from '../../client/client.js';
 import { ConfirmationMessage } from '../../utils/helpers/interactions.js';
-import BaseCommand from '../../utils/structures/BaseCommand.js';
+import { BaseCommand } from '../../utils/structures/BaseCommand.js';
 
 export default class RestartCommand extends BaseCommand {
   constructor() {

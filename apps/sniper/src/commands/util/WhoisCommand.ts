@@ -1,11 +1,11 @@
 import type { GuildMember, Message, User } from 'discord.js';
-import type DiscordClient from '../../client/client.js';
+import type { DiscordClient } from '../../client/client.js';
 import {
   getMentionedMember,
   getMentionedUser,
 } from '../../utils/helpers/mention.js';
 import { reply } from '../../utils/helpers/message.js';
-import BaseCommand from '../../utils/structures/BaseCommand.js';
+import { BaseCommand } from '../../utils/structures/BaseCommand.js';
 
 export default class WhoisCommand extends BaseCommand {
   constructor() {

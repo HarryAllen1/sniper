@@ -10,11 +10,11 @@ import {
 } from 'discord.js';
 import { camelCase, startCase } from 'lodash-es';
 import ms from 'ms';
-import type DiscordClient from '../../client/client.js';
+import type { DiscordClient } from '../../client/client.js';
 import { reply } from '../../utils/helpers/message.js';
 import { capitalizeFirstLetter } from '../../utils/helpers/string.js';
 import { helpCommandHelperCollection } from '../../utils/registry.js';
-import BaseCommand from '../../utils/structures/BaseCommand.js';
+import { BaseCommand } from '../../utils/structures/BaseCommand.js';
 
 export default class HelpCommand extends BaseCommand {
   constructor() {

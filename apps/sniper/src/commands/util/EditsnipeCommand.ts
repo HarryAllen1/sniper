@@ -1,7 +1,7 @@
 import { Message, MessageEmbed, TextChannel } from 'discord.js';
-import type DiscordClient from '../../client/client.js';
+import type { DiscordClient } from '../../client/client.js';
 import { reply } from '../../utils/helpers/message.js';
-import BaseCommand from '../../utils/structures/BaseCommand.js';
+import { BaseCommand } from '../../utils/structures/BaseCommand.js';
 import { editSnipes } from './snipes.js';
 
 export default class EditsnipeCommand extends BaseCommand {
@@ -15,8 +15,22 @@ export default class EditsnipeCommand extends BaseCommand {
     );
   }
 
-  async run(client: DiscordClient, message: Message): Promise<any> {
-    const snipe = editSnipes[message.channel.id];
+  registerApplicationCommands(
+    client: DiscordClient,
+    registry: BaseCommand.CommandsRegistry
+  ) {
+    registry.registerChatInputCommand((b) =>
+      b.setName(this.name).setDescription(this.description)
+    );
+  }
+
+  chatInputRun = this.run;
+
+  async run(
+    client: DiscordClient,
+    message: Message | BaseCommand.CommandInteraction
+  ): Promise<any> {
+    const snipe = editSnipes[message.channelId];
     if (!snipe)
       return reply(message, {
         title: "There's nothing to snipe!",
@@ -32,7 +46,7 @@ export default class EditsnipeCommand extends BaseCommand {
             .addField('Old message:', snipe.content ?? '')
             .addField(
               'New message:',
-              `[Jump!](https://discord.com/channels/${message.guild?.id}/${message.channel.id}/${snipe.id})`
+              `[Jump!](https://discord.com/channels/${message.guild?.id}/${message.channelId}/${snipe.id})`
             )
             .setAuthor({ name: snipe.author?.tag ?? '' })
             .setColor('GREEN')

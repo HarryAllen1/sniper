@@ -1,7 +1,7 @@
 import type { Typing } from 'discord.js';
-import type DiscordClient from '../client/client.js';
+import type { DiscordClient } from '../client/client.js';
 import { users } from '../commands/general/annoy.js';
-import BaseEvent from '../utils/structures/BaseEvent.js';
+import { BaseEvent } from '../utils/structures/BaseEvent.js';
 
 export default class TypingStartEvent extends BaseEvent {
   constructor() {

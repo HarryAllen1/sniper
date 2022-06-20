@@ -1,12 +1,12 @@
 import { REST } from '@discordjs/rest';
 import { green } from 'colorette';
 import { Routes } from 'discord-api-types/v10';
-import type DiscordClient from '../client/client.js';
+import type { DiscordClient } from '../client/client.js';
 import { slappeyJSON } from '../sniper.js';
 import { commands } from '../utils/commands.js';
 import { log } from '../utils/helpers/console.js';
 import { unsnipeContextMenu } from '../utils/interactions.js';
-import BaseEvent from '../utils/structures/BaseEvent.js';
+import { BaseEvent } from '../utils/structures/BaseEvent.js';
 
 export default class ReadyEvent extends BaseEvent {
   constructor() {

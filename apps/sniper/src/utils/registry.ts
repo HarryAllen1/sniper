@@ -3,10 +3,10 @@ import { Collection } from 'discord.js';
 import ms from 'ms';
 import * as fs from 'node:fs';
 import * as path from 'node:path';
-import type DiscordClient from '../client/client.js';
-import type BaseCommand from './structures/BaseCommand.js';
+import type { DiscordClient } from '../client/client.js';
+import type { BaseCommand } from './structures/BaseCommand.js';
 import { ApplicationCommandsRegistry } from './structures/BaseCommand.js';
-import type BaseEvent from './structures/BaseEvent.js';
+import type { BaseEvent } from './structures/BaseEvent.js';
 
 // interface CommandHelper {
 //   [name: string]: CommandCategory;

@@ -1,6 +1,6 @@
 import { exec } from 'child_process';
 import { CommandInteraction, Message, MessageEmbed } from 'discord.js';
-import type DiscordClient from '../../client/client.js';
+import type { DiscordClient } from '../../client/client.js';
 import { goodServers } from '../../sniper.js';
 import { ConfirmationMessage } from '../../utils/helpers/interactions.js';
 import BaseCommand, {

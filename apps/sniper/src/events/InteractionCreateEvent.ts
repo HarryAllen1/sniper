@@ -5,8 +5,8 @@ import {
   type Interaction,
   type TextChannel,
 } from 'discord.js';
-import type DiscordClient from '../client/client.js';
-import BaseEvent from '../utils/structures/BaseEvent.js';
+import type { DiscordClient } from '../client/client.js';
+import { BaseEvent } from '../utils/structures/BaseEvent.js';
 
 export default class InteractionCreateEvent extends BaseEvent {
   constructor() {

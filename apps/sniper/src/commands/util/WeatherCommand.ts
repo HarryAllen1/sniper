@@ -1,5 +1,5 @@
 import type { Message } from 'discord.js';
-import type DiscordClient from '../../client/client.js';
+import type { DiscordClient } from '../../client/client.js';
 import type {
   BingMapsAddressRes,
   Period,
@@ -8,7 +8,7 @@ import type {
 } from '../../typings/types.js';
 import { fetch } from '../../utils/helpers/fetch.js';
 import { reply } from '../../utils/helpers/message.js';
-import BaseCommand from '../../utils/structures/BaseCommand.js';
+import { BaseCommand } from '../../utils/structures/BaseCommand.js';
 
 export default class WeatherCommand extends BaseCommand {
   constructor() {

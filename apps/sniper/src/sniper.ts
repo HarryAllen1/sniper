@@ -4,7 +4,7 @@ import admin from 'firebase-admin';
 import { getFirestore } from 'firebase-admin/firestore';
 import { readFileSync, writeFileSync } from 'node:fs';
 import { AutoPoster } from 'topgg-autoposter';
-import DiscordClient from './client/client.js';
+import { DiscordClient } from './client/client.js';
 import { sleep } from './utils/helpers/misc.js';
 import { registerCommands, registerEvents } from './utils/registry.js';
 

@@ -1,11 +1,11 @@
 import { red } from 'colorette';
 import { Collection, type Message, type MessageEmbedOptions } from 'discord.js';
 import ms from 'ms';
-import type DiscordClient from '../../client/client.js';
+import type { DiscordClient } from '../../client/client.js';
 import { harrysDiscordID } from '../../sniper.js';
 import { log } from '../../utils/helpers/console.js';
 import { reply } from '../../utils/helpers/message.js';
-import BaseEvent from '../../utils/structures/BaseEvent.js';
+import { BaseEvent } from '../../utils/structures/BaseEvent.js';
 // import { sleep } from '../../utils/helpers/misc';
 // import {
 //   getGuildSettings,

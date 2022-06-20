@@ -1,8 +1,8 @@
 import type { GuildMember, VoiceChannel } from 'discord.js';
-import type DiscordClient from '../../client/client.js';
+import type { DiscordClient } from '../../client/client.js';
 import { sendMessageInBorderSecurity } from '../../utils/helpers/cambridge-server.js';
 import { sleep } from '../../utils/helpers/misc.js';
-import BaseEvent from '../../utils/structures/BaseEvent.js';
+import { BaseEvent } from '../../utils/structures/BaseEvent.js';
 
 export default class GuildMemberAddEvent extends BaseEvent {
   constructor() {

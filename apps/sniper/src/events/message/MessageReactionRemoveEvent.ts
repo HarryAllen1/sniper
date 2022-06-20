@@ -6,10 +6,10 @@ import type {
   User,
 } from 'discord.js';
 import ms from 'ms';
-import type DiscordClient from '../../client/client.js';
+import type { DiscordClient } from '../../client/client.js';
 import { reactionSnipes } from '../../commands/util/snipes.js';
 import { sleep } from '../../utils/helpers/misc.js';
-import BaseEvent from '../../utils/structures/BaseEvent.js';
+import { BaseEvent } from '../../utils/structures/BaseEvent.js';
 
 export default class MessageReactionRemoveEvent extends BaseEvent {
   constructor() {

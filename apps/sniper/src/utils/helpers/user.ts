@@ -1,6 +1,6 @@
 import type { GuildMember, User } from 'discord.js';
 import { FieldValue } from 'firebase-admin/firestore';
-import type DiscordClient from '../../client/client.js';
+import type { DiscordClient } from '../../client/client.js';
 import { db } from '../../sniper.js';
 export interface UserData {
   coins: number;

@@ -1,9 +1,9 @@
 import { green } from 'colorette';
 import { MessageActionRow, MessageButton, type Guild } from 'discord.js';
-import type DiscordClient from '../../client/client.js';
+import type { DiscordClient } from '../../client/client.js';
 import { harrysDiscordID } from '../../sniper.js';
 import { log } from '../../utils/helpers/console.js';
-import BaseEvent from '../../utils/structures/BaseEvent.js';
+import { BaseEvent } from '../../utils/structures/BaseEvent.js';
 
 export default class GuildCreateEvent extends BaseEvent {
   constructor() {

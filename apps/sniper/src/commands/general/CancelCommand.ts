@@ -1,9 +1,9 @@
 import type { Message } from 'discord.js';
 import ms from 'ms';
-import type DiscordClient from '../../client/client.js';
+import type { DiscordClient } from '../../client/client.js';
 import { reply } from '../../utils/helpers/message.js';
 import { setIntervalLimited } from '../../utils/helpers/misc.js';
-import BaseCommand from '../../utils/structures/BaseCommand.js';
+import { BaseCommand } from '../../utils/structures/BaseCommand.js';
 
 export default class CancelCommand extends BaseCommand {
   constructor() {

@@ -1,6 +1,6 @@
 import type { Message } from 'discord.js';
-import type DiscordClient from '../../client/client.js';
-import BaseCommand from '../../utils/structures/BaseCommand.js';
+import type { DiscordClient } from '../../client/client.js';
+import { BaseCommand } from '../../utils/structures/BaseCommand.js';
 
 export default class SupportCommand extends BaseCommand {
   constructor() {

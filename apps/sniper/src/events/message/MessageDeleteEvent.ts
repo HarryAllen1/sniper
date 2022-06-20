@@ -1,10 +1,10 @@
 import { Message, Util } from 'discord.js';
 import ms from 'ms';
-import type DiscordClient from '../../client/client.js';
+import type { DiscordClient } from '../../client/client.js';
 import { snipes } from '../../commands/util/snipes.js';
 import { log } from '../../utils/helpers/console.js';
 import { sleep } from '../../utils/helpers/misc.js';
-import BaseEvent from '../../utils/structures/BaseEvent.js';
+import { BaseEvent } from '../../utils/structures/BaseEvent.js';
 
 export default class MessageDeleteEvent extends BaseEvent {
   constructor() {
