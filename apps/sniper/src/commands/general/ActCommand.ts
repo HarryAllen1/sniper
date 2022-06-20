@@ -1,4 +1,4 @@
-import type { Message, TextChannel } from 'discord.js';
+import type { CommandInteraction, Message, TextChannel } from 'discord.js';
 import type DiscordClient from '../../client/client.js';
 import { slappeyJSON } from '../../sniper.js';
 import { reply } from '../../utils/helpers/message.js';
@@ -19,6 +19,48 @@ export default class ActCommand extends BaseCommand {
     );
   }
 
+  async chatInputRun(client: DiscordClient, interaction: CommandInteraction) {
+    if (
+      !(slappeyJSON.actServers as string[]).includes(interaction.guildId ?? '')
+    )
+      return reply(interaction, {
+        title: 'This command is restricted',
+        description:
+          'This command is restricted to certain servers. If you are a server admin, [open an issue here to apply](https://github.com/MajesticString/sniper/issues)',
+      });
+
+    if (
+      !interaction.guild?.me
+        ?.permissionsIn(interaction.channel as TextChannel)
+        .has('MANAGE_WEBHOOKS')
+    )
+      return reply(interaction, {
+        title: 'I do not have the `Manage Webhooks` permission',
+        description:
+          'I need the `Manage Webhooks` permission to use this command',
+        color: 'RED',
+      });
+    const wh = await (interaction.channel as TextChannel)?.createWebhook(
+      interaction.guild.members.cache.get(
+        interaction.options.getUser('user', true).id
+      )?.nickname ?? interaction.options.getUser('user', true).username,
+      {
+        avatar: interaction.options
+          .getUser('user', true)
+          .displayAvatarURL({ dynamic: false }),
+        reason: 'sniper command',
+      }
+    );
+    await wh.send({
+      content: interaction.options.getString('message', true),
+      allowedMentions: { parse: [] },
+    });
+    await wh.delete('sniper cleanup');
+    interaction.reply({
+      content: 'Sent!',
+      ephemeral: true,
+    });
+  }
   async run(client: DiscordClient, message: Message, args: Array<string>) {
     if (!(slappeyJSON.actServers as string[]).includes(message.guildId ?? ''))
       return reply(message, {

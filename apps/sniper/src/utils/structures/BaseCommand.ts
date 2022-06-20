@@ -1,5 +1,11 @@
-import type { SlashCommandBuilder } from '@discordjs/builders';
-import type { ApplicationCommandType } from 'discord-api-types/v10';
+import {
+  ContextMenuCommandBuilder,
+  SlashCommandBuilder,
+} from '@discordjs/builders';
+import type {
+  ApplicationCommandType,
+  RESTPostAPIApplicationCommandsJSONBody,
+} from 'discord-api-types/v10';
 import type {
   Awaitable,
   CommandInteraction,
@@ -9,6 +15,7 @@ import type {
   PermissionString,
 } from 'discord.js';
 import type DiscordClient from '../../client/client.js';
+import { commands } from '../commands.js';
 
 interface ExtraCommandOptions {
   cooldownMessage?: string;
@@ -115,16 +122,52 @@ export default abstract class BaseCommand {
    */
   registerApplicationCommands?(
     client: DiscordClient,
-    registry: ApplicationCommandRegistry
+    registry: ApplicationCommandsRegistry
   ): Awaitable<void>;
+
+  /**
+   * thanks sapphire x2
+   */
+  chatInputRun?(
+    client: DiscordClient,
+    interaction: CommandInteraction
+  ): Awaitable<unknown>;
 }
 
-export class ApplicationCommandRegistry {
-  static registerChatInputCommand(builder: SlashCommandBuilder) {
-    return builder;
+export class ApplicationCommandsRegistry {
+  registerChatInputCommand(
+    builder:
+      | SlashCommandBuilder
+      | ((
+          builder: SlashCommandBuilder
+        ) =>
+          | SlashCommandBuilder
+          | Omit<SlashCommandBuilder, 'addSubcommand' | 'addSubcommandGroup'>)
+  ) {
+    let builtBuilder: RESTPostAPIApplicationCommandsJSONBody;
+    if (builder instanceof SlashCommandBuilder) {
+      builtBuilder = builder.toJSON();
+    } else {
+      builtBuilder = builder(new SlashCommandBuilder()).toJSON();
+    }
+    commands.push(builtBuilder);
   }
 
-  static registerContextMenuCommand(builder: SlashCommandBuilder) {
-    return builder;
+  registerContextMenuCommand(
+    builder:
+      | ContextMenuCommandBuilder
+      | ((
+          builder: ContextMenuCommandBuilder
+        ) =>
+          | ContextMenuCommandBuilder
+          | Omit<SlashCommandBuilder, 'addSubcommand' | 'addSubcommandGroup'>)
+  ) {
+    let builtBuilder: RESTPostAPIApplicationCommandsJSONBody;
+    if (builder instanceof ContextMenuCommandBuilder) {
+      builtBuilder = builder.toJSON();
+    } else {
+      builtBuilder = builder(new ContextMenuCommandBuilder()).toJSON();
+    }
+    commands.push(builtBuilder);
   }
 }

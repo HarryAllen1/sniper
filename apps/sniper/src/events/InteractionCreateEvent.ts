@@ -14,7 +14,13 @@ export default class InteractionCreateEvent extends BaseEvent {
   }
 
   async run(client: DiscordClient, interaction: Interaction) {
-    if (interaction.isMessageContextMenu()) {
+    if (interaction.isCommand()) {
+      client.commands.get(interaction.commandName)?.chatInputRun &&
+        // @ts-ignore
+        client.commands
+          .get(interaction.commandName)
+          ?.chatInputRun(client, interaction);
+    } else if (interaction.isMessageContextMenu()) {
       client.commands.get(interaction.commandName)?.contextMenuRun &&
         // @ts-ignore
         client.commands

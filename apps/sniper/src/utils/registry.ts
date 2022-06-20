@@ -1,10 +1,11 @@
 import type { RESTPostAPIApplicationCommandsJSONBody } from 'discord-api-types/v10';
 import { Collection } from 'discord.js';
 import ms from 'ms';
-import * as fs from 'node:fs/promises';
+import * as fs from 'node:fs';
 import * as path from 'node:path';
 import type DiscordClient from '../client/client.js';
 import type BaseCommand from './structures/BaseCommand.js';
+import { ApplicationCommandsRegistry } from './structures/BaseCommand.js';
 import type BaseEvent from './structures/BaseEvent.js';
 
 // interface CommandHelper {
@@ -25,15 +26,19 @@ export const helpCommandHelperCollection = new Collection<
   string,
   CommandCategory
 >();
-
+interface Type<T> extends Function {
+  new (...args: any[]): T;
+}
 export const interactions: RESTPostAPIApplicationCommandsJSONBody[] = [];
 
-export async function registerCommands(client: DiscordClient, dir = '') {
+export function registerCommands(client: DiscordClient, dir = '') {
   const filePath = path.join(process.cwd(), dir);
-  const files = await fs.readdir(filePath);
+  const files = fs.readdirSync(filePath);
+
+  const applicationCommandsRegistry = new ApplicationCommandsRegistry();
 
   for (const file of files) {
-    const stat = await fs.lstat(path.join(filePath, file));
+    const stat = fs.lstatSync(path.join(filePath, file));
 
     if (stat.isDirectory()) {
       registerCommands(client, path.join(dir, file));
@@ -41,60 +46,79 @@ export async function registerCommands(client: DiscordClient, dir = '') {
       helpCommandHelperCollection.set(file, { commands: [] });
     }
     if (file.endsWith('Command.js') || file.endsWith('Command.ts')) {
-      const Command = (await import('../../' + path.join(dir, file))).default;
-      const command = new Command() as BaseCommand;
+      let Command: Type<BaseCommand>;
 
-      if (helpCommandHelperCollection.has(command.category)) {
-        helpCommandHelperCollection.get(command.category)?.commands.push({
-          name: command.name,
-          value: `${command.description}\n${
-            command.argsDescription ? `Args: ${command.argsDescription}\n` : ''
-          }Cooldown: ${ms(command.cooldown)}`,
+      import('../../' + path.join(dir, file)).then(({ default: c }) => {
+        Command = c;
+        const command = new Command();
+        client.commands.set(command.name, command);
+
+        if (command.registerApplicationCommands) {
+          console.log('registering command: ' + command.name);
+          command.registerApplicationCommands(
+            client,
+            applicationCommandsRegistry
+          );
+        }
+
+        if (helpCommandHelperCollection.has(command.category)) {
+          helpCommandHelperCollection.get(command.category)?.commands.push({
+            name: command.name,
+            value: `${command.description}\n${
+              command.argsDescription
+                ? `Args: ${command.argsDescription}\n`
+                : ''
+            }Cooldown: ${ms(command.cooldown)}`,
+          });
+        }
+
+        client.commands.set(command.name, command);
+        command.aliases.forEach((alias: string) => {
+          client.commands.set(alias, command);
         });
-      }
-
-      client.commands.set(command.name, command);
-      command.aliases.forEach((alias: string) => {
-        client.commands.set(alias, command);
-      });
-      if (!allCommandsJSON[command.category])
-        allCommandsJSON[command.category] = [];
-      allCommandsJSON[command.category].push({
-        name: command.name,
-        aliases: command.aliases,
-        description: command.description,
-        args: command.argsDescription,
-        cooldown: command.cooldown,
-        disabled: command.disabled,
-        permissions: command.permissionsRequired,
-        argsRequired: command.argsRequired,
-        // relative to sniper root
-        filePath: `${dir.replace('out', 'src')}/${file.replace('.js', '.ts')}`
-          .replaceAll('\\', '/')
-          .replaceAll('\\\\', '/'),
-        tip: command.tip,
+        if (!allCommandsJSON[command.category])
+          allCommandsJSON[command.category] = [];
+        allCommandsJSON[command.category].push({
+          name: command.name,
+          aliases: command.aliases,
+          description: command.description,
+          args: command.argsDescription,
+          cooldown: command.cooldown,
+          disabled: command.disabled,
+          permissions: command.permissionsRequired,
+          argsRequired: command.argsRequired,
+          // relative to sniper root
+          filePath: `${dir.replace('out', 'src')}/${file.replace('.js', '.ts')}`
+            .replaceAll('\\', '/')
+            .replaceAll('\\\\', '/'),
+          tip: command.tip,
+        });
       });
     }
   }
-  fs.writeFile('./all-commands.json', '').then(() => {
-    fs.writeFile(
-      './all-commands.json',
-      JSON.stringify(allCommandsJSON, null, 2)
-    );
-  });
+
+  fs.writeFileSync('./all-commands.json', '');
+  fs.writeFileSync(
+    './all-commands.json',
+    JSON.stringify(allCommandsJSON, null, 2)
+  );
 }
 
-export async function registerEvents(client: DiscordClient, dir = '') {
+export function registerEvents(client: DiscordClient, dir = '') {
   const filePath = path.join(process.cwd(), dir);
-  const files = await fs.readdir(filePath);
+  const files = fs.readdirSync(filePath);
   for (const file of files) {
-    const stat = await fs.lstat(path.join(filePath, file));
+    const stat = fs.lstatSync(path.join(filePath, file));
     if (stat.isDirectory()) registerEvents(client, path.join(dir, file));
     if (file.endsWith('Event.js') || file.endsWith('Event.ts')) {
-      const { default: Event } = await import('../../' + path.join(dir, file));
-      const event = new Event() as BaseEvent;
-      client.events.set(event.name, event);
-      client.on(event.name, event.run.bind(event, client));
+      let Event: Type<BaseEvent>;
+
+      import('../../' + path.join(dir, file)).then(({ default: e }) => {
+        Event = e;
+        const event = new Event();
+        client.events.set(event.name, event);
+        client.on(event.name, event.run.bind(event, client));
+      });
     }
   }
 }

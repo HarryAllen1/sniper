@@ -75,9 +75,9 @@ export const main = async (): Promise<void> => {
     //   }),
     // }).then(console.log);
 
-    await registerCommands(client, './out/commands');
+    registerCommands(client, './out/commands');
 
-    await registerEvents(client, './out/events');
+    registerEvents(client, './out/events');
     await sleep(2000);
 
     if (

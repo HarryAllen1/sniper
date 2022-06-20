@@ -3,6 +3,7 @@ import { green } from 'colorette';
 import { Routes } from 'discord-api-types/v10';
 import type DiscordClient from '../client/client.js';
 import { slappeyJSON } from '../sniper.js';
+import { commands } from '../utils/commands.js';
 import { log } from '../utils/helpers/console.js';
 import { unsnipeContextMenu } from '../utils/interactions.js';
 import BaseEvent from '../utils/structures/BaseEvent.js';
@@ -48,5 +49,9 @@ export default class ReadyEvent extends BaseEvent {
     //     }
     //   )
     //   .then(() => console.log('registered commands in test server'));
+    for (const command of commands) {
+      console.log('creating command from command: ' + command.name);
+      client.guilds.cache.get('892256861947064341')?.commands.create(command);
+    }
   }
 }
