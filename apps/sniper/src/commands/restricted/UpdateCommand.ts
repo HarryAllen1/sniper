@@ -9,7 +9,13 @@ import BaseCommand, {
 
 export default class UpdateCommand extends BaseCommand {
   constructor() {
-    super('update', 'restricted', [], 5000, '');
+    super(
+      'update',
+      'restricted',
+      [],
+      5000,
+      'Updates deps, pulls code and restarts bot'
+    );
   }
   registerApplicationCommands(
     client: DiscordClient,

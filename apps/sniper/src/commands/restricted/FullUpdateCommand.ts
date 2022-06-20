@@ -9,7 +9,7 @@ import BaseCommand, {
 
 export default class RestartCommand extends BaseCommand {
   constructor() {
-    super('fullupdate', 'restricted', [], 5000, '');
+    super('fullupdate', 'restricted', [], 5000, 'Updates sniper and VM deps');
   }
   registerApplicationCommands(
     client: DiscordClient,
