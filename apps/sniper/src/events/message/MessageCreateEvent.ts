@@ -199,9 +199,7 @@ export default class MessageCreateEvent extends BaseEvent {
                 .permissionsFor(client.user ?? '')
                 ?.has('SEND_MESSAGES')
             ) {
-              command.run(client, message, cmdArgs).then(() => {
-                log('End Command ' + command?.name);
-              });
+              command.run(client, message, cmdArgs);
               client.db.db
                 .collection('stats')
                 .doc(command.name)

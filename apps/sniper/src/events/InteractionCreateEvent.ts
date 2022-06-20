@@ -15,6 +15,7 @@ export default class InteractionCreateEvent extends BaseEvent {
 
   async run(client: DiscordClient, interaction: Interaction) {
     if (interaction.isCommand()) {
+      console.log('slash command ' + interaction.commandName);
       client.commands.get(interaction.commandName)?.chatInputRun &&
         // @ts-ignore
         client.commands
