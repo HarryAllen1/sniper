@@ -21,7 +21,7 @@
     "@discord-message-components/core": "^0.2.1",
     "@sapphire/fetch": "^2.4.0",
     "@types/glob": "^7.2.0",
-    "@types/node": "18.0.2",
+    "@types/node": "18.0.3",
     "@vuepress/client": "2.0.0-beta.48",
     "@vuepress/plugin-google-analytics": "2.0.0-beta.48",
     "@vuepress/plugin-search": "2.0.0-beta.48",
