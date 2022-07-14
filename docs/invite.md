@@ -14,4 +14,4 @@ There are 2 ways to invite Sniper.
 
 Next steps:
 
-- [Setting up the bot](../setup/README.md)
+- [Setting up the bot](../setup/index.md)

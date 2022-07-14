@@ -12,4 +12,4 @@ When the bot is restarted, all message, message reaction, and message edit data 
 
 The only user information that is stored is the user id (which anyone can view) and the most recent user tag.
 
-To delete all information from the bots database, the user can use the [`deletemydata` command](./commands/README.md#deletealldata)
+To delete all information from the bots database, the user can use the [`deletemydata` command](./commands/index.md#deletealldata)
