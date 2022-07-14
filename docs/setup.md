@@ -3,7 +3,7 @@
 ::: tip
 Invite links can be found in the navbar.
 
-More information about the different links can be found in the ["Inviting Sniper" page](../invite/README.md).
+More information about the different links can be found in the ["Inviting Sniper" page](../invite/index.md).
 :::
 
 ## Defaults
