@@ -39,7 +39,7 @@ yarn-error.log*
 
 .temp
 .cache
-docs/.vuepress/dist
+docs/.vitepress/dist
 /.firebase
 .env
 
