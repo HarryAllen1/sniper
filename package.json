@@ -22,7 +22,6 @@
     "@sapphire/fetch": "^2.4.1",
     "@types/glob": "^7.2.0",
     "@types/node": "18.0.4",
-    "cheerio": "1.0.0-rc.12",
     "colorette": "^2.0.17",
     "eslint": "8.19.0",
     "eslint-plugin-vue": "^9.2.0",
