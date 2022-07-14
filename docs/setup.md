@@ -3,18 +3,18 @@
 ::: tip
 Invite links can be found in the navbar.
 
-More information about the different links can be found in the ["Inviting Sniper" page](../invite/index.md).
+More information about the different links can be found in the ["Inviting Sniper" page](./invite.md).
 :::
 
 ## Defaults
 
 The default prefix is `$`. This can be changed with the `prefix` command.
 
-The default help command is [`$help`](/commands/#help). This cannot be changed.
+The default help command is [`$help`](./commands/index.md#help). This cannot be changed.
 
 ## Custom Prefixes
 
-Once you have added the bot, you can use the [`prefix`](/commands/#prefix) command to change the prefix.
+Once you have added the bot, you can use the [`prefix`](/commands/index.md#prefix) command to change the prefix.
 Syntax:
 
 <div class="discord-messages">
