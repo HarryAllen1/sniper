@@ -44,4 +44,4 @@ docs/.vuepress/dist
 .env
 
 # generated commands file
-docs/commands/README.md
+docs/commands/index.md

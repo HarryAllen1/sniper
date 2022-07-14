@@ -1,0 +1,22 @@
+@import url('https://unpkg.com/@discord-message-components/core/dist/styles/discord-messages.css');
+@import url('https://unpkg.com/@discord-message-components/core/dist/styles/discord-message.css');
+@import url('https://unpkg.com/@discord-message-components/core/dist/styles/discord-author-info.css');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code&display=swap');
+
+.discord-messages {
+  border-radius: 18px;
+}
+
+:root,
+.dark {
+  --vp-c-brand: #0ea5e9;
+  --vp-c-brand-light: #38bdf8;
+  --vp-c-brand-lighter: #7dd3fc;
+  --vp-c-brand-dark: #0284c7;
+  --vp-c-brand-darker: #0369a1;
+  --vp-font-family-mono: 'Fira Code', Consolas, Monaco, 'Andale Mono',
+    'Ubuntu Mono', monospace;
+  scroll-behavior: smooth;
+  --scrollbar-border-radius: 4px;
+  --search-accent-color: var(--c-brand);
+}

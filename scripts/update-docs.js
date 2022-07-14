@@ -4,10 +4,10 @@ const { appendFileSync, readFileSync, writeFileSync } = require('node:fs');
 
 // add template to command docs
 writeFileSync(
-  './docs/commands/README.md',
+  './docs/commands/index.md',
   readFileSync('./command-docs-template.md').toString()
 );
-let commandsMD = readFileSync('./docs/commands/README.md').toString();
+let commandsMD = readFileSync('./docs/commands/index.md').toString();
 const commands = JSON.parse(
   readFileSync('./apps/sniper/all-commands.json').toString() === ''
     ? '{}'
@@ -19,10 +19,10 @@ function resetCommandDocs() {
     /<!-- start generation -->[\s\S]*/g,
     '<!-- start generation -->'
   );
-  writeFileSync('./docs/commands/README.md', commandsMD);
+  writeFileSync('./docs/commands/index.md', commandsMD);
 }
 function appendToDocs(data) {
-  appendFileSync('./docs/commands/README.md', data);
+  appendFileSync('./docs/commands/index.md', data);
 }
 const camelToNormalCase = (str) =>
   str.replace(/[A-Z]/g, (letter) => ` ${letter.toLowerCase()}`);

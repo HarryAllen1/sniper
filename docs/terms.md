@@ -9,4 +9,4 @@ Users may not delete files and messages that violate the [Discord TOS](https://d
 
 ## Liability
 
-Sniper is not responsible for any damages, whether direct or indirect, caused by the use of any of [Sniper's commands.](./commands/README.md)
+Sniper is not responsible for any damages, whether direct or indirect, caused by the use of any of [Sniper's commands.](./commands/index.md)

@@ -1,6 +1,5 @@
 ---
 lang: en-US
-title: Command Reference
 description: A guide for every command that Sniper has.
 ---
 

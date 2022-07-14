@@ -21,8 +21,8 @@ Syntax:
   <div class="discord-message">
     <div class="discord-message-content">
       <div class="discord-author-avatar">
-				<img src="https://cdn.discordapp.com/embed/avatars/0.png" alt="" />
-			</div>
+        <img src="https://cdn.discordapp.com/embed/avatars/0.png" alt="" />
+      </div>
       <div class="discord-message-body">
       <span class="discord-author-info">
         <span class="discord-author-username">
