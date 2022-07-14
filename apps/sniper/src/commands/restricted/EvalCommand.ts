@@ -1,5 +1,3 @@
-import { Type } from '@sapphire/type';
-import { codeBlock, isThenable } from '@sapphire/utilities';
 import type { CommandInteraction, Message } from 'discord.js';
 import { inspect } from 'node:util';
 import type { DiscordClient } from '../../client/client.js';
@@ -43,7 +41,7 @@ export default class EvalCommand extends BaseCommand {
   }
   async chatInputRun(client: DiscordClient, interaction: CommandInteraction) {
     if (interaction.user.id === '696554549418262548') {
-      const { result, success, type } = await this.eval(
+      const { result, success } = await this.eval(
         client,
         interaction,
         interaction.options.getString('code', true),
@@ -55,18 +53,16 @@ export default class EvalCommand extends BaseCommand {
       );
 
       const output = success
-        ? codeBlock('js', result)
-        : `**ERROR**: ${codeBlock('bash', result)}`;
-
-      const typeFooter = `**Type**: ${codeBlock('typescript', type)}`;
+        ? `\`\`\`js\n${result}\n\`\`\``
+        : `**ERROR**: ${`\`\`\`bash\n${result}\n\`\`\``}`;
 
       if (output.length > 2000) {
         return interaction.reply({
-          content: `Output was too long... sent the result as a file.\n\n${typeFooter}`,
+          content: `Output was too long... sent the result as a file.`,
           files: [{ attachment: Buffer.from(output), name: 'output.js' }],
         });
       }
-      return interaction.reply(`${output}\n${typeFooter}`);
+      return interaction.reply(`${output}`);
       // try {
       //   const evalScript = async () => {
       //     eval(args.join(' '));
@@ -92,7 +88,7 @@ export default class EvalCommand extends BaseCommand {
   }
   async run(client: DiscordClient, message: Message, args: Array<string>) {
     if (message.author.id === '696554549418262548') {
-      const { result, success, type } = await this.eval(
+      const { result, success } = await this.eval(
         client,
         message,
         args.join(' '),
@@ -104,18 +100,16 @@ export default class EvalCommand extends BaseCommand {
       );
 
       const output = success
-        ? codeBlock('js', result)
-        : `**ERROR**: ${codeBlock('bash', result)}`;
-
-      const typeFooter = `**Type**: ${codeBlock('typescript', type)}`;
+        ? `\`\`\`js\n${result}\n\`\`\``
+        : `**ERROR**: ${`\`\`\`bash\n${result}\n\`\`\``}`;
 
       if (output.length > 2000) {
         return message.reply({
-          content: `Output was too long... sent the result as a file.\n\n${typeFooter}`,
+          content: `Output was too long... sent the result as a file.`,
           files: [{ attachment: Buffer.from(output), name: 'output.js' }],
         });
       }
-      return message.reply(`${output}\n${typeFooter}`);
+      return message.reply(`${output}`);
       // try {
       //   const evalScript = async () => {
       //     eval(args.join(' '));
@@ -174,8 +168,7 @@ export default class EvalCommand extends BaseCommand {
       success = false;
     }
 
-    const type = new Type(result).toString();
-    if (isThenable(result)) result = await result;
+    if (result.then) result = await result;
 
     if (typeof result !== 'string') {
       result = inspect(result, {
@@ -184,6 +177,6 @@ export default class EvalCommand extends BaseCommand {
       });
     }
 
-    return { result, success, type };
+    return { result, success };
   }
 }
