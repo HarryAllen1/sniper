@@ -85,7 +85,12 @@ export const main = async (): Promise<void> => {
     const allCommandsJSON = JSON.parse('{}');
 
     client.commands.forEach((cmd) => {
-      if (!allCommandsJSON[cmd.category]) allCommandsJSON[cmd.category] = [];
+      if (
+        !allCommandsJSON[cmd.category] &&
+        cmd.category !== undefined &&
+        cmd.category !== 'undefined'
+      )
+        allCommandsJSON[cmd.category] = [];
       if (!cmd.isAlias)
         allCommandsJSON[cmd.category].push({
           name: cmd.name,
