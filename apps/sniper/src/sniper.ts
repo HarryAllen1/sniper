@@ -82,32 +82,31 @@ export const main = async (): Promise<void> => {
     registerEvents(client, './out/events');
     await sleep(2000);
 
+    const allCommandsJSON = JSON.parse('{}');
+
     client.commands.forEach((cmd) => {
       if (!allCommandsJSON[cmd.category]) allCommandsJSON[cmd.category] = [];
-      allCommandsJSON[cmd.category].push({
-        name: cmd.name,
-        aliases: cmd.aliases,
-        description: cmd.description,
-        args: cmd.argsDescription,
-        cooldown: cmd.cooldown,
-        disabled: cmd.disabled,
-        permissions: cmd.permissionsRequired,
-        argsRequired: cmd.argsRequired,
-        // relative to sniper root
-        filePath: `${dir.replace('out', 'src')}/${file.replace('.js', '.ts')}`
-          .replaceAll('\\', '/')
-          .replaceAll('\\\\', '/'),
-        tip: cmd.tip,
-      });
+      if (!cmd.isAlias)
+        allCommandsJSON[cmd.category].push({
+          name: cmd.name,
+          aliases: cmd.aliases,
+          description: cmd.description,
+          args: cmd.argsDescription,
+          cooldown: cmd.cooldown,
+          disabled: cmd.disabled,
+          permissions: cmd.permissionsRequired,
+          argsRequired: cmd.argsRequired,
+          // relative to sniper root
+          filePath: `src/commands/${cmd.category}/${cmd.name}.ts`,
+          tip: cmd.tip,
+        });
     });
 
-    fs.writeFileSync('./all-commands.json', '');
-    fs.writeFileSync(
+    writeFileSync('./all-commands.json', '');
+    writeFileSync(
       './all-commands.json',
       JSON.stringify(allCommandsJSON, null, 2)
     );
-
-    console.log(client.commands);
 
     if (
       process.env.ONLY_UPDATE_COMMANDS &&

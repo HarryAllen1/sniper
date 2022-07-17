@@ -31,7 +31,7 @@ export default defineConfig({
     nav: [
       {
         text: 'Commands',
-        link: '/commands',
+        link: '/commands/index.md',
       },
       {
         text: 'Invite',

@@ -33,7 +33,7 @@ const capitalizeFirstLetter = (string) =>
   const categories = Object.keys(commands).reverse();
   resetCommandDocs();
   categories.forEach((cat) => {
-    appendToDocs(`
+    appendToDocs(`\n
 ## ${capitalizeFirstLetter(camelToNormalCase(cat))}
 `);
     const commandsInCategory = commands[cat];
@@ -41,13 +41,17 @@ const capitalizeFirstLetter = (string) =>
       appendToDocs(
         `
 ### ${cmd.disabled ? `~~${cmd.name}~~` : cmd.name}
-${cmd.disabled ? '::: warning\nThis command is disabled\n:::' : ''}
-${cmd.tip !== '' ? `::: tip\n${cmd.tip}\n:::` : ''}
-${cmd.aliases.length ? cmd.description + '\\' : ''}
-${cmd.aliases.length ? `**Aliases:** ${cmd.aliases.join(', ')}\\` : ''}
-**Arguments/Usage:** ${
-          cmd.args
-            ? `
+${cmd.disabled ? '::: warning\nThis command is disabled\n:::\n' : ''}${
+          cmd.tip !== '' ? `::: tip\n${cmd.tip}\n:::\n` : ''
+        }${cmd.aliases?.length ? cmd.description + '\\\n' : ''}${
+          cmd.aliases?.length
+            ? `**Aliases:** ${cmd.aliases.join(', ')}\\\n`
+            : ''
+        }
+**Arguments/Usage:**
+${
+  cmd.args
+    ? `
 <div class="discord-messages">
   <div class="discord-message">
     <div class="discord-message-content">
@@ -64,40 +68,23 @@ ${cmd.aliases.length ? `**Aliases:** ${cmd.aliases.join(', ')}\\` : ''}
             {{ new Date().toLocaleDateString() }}
 					</span><br />
       &#36;${cmd.name} ${cmd.args
-                .replace(/&/g, '&amp;')
-                .replace(/</g, '&lt;')
-                .replace(/>/g, '&gt;')
-                .replace(/\\/g, '\\\\')}
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/\\/g, '\\\\')}
             </div>
           </div>\n</div>\n</div>\n`
-            : 'None\n'
-        }
+    : 'None\n'
+}
 **Cooldown:** ${ms(cmd.cooldown, { long: true })}\\
 **Permissions:** ${cmd.permissions
           .map((perm) => `\`${_.lowerCase(perm)}\``)
           .join(', ')}
  
-<details>
-  <summary>Source</summary>
-
   [Source on Github](${cmd.filePath.replace(
     /^src/,
     'https://github.com/MajesticString/sniper/blob/main/apps/sniper/src'
   )})
-  
-  [Edit in Github](${cmd.filePath.replace(
-    /^src/,
-    'https://github.com/MajesticString/sniper/edit/main/apps/sniper/src'
-  )})
-
-  [Edit in Github.dev](${cmd.filePath.replace(
-    /^src/,
-    'https://github.dev/MajesticString/sniper/blob/main/apps/sniper/src'
-  )})
-
-@[code ts](${cmd.filePath.replace(/^src/, '../../apps/sniper/src/')})
-
-</details>
 `
       );
     });

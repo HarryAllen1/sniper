@@ -12,8 +12,6 @@ import type { BaseEvent } from './structures/BaseEvent.js';
 //   [name: string]: CommandCategory;
 // }
 
-const allCommandsJSON = JSON.parse('{}');
-
 interface CommandCategory {
   commands: Array<Commands>;
 }
