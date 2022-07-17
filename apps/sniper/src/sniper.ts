@@ -82,6 +82,33 @@ export const main = async (): Promise<void> => {
     registerEvents(client, './out/events');
     await sleep(2000);
 
+    client.commands.forEach((cmd) => {
+      if (!allCommandsJSON[cmd.category]) allCommandsJSON[cmd.category] = [];
+      allCommandsJSON[cmd.category].push({
+        name: cmd.name,
+        aliases: cmd.aliases,
+        description: cmd.description,
+        args: cmd.argsDescription,
+        cooldown: cmd.cooldown,
+        disabled: cmd.disabled,
+        permissions: cmd.permissionsRequired,
+        argsRequired: cmd.argsRequired,
+        // relative to sniper root
+        filePath: `${dir.replace('out', 'src')}/${file.replace('.js', '.ts')}`
+          .replaceAll('\\', '/')
+          .replaceAll('\\\\', '/'),
+        tip: cmd.tip,
+      });
+    });
+
+    fs.writeFileSync('./all-commands.json', '');
+    fs.writeFileSync(
+      './all-commands.json',
+      JSON.stringify(allCommandsJSON, null, 2)
+    );
+
+    console.log(client.commands);
+
     if (
       process.env.ONLY_UPDATE_COMMANDS &&
       process.env.ONLY_UPDATE_COMMANDS === 'y'

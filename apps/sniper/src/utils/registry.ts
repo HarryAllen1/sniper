@@ -73,35 +73,15 @@ export function registerCommands(client: DiscordClient, dir = '') {
         }
 
         client.commands.set(command.name, command);
+
         command.aliases.forEach((alias: string) => {
-          client.commands.set(alias, command);
-        });
-        if (!allCommandsJSON[command.category])
-          allCommandsJSON[command.category] = [];
-        allCommandsJSON[command.category].push({
-          name: command.name,
-          aliases: command.aliases,
-          description: command.description,
-          args: command.argsDescription,
-          cooldown: command.cooldown,
-          disabled: command.disabled,
-          permissions: command.permissionsRequired,
-          argsRequired: command.argsRequired,
-          // relative to sniper root
-          filePath: `${dir.replace('out', 'src')}/${file.replace('.js', '.ts')}`
-            .replaceAll('\\', '/')
-            .replaceAll('\\\\', '/'),
-          tip: command.tip,
+          const commandClone = Object.assign({}, command);
+          commandClone.isAlias = true;
+          client.commands.set(alias, commandClone);
         });
       });
     }
   }
-
-  fs.writeFileSync('./all-commands.json', '');
-  fs.writeFileSync(
-    './all-commands.json',
-    JSON.stringify(allCommandsJSON, null, 2)
-  );
 }
 
 export function registerEvents(client: DiscordClient, dir = '') {

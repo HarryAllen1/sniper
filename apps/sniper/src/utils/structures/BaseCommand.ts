@@ -99,6 +99,8 @@ export abstract class BaseCommand {
     return this.extraCommandOptions?.tip ?? '';
   }
 
+  isAlias = false;
+
   /**
    *
    * @param {DiscordClient} client
@@ -110,7 +112,7 @@ export abstract class BaseCommand {
     client: DiscordClient,
     message: Message | CommandInteraction,
     args: Array<string> | CommandInteractionOptionResolver | null
-  ): Promise<void | Message>;
+  ): Awaitable<unknown>;
 
   contextMenuRun?(
     client: DiscordClient,

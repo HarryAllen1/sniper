@@ -17,7 +17,7 @@ export default class CreateIssueCommand extends BaseCommand {
     );
   }
 
-  async run(client: DiscordClient, message: Message) {
+  run(_client: DiscordClient, message: Message) {
     reply(message, {
       title: 'Create an issue',
       description:

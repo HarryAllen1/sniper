@@ -1,3 +1,4 @@
+import type { Awaitable } from 'discord.js';
 import type { DiscordClient } from '../../client/client.js';
 import { client } from '../../sniper.js';
 
@@ -8,5 +9,5 @@ export abstract class BaseEvent {
     return this._name;
   }
   db = client.db;
-  abstract run(client: DiscordClient, ...args: any[]): any | Promise<any>;
+  abstract run(client: DiscordClient, ...args: any[]): Awaitable<any>;
 }

@@ -21,12 +21,12 @@ export default class ChangelogCommand extends BaseCommand {
     );
   }
 
-  async run(client: DiscordClient, message: Message, args: Array<string>) {
+  run(_client: DiscordClient, message: Message, args: Array<string>) {
     fetch<GithubCommits>(
       `https://api.github.com/repos/MajesticString/sniper/commits?per_page=${
         args[0] ? (parseInt(args[0]) > 10 ? '10' : args[0]) : '5'
       }`
-    ).then(async (res) => {
+    ).then((res) => {
       const data = res;
       const toReadableDate = (date: string) => {
         return new Date(date).toUTCString();
