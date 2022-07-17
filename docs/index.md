@@ -11,7 +11,7 @@ hero:
       link: /setup
       type: primary
     - text: Command Reference
-      link: /commands
+      link: /commands/index
       type: secondary
 features:
   - title: Snipe
