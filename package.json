@@ -21,7 +21,7 @@
     "@discord-message-components/core": "^0.2.1",
     "@sapphire/fetch": "^2.4.1",
     "@types/glob": "^7.2.0",
-    "@types/node": "18.0.4",
+    "@types/node": "18.0.5",
     "colorette": "^2.0.17",
     "eslint": "8.19.0",
     "eslint-plugin-vue": "^9.2.0",
