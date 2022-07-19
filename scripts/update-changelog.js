@@ -10,7 +10,7 @@ fetch(
    * @type {import('./types.js').CommitRes[]}
    */
   const json = await res.json();
-  json.forEach((cmt) => {
+  json.forEach(async (cmt) => {
     stuffToAppend += `
 ## ${new Date(cmt.commit.committer.date).toLocaleString()}
 
@@ -22,6 +22,11 @@ ${cmt.commit.message}
 
 - Author: ${cmt.commit.author.name}
 - Comment Count: ${cmt.commit.comment_count}
+
+<details>
+  <summary>View Diff</summary>
+  ${await (await fetch(cmt.html_url + '.diff')).text()}
+</details>
 `;
   });
   await writeFile(
