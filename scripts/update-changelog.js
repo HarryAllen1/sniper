@@ -20,8 +20,8 @@ ${cmt.commit.message}
 
 ### Commit Info
 
-Author: ${cmt.commit.author.name}
-Comment Count: ${cmt.commit.comment_count}
+- Author: ${cmt.commit.author.name}
+- Comment Count: ${cmt.commit.comment_count}
 `;
   });
   await writeFile(

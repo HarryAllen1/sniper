@@ -76,7 +76,10 @@ export default defineConfig({
       {
         text: 'Developers',
         collapsible: true,
-        items: [{ text: 'Self Hosting', link: '/developers/self-hosting.md' }],
+        items: [
+          { text: 'Self Hosting', link: '/developers/self-hosting.md' },
+          { text: 'Changelog', link: '/changelog.md' },
+        ],
       },
       {
         text: 'Commands',

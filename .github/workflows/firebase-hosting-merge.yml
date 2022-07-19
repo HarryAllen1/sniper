@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: npx pnpm i --no-frozen-lockfile --strict-peer-dependencies=false && npm run docs:build
+      - run: npx pnpm i --no-frozen-lockfile --strict-peer-dependencies=false && npm run docs:build:update
       - uses: MajesticString/action-hosting-deploy@v0.6
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
