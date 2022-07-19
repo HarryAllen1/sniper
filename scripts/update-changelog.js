@@ -1,4 +1,5 @@
 const { writeFile, readFile } = require('fs/promises');
+const { fetch } = require('undici');
 
 let stuffToAppend = '';
 
