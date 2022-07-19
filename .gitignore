@@ -45,3 +45,4 @@ docs/.vitepress/dist
 
 # generated commands file
 docs/commands/index.md
+docs/changelog.md
