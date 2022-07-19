@@ -31,11 +31,13 @@ ${cmt.commit.message}
 
 - Author: ${cmt.commit.author.name}
 - Comment Count: ${cmt.commit.comment_count}
-
-<details>
-  <summary>View Diff</summary>
-  ${await (await fetch(cmt.html_url + '.diff')).text()}
-</details>
+${
+  // <details>
+  //  <summary>View Diff</summary>
+  //  ${await (await fetch(cmt.html_url + '.diff')).text()}
+  //</details>
+  ''
+}
 `;
     });
     await writeFile(
