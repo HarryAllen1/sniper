@@ -98,7 +98,9 @@ export const main = async (): Promise<void> => {
           permissions: cmd.permissionsRequired,
           argsRequired: cmd.argsRequired,
           // relative to sniper root
-          filePath: `src/commands/${cmd.category}/${cmd.name}.ts`,
+          filePath: `src/commands/${cmd.category}/${
+            cmd.name[0].toUpperCase() + cmd.name.substring(1)
+          }Command.ts`,
           tip: cmd.tip,
         });
     });
