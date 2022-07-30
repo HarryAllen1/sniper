@@ -4,7 +4,7 @@ name: Deploy static content to Pages
 on:
   # Runs on pushes targeting the default branch
   push:
-    branches: ["main"]
+    branches: ["main", "d.js-v14"]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -33,7 +33,7 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v1
       - name: install deps and build 
-        run: npx pnpm i && npm run docs:build:update
+        run: npx pnpm i && env GH_PAGES=true npm run docs:build:update
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
