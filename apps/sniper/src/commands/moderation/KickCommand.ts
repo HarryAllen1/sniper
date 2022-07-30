@@ -7,9 +7,9 @@ import {
 } from 'discord.js';
 import type { DiscordClient } from '../../client/client.js';
 import { reply } from '../../utils/helpers/message.js';
-import { BaseCommand } from '../../utils/structures/BaseCommand.js';
+import { Command } from '../../utils/structures/BaseCommand.js';
 
-export default class KickCommand extends BaseCommand {
+export default class KickCommand extends Command {
   constructor() {
     super('kick', 'moderation', [], 100, 'Kicks a user/users', {
       permissions: ['KickMembers'],

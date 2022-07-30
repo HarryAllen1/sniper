@@ -2,9 +2,9 @@ import { Colors, Message, PermissionFlagsBits, TextChannel } from 'discord.js';
 import type { DiscordClient } from '../../client/client.js';
 import { slappeyJSON } from '../../sniper.js';
 import { reply } from '../../utils/helpers/message.js';
-import { BaseCommand } from '../../utils/structures/BaseCommand.js';
+import { Command } from '../../utils/structures/BaseCommand.js';
 
-export default class ActCommand extends BaseCommand {
+export default class ActCommand extends Command {
   constructor() {
     super(
       'act',
@@ -19,10 +19,7 @@ export default class ActCommand extends BaseCommand {
     );
   }
 
-  async registerApplicationCommands(
-    c: never,
-    reg: BaseCommand.CommandsRegistry
-  ) {
+  async registerApplicationCommands(c: never, reg: Command.CommandsRegistry) {
     reg.registerChatInputCommand(
       (b) =>
         b
@@ -39,7 +36,7 @@ export default class ActCommand extends BaseCommand {
 
   async chatInputRun(
     client: DiscordClient,
-    interaction: BaseCommand.ChatInputCommandInteraction
+    interaction: Command.ChatInputCommandInteraction
   ) {
     if (
       !(slappeyJSON.actServers as string[]).includes(interaction.guildId ?? '')

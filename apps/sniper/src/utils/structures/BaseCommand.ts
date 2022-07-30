@@ -1,19 +1,14 @@
-import {
-  ContextMenuCommandBuilder,
-  SlashCommandBuilder,
-} from '@discordjs/builders';
 import type {
   ApplicationCommandType,
-  RESTPostAPIApplicationCommandsJSONBody,
-} from 'discord-api-types/v10';
-import type {
   Awaitable,
   CommandInteraction,
   CommandInteractionOptionResolver,
   ContextMenuCommandInteraction,
   Message,
   PermissionsString,
+  RESTPostAPIApplicationCommandsJSONBody,
 } from 'discord.js';
+import { ContextMenuCommandBuilder, SlashCommandBuilder } from 'discord.js';
 import type { DiscordClient } from '../../client/client.js';
 import { commands } from '../commands.js';
 
@@ -31,7 +26,7 @@ interface ExtraCommandOptions {
   registerChatInput?: boolean;
 }
 
-export abstract class BaseCommand {
+export abstract class Command {
   /**
    * @param _name the name of the command
    * @param _category category
@@ -101,7 +96,7 @@ export abstract class BaseCommand {
     return this.extraCommandOptions?.tip ?? '';
   }
   get registerChatInput(): boolean {
-    return this.extraCommandOptions.registerChatInput ?? false;
+    return this.extraCommandOptions?.registerChatInput ?? false;
   }
 
   isAlias = false;
@@ -137,18 +132,18 @@ export abstract class BaseCommand {
    */
   chatInputRun?(
     client: DiscordClient,
-    interaction: BaseCommand.ChatInputCommandInteraction
+    interaction: Command.ChatInputCommandInteraction
   ): Awaitable<unknown>;
 }
 
 // eslint-disable-next-line @typescript-eslint/no-namespace
-export namespace BaseCommand {
+export namespace Command {
   export type ChatInputCommandInteraction =
     import('discord.js').ChatInputCommandInteraction;
   export type CommandsRegistry = ApplicationCommandsRegistry;
   export type Client = DiscordClient;
 }
-export default BaseCommand;
+export default Command;
 
 export class ApplicationCommandsRegistry {
   registerChatInputCommand(

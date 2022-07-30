@@ -1,8 +1,8 @@
 import type { Message } from 'discord.js';
 import type { DiscordClient } from '../../client/client.js';
-import { BaseCommand } from '../../utils/structures/BaseCommand.js';
+import { Command } from '../../utils/structures/BaseCommand.js';
 
-export default class SayCommand extends BaseCommand {
+export default class SayCommand extends Command {
   constructor() {
     super('say', 'general', [], 10000, 'says something');
   }

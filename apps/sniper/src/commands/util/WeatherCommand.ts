@@ -8,9 +8,9 @@ import type {
 } from '../../typings/types.js';
 import { fetch } from '../../utils/helpers/fetch.js';
 import { reply } from '../../utils/helpers/message.js';
-import { BaseCommand } from '../../utils/structures/BaseCommand.js';
+import { Command } from '../../utils/structures/BaseCommand.js';
 
-export default class WeatherCommand extends BaseCommand {
+export default class WeatherCommand extends Command {
   constructor() {
     super('weather', 'util', [], 5000, 'shows the weather', {
       argsDescription:

@@ -2,9 +2,9 @@ import { exec } from 'child_process';
 import { Colors, EmbedBuilder, Message } from 'discord.js';
 import type { DiscordClient } from '../../client/client.js';
 import { ConfirmationMessage } from '../../utils/helpers/interactions.js';
-import { BaseCommand } from '../../utils/structures/BaseCommand.js';
+import { Command } from '../../utils/structures/BaseCommand.js';
 
-export default class RestartCommand extends BaseCommand {
+export default class RestartCommand extends Command {
   constructor() {
     super('restart', 'restricted', [], 5000, '');
   }

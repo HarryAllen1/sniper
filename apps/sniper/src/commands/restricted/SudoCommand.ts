@@ -1,8 +1,8 @@
 import type { Message } from 'discord.js';
 import type { DiscordClient } from '../../client/client.js';
-import { BaseCommand } from '../../utils/structures/BaseCommand.js';
+import { Command } from '../../utils/structures/BaseCommand.js';
 
-export default class SudoCommand extends BaseCommand {
+export default class SudoCommand extends Command {
   constructor() {
     super('sudo', 'restricted', [], 0, 'Run a command as another user', {
       argsRequired: true,

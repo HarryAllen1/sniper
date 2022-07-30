@@ -1,10 +1,10 @@
 import { Colors, EmbedBuilder, Message, TextChannel } from 'discord.js';
 import type { DiscordClient } from '../../client/client.js';
 import { reply } from '../../utils/helpers/message.js';
-import { BaseCommand } from '../../utils/structures/BaseCommand.js';
+import { Command } from '../../utils/structures/BaseCommand.js';
 import { editSnipes } from './snipes.js';
 
-export default class EditsnipeCommand extends BaseCommand {
+export default class EditsnipeCommand extends Command {
   constructor() {
     super(
       'editsnipe',

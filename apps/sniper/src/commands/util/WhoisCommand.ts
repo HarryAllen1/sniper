@@ -5,9 +5,9 @@ import {
   getMentionedUser,
 } from '../../utils/helpers/mention.js';
 import { reply } from '../../utils/helpers/message.js';
-import { BaseCommand } from '../../utils/structures/BaseCommand.js';
+import { Command } from '../../utils/structures/BaseCommand.js';
 
-export default class WhoisCommand extends BaseCommand {
+export default class WhoisCommand extends Command {
   constructor() {
     super('whois', 'util', [], 3000, 'shows info about a user');
   }

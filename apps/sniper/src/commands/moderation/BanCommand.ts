@@ -7,9 +7,9 @@ import {
 } from 'discord.js';
 import type { DiscordClient } from '../../client/client.js';
 import { reply } from '../../utils/helpers/message.js';
-import { BaseCommand } from '../../utils/structures/BaseCommand.js';
+import { Command } from '../../utils/structures/BaseCommand.js';
 
-export default class BanCommand extends BaseCommand {
+export default class BanCommand extends Command {
   constructor() {
     super('ban', 'moderation', [], 100, 'Bans any amount of members.', {
       argsDescription: '<@user or userID> <user> <user> ...',

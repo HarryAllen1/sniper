@@ -9,12 +9,12 @@ import {
 import ms from 'ms';
 import type { DiscordClient } from '../../client/client.js';
 import { reply } from '../../utils/helpers/message.js';
-import BaseCommand, {
+import Command, {
   ApplicationCommandsRegistry,
 } from '../../utils/structures/BaseCommand.js';
 import { snipes, unSnipes } from './snipes.js';
 
-export default class SnipeCommand extends BaseCommand {
+export default class SnipeCommand extends Command {
   constructor() {
     super(
       'snipe',

@@ -3,9 +3,9 @@ import type { DiscordClient } from '../../client/client.js';
 import type { MWResponse, OxfordRes } from '../../typings/types.js';
 import { fetch } from '../../utils/helpers/fetch.js';
 import { reply } from '../../utils/helpers/message.js';
-import { BaseCommand } from '../../utils/structures/BaseCommand.js';
+import { Command } from '../../utils/structures/BaseCommand.js';
 
-export default class DefineCommand extends BaseCommand {
+export default class DefineCommand extends Command {
   constructor() {
     super('define', 'general', [], 1000, 'Gets a definition', {
       argsDescription:

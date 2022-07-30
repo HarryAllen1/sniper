@@ -17,7 +17,7 @@ importers:
       pnpm: ^7.5.2
       postcss: ^8.4.14
       prettier: 2.7.1
-      turbo: 1.3.1
+      turbo: 1.3.4
       typescript: 4.7.4
       undici: ^5.8.0
       vitepress: 1.0.0-alpha.4
@@ -36,7 +36,7 @@ importers:
       pnpm: 7.5.2
       postcss: 8.4.14
       prettier: 2.7.1
-      turbo: 1.3.1
+      turbo: 1.3.4
       typescript: 4.7.4
       undici: 5.8.0
       vitepress: 1.0.0-alpha.4
@@ -49,15 +49,15 @@ importers:
       '@firebase/app-types': 0.7.0
       '@sapphire/decorators': ^4.3.8
       '@sapphire/discord.js-utilities': ^4.11.1
-      '@sapphire/framework': 3.0.0-next.87e5cdc.0
+      '@sapphire/framework': 3.0.0-next.72b48bb.0
       '@sapphire/pieces': 3.3.4
       '@sapphire/plugin-editable-commands': ^1.2.2
       '@sapphire/plugin-hmr': 1.2.2
       '@sapphire/plugin-logger': ^2.2.3
       '@sapphire/utilities': ^3.7.0
       colorette: ^2.0.17
-      discord-help-command-creator: ^1.0.10
-      discord.js: ^14.0.2
+      discord-help-command-creator: ^1.0.11
+      discord.js: ^14.0.3
       firebase-admin: ^11.0.0
       ms: ^2.1.3
       tslib: ^2.4.0
@@ -69,14 +69,14 @@ importers:
       '@firebase/app-compat': 0.1.29
       '@sapphire/decorators': 4.3.8
       '@sapphire/discord.js-utilities': 4.11.3
-      '@sapphire/framework': 3.0.0-next.87e5cdc.0
+      '@sapphire/framework': 3.0.0-next.72b48bb.0
       '@sapphire/pieces': 3.3.4
       '@sapphire/plugin-editable-commands': 1.2.2
       '@sapphire/plugin-logger': 2.2.3
       '@sapphire/utilities': 3.7.0
       colorette: 2.0.19
-      discord-help-command-creator: 1.0.10
-      discord.js: 14.0.2
+      discord-help-command-creator: 1.0.11
+      discord.js: 14.0.3
       firebase-admin: 11.0.0_@firebase+app-types@0.7.0
       ms: 2.1.3
       tslib: 2.4.0
@@ -96,13 +96,13 @@ importers:
       '@top-gg/sdk': ^3.1.3
       '@types/body-parser': 1.19.2
       '@types/lodash-es': 4.17.6
-      '@types/luxon': ^2.3.2
+      '@types/luxon': ^3.0.0
       '@types/ms': 0.7.31
       '@types/node': 18.0.6
       '@typescript-eslint/eslint-plugin': 5.30.7
       '@typescript-eslint/parser': 5.30.7
       colorette: ^2.0.17
-      discord.js: ^14.0.2
+      discord.js: ^14.0.3
       eslint: 8.20.0
       eslint-config-prettier: 8.5.0
       eslint-plugin-node: 11.1.0
@@ -122,7 +122,7 @@ importers:
       '@sapphire/discord.js-utilities': 4.11.3
       '@top-gg/sdk': 3.1.3
       colorette: 2.0.19
-      discord.js: 14.0.2
+      discord.js: 14.0.3
       firebase-admin: 11.0.0_@firebase+app-types@0.7.0
       lodash-es: 4.17.21
       luxon: 3.0.1
@@ -134,7 +134,7 @@ importers:
       '@firebase/app-types': 0.7.0
       '@types/body-parser': 1.19.2
       '@types/lodash-es': 4.17.6
-      '@types/luxon': 2.3.2
+      '@types/luxon': 3.0.0
       '@types/ms': 0.7.31
       '@types/node': 18.0.6
       '@typescript-eslint/eslint-plugin': 5.30.7_6wltbjakwuqm7awqswigmiuhd4
@@ -316,7 +316,7 @@ packages:
     deprecated: no longer supported
     dependencies:
       '@sapphire/shapeshift': 3.5.1
-      discord-api-types: 0.36.2
+      discord-api-types: 0.36.3
       fast-deep-equal: 3.1.3
       ts-mixer: 6.0.1
       tslib: 2.4.0
@@ -350,8 +350,8 @@ packages:
       '@discordjs/collection': 1.0.0
       '@sapphire/async-queue': 1.3.2
       '@sapphire/snowflake': 3.2.2
-      discord-api-types: 0.36.2
-      file-type: 17.1.2
+      discord-api-types: 0.36.3
+      file-type: 17.1.3
       tslib: 2.4.0
       undici: 5.8.0
     dev: false
@@ -848,26 +848,9 @@ packages:
       tslib: 2.4.0
     dev: false
 
-  /@sapphire/framework/3.0.0-next.87e5cdc.0:
-    resolution: {integrity: sha512-XEgkm3W4rygnKanDvDQ5s0c/FKPLV84WeU+cPJWSZbKT0DOkRMkcjmsCexaoDGJVoeom5RbviCDZCCtLfCPm6w==}
+  /@sapphire/framework/3.0.0-next.72b48bb.0:
+    resolution: {integrity: sha512-jrDJiyzy6KMI4w6vYD70dO1D+zXXgkgq2Z2y4h77a54ee1UnwwMoAOKrYTpgxiLWmGn6l5RpD4TJczWgrcnXWQ==}
     engines: {node: '>=16.6.0', npm: '>=7.0.0'}
-    dependencies:
-      '@discordjs/builders': 0.15.0
-      '@sapphire/discord-utilities': 2.11.4
-      '@sapphire/discord.js-utilities': 4.11.3
-      '@sapphire/pieces': 3.3.4
-      '@sapphire/ratelimits': 2.4.4
-      '@sapphire/result': 1.1.1
-      '@sapphire/stopwatch': 1.4.1
-      '@sapphire/utilities': 3.7.0
-      lexure: 0.17.0
-      tslib: 2.4.0
-    dev: false
-
-  /@sapphire/framework/3.0.0-next.e669f2b.0:
-    resolution: {integrity: sha512-lRFRkRZVRnlLa0MEI5jEw5V+hn0BbV2KCuN4TV11y3RR6k1BpojXNcMYNKVnOAg6qmaIU75WuRmXNQ7mSZxkdw==}
-    engines: {node: '>=16.6.0', npm: '>=7.0.0'}
-    deprecated: This version has been automatically deprecated by @favware/npm-deprecate. Please use a newer version.
     dependencies:
       '@discordjs/builders': 0.15.0
       '@sapphire/discord-utilities': 2.11.4
@@ -1066,8 +1049,8 @@ packages:
     dev: false
     optional: true
 
-  /@types/luxon/2.3.2:
-    resolution: {integrity: sha512-WOehptuhKIXukSUUkRgGbj2c997Uv/iUgYgII8U7XLJqq9W2oF0kQ6frEznRQbdurioz+L/cdaIm4GutTQfgmA==}
+  /@types/luxon/3.0.0:
+    resolution: {integrity: sha512-Lx+EZoJxUKw4dp8uei9XiUVNlgkYmax5+ovqt6Xf3LzJOnWhlfJw/jLBmqfGVwOP/pDr4HT8bI1WtxK0IChMLw==}
     dev: true
 
   /@types/mime/1.3.2:
@@ -1919,14 +1902,18 @@ packages:
     resolution: {integrity: sha512-TunPAvzwneK/m5fr4hxH3bMsrtI22nr9yjfHyo5NBGMjpsAauGNiGCmwoFf0oO3jSd2mZiKUvZwCKDaB166u2Q==}
     dev: false
 
-  /discord-help-command-creator/1.0.10:
-    resolution: {integrity: sha512-wrVE3eMpaUkcNrmID9JKXKGpp//8XUO8qPpTfSNw1OefF15wZ5cYh8b/T36ObTHZP3rGszmYyfQePHiRviWYVw==}
+  /discord-api-types/0.36.3:
+    resolution: {integrity: sha512-bz/NDyG0KBo/tY14vSkrwQ/n3HKPf87a0WFW/1M9+tXYK+vp5Z5EksawfCWo2zkAc6o7CClc0eff1Pjrqznlwg==}
+    dev: false
+
+  /discord-help-command-creator/1.0.11:
+    resolution: {integrity: sha512-2t+Vq1kWunAnXGsjFJYGlkW+ye8IRMaW0fFWZomdWRyt+yMCtlz4jvk5ZVTAnqA6lD68leF+GHEJeqJZVOO4wQ==}
     dependencies:
       '@sapphire/discord.js-utilities': 4.11.3
       '@sapphire/framework': 2.5.1
       discord.js: 13.9.0
       ms: 2.1.3
-      sapphire-next: /@sapphire/framework/3.0.0-next.e669f2b.0
+      sapphire-next: /@sapphire/framework/3.0.0-next.72b48bb.0
     transitivePeerDependencies:
       - bufferutil
       - encoding
@@ -1952,8 +1939,8 @@ packages:
       - utf-8-validate
     dev: false
 
-  /discord.js/14.0.2:
-    resolution: {integrity: sha512-aHZHwT4i5yyV4IotFm9lSSPq8mTUkYWTrpatPlT53wz8QyFUPw5XjvUxuOXlaioV1kBsgfhSjCP0BNqxfuSjRQ==}
+  /discord.js/14.0.3:
+    resolution: {integrity: sha512-wH/VQl4CqN8/+dcXEtYis1iurqxGlDpEe0O4CqH5FGqZGIjVpTdtK0STXXx7bVNX8MT/0GvLZLkmO/5gLDWZVg==}
     engines: {node: '>=16.9.0'}
     dependencies:
       '@discordjs/builders': 1.0.0
@@ -1961,7 +1948,7 @@ packages:
       '@discordjs/rest': 1.0.0
       '@sapphire/snowflake': 3.2.2
       '@types/ws': 8.5.3
-      discord-api-types: 0.36.2
+      discord-api-types: 0.36.3
       fast-deep-equal: 3.1.3
       lodash.snakecase: 4.1.1
       tslib: 2.4.0
@@ -2773,8 +2760,8 @@ packages:
       flat-cache: 3.0.4
     dev: true
 
-  /file-type/17.1.2:
-    resolution: {integrity: sha512-3thBUSfa9YEUEGO/NAAiQGvjujZxZiJTF6xNwyDn6kB0NcEtwMn5ttkGG9jGwm/Nt/t8U1bpBNqyBNZCz4F4ig==}
+  /file-type/17.1.3:
+    resolution: {integrity: sha512-MFVSozBIhvnx2dkxlf+010Xqn6+ojlMUT9LXQiPNoOijgRtXNMghWdGK0u2o1RoCqzHoVsw65IL8ZBcQ4MhIrw==}
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
     dependencies:
       readable-web-to-node-stream: 3.0.2
@@ -4788,137 +4775,137 @@ packages:
       typescript: 4.7.4
     dev: true
 
-  /turbo-android-arm64/1.3.1:
-    resolution: {integrity: sha512-JcnZh9tLbZDpKaXaao/s/k4qXt3TbNEc1xEYYXurVWnqiMueGeS7QAtThVB85ZSqzj7djk+ngSrZabPy5RG25Q==}
+  /turbo-android-arm64/1.3.4:
+    resolution: {integrity: sha512-rAbfiw5dT2rKV7L8XCL6nKwBxSz0TNknUT8F64pE+h3ESiT4y6Ow/hCdNxlb+hcee6lvZ8tB0cynXCVM5bthAA==}
     cpu: [arm64]
     os: [android]
     requiresBuild: true
     dev: true
     optional: true
 
-  /turbo-darwin-64/1.3.1:
-    resolution: {integrity: sha512-TIGDradVFoGck86VIuM38KaDeNxdKaP2ti93UpQeFw26ZhPIeTAa6wUgnz4DQP6bjIvQmXlYJ16ETZb4tFYygg==}
+  /turbo-darwin-64/1.3.4:
+    resolution: {integrity: sha512-DZbRwVHH3nKOzVtijKWzkiKLLY+pBjawK90po7VRKMwdN2Db+JkWdu9+6wIqaxQ4WEYnYpwnTm0Aiyua0U/dNg==}
     cpu: [x64]
     os: [darwin]
     requiresBuild: true
     dev: true
     optional: true
 
-  /turbo-darwin-arm64/1.3.1:
-    resolution: {integrity: sha512-aLBq8KiMMmop7uKBkvDt/y+eER2UzxZyUzh1KWcZ7DZB5tFZnknEUyf2qggY2vd2WcDVfQ1EUjZ0MFxhhVaVzA==}
+  /turbo-darwin-arm64/1.3.4:
+    resolution: {integrity: sha512-Qfe7iBad/XM4G22G0XAnEQnHiSUO1WR4MgvyHV022WABIf7CgGDsW6DUu/4DOWFlfTO+xCC0Qgu93w6Kli/9uw==}
     cpu: [arm64]
     os: [darwin]
     requiresBuild: true
     dev: true
     optional: true
 
-  /turbo-freebsd-64/1.3.1:
-    resolution: {integrity: sha512-BOr/ifmxjlBeuDkDQLUJtzqzXQ2zPHHcI14U9Ys+z4Mza1uzQn/oSJqQvU5RuyRBVai7noMrpPS7QuKtDz0Cyg==}
+  /turbo-freebsd-64/1.3.4:
+    resolution: {integrity: sha512-lXFViR0fnoTRtnRtkeSA/10Q41h+fLgnYC62wzHNzPsq/kCYmiaXBg+gWRJom8Ka2nh+xWQdLG2Dh/uxK/+1Og==}
     cpu: [x64]
     os: [freebsd]
     requiresBuild: true
     dev: true
     optional: true
 
-  /turbo-freebsd-arm64/1.3.1:
-    resolution: {integrity: sha512-bHPZjK4xnGLz6/oxl5XmWhdYOdtBMSadrGhptWSZ0wBGNn/gQzDTeZAkQeqhh25AD0eM1hzDe8QUz8GlS43lrA==}
+  /turbo-freebsd-arm64/1.3.4:
+    resolution: {integrity: sha512-VN9gPZcRaYhQOIo+NlIDIDNlJjhnyM7i+3WvWAK8y5p5GoZoDAahM36GDX05JNjVdPq95WJPnWcxoiQvwnctxg==}
     cpu: [arm64]
     os: [freebsd]
     requiresBuild: true
     dev: true
     optional: true
 
-  /turbo-linux-32/1.3.1:
-    resolution: {integrity: sha512-c5okimusfvivu9wS8MKSr+rXpQAV+M4TyR9JX+spIK8B1I7AjfECAqiK2D5WFWO1bQ33bUAuxXOEpUuLpgEm+g==}
+  /turbo-linux-32/1.3.4:
+    resolution: {integrity: sha512-h1oVx85jovYnAaP+KxSmFIPhlKFQmBwVkJBngALnHNU7HTN9+1t/VJ1WKjHEeLXrQ7ujeCMd/+TBm9XRd73RdA==}
     cpu: [ia32]
     os: [linux]
     requiresBuild: true
     dev: true
     optional: true
 
-  /turbo-linux-64/1.3.1:
-    resolution: {integrity: sha512-O0pNX+N5gbmRcyZT+jsCPUNCN3DpIZHqNN35j7MT5nr0IkZa83CGbZnrEc+7Qws//jFJ26EngqD/JyRB2E8nwQ==}
+  /turbo-linux-64/1.3.4:
+    resolution: {integrity: sha512-QJJeksggK9/s3VzS+iMTQh8gO6JLDxKBSc3qnpP1Kaq8hF+M1upfP9KhDFNguz8UEFlOvTblplNdqZdk/wtkXQ==}
     cpu: [x64]
     os: [linux]
     requiresBuild: true
     dev: true
     optional: true
 
-  /turbo-linux-arm/1.3.1:
-    resolution: {integrity: sha512-f+r6JIwv/7ylxxJtgVi8cVw+6oNoD/r1IMTU6ejH8bfyMZZko4kkNwH9VYribQ44KDkJEgzdltnzFG5f6Hz10g==}
+  /turbo-linux-arm/1.3.4:
+    resolution: {integrity: sha512-vCVDcO4KNJak//UKsss/TnJw0ywYc8OyV88ZlSWyP3WtA+9D8DJNPOKodcR8IbKuV7Tqpr+f7cP+J9jGDkHjQw==}
     cpu: [arm]
     os: [linux]
     requiresBuild: true
     dev: true
     optional: true
 
-  /turbo-linux-arm64/1.3.1:
-    resolution: {integrity: sha512-D6+1MeS/x+/VCCooHPU4NIpB8qI/eW70eMRA79bqTPaxxluP0g2CaxXgucco05P51YtNsSxeVcH7X76iadON6Q==}
+  /turbo-linux-arm64/1.3.4:
+    resolution: {integrity: sha512-SSyUvBxZmlS44LQ2hzX5gfDlQueH1Hx5/rFS9mJZKFdgMnAB2g7btxxEvnpm0lgpfP/c3LH0VRks3xYEoQvILg==}
     cpu: [arm64]
     os: [linux]
     requiresBuild: true
     dev: true
     optional: true
 
-  /turbo-linux-mips64le/1.3.1:
-    resolution: {integrity: sha512-yL64jgwVCziOpBcdpMxIsczkgwwOvmaqKObFKWyCNlk/LOl5NKODLwXEaryLaALtpwUAoS4ltMSI64gKqmLrOA==}
+  /turbo-linux-mips64le/1.3.4:
+    resolution: {integrity: sha512-w7Ib7i/GZhyJRdvQSLA1Be7AOIPgJpuLLjrtT2gUl3wXd4JuiHDvhOS7E0B9izaxeD/2iygU2kQjqD4o9tejlw==}
     cpu: [mips64el]
     os: [linux]
     requiresBuild: true
     dev: true
     optional: true
 
-  /turbo-linux-ppc64le/1.3.1:
-    resolution: {integrity: sha512-tjnM+8RosykS1lBpOPLDXGOz/Po2h796ty17uBd7IFslWPOI16a/akFOFoLH8PCiGGJMe3CYgRhEKn4sPWNxFA==}
+  /turbo-linux-ppc64le/1.3.4:
+    resolution: {integrity: sha512-xATyouJSGmfgQM6lLk4Da5HrsAw8qoPUArrBuDK1p3Rw1gcRnmlJL10mr6ZmZyRu+3o4M8UlThfus5q8eETmBw==}
     cpu: [ppc64]
     os: [linux]
     requiresBuild: true
     dev: true
     optional: true
 
-  /turbo-windows-32/1.3.1:
-    resolution: {integrity: sha512-Snnv+TVigulqwK6guHKndMlrLw88NXj8BtHRGrEksPR0QkyuHlwLf+tHYB4HmvpUl4W9lnXQf4hsljWP64BEdw==}
+  /turbo-windows-32/1.3.4:
+    resolution: {integrity: sha512-1oXgiGxkWuC/7rlBZTng7qC2zjAZ7lYLDDh3ePAycZzp6BprlxqT5+xA0kFJo+WqGRdAQVhanlET2bLGOdBQBQ==}
     cpu: [ia32]
     os: [win32]
     requiresBuild: true
     dev: true
     optional: true
 
-  /turbo-windows-64/1.3.1:
-    resolution: {integrity: sha512-gLeohHG07yIhON1Pp0YNE00i/yzip2GFhkA6HdJaK95uE5bKULpqxuO414hOS/WzGwrGVXBKCImfe24XXh5T+Q==}
+  /turbo-windows-64/1.3.4:
+    resolution: {integrity: sha512-k7K/oC+399Gtwol42ALvt0espWmZZR7qlRwfgFS3BF4pEetxjGFJMXKNWUMDkOqsHhMxvLIiDbWPmY3fTIWL7g==}
     cpu: [x64]
     os: [win32]
     requiresBuild: true
     dev: true
     optional: true
 
-  /turbo-windows-arm64/1.3.1:
-    resolution: {integrity: sha512-0MWcHLvYgs/qdcoTFZ55nu8HhrpeiwXEMw9cbNfgqTlzy3OsrAsovYEJFyQ8KSxeploiD+QJlCdvhxx+5C0tlA==}
+  /turbo-windows-arm64/1.3.4:
+    resolution: {integrity: sha512-jHBuTvQ3t/OElxn//kwHZR2mlPdmpcV7BZy+n18+wwx6ydGj5QDOrer7Dwk81YbA5KtOkp086Xpgr75T73wsSA==}
     cpu: [arm64]
     os: [win32]
     requiresBuild: true
     dev: true
     optional: true
 
-  /turbo/1.3.1:
-    resolution: {integrity: sha512-DXckoGKlZgvTn/PrHpBI/57aeXR7tfyPf2dK+4LmBczt24ELA3o6eYHeA7KzfpSYhB2LE9qveYFQ6mJ1OzGjjg==}
+  /turbo/1.3.4:
+    resolution: {integrity: sha512-MsjlfAL29leQaIMdHGnIpK6IKZA4HwSAwDSIoBAs9EAKfAXIsnjLoF50dKDnBlaq5d4aVmiHsT6RYVcTKhSgBQ==}
     hasBin: true
     requiresBuild: true
     optionalDependencies:
-      turbo-android-arm64: 1.3.1
-      turbo-darwin-64: 1.3.1
-      turbo-darwin-arm64: 1.3.1
-      turbo-freebsd-64: 1.3.1
-      turbo-freebsd-arm64: 1.3.1
-      turbo-linux-32: 1.3.1
-      turbo-linux-64: 1.3.1
-      turbo-linux-arm: 1.3.1
-      turbo-linux-arm64: 1.3.1
-      turbo-linux-mips64le: 1.3.1
-      turbo-linux-ppc64le: 1.3.1
-      turbo-windows-32: 1.3.1
-      turbo-windows-64: 1.3.1
-      turbo-windows-arm64: 1.3.1
+      turbo-android-arm64: 1.3.4
+      turbo-darwin-64: 1.3.4
+      turbo-darwin-arm64: 1.3.4
+      turbo-freebsd-64: 1.3.4
+      turbo-freebsd-arm64: 1.3.4
+      turbo-linux-32: 1.3.4
+      turbo-linux-64: 1.3.4
+      turbo-linux-arm: 1.3.4
+      turbo-linux-arm64: 1.3.4
+      turbo-linux-mips64le: 1.3.4
+      turbo-linux-ppc64le: 1.3.4
+      turbo-windows-32: 1.3.4
+      turbo-windows-64: 1.3.4
+      turbo-windows-arm64: 1.3.4
     dev: true
 
   /tv4/1.3.0:

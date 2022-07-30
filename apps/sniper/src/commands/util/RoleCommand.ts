@@ -1,9 +1,9 @@
 import type { Message } from 'discord.js';
 import type { DiscordClient } from '../../client/client.js';
 import { reply } from '../../utils/helpers/message.js';
-import { BaseCommand } from '../../utils/structures/BaseCommand.js';
+import { Command } from '../../utils/structures/BaseCommand.js';
 
-export default class RoleCommand extends BaseCommand {
+export default class RoleCommand extends Command {
   constructor() {
     super('role', 'util', [], 5000, 'Gets information about a role.', {
       argsDescription:
