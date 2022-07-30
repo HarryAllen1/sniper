@@ -1,8 +1,9 @@
 {
   "extends": "./tsconfig.base.json",
   "compilerOptions": {
-    "module": "CommonJS",
+    "module": "Node16",
     "lib": ["ESNext", "ES2015.Iterable"],
-    "moduleResolution": "node"
+    "moduleResolution": "node",
+    "target": "ES2021"
   }
 }

@@ -7,6 +7,7 @@ export default defineConfig({
   vue: {
     reactivityTransform: true,
   },
+  base: process.env.GH_PAGES ? '/sniper/' : '/',
   markdown: {
     theme: {
       dark: 'one-dark-pro',
@@ -15,6 +16,11 @@ export default defineConfig({
     lineNumbers: true,
   },
   themeConfig: {
+    algolia: {
+      appId: '9S4NWRYUU9',
+      apiKey: '868289ec0b27caa98ebff49324609ce4',
+      indexName: 'website',
+    },
     socialLinks: [
       {
         icon: 'github',
