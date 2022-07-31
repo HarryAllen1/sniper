@@ -1,0 +1,6 @@
+[build]
+  publish = "docs/.vitepress/dist"
+  command = "pnpm run docs:build:update"
+
+[context.deploy-preview]
+  publish = "docs/.vitepress/dist"
