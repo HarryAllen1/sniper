@@ -101,6 +101,7 @@ export const main = async (): Promise<void> => {
           disabled: cmd.disabled,
           permissions: cmd.permissionsRequired,
           argsRequired: cmd.argsRequired,
+          slashCommand: !!cmd.chatInputRun,
           // relative to sniper root
           filePath: `src/commands/${cmd.category}/${cmd.name}.ts`,
           tip: cmd.tip,

@@ -80,6 +80,11 @@ ${
 **Permissions:** ${cmd.permissions
           .map((perm) => `\`${_.lowerCase(perm)}\``)
           .join(', ')}
+${
+  cmd.slashCommand
+    ? `\n::: tip\nThis command supports slash commands. Find it by typing \`/${cmd.name}\`\n:::\n`
+    : ''
+}
  
   [Source on Github](${cmd.filePath.replace(
     /^src/,

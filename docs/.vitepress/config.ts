@@ -7,6 +7,7 @@ export default defineConfig({
   vue: {
     reactivityTransform: true,
   },
+  base: process.env.GH_PAGES ? '/sniper/' : '/',
   markdown: {
     theme: {
       dark: 'one-dark-pro',
@@ -15,6 +16,11 @@ export default defineConfig({
     lineNumbers: true,
   },
   themeConfig: {
+    algolia: {
+      appId: '9S4NWRYUU9',
+      apiKey: '868289ec0b27caa98ebff49324609ce4',
+      indexName: 'website',
+    },
     socialLinks: [
       {
         icon: 'github',
@@ -109,17 +115,38 @@ export default defineConfig({
       },
     ],
     [
-      'link',
-      {
-        rel: 'manifest',
-        href: '/manifest.webmanifest',
-      },
-    ],
-    [
       'meta',
       {
         name: 'theme-color',
         content: '#02b3f6',
+      },
+    ],
+    [
+      'link',
+      {
+        rel: 'stylesheet',
+        href: 'https://unpkg.com/@discord-message-components/core/dist/styles/discord-messages.css',
+      },
+    ],
+    [
+      'link',
+      {
+        rel: 'stylesheet',
+        href: 'https://unpkg.com/@discord-message-components/core/dist/styles/discord-message.css',
+      },
+    ],
+    [
+      'link',
+      {
+        rel: 'stylesheet',
+        href: 'https://unpkg.com/@discord-message-components/core/dist/styles/discord-author-info.css',
+      },
+    ],
+    [
+      'link',
+      {
+        rel: 'stylesheet',
+        href: 'https://fonts.googleapis.com/css2?family=Fira+Code&display=swap',
       },
     ],
   ],
