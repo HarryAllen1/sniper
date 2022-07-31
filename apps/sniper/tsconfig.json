@@ -3,7 +3,7 @@
   "compilerOptions": {
     "typeRoots": ["./node_modules/@types", "./src/typings"],
 
-    "outDir": "./out-esm",
+    "outDir": "./out-tsc",
     "removeComments": true,
     "pretty": false,
     "target": "ESNext",
@@ -16,6 +16,6 @@
       "#fetch": ["./utils/helpers/fetch.js"]
     }
   },
-  "exclude": ["out-esm/", "out/", "old/", "lib/"],
-  "include": ["./firebase-credentials.json", "src/", "tsup.config.ts"]
+  "exclude": ["out-tsc/", "out/"],
+  "include": ["src/", "tsup.config.ts"]
 }

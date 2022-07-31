@@ -8,7 +8,7 @@ export class DiscordClient<
 > extends Client<Ready> {
   private _commands = new Collection<string, BaseCommand>();
   private _events = new Collection<string, BaseEvent>();
-  private _prefix: string[] = ['!'];
+  private _prefix: string[] | readonly string[] = ['!'];
 
   constructor(options: ClientOptions) {
     super(options);
@@ -23,11 +23,11 @@ export class DiscordClient<
   get events(): Collection<string, BaseEvent> {
     return this._events;
   }
-  get prefix(): string[] {
+  get prefix(): string[] | readonly string[] {
     return this._prefix;
   }
 
-  set prefix(prefix: string[]) {
+  set prefix(prefix: string[] | readonly string[]) {
     this._prefix = prefix;
   }
 }

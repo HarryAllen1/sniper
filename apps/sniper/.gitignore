@@ -20,3 +20,5 @@ guilds.json
 
 
 all-commands.json
+
+src/config.ts

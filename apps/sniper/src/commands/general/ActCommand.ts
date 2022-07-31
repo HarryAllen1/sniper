@@ -21,7 +21,9 @@ export default class ActCommand extends BaseCommand {
 
   async chatInputRun(client: DiscordClient, interaction: CommandInteraction) {
     if (
-      !(slappeyJSON.actServers as string[]).includes(interaction.guildId ?? '')
+      !(slappeyJSON.actServers as readonly string[]).includes(
+        interaction.guildId ?? ''
+      )
     )
       return reply(interaction, {
         title: 'This command is restricted',
@@ -62,7 +64,11 @@ export default class ActCommand extends BaseCommand {
     });
   }
   async run(client: DiscordClient, message: Message, args: Array<string>) {
-    if (!(slappeyJSON.actServers as string[]).includes(message.guildId ?? ''))
+    if (
+      !(slappeyJSON.actServers as readonly string[]).includes(
+        message.guildId ?? ''
+      )
+    )
       return reply(message, {
         title: 'This command is restricted',
         description:

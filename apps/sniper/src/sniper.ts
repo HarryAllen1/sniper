@@ -2,22 +2,19 @@ import { createColors } from 'colorette';
 import { Intents } from 'discord.js';
 import admin from 'firebase-admin';
 import { getFirestore } from 'firebase-admin/firestore';
-import { readFileSync, writeFileSync } from 'node:fs';
+import { writeFileSync } from 'node:fs';
 import { AutoPoster } from 'topgg-autoposter';
 import { DiscordClient } from './client/client.js';
+import { config } from './config.js';
 import { sleep } from './utils/helpers/misc.js';
 import { registerCommands, registerEvents } from './utils/registry.js';
 
 export const ONLY_UPDATE_COMMANDS =
   process.env.ONLY_UPDATE_COMMANDS && process.env.ONLY_UPDATE_COMMANDS === 'y';
 
-export const slappeyJSON = ONLY_UPDATE_COMMANDS
-  ? {}
-  : JSON.parse(readFileSync('./slappey-prod.json').toString());
+export const slappeyJSON = config;
 
-export const firebaseCredentials = ONLY_UPDATE_COMMANDS
-  ? {}
-  : JSON.parse(readFileSync('./firebase-credentials.json').toString());
+export const firebaseCredentials = config.firebase;
 
 ONLY_UPDATE_COMMANDS
   ? {}
