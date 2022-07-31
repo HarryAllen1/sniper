@@ -46,7 +46,6 @@
   "devDependencies": {
     "@firebase/app-compat": "0.1.29",
     "@firebase/app-types": "0.7.0",
-    "@types/body-parser": "1.19.2",
     "@types/lodash-es": "4.17.6",
     "@types/luxon": "^2.3.2",
     "@types/ms": "0.7.31",
