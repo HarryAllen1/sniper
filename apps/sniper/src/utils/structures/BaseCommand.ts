@@ -108,7 +108,7 @@ export abstract class Command {
    * @param {Array<string> | CommandInteractionOptionResolver | null} args
    * @returns {Promise<void>}
    */
-  abstract run(
+  run?(
     client: DiscordClient,
     message: Message | CommandInteraction,
     args: Array<string> | CommandInteractionOptionResolver | null
