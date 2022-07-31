@@ -115,17 +115,38 @@ export default defineConfig({
       },
     ],
     [
-      'link',
-      {
-        rel: 'manifest',
-        href: '/manifest.webmanifest',
-      },
-    ],
-    [
       'meta',
       {
         name: 'theme-color',
         content: '#02b3f6',
+      },
+    ],
+    [
+      'link',
+      {
+        rel: 'stylesheet',
+        href: 'https://unpkg.com/@discord-message-components/core/dist/styles/discord-messages.css',
+      },
+    ],
+    [
+      'link',
+      {
+        rel: 'stylesheet',
+        href: 'https://unpkg.com/@discord-message-components/core/dist/styles/discord-message.css',
+      },
+    ],
+    [
+      'link',
+      {
+        rel: 'stylesheet',
+        href: 'https://unpkg.com/@discord-message-components/core/dist/styles/discord-author-info.css',
+      },
+    ],
+    [
+      'link',
+      {
+        rel: 'stylesheet',
+        href: 'https://fonts.googleapis.com/css2?family=Fira+Code&display=swap',
       },
     ],
   ],
