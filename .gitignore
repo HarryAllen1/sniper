@@ -1,5 +1,3 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
 # dependencies
 node_modules
 .pnp
@@ -45,4 +43,3 @@ docs/.vitepress/dist
 
 # generated commands file
 docs/commands/index.md
-docs/changelog.md
