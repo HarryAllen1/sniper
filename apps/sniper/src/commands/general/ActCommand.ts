@@ -2,9 +2,9 @@ import type { CommandInteraction, Message, TextChannel } from 'discord.js';
 import type { DiscordClient } from '../../client/client.js';
 import { slappeyJSON } from '../../sniper.js';
 import { reply } from '../../utils/helpers/message.js';
-import { BaseCommand } from '../../utils/structures/BaseCommand.js';
+import { Command } from '../../utils/structures/BaseCommand.js';
 
-export default class ActCommand extends BaseCommand {
+export default class ActCommand extends Command {
   constructor() {
     super(
       'act',

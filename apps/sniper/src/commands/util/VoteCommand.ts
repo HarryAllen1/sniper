@@ -1,9 +1,9 @@
 import type { EmbedField, Message, TextChannel } from 'discord.js';
 import type { DiscordClient } from '../../client/client.js';
 import { reply } from '../../utils/helpers/message.js';
-import { BaseCommand } from '../../utils/structures/BaseCommand.js';
+import Command from '../../utils/structures/BaseCommand.js';
 
-export default class VoteCommand extends BaseCommand {
+export default class VoteCommand extends Command {
   constructor() {
     super(
       'vote2',

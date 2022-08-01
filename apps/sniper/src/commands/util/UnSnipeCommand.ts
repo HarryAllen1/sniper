@@ -8,10 +8,10 @@ import {
 } from 'discord.js';
 import type { DiscordClient } from '../../client/client.js';
 import { reply } from '../../utils/helpers/message.js';
-import { BaseCommand } from '../../utils/structures/BaseCommand.js';
+import Command from '../../utils/structures/BaseCommand.js';
 import { snipes, unSnipes } from './snipes.js';
 
-export default class UnSnipeCommand extends BaseCommand {
+export default class UnSnipeCommand extends Command {
   constructor() {
     super(
       'unsnipe',

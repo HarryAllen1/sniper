@@ -3,11 +3,11 @@ import type { CommandInteraction, Message } from 'discord.js';
 import type { DiscordClient } from '../../client/client.js';
 import { goodServers } from '../../sniper.js';
 import { ConfirmationMessage } from '../../utils/helpers/interactions.js';
-import BaseCommand, {
+import Command, {
   ApplicationCommandsRegistry,
 } from '../../utils/structures/BaseCommand.js';
 
-export default class UpdateCommand extends BaseCommand {
+export default class UpdateCommand extends Command {
   constructor() {
     super(
       'update',

@@ -1,9 +1,9 @@
 import type { Message, TextChannel } from 'discord.js';
 import type { DiscordClient } from '../../client/client.js';
 import { reply } from '../../utils/helpers/message.js';
-import { BaseCommand } from '../../utils/structures/BaseCommand.js';
+import Command from '../../utils/structures/BaseCommand.js';
 
-export default class PollCommand extends BaseCommand {
+export default class PollCommand extends Command {
   constructor() {
     super('poll', 'util', [], 10000, 'starts a poll idk', {
       argsDescription: '<the poll>',

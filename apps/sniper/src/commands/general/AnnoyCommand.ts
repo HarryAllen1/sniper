@@ -1,10 +1,10 @@
 import type { Message } from 'discord.js';
 import type { DiscordClient } from '../../client/client.js';
 import { reply } from '../../utils/helpers/message.js';
-import { BaseCommand } from '../../utils/structures/BaseCommand.js';
+import Command from '../../utils/structures/BaseCommand.js';
 import { users } from './annoy.js';
 
-export default class AnnoyCommand extends BaseCommand {
+export default class AnnoyCommand extends Command {
   constructor() {
     super('annoy', 'general', [], 5000, '');
   }

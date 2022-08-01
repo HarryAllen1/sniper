@@ -1,7 +1,7 @@
 import { GuildEmoji, Message, MessageEmbed, TextChannel } from 'discord.js';
 import type { DiscordClient } from '../../client/client.js';
 import { reply } from '../../utils/helpers/message.js';
-import { BaseCommand } from '../../utils/structures/BaseCommand.js';
+import Command from '../../utils/structures/BaseCommand.js';
 import { reactionSnipes, UniversalEmoji } from './snipes.js';
 
 const formatEmoji = (emoji: UniversalEmoji | undefined) => {
@@ -15,7 +15,7 @@ const formatEmoji = (emoji: UniversalEmoji | undefined) => {
     : ''; // bot cannot use the emoji
 };
 
-export default class ReactionsnipeCommand extends BaseCommand {
+export default class ReactionsnipeCommand extends Command {
   constructor() {
     super(
       'reactionsnipe',

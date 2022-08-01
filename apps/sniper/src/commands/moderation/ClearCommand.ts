@@ -1,9 +1,9 @@
 import type { Message, TextChannel } from 'discord.js';
 import type { DiscordClient } from '../../client/client.js';
 import { reply } from '../../utils/helpers/message.js';
-import { BaseCommand } from '../../utils/structures/BaseCommand.js';
+import Command from '../../utils/structures/BaseCommand.js';
 
-export default class ClearCommand extends BaseCommand {
+export default class ClearCommand extends Command {
   constructor() {
     super(
       'clear',

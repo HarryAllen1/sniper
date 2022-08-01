@@ -1,8 +1,8 @@
 import type { Message } from 'discord.js';
 import type { DiscordClient } from '../../client/client.js';
-import { BaseCommand } from '../../utils/structures/BaseCommand.js';
+import { Command } from '../../utils/structures/BaseCommand.js';
 
-export default class GithubCommand extends BaseCommand {
+export default class GithubCommand extends Command {
   constructor() {
     super('github', 'general', [], 5000, 'Shows this bots Github repo');
   }

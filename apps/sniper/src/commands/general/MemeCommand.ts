@@ -4,9 +4,9 @@ import type { RedditRes } from '../../typings/types.js';
 import { fetch } from '../../utils/helpers/fetch.js';
 import { reply } from '../../utils/helpers/message.js';
 import randomNumber from '../../utils/helpers/randomNumber.js';
-import { BaseCommand } from '../../utils/structures/BaseCommand.js';
+import Command from '../../utils/structures/BaseCommand.js';
 
-export default class MemeCommand extends BaseCommand {
+export default class MemeCommand extends Command {
   constructor() {
     super('meme', 'general', [], 3000, 'gets a meme from r/memes');
   }

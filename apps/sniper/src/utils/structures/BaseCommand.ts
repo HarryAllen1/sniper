@@ -30,7 +30,7 @@ interface ExtraCommandOptions {
   tip?: string;
 }
 
-export abstract class BaseCommand {
+export abstract class Command {
   /**
    * @param _name the name of the command
    * @param _category category
@@ -137,11 +137,11 @@ export abstract class BaseCommand {
 }
 
 // eslint-disable-next-line @typescript-eslint/no-namespace
-export namespace BaseCommand {
+export namespace Command {
   export type CommandInteraction = import('discord.js').CommandInteraction;
   export type CommandsRegistry = ApplicationCommandsRegistry;
 }
-export default BaseCommand;
+export default Command;
 
 export class ApplicationCommandsRegistry {
   registerChatInputCommand(

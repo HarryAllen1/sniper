@@ -1,9 +1,9 @@
 import { Message, version } from 'discord.js';
 import ms from 'ms';
 import type { DiscordClient } from '../../client/client.js';
-import { BaseCommand } from '../../utils/structures/BaseCommand.js';
+import Command from '../../utils/structures/BaseCommand.js';
 
-export default class BotCommand extends BaseCommand {
+export default class BotCommand extends Command {
   constructor() {
     super('bot', 'util', [], 15000, 'Shows information about the bot');
   }

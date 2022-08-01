@@ -2,9 +2,9 @@ import type { Message } from 'discord.js';
 import type { DiscordClient } from '../../client/client.js';
 import { reply } from '../../utils/helpers/message.js';
 import { getRandomNumber } from '../../utils/helpers/randomNumber.js';
-import { BaseCommand } from '../../utils/structures/BaseCommand.js';
+import Command from '../../utils/structures/BaseCommand.js';
 
-export default class CoinflipCommand extends BaseCommand {
+export default class CoinflipCommand extends Command {
   constructor() {
     super('coinflip', 'general', [], 500, 'Flips a coin', {
       argsRequired: false,

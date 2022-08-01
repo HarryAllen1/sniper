@@ -4,8 +4,9 @@ import ms from 'ms';
 import * as fs from 'node:fs';
 import * as path from 'node:path';
 import type { DiscordClient } from '../client/client.js';
-import type { BaseCommand } from './structures/BaseCommand.js';
-import { ApplicationCommandsRegistry } from './structures/BaseCommand.js';
+import Command, {
+  ApplicationCommandsRegistry,
+} from './structures/BaseCommand.js';
 import type { BaseEvent } from './structures/BaseEvent.js';
 
 // interface CommandHelper {
@@ -44,7 +45,7 @@ export function registerCommands(client: DiscordClient, dir = '') {
       helpCommandHelperCollection.set(file, { commands: [] });
     }
     if (file.endsWith('Command.js') || file.endsWith('Command.ts')) {
-      let Command: Type<BaseCommand>;
+      let Command: Type<Command>;
 
       import('../../' + path.join(dir, file)).then(({ default: c }) => {
         Command = c;

@@ -2,9 +2,9 @@ import { Message, MessageActionRow, MessageButton } from 'discord.js';
 import ms from 'ms';
 import type { DiscordClient } from '../../client/client.js';
 import { reply } from '../../utils/helpers/message.js';
-import { BaseCommand } from '../../utils/structures/BaseCommand.js';
+import Command from '../../utils/structures/BaseCommand.js';
 
-export default class VoteCommand extends BaseCommand {
+export default class VoteCommand extends Command {
   constructor() {
     super('vote', 'general', [], ms('3s'), 'Vote for the bot on top.gg');
   }

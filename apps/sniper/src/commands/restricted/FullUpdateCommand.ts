@@ -3,11 +3,11 @@ import { CommandInteraction, Message, MessageEmbed } from 'discord.js';
 import type { DiscordClient } from '../../client/client.js';
 import { goodServers } from '../../sniper.js';
 import { ConfirmationMessage } from '../../utils/helpers/interactions.js';
-import BaseCommand, {
+import Command, {
   ApplicationCommandsRegistry,
 } from '../../utils/structures/BaseCommand.js';
 
-export default class RestartCommand extends BaseCommand {
+export default class RestartCommand extends Command {
   constructor() {
     super('fullupdate', 'restricted', [], 5000, 'Updates sniper and VM deps');
   }

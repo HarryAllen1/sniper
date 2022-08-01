@@ -3,9 +3,9 @@ import type { DiscordClient } from '../../client/client.js';
 import type { GithubCommits } from '../../typings/types.js';
 import { fetch } from '../../utils/helpers/fetch.js';
 import { reply } from '../../utils/helpers/message.js';
-import { BaseCommand } from '../../utils/structures/BaseCommand.js';
+import Command from '../../utils/structures/BaseCommand.js';
 
-export default class ChangelogCommand extends BaseCommand {
+export default class ChangelogCommand extends Command {
   constructor() {
     super(
       'changelog',

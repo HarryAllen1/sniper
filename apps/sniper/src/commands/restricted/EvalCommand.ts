@@ -4,13 +4,13 @@ import type { DiscordClient } from '../../client/client.js';
 import { goodServers } from '../../sniper.js';
 import { reply } from '../../utils/helpers/message.js';
 import * as userImport from '../../utils/helpers/user.js';
-import BaseCommand, {
+import Command, {
   ApplicationCommandsRegistry,
 } from '../../utils/structures/BaseCommand.js';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import * as snipesImport from '../util/snipes.js';
 
-export default class EvalCommand extends BaseCommand {
+export default class EvalCommand extends Command {
   constructor() {
     super(
       'eval',

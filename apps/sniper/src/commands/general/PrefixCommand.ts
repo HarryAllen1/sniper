@@ -1,9 +1,9 @@
 import type { Message } from 'discord.js';
 import type { DiscordClient } from '../../client/client.js';
 import { reply } from '../../utils/helpers/message.js';
-import { BaseCommand } from '../../utils/structures/BaseCommand.js';
+import Command from '../../utils/structures/BaseCommand.js';
 
-export default class PrefixCommand extends BaseCommand {
+export default class PrefixCommand extends Command {
   constructor() {
     super(
       'prefix',
