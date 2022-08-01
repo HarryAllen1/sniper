@@ -21,7 +21,6 @@
   },
   "devDependencies": {
     "@types/node": "18.6.3",
-    "colorette": "^2.0.17",
     "eslint": "8.21.0",
     "eslint-plugin-vue": "^9.3.0",
     "lodash": "^4.17.21",
@@ -30,7 +29,6 @@
     "prettier": "2.7.1",
     "turbo": "1.4.0",
     "typescript": "4.7.4",
-    "undici": "^5.8.0",
     "vitepress": "1.0.0-alpha.4",
     "vue": "^3.2.36"
   },

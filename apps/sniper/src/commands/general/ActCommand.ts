@@ -19,6 +19,27 @@ export default class ActCommand extends Command {
     );
   }
 
+  async registerApplicationCommands(
+    client: DiscordClient,
+    registry: Command.CommandsRegistry
+  ) {
+    registry.registerChatInputCommand(
+      (b) =>
+        b
+          .setName(this.name)
+          .setDescription(
+            'Sends a command as someone else. Restricted to certain servers.'
+          )
+          .addUserOption((i) =>
+            i
+              .setName('user')
+              .setDescription('The user to impersonate')
+              .setRequired(true)
+          ),
+      slappeyJSON.actServers
+    );
+  }
+
   async chatInputRun(client: DiscordClient, interaction: CommandInteraction) {
     if (
       !(slappeyJSON.actServers as readonly string[]).includes(

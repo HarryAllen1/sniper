@@ -152,7 +152,7 @@ export class ApplicationCommandsRegistry {
         ) =>
           | SlashCommandBuilder
           | Omit<SlashCommandBuilder, 'addSubcommand' | 'addSubcommandGroup'>),
-    guildIds?: string[]
+    guildIds?: string[] | readonly string[]
   ) {
     let builtBuilder: RESTPostAPIApplicationCommandsJSONBody;
     if (builder instanceof SlashCommandBuilder) {
@@ -160,7 +160,7 @@ export class ApplicationCommandsRegistry {
     } else {
       builtBuilder = builder(new SlashCommandBuilder()).toJSON();
     }
-    commands.push({ command: builtBuilder, guildIds });
+    commands.push({ command: builtBuilder, guildIds: guildIds as any });
   }
 
   registerContextMenuCommand(
@@ -170,7 +170,8 @@ export class ApplicationCommandsRegistry {
           builder: ContextMenuCommandBuilder
         ) =>
           | ContextMenuCommandBuilder
-          | Omit<SlashCommandBuilder, 'addSubcommand' | 'addSubcommandGroup'>)
+          | Omit<SlashCommandBuilder, 'addSubcommand' | 'addSubcommandGroup'>),
+    guildIds?: string[] | readonly string[]
   ) {
     let builtBuilder: RESTPostAPIApplicationCommandsJSONBody;
     if (builder instanceof ContextMenuCommandBuilder) {
@@ -178,6 +179,6 @@ export class ApplicationCommandsRegistry {
     } else {
       builtBuilder = builder(new ContextMenuCommandBuilder()).toJSON();
     }
-    commands.push({ command: builtBuilder });
+    commands.push({ command: builtBuilder, guildIds: guildIds as any });
   }
 }
