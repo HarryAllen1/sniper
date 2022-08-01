@@ -9,10 +9,10 @@ hero:
   actions:
     - text: Setup
       link: /setup
-      type: primary
+      theme: brand
     - text: Command Reference
       link: /commands/index
-      type: secondary
+      theme: alt
 features:
   - title: Snipe
     details: See what a deleted message contained
