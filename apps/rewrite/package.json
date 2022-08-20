@@ -22,7 +22,7 @@
     "@sapphire/decorators": "^4.3.8",
     "@sapphire/discord.js-utilities": "^4.11.1",
     "@sapphire/framework": "3.0.0-next.87e5cdc.0",
-    "@sapphire/pieces": "3.3.5",
+    "@sapphire/pieces": "3.5.1",
     "@sapphire/plugin-editable-commands": "^1.2.2",
     "@sapphire/plugin-logger": "^2.2.3",
     "@sapphire/utilities": "^3.8.0",
