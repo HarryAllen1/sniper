@@ -15,3 +15,7 @@
   --scrollbar-border-radius: 4px;
   --search-accent-color: var(--c-brand);
 }
+
+.DocSearch-Button-Key {
+  display: flex;
+}
