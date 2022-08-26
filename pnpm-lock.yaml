@@ -4,21 +4,44 @@ importers:
 
   .:
     specifiers:
+      '@discordjs/builders': ^1.2.0
+      '@firebase/app-compat': ^0.1.32
+      '@firebase/app-types': ^0.7.0
+      '@sapphire/decorators': 5.0.1-pr-434.549335e.0
+      '@sapphire/discord.js-utilities': 5.1.0-pr-434.549335e.0
+      '@sapphire/framework': 3.1.0-pr-512.135ce4a.0
+      '@sapphire/plugin-logger': ^3.0.0
+      '@sapphire/utilities': ^3.9.2
       '@types/node': 18.7.13
       '@typescript-eslint/eslint-plugin': 5.33.1
       '@typescript-eslint/parser': 5.33.1
+      colorette: ^2.0.19
+      discord.js: ^14.3.0
       eslint: 8.22.0
       eslint-plugin-prettier: ^4.2.1
       eslint-plugin-vue: ^9.4.0
+      firebase-admin: ^11.0.1
       lodash: ^4.17.21
       ms: ^2.1.3
       pnpm: ^7.9.5
       prettier: 2.7.1
-      turbo: 1.4.3
+      tsup: ^6.2.2
       typescript: 4.8.2
       vitepress: 1.0.0-alpha.10
       vue: ^3.2.36
+    dependencies:
+      '@discordjs/builders': 1.2.0
+      '@firebase/app-compat': 0.1.32
+      '@sapphire/decorators': 5.0.1-pr-434.549335e.0
+      '@sapphire/discord.js-utilities': 5.1.0-pr-434.549335e.0
+      '@sapphire/framework': 3.1.0-pr-512.135ce4a.0
+      '@sapphire/plugin-logger': 3.0.0
+      '@sapphire/utilities': 3.9.2
+      colorette: 2.0.19
+      discord.js: 14.3.0
+      firebase-admin: 11.0.1_@firebase+app-types@0.7.0
     devDependencies:
+      '@firebase/app-types': 0.7.0
       '@types/node': 18.7.13
       '@typescript-eslint/eslint-plugin': 5.33.1_nwhpyloic4nss3yfbveobeaorq
       '@typescript-eslint/parser': 5.33.1_shit3uhl6a7megkzgoz6xssnfa
@@ -29,7 +52,7 @@ importers:
       ms: 2.1.3
       pnpm: 7.9.5
       prettier: 2.7.1
-      turbo: 1.4.3
+      tsup: 6.2.2_typescript@4.8.2
       typescript: 4.8.2
       vitepress: 1.0.0-alpha.10
       vue: 3.2.37
@@ -576,7 +599,7 @@ packages:
     engines: {node: ^8.13.0 || >=10.10.0}
     dependencies:
       '@grpc/proto-loader': 0.7.0
-      '@types/node': 18.7.8
+      '@types/node': 18.7.13
     dev: false
     optional: true
 
@@ -872,7 +895,7 @@ packages:
     resolution: {integrity: sha512-GEm7W6hAMC1yN76z0SZlIij66MDcuvWf7ra2TPGhflmv5ZUG4vNHNMktexP4AwEgKeF1jKJouVrIs3lAC3e4ZQ==}
     engines: {node: '>=v14.0.0', npm: '>=7.0.0'}
     dependencies:
-      '@discordjs/collection': 1.0.1
+      '@discordjs/collection': 1.1.0
       '@sapphire/utilities': 3.9.2
       tslib: 2.4.0
     dev: false
@@ -958,19 +981,19 @@ packages:
     resolution: {integrity: sha512-ALYone6pm6QmwZoAgeyNksccT9Q4AWZQ6PvfwR37GT6r6FWUPguq6sUmNGSMV2Wr761oQoBxwGGa6DR5o1DC9g==}
     dependencies:
       '@types/connect': 3.4.35
-      '@types/node': 18.7.8
+      '@types/node': 18.7.13
     dev: false
 
   /@types/connect/3.4.35:
     resolution: {integrity: sha512-cdeYyv4KWoEgpBISTxWvqYsVy444DOqehiF3fM3ne10AmJ62RSyNkUnxMJXHQWRQQX2eR94m5y1IZyDwBjV9FQ==}
     dependencies:
-      '@types/node': 18.7.8
+      '@types/node': 18.7.13
     dev: false
 
   /@types/express-serve-static-core/4.17.30:
     resolution: {integrity: sha512-gstzbTWro2/nFed1WXtf+TtrpwxH7Ggs4RLYTLbeVgIkUQOI3WG/JKjgeOU1zXDvezllupjrf8OPIdvTbIaVOQ==}
     dependencies:
-      '@types/node': 18.7.8
+      '@types/node': 18.7.13
       '@types/qs': 6.9.7
       '@types/range-parser': 1.2.4
     dev: false
@@ -991,7 +1014,7 @@ packages:
   /@types/jsonwebtoken/8.5.8:
     resolution: {integrity: sha512-zm6xBQpFDIDM6o9r6HSgDeIcLy82TKWctCXEPbJJcXb5AKmi5BNNdLXneixK4lplX3PqIVcwLBCGE/kAGnlD4A==}
     dependencies:
-      '@types/node': 18.7.8
+      '@types/node': 18.7.13
     dev: false
 
   /@types/lodash-es/4.17.6:
@@ -1033,6 +1056,7 @@ packages:
 
   /@types/node/18.7.8:
     resolution: {integrity: sha512-/YP55EMK2341JkODUb8DM9O0x1SIz2aBvyF33Uf1c76St3VpsMXEIW0nxuKkq/5cxnbz0RD9cfwNZHEAZQD3ag==}
+    dev: true
 
   /@types/object-hash/2.2.1:
     resolution: {integrity: sha512-i/rtaJFCsPljrZvP/akBqEwUP2y5cZLOmvO+JaYnz01aPknrQ+hB5MRcO7iqCUsFaYfTG8kGfKUyboA07xeDHQ==}
@@ -1050,7 +1074,7 @@ packages:
     resolution: {integrity: sha512-z5xyF6uh8CbjAu9760KDKsH2FcDxZ2tFCsA4HIMWE6IkiYMXfVoa+4f9KX+FN0ZLsaMw1WNG2ETLA6N+/YA+cg==}
     dependencies:
       '@types/mime': 3.0.0
-      '@types/node': 18.7.8
+      '@types/node': 18.7.13
     dev: false
 
   /@types/web-bluetooth/0.0.15:
@@ -2752,7 +2776,7 @@ packages:
       '@fastify/busboy': 1.1.0
       '@firebase/database-compat': 0.2.3_@firebase+app-types@0.7.0
       '@firebase/database-types': 0.9.11
-      '@types/node': 18.7.8
+      '@types/node': 18.7.13
       jsonwebtoken: 8.5.1
       jwks-rsa: 2.1.4
       node-forge: 1.3.1
@@ -4041,7 +4065,7 @@ packages:
       '@protobufjs/pool': 1.1.0
       '@protobufjs/utf8': 1.1.0
       '@types/long': 4.0.2
-      '@types/node': 18.7.8
+      '@types/node': 18.7.13
       long: 4.0.0
     dev: false
     optional: true
@@ -4062,7 +4086,7 @@ packages:
       '@protobufjs/pool': 1.1.0
       '@protobufjs/utf8': 1.1.0
       '@types/long': 4.0.2
-      '@types/node': 18.7.8
+      '@types/node': 18.7.13
       long: 5.2.0
     dev: false
     optional: true
@@ -4684,139 +4708,6 @@ packages:
     dependencies:
       tslib: 1.14.1
       typescript: 4.8.2
-    dev: true
-
-  /turbo-android-arm64/1.4.3:
-    resolution: {integrity: sha512-ZUvdoEHJkTkOFOO9PKWYrdONDBVqkNsvwEMufTVf07RXgqmbXDPkznzT4hcQm6xXyqWqJdjgSAMdlm+2nNE1Og==}
-    cpu: [arm64]
-    os: [android]
-    requiresBuild: true
-    dev: true
-    optional: true
-
-  /turbo-darwin-64/1.4.3:
-    resolution: {integrity: sha512-gapoVm5qbu2TJS4lJ6fM3o2eAkLyXSxHihw/4NRAYmwHCH3at1/cIAnRcctB/HLL3ZaB/p3HKb8mnI7k6xNHOw==}
-    cpu: [x64]
-    os: [darwin]
-    requiresBuild: true
-    dev: true
-    optional: true
-
-  /turbo-darwin-arm64/1.4.3:
-    resolution: {integrity: sha512-XUe6FTsHamEH7FfNslYYO04yecAaguhZuwW4kE9B/BAP8MUYsmVqONauLPyE/YqM6pf2K0xwVe+RlEGf53CWbg==}
-    cpu: [arm64]
-    os: [darwin]
-    requiresBuild: true
-    dev: true
-    optional: true
-
-  /turbo-freebsd-64/1.4.3:
-    resolution: {integrity: sha512-1CAjXmDClgMXdWZXreUfAbGBB2WB9TZHfJIdsgnDqt4fIcFGChknzYqc+Fj3tGHAczMpinGjBbWIzFuxOq/ofQ==}
-    cpu: [x64]
-    os: [freebsd]
-    requiresBuild: true
-    dev: true
-    optional: true
-
-  /turbo-freebsd-arm64/1.4.3:
-    resolution: {integrity: sha512-j5C7j/vwabPKpr5d6YlLgHGHBZCOcXj3HdkBshDHTQ0wghH0NuCUUaesYxI3wva/4/Ec0dhIrb20Laa/HMxXLA==}
-    cpu: [arm64]
-    os: [freebsd]
-    requiresBuild: true
-    dev: true
-    optional: true
-
-  /turbo-linux-32/1.4.3:
-    resolution: {integrity: sha512-vnc+StXIoQEnxIU43j7rEz/J+v+RV4dbUdUolBq0k9gkUV8KMCcqPkIa753K47E2KLNGKXMaYDI6AHQX1GAQZg==}
-    cpu: [ia32]
-    os: [linux]
-    requiresBuild: true
-    dev: true
-    optional: true
-
-  /turbo-linux-64/1.4.3:
-    resolution: {integrity: sha512-KAUeIa8Ejt6BLrBGbVurlrjDxqh62tu75D4cqKqKfzWspcbEtmdqlV6qthXfm8SlzGSNuQXX0+qXEWds2FIZXg==}
-    cpu: [x64]
-    os: [linux]
-    requiresBuild: true
-    dev: true
-    optional: true
-
-  /turbo-linux-arm/1.4.3:
-    resolution: {integrity: sha512-zZNoHUK5ioFyxAngh8tHe763Dzb22ne3LJkaZn0ExkFHJtWClWv536lPcDuQPpIH9W9iz5OwPKtN32DNpNwk8A==}
-    cpu: [arm]
-    os: [linux]
-    requiresBuild: true
-    dev: true
-    optional: true
-
-  /turbo-linux-arm64/1.4.3:
-    resolution: {integrity: sha512-rzB7w+RHCQkKr8aDxxozv/IzdN976CYyBiRocSf9QGU73uyAg8pCo3i0MiENSRjDC+tUbdbu2lEUwGXf9ziB9Q==}
-    cpu: [arm64]
-    os: [linux]
-    requiresBuild: true
-    dev: true
-    optional: true
-
-  /turbo-linux-mips64le/1.4.3:
-    resolution: {integrity: sha512-Ztr1BM5NiUsHWjB7zpkP2RpRDA/fjbLaCbkyfyGlLmVkrSkh05NFBD03IWs2LSLy/wb6vRpL3MQ4FKcb97Tn8w==}
-    cpu: [mipsel]
-    os: [linux]
-    requiresBuild: true
-    dev: true
-    optional: true
-
-  /turbo-linux-ppc64le/1.4.3:
-    resolution: {integrity: sha512-tJaFJWxwfy/iLd69VHZj6JcXy9hO8LQ+ZUOna/p/wiy5WrFVgEYlD+4gfECfRZ+52EIelMgXl97vACaN1WMhLw==}
-    cpu: [ppc64]
-    os: [linux]
-    requiresBuild: true
-    dev: true
-    optional: true
-
-  /turbo-windows-32/1.4.3:
-    resolution: {integrity: sha512-w9LyYd+DW3PYFXu9vQiie5lfdqmVIKLV0h181C49hempkIXfgQAosXfaugYWDwBc0GEBoBIQB0vGQKE7gt5nzA==}
-    cpu: [ia32]
-    os: [win32]
-    requiresBuild: true
-    dev: true
-    optional: true
-
-  /turbo-windows-64/1.4.3:
-    resolution: {integrity: sha512-qPCqemxxOrXyqqig3fVQozRkOwo5oJSsQ3FTZE5YlNu2NwwWvY1mC0X4WTZIDsbj4oHqr0riqC7RGKbjQm1IIQ==}
-    cpu: [x64]
-    os: [win32]
-    requiresBuild: true
-    dev: true
-    optional: true
-
-  /turbo-windows-arm64/1.4.3:
-    resolution: {integrity: sha512-djnOOBjw33AnUx2SR6TMOpDr3nKLnVD+HcZvnQz70HyE331AKWjBoEE4rtUOteLAfViWAp3afbiljFSOnbU00Q==}
-    cpu: [arm64]
-    os: [win32]
-    requiresBuild: true
-    dev: true
-    optional: true
-
-  /turbo/1.4.3:
-    resolution: {integrity: sha512-g08eD2HdO/XW5xGHnXr0cXGiWnrgFBI6pN/3u0EOTeerKAsWIZU0ZrpSnl3whRtImeBB/gQu7Eu1waM2VOxzgw==}
-    hasBin: true
-    requiresBuild: true
-    optionalDependencies:
-      turbo-android-arm64: 1.4.3
-      turbo-darwin-64: 1.4.3
-      turbo-darwin-arm64: 1.4.3
-      turbo-freebsd-64: 1.4.3
-      turbo-freebsd-arm64: 1.4.3
-      turbo-linux-32: 1.4.3
-      turbo-linux-64: 1.4.3
-      turbo-linux-arm: 1.4.3
-      turbo-linux-arm64: 1.4.3
-      turbo-linux-mips64le: 1.4.3
-      turbo-linux-ppc64le: 1.4.3
-      turbo-windows-32: 1.4.3
-      turbo-windows-64: 1.4.3
-      turbo-windows-arm64: 1.4.3
     dev: true
 
   /tv4/1.3.0:

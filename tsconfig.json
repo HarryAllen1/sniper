@@ -1,8 +1,27 @@
 {
-  "extends": "./tsconfig.base.json",
   "compilerOptions": {
-    "module": "CommonJS",
+    "baseUrl": "./src",
+    "moduleResolution": "node",
+    "outDir": "dist",
+    "typeRoots": ["./node_modules/@types"],
+
+    "removeComments": true,
+    "pretty": false,
+    "target": "ESNext",
+
+    "declaration": true,
+
+    "module": "ES2022",
+
+    "resolveJsonModule": true,
+
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
     "lib": ["ESNext", "ES2015.Iterable"],
-    "moduleResolution": "node"
+    "strict": true,
+    "skipLibCheck": true,
+
+    "allowSyntheticDefaultImports": true,
+    "experimentalDecorators": true
   }
 }

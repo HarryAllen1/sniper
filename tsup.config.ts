@@ -6,7 +6,7 @@ export default defineConfig({
   dts: false,
   entry: ['src/**/*.ts', '!src/**/*.d.ts'],
   format: ['esm'],
-  minify: true,
+  minify: false,
   tsconfig: 'tsconfig.json',
   target: 'esnext',
   splitting: false,
@@ -15,5 +15,5 @@ export default defineConfig({
   silent: true,
   shims: false,
   keepNames: true,
-  outDir: 'out',
+  outDir: 'dist',
 });
