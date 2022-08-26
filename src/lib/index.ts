@@ -7,7 +7,6 @@ export * from './util/fb.js';
 export * from './util/fetch.js';
 export * from './util/interactions.js';
 export * from './util/mention.js';
-export * from './util/message.js';
 export * from './util/misc.js';
 export * from './util/randomNumber.js';
 export * from './util/string.js';

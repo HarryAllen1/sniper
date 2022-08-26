@@ -1,6 +1,6 @@
 import { ApplyOptions, RequiresGuildContext } from '@sapphire/decorators';
 import { ApplicationCommandRegistry, Command } from '@sapphire/framework';
-import { MessageEmbed, TextChannel } from 'discord.js';
+import { Colors, EmbedBuilder, Message, TextChannel } from 'discord.js';
 import { editSnipes } from '../../lib/snipes.js';
 
 @ApplyOptions<Command.Options>({
@@ -20,7 +20,7 @@ export class UserCommand extends Command {
   @RequiresGuildContext((i) => {
     i.reply('This command can only be used in a guild.');
   })
-  public async chatInputRun(interaction: Command.ChatInputInteraction) {
+  public async chatInputRun(interaction: Command.ChatInputCommandInteraction) {
     const channel = interaction.channel as TextChannel;
     const snipe = editSnipes[channel.id];
     if (!snipe)
@@ -30,7 +30,7 @@ export class UserCommand extends Command {
             title: "There's nothing to snipe!",
             description:
               'Deleted messages can only be sniped within 1 hour of deletion.',
-            color: 'RED',
+            color: Colors.Red,
           },
         ],
       });
@@ -38,21 +38,59 @@ export class UserCommand extends Command {
     await interaction.reply({
       embeds: [
         snipe
-          ? new MessageEmbed()
-              .addField('Old message:', snipe.content ?? '')
-              .addField(
-                'New message:',
-                `[Jump!](https://discord.com/channels/${interaction.guild?.id}/${channel.id}/${snipe.id})`
+          ? new EmbedBuilder()
+              .addFields(
+                { name: 'Old message:', value: snipe.content ?? '' },
+                {
+                  name: 'New message:',
+                  value: `[Jump!](https://discord.com/channels/${interaction.guild?.id}/${interaction.channelId}/${snipe.id})`,
+                }
               )
               .setAuthor({ name: snipe.author?.tag ?? '' })
-              .setColor('GREEN')
+              .setColor(Colors.Green)
               .setFooter({
                 text: `#${channel.name}`,
               })
               .setTimestamp(snipe.createdAt ? snipe.createdAt : 0)
-          : new MessageEmbed()
+          : new EmbedBuilder()
               .setTitle("There's nothing to snipe!")
-              .setColor('RED'),
+              .setColor(Colors.Red),
+      ],
+    });
+  }
+
+  public async messageRun(message: Message) {
+    const snipe = editSnipes[message.channelId];
+    if (!snipe)
+      return message.reply({
+        embeds: [
+          {
+            title: "There's nothing to snipe!",
+            description:
+              'Deleted messages can only be sniped within 1 hour of deletion.',
+            color: Colors.Red,
+          },
+        ],
+      });
+
+    await message.reply({
+      embeds: [
+        snipe
+          ? new EmbedBuilder()
+              .addFields(
+                { name: 'Old message:', value: snipe.content ?? '' },
+                {
+                  name: 'New message:',
+                  value: `[Jump!](https://discord.com/channels/${message.guild?.id}/${message.channelId}/${snipe.id})`,
+                }
+              )
+              .setAuthor({ name: snipe.author?.tag ?? '' })
+              .setColor(Colors.Green)
+              .setFooter({ text: `#${(message.channel as TextChannel).name}` })
+              .setTimestamp(snipe.createdAt ? snipe.createdAt : 0)
+          : new EmbedBuilder()
+              .setTitle("There's nothing to snipe!")
+              .setColor(Colors.Red),
       ],
     });
   }

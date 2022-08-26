@@ -1,13 +1,15 @@
-import { reactionSnipes, sleep } from '#lib';
 import { ApplyOptions } from '@sapphire/decorators';
 import { Events, Listener, ListenerOptions } from '@sapphire/framework';
-import type {
+import {
   GuildMember,
   MessageReaction,
+  PermissionFlagsBits,
   TextChannel,
   User,
 } from 'discord.js';
 import ms from 'ms';
+import { sleep } from '../../lib/index.js';
+import { reactionSnipes } from '../../lib/snipes.js';
 
 @ApplyOptions<ListenerOptions>({
   event: Events.MessageReactionRemove,
@@ -23,8 +25,8 @@ export class MessageReactionRemove extends Listener<
     idk.catch(() => null);
     if (
       (reaction.message.channel as TextChannel)
-        .permissionsFor(reaction.message.guild?.me as GuildMember)
-        .has('READ_MESSAGE_HISTORY')
+        .permissionsFor(reaction.message.guild?.members.me as GuildMember)
+        .has(PermissionFlagsBits.ReadMessageHistory)
     )
       reaction = await idk;
 
@@ -33,6 +35,7 @@ export class MessageReactionRemove extends Listener<
       emoji: reaction.emoji,
       messageURL: reaction.message.url,
       createdAt: reaction.message.createdTimestamp,
+      cmdId: '',
     };
     await sleep(ms('1h'));
 

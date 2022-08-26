@@ -1,9 +1,9 @@
-import { sleep } from '#lib';
-import { snipes } from '#lib/snipes.js';
 import { ApplyOptions } from '@sapphire/decorators';
 import { Events, Listener, ListenerOptions } from '@sapphire/framework';
-import { Message, Util } from 'discord.js';
+import { cleanContent, Message } from 'discord.js';
 import ms from 'ms';
+import { sleep } from '../../lib/index.js';
+import { snipes } from '../../lib/snipes.js';
 
 @ApplyOptions<ListenerOptions>({
   event: Events.MessageDelete,
@@ -18,7 +18,7 @@ export class MessageDelete extends Listener<typeof Events.MessageDelete> {
       this.container.logger.info(
         `${message.guild?.name}: ${
           message.member?.user.username
-        }: ${Util.cleanContent(message.content, message.channel)}`
+        }: ${cleanContent(message.content, message.channel)}`
       );
 
     snipes[message.channel.id] = {
@@ -29,6 +29,7 @@ export class MessageDelete extends Listener<typeof Events.MessageDelete> {
       attachments: [...message.attachments.values()]?.map((a) => a.proxyURL),
       embeds: Array.isArray(message.embeds) ? undefined : message.embeds,
       message,
+      cmdId: message.id,
     };
     // const snipeContent: any = {};
     // snipeContent[message.channel.id] = {

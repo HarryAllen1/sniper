@@ -43,7 +43,7 @@ const capitalizeFirstLetter = (string) =>
 ### ${cmd.disabled ? `~~${cmd.name}~~` : cmd.name}
 ${cmd.disabled ? '::: warning\nThis command is disabled\n:::\n' : ''}${
           cmd.tip !== '' ? `::: tip\n${cmd.tip}\n:::\n` : ''
-        }${cmd.aliases?.length ? cmd.description + '\\\n' : ''}${
+        }${cmd.aliases?.length ? `${cmd.description  }\\\n` : ''}${
           cmd.aliases?.length
             ? `**Aliases:** ${cmd.aliases.join(', ')}\\\n`
             : ''

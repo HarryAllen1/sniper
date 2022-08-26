@@ -1,8 +1,8 @@
 import type {
+  EmbedBuilder,
   Emoji,
   GuildEmoji,
   Message,
-  MessageEmbed,
   PartialUser,
   ReactionEmoji,
   User,
@@ -21,7 +21,8 @@ interface SnipeContent {
   user?: User | PartialUser;
   message?: Message;
   requesterId?: string;
-  embeds?: MessageEmbed[];
+  embeds?: EmbedBuilder[];
+  cmdId: string;
 }
 
 export interface Snipe {

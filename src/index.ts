@@ -4,6 +4,8 @@ import {
   LogLevel,
   RegisterBehavior,
 } from '@sapphire/framework';
+import '@sapphire/plugin-logger/register';
+import { createColors } from 'colorette';
 import { ActivityType, GatewayIntentBits, type Message } from 'discord.js';
 import { SniperClient } from './client.js';
 import { config } from './config.js';
@@ -48,7 +50,7 @@ export const client: SniperClient = new SniperClient({
   failIfNotExists: true,
   caseInsensitiveCommands: true,
   logger: {
-    level: LogLevel.Debug,
+    level: LogLevel.Info,
   },
   defaultCooldown: {
     delay: 3000,
@@ -56,7 +58,8 @@ export const client: SniperClient = new SniperClient({
   },
 });
 
-(async () => {
-  await client.initDB();
+(() => {
+  // client.initDB();
+  createColors({ useColor: true });
   void client.login(config.discordToken);
 })();

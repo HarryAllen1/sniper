@@ -1,6 +1,6 @@
 import { ApplyOptions } from '@sapphire/decorators';
-import { Command } from '@sapphire/framework';
-import type { CommandInteraction, Message } from 'discord.js';
+import { Command, RegisterBehavior } from '@sapphire/framework';
+import { Colors, CommandInteraction, Message } from 'discord.js';
 import ms from 'ms';
 
 @ApplyOptions<Command.Options>({
@@ -10,44 +10,50 @@ import ms from 'ms';
   cooldownDelay: ms('5s'),
 })
 export class PingCommand extends Command {
-  public chatInputRun(message: CommandInteraction) {
-    message
-      .reply({
-        embeds: [{ title: 'pinging....', color: 'RED' }],
-        fetchReply: true,
-      })
-      .then((msg) => {
-        // const messageSendTime = Date.now();
-        // let dbPing: number;
-        // getUserData(message.author.id).then(() => {
-        //   dbPing = Date.now();
-        (msg as Message).edit({
-          embeds: [
-            {
-              title: 'Pong!',
-              description: 'these numbers do *not* represent lag.',
-              color: 'GREEN',
-              fields: [
-                {
-                  name: 'Latency',
-                  value: `${ms(
-                    (msg as Message).createdTimestamp - message.createdTimestamp
-                  )}`,
-                },
-                {
-                  name: 'API Latency',
-                  value: `${this.container.client.ws.ping.toString()}ms`,
-                },
+  public override registerApplicationCommands(registry: Command.Registry) {
+    registry.registerChatInputCommand(
+      {
+        name: this.name,
+        description: this.description,
+      },
+      {
+        behaviorWhenNotIdentical: RegisterBehavior.Overwrite,
+        idHints: ['1012580900476821617'],
+      }
+    );
+  }
 
-                {
-                  name: 'Uptime (how long since the last bot restart; affects `snipe` commands)',
-                  value: `${ms(this.container.client.uptime ?? 0)}`,
-                },
-              ],
+  public async chatInputRun(message: CommandInteraction) {
+    const msg = await message.reply({
+      embeds: [{ title: 'pinging....', color: Colors.Red }],
+      fetchReply: true,
+    });
+
+    await msg.edit({
+      embeds: [
+        {
+          title: 'Pong!',
+          description: 'these numbers do *not* represent lag.',
+          color: Colors.Green,
+          fields: [
+            {
+              name: 'Latency',
+              value: `${ms(
+                (msg as Message).createdTimestamp - message.createdTimestamp
+              )}`,
+            },
+            {
+              name: 'API Latency',
+              value: `${this.container.client.ws.ping.toString()}ms`,
+            },
+
+            {
+              name: 'Uptime (how long since the last bot restart; affects `snipe` commands)',
+              value: `${ms(this.container.client.uptime ?? 0)}`,
             },
           ],
-        });
-        // });
-      });
+        },
+      ],
+    });
   }
 }

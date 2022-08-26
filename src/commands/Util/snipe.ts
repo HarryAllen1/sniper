@@ -1,4 +1,3 @@
-import { snipes, unSnipes } from '#lib/snipes.js';
 import { ApplyOptions, RequiresGuildContext } from '@sapphire/decorators';
 import { PaginatedMessage } from '@sapphire/discord.js-utilities';
 import {
@@ -6,7 +5,9 @@ import {
   Command,
   RegisterBehavior,
 } from '@sapphire/framework';
-import { Message, MessageEmbed, TextChannel } from 'discord.js';
+import { Colors, EmbedBuilder, Message, TextChannel } from 'discord.js';
+import ms from 'ms';
+import { snipes, unSnipes } from '../../lib/snipes.js';
 
 @ApplyOptions<Command.Options>({
   name: 'snipe',
@@ -39,53 +40,49 @@ export class SnipeCommand extends Command {
               .setRequired(false)
           ),
       {
-        idHints: ['978089005189038122'],
         behaviorWhenNotIdentical: RegisterBehavior.Overwrite,
       }
     );
   }
 
   @RequiresGuildContext()
-  public async chatInputRun(interaction: Command.ChatInputInteraction) {
-    const channel = <TextChannel>interaction.channel;
-    const rawType = <SnipeType | undefined>(
-      interaction.options.getString('type', false)
-    );
-    type SnipeType = 'messages' | 'embeds' | 'attachments';
-    let type: SnipeType = rawType ?? 'messages';
-
+  public async chatInputRun(interaction: Command.ChatInputCommandInteraction) {
+    let type = interaction.options.get('type', false)?.value ?? 'messages';
     const snipe = snipes[interaction.channelId];
+
     if (!snipe)
       return interaction.reply({
         embeds: [
           {
             title: "There's nothing to snipe!",
             description:
-              'Deleted messages can only be sniped within 1 hour of deletion.',
-            color: 'RED',
+              this.container.client.uptime &&
+              this.container.client.uptime < ms('1m')
+                ? 'The bot was just restarted less than a minute ago. All snipes are wiped after every restart.'
+                : 'Deleted messages can only be sniped within 1 hour of deletion.',
+            color: Colors.Red,
           },
         ],
       });
+
+    snipes[interaction.channelId] = {
+      ...snipes[interaction.channelId],
+      requesterId: interaction.user.id,
+    };
 
     if (
       !snipe.content &&
       snipe.embeds &&
       Array.isArray(snipe.embeds) &&
-      snipe.embeds[0] &&
-      !rawType
+      snipe.embeds[0]
     )
       type = 'embeds';
 
-    if (
-      !snipe.content &&
-      !snipe.embeds?.length &&
-      snipe.attachments &&
-      !rawType
-    )
+    if (!snipe.content && !snipe.embeds?.length && snipe.attachments)
       type = 'attachments';
 
     if (type === 'messages') {
-      if (!snipe.content && snipe.embeds?.length) {
+      if (!snipe.content && snipe.embeds?.length)
         return interaction.reply({
           embeds: [
             {
@@ -93,15 +90,13 @@ export class SnipeCommand extends Command {
                 "This message didn't have any content, but it did have an embed. Try this command again with the `embeds` type.",
             },
           ],
-          ephemeral: true,
         });
-      }
+
       await interaction
         .reply({
-          fetchReply: true,
           embeds: [
             snipe
-              ? new MessageEmbed()
+              ? new EmbedBuilder()
                   .setDescription(
                     `${
                       interaction.user.bot
@@ -116,22 +111,26 @@ export class SnipeCommand extends Command {
                     }`
                   )
                   .setAuthor({ name: snipe.author?.tag ?? '' })
-                  .setColor('GREEN')
+                  .setColor(Colors.Green)
                   .setFooter({
-                    text: `#${channel.name} | If the original author wants to remove this message, they can use the \`unsnipe\` command.`,
+                    text: `#${
+                      (interaction.channel as TextChannel).name
+                    } | If the original author or the person who requested this snipe wants to remove this message, they can use the \`unsnipe\` command.`,
                   })
                   .setTimestamp(snipe?.createdAt ? snipe.createdAt : 0)
               : {
                   title: "There's nothing to snipe!",
                   description:
                     'Deleted messages can only be sniped within 1 hour of deletion.',
-                  color: 'RED',
+                  color: Colors.Red,
                 },
+            {},
           ],
+          fetchReply: true,
         })
         .then((msg) => {
-          unSnipes[channel.id] = {
-            msg: <Message>msg,
+          unSnipes[interaction.channelId] = {
+            msg,
           };
         });
     } else if (type === 'embeds') {
@@ -141,13 +140,13 @@ export class SnipeCommand extends Command {
             {
               title:
                 "This message doesn't have any embeds! Try this command again with the `messages` type.",
-              color: 'RED',
+              color: Colors.Red,
             },
           ],
         });
       const paginator = new PaginatedMessage();
       paginator.addPageEmbeds(
-        snipe.embeds ?? [new MessageEmbed().setTitle('No embeds')]
+        snipe.embeds ?? [new EmbedBuilder().setTitle('No embeds')]
       );
       const unSnipe = await paginator.run(interaction);
       unSnipes[interaction.channelId] = {
@@ -160,14 +159,15 @@ export class SnipeCommand extends Command {
             {
               title:
                 "This message doesn't have any attachments. Try this command again with the `embeds` type.",
-              color: 'RED',
+              color: Colors.Red,
             },
           ],
         });
+
       const paginator = new PaginatedMessage();
       paginator.addPages(snipe.attachments.map((a) => ({ content: a })));
       const unSnipe = await paginator.run(interaction);
-      unSnipes[channel.id] = {
+      unSnipes[interaction.channelId] = {
         msg: unSnipe.response as Message,
       };
     }

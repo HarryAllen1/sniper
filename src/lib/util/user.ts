@@ -1,5 +1,5 @@
 import { container, type SapphireClient } from '@sapphire/framework';
-import type { GuildMember, User } from 'discord.js';
+import { GuildMember, PermissionFlagsBits, User } from 'discord.js';
 import { FieldValue } from 'firebase-admin/firestore';
 
 const { db } = container;
@@ -31,13 +31,12 @@ export const isAdmin = (
     return client.guilds.cache
       .get(guildID)
       ?.members.cache.get(userID)
-      ?.permissions.has('MANAGE_GUILD');
-  } else {
-    return client.guilds.cache
-      .get(guildID)
-      ?.members.cache.get(userID.id)
-      ?.permissions.has('MANAGE_GUILD');
+      ?.permissions.has(PermissionFlagsBits.ManageGuild);
   }
+  return client.guilds.cache
+    .get(guildID)
+    ?.members.cache.get(userID.id)
+    ?.permissions.has(PermissionFlagsBits.ManageGuild);
 };
 
 export const addCoinsToTotal = async (

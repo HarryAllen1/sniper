@@ -9,5 +9,5 @@ export async function fetch<T extends Record<string, unknown> | unknown>(
     Partial<Pick<Dispatcher.RequestOptions, 'method'>>
 ): Promise<T> {
   const { body } = await request(input, init);
-  return await body.json();
+  return body.json();
 }

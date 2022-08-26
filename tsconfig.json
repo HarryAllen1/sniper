@@ -9,9 +9,7 @@
     "pretty": false,
     "target": "ESNext",
 
-    "declaration": true,
-
-    "module": "ES2022",
+    "module": "ESNext",
 
     "resolveJsonModule": true,
 
@@ -23,5 +21,6 @@
 
     "allowSyntheticDefaultImports": true,
     "experimentalDecorators": true
-  }
+  },
+  "exclude": ["old"]
 }

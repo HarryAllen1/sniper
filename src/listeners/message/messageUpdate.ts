@@ -1,8 +1,9 @@
-import { editSnipes, sleep } from '#lib';
 import { ApplyOptions } from '@sapphire/decorators';
 import { Events, Listener, ListenerOptions } from '@sapphire/framework';
-import { Message, Util } from 'discord.js';
+import { cleanContent, Message } from 'discord.js';
 import ms from 'ms';
+import { sleep } from '../../lib/index.js';
+import { editSnipes } from '../../lib/snipes.js';
 
 @ApplyOptions<ListenerOptions>({
   event: Events.MessageUpdate,
@@ -13,10 +14,10 @@ export class MessageDelete extends Listener<typeof Events.MessageUpdate> {
     if (oldMessage.content !== newMessage.content) {
       if (oldMessage.guildId === '882695828140073052')
         this.container.logger.info(
-          `old message (${oldMessage.guild?.name}):\n${Util.cleanContent(
+          `old message (${oldMessage.guild?.name}):\n${cleanContent(
             oldMessage.content,
             oldMessage.channel
-          )}\nnew message:\n${Util.cleanContent(
+          )}\nnew message:\n${cleanContent(
             newMessage.content,
             newMessage.channel
           )}`
@@ -26,6 +27,7 @@ export class MessageDelete extends Listener<typeof Events.MessageUpdate> {
         content: oldMessage.content,
         createdAt: newMessage.editedTimestamp,
         id: newMessage.id,
+        cmdId: '',
       };
       await sleep(ms('1h'));
 

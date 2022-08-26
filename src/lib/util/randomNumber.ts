@@ -7,9 +7,9 @@ export const randomNumber = (
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min + 1)) + min;
-  } else {
+  } 
     return Math.random() * (max - min) + min;
-  }
+  
 };
 
 export const getRandomNumber = randomNumber;

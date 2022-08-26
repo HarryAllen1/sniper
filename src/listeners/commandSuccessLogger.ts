@@ -23,6 +23,7 @@ export class UserEvent extends Listener<typeof Events.ChatInputCommandSuccess> {
       `${shard} - ${commandName} ${author} ${sentAt}`
     );
   }
+
   public onLoad() {
     this.enabled = (this.container.logger as Logger).level <= LogLevel.Debug;
     return super.onLoad();

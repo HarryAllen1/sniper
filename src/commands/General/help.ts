@@ -4,22 +4,25 @@ import {
   Command,
   RegisterBehavior,
 } from '@sapphire/framework';
-import { createHelpCommand } from 'discord-help-command-creator';
-import type { CommandInteraction, Message } from 'discord.js';
+import { Message, PermissionFlagsBits } from 'discord.js';
+import { createHelpCommand } from '../../lib/util/createHelpCommand.js';
 
 @ApplyOptions<Command.Options>({
   description: 'Displays commands',
-  requiredClientPermissions: ['EMBED_LINKS', 'SEND_MESSAGES'],
+  requiredClientPermissions: [
+    PermissionFlagsBits.EmbedLinks,
+    PermissionFlagsBits.SendMessages,
+  ],
 })
 export class UserCommand extends Command {
   @RequiresGuildContext()
-  public async chatInputRun(interaction: CommandInteraction) {
-    createHelpCommand(this.container.stores.get('commands'), interaction);
+  public async chatInputRun(interaction: Command.ChatInputCommandInteraction) {
+    await createHelpCommand(this.container.stores.get('commands'), interaction);
   }
 
   @RequiresGuildContext()
   public async messageRun(message: Message) {
-    createHelpCommand(this.container.stores.get('commands'), message);
+    await createHelpCommand(this.container.stores.get('commands'), message);
   }
 
   public override registerApplicationCommands(
