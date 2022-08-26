@@ -14,16 +14,6 @@ There are 2 sites that contain documentation:
 - https://sniper-docs.web.app/
 - https://sniper.pages.dev/
 
-## File structure
-
-```
-|- apps      // All projects
-  |- sniper    // The current live bot
-  |- old       // The old bot code thats kind of useless
-  |- rewrite   // The upcomming rewrite. Uses sapphire framework
-  |- website   // The super bad website
-```
-
 ## Self-hosting instructions
 
-The self hosting instructions are in the apps/sniper directory, or in the documentation: https://sniper-docs.web.app/self-hosting
+The self hosting instructions are in the [self-hosting documentation](https://sniper-docs.web.app/self-hosting)

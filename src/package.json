@@ -8,7 +8,8 @@
     "dev": "tsup --watch --onSuccess \"node .\"",
     "build": "tsup",
     "watch": "tsup --watch",
-    "start": "node out/index.js"
+    "start": "pnpm build && node out/index.js",
+    "pm2:start": "pnpm build && pm2 start out/index.js"
   },
   "imports": {
     "#lib": "./dist/lib/index.js",

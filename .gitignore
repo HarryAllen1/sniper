@@ -43,3 +43,10 @@ docs/.vitepress/dist
 
 # generated commands file
 docs/commands/index.md
+
+src/config.ts
+src/config.ts
+src/dist
+
+src.old/src/config.ts
+src.old/out
