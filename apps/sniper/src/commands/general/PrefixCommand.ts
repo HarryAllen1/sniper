@@ -1,3 +1,5 @@
+// depricate
+
 import type { Message } from 'discord.js';
 import type { DiscordClient } from '../../client/client.js';
 import { reply } from '../../utils/helpers/message.js';
@@ -19,8 +21,9 @@ export default class PrefixCommand extends Command {
   }
 
   async run(client: DiscordClient, message: Message, args: string[]) {
+    if (!message.inGuild()) return;
     if (
-      !(await client.db.getGuildSettings(message.guildId ?? ''))?.prefixes &&
+      !(await client.db.getGuildSettings(message.guildId))?.prefixes &&
       !args[0]
     ) {
       return reply(message, {
@@ -46,7 +49,7 @@ export default class PrefixCommand extends Command {
     }
     if (args[0] && message.member?.permissions.has('MANAGE_GUILD')) {
       await client.db
-        .setGuildSettings(message.guildId ?? '', {
+        .setGuildSettings(message.guildId, {
           prefixes: args,
         })
         .then(console.log);

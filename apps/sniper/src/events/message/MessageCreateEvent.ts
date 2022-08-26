@@ -20,7 +20,7 @@ export default class MessageCreateEvent extends BaseEvent {
   }
 
   async run(client: DiscordClient, message: Message) {
-    if (message.channel.type === 'DM') return;
+    if (!message.inGuild()) return;
 
     if (
       (message.author.id !== '922939398239174699' && message.author.bot) ||
@@ -35,7 +35,8 @@ export default class MessageCreateEvent extends BaseEvent {
     // }
 
     if (message.content === client.user?.toString())
-      client.commands.get('help')?.run(client, message, []);
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+      client.commands.get('help')!.run!(client, message, []);
 
     if (
       message.content.toLowerCase().startsWith('pls ') &&
@@ -43,21 +44,18 @@ export default class MessageCreateEvent extends BaseEvent {
         message.content.toLowerCase().slice(4)
       ) &&
       (
-        ((await client.db.getGuildSettings(message.guildId ?? ''))?.prefixes &&
-        (await client.db.getGuildSettings(message.guildId ?? ''))?.prefixes[0]
-          ? (await client.db.getGuildSettings(message.guildId ?? ''))?.prefixes
+        ((await client.db.getGuildSettings(message.guildId))?.prefixes &&
+        (await client.db.getGuildSettings(message.guildId))?.prefixes[0]
+          ? (await client.db.getGuildSettings(message.guildId))?.prefixes
           : client.prefix) as string[]
       )[0] !== 'pls '
     ) {
       message.reply(
         'Sniper running commands with the `pls` prefix has been removed.\nPlease use one of the following prefixes instead:\n' +
           (
-            ((await client.db.getGuildSettings(message.guildId ?? ''))
-              ?.prefixes &&
-            (await client.db.getGuildSettings(message.guildId ?? ''))
-              ?.prefixes[0]
-              ? (await client.db.getGuildSettings(message.guildId ?? ''))
-                  ?.prefixes
+            ((await client.db.getGuildSettings(message.guildId))?.prefixes &&
+            (await client.db.getGuildSettings(message.guildId))?.prefixes[0]
+              ? (await client.db.getGuildSettings(message.guildId))?.prefixes
               : client.prefix) as string[]
           )
             .map((p) => `\`${p}\``)
@@ -65,9 +63,9 @@ export default class MessageCreateEvent extends BaseEvent {
       );
     }
     const prefixes =
-      (await client.db.getGuildSettings(message.guildId ?? ''))?.prefixes &&
-      (await client.db.getGuildSettings(message.guildId ?? ''))?.prefixes[0]
-        ? (await client.db.getGuildSettings(message.guildId ?? ''))?.prefixes
+      (await client.db.getGuildSettings(message.guildId))?.prefixes &&
+      (await client.db.getGuildSettings(message.guildId))?.prefixes[0]
+        ? (await client.db.getGuildSettings(message.guildId))?.prefixes
         : client.prefix;
     for (const prefix of prefixes) {
       if (message.content.startsWith(prefix.toLowerCase())) {
@@ -80,7 +78,7 @@ export default class MessageCreateEvent extends BaseEvent {
           .split(/\s+/);
         const command = client.commands.get(cmdName.toLowerCase());
 
-        if (!command) {
+        if (!command || !command.run) {
           return;
         }
 

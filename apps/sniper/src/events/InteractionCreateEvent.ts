@@ -27,6 +27,10 @@ export default class InteractionCreateEvent extends BaseEvent {
         client.commands
           .get(interaction.commandName)
           ?.contextMenuRun(client, interaction);
+    } else if (interaction.isAutocomplete()) {
+      const command = client.commands.get(interaction.commandName);
+      if (command?.autocompleteRun)
+        command.autocompleteRun(client, interaction);
     } else if (interaction.isButton()) {
       if (
         interaction.customId === 'pingRole' &&

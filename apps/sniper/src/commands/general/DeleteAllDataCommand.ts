@@ -1,3 +1,5 @@
+// Update message to reflect currency removal
+
 import type { Message } from 'discord.js';
 import type { DiscordClient } from '../../client/client.js';
 import { db } from '../../sniper.js';
@@ -23,7 +25,7 @@ export default class DeleteAllDataCommand extends Command {
     await reply(message, {
       title: 'Are you sure you want to delete all of your data?',
       description:
-        'This means all coins, xp and settings. This cannot be undone. Type "DELETE ALL DATA" to confirm (not case sensitive). Type literally anything else to cancel.',
+        'This means all settings. This cannot be undone. Type "DELETE ALL DATA" to confirm (not case sensitive). Type literally anything else to cancel.',
       color: 'YELLOW',
     });
     message.channel

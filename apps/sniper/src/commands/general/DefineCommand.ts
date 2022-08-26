@@ -1,3 +1,5 @@
+// no changes
+
 import type { Message } from 'discord.js';
 import type { DiscordClient } from '../../client/client.js';
 import type { MWResponse, OxfordRes } from '../../typings/types.js';
@@ -14,7 +16,7 @@ export default class DefineCommand extends Command {
   }
 
   async run(client: DiscordClient, message: Message, args: Array<string>) {
-    const { apiKeys } = (await import('../../sniper.js')).slappeyJSON;
+    const { apiKeys } = (await import('../../sniper.js')).config;
     if (!args[0]) {
       reply(message, { title: 'You must specify a search term', color: 'RED' });
       return;

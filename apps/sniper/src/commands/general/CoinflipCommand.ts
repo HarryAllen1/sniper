@@ -4,6 +4,8 @@ import { reply } from '../../utils/helpers/message.js';
 import { getRandomNumber } from '../../utils/helpers/randomNumber.js';
 import Command from '../../utils/structures/BaseCommand.js';
 
+// mv line`const win = whatever to else4 block
+
 export default class CoinflipCommand extends Command {
   constructor() {
     super('coinflip', 'general', [], 500, 'Flips a coin', {
@@ -65,7 +67,6 @@ export default class CoinflipCommand extends Command {
 
   async run(client: DiscordClient, message: Message, args: Array<string>) {
     const chosen = getRandomNumber(0, 1) === 0 ? 'heads' : 'tails';
-    const win = args[0].toLowerCase() === chosen;
 
     if (!args[0]) {
       await reply(message, {
@@ -73,6 +74,7 @@ export default class CoinflipCommand extends Command {
       });
       return;
     } else {
+      const win = args[0].toLowerCase() === chosen;
       await reply(message, {
         title: `You ${win ? 'won' : 'lost'}!`,
         description: `You flipped a coin and got **${chosen}**!`,

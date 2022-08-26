@@ -1,4 +1,13 @@
-import type { CommandInteraction, Message } from 'discord.js';
+// use modal option
+
+import {
+  CommandInteraction,
+  Message,
+  MessageActionRow,
+  Modal,
+  ModalActionRowComponent,
+  TextInputComponent,
+} from 'discord.js';
 import { inspect } from 'node:util';
 import type { DiscordClient } from '../../client/client.js';
 import { goodServers } from '../../sniper.js';
@@ -35,16 +44,44 @@ export default class EvalCommand extends Command {
               .setName('code')
               .setDescription('The code to execute.')
               .setRequired(true)
+          )
+          .addBooleanOption((i) =>
+            i
+              .setName('use-modal')
+              .setDescription('whether to use discord modals')
+              .setRequired(false)
           ),
       goodServers
     );
   }
   async chatInputRun(client: DiscordClient, interaction: CommandInteraction) {
+    if (interaction.options.getBoolean('use-modal')) {
+      interaction.showModal(
+        new Modal()
+          .setTitle('Eval')
+          .setCustomId('code')
+          .addComponents(
+            new MessageActionRow<ModalActionRowComponent>().addComponents(
+              new TextInputComponent()
+                .setLabel('Code')
+                .setCustomId('code')
+                .setPlaceholder('code')
+                .setStyle('PARAGRAPH')
+            )
+          )
+      );
+    }
     if (interaction.user.id === '696554549418262548') {
       const { result, success } = await this.eval(
         client,
         interaction,
-        interaction.options.getString('code', true),
+        interaction.options.getBoolean('use-modal')
+          ? (
+              await interaction.awaitModalSubmit({
+                time: 999999999,
+              })
+            ).fields.getTextInputValue('code')
+          : interaction.options.getString('code', true),
         {
           async: true,
           depth: 10,

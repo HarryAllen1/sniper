@@ -1,6 +1,8 @@
+// few changes
+
 import type { CommandInteraction, Message, TextChannel } from 'discord.js';
 import type { DiscordClient } from '../../client/client.js';
-import { slappeyJSON } from '../../sniper.js';
+import { config } from '../../sniper.js';
 import { reply } from '../../utils/helpers/message.js';
 import { Command } from '../../utils/structures/BaseCommand.js';
 
@@ -35,14 +37,17 @@ export default class ActCommand extends Command {
               .setName('user')
               .setDescription('The user to impersonate')
               .setRequired(true)
+          )
+          .addStringOption((i) =>
+            i.setName('message').setDescription('The message').setRequired(true)
           ),
-      slappeyJSON.actServers
+      config.actServers
     );
   }
 
   async chatInputRun(client: DiscordClient, interaction: CommandInteraction) {
     if (
-      !(slappeyJSON.actServers as readonly string[]).includes(
+      !(config.actServers as readonly string[]).includes(
         interaction.guildId ?? ''
       )
     )
@@ -86,9 +91,7 @@ export default class ActCommand extends Command {
   }
   async run(client: DiscordClient, message: Message, args: Array<string>) {
     if (
-      !(slappeyJSON.actServers as readonly string[]).includes(
-        message.guildId ?? ''
-      )
+      !(config.actServers as readonly string[]).includes(message.guildId ?? '')
     )
       return reply(message, {
         title: 'This command is restricted',

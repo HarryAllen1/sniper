@@ -12,7 +12,7 @@ import { registerCommands, registerEvents } from './utils/registry.js';
 export const ONLY_UPDATE_COMMANDS =
   process.env.ONLY_UPDATE_COMMANDS && process.env.ONLY_UPDATE_COMMANDS === 'y';
 
-export const slappeyJSON = config;
+export { config } from './config.js';
 
 export const firebaseCredentials = config.firebase;
 
@@ -55,10 +55,10 @@ client.db.db = db;
 export const main = async (): Promise<void> => {
   try {
     if (ONLY_UPDATE_COMMANDS) writeFileSync('./all-commands.json', '');
-    client.prefix = slappeyJSON.prefixes;
+    client.prefix = config.prefixes;
 
     if (!ONLY_UPDATE_COMMANDS) {
-      const poster = AutoPoster(slappeyJSON.secrets.topggToken, client);
+      const poster = AutoPoster(config.secrets.topggToken, client);
       poster.on('error', (err) => {
         console.log('topgg autoposter: ' + err.message);
       });
@@ -121,7 +121,7 @@ export const main = async (): Promise<void> => {
       process.exit(0);
     }
 
-    await client.login(slappeyJSON.token);
+    await client.login(config.token);
   } catch (error) {
     console.error(error);
 

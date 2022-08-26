@@ -43,7 +43,7 @@ export default class MessageDeleteEvent extends BaseEvent {
     // };
     // setSnipe(snipeContent);
 
-    await sleep(ms('1h'));
+    await sleep(ms('6h'));
 
     if (
       snipes[message.channelId] &&

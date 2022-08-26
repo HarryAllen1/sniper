@@ -4,9 +4,7 @@ import {
   LogLevel,
   RegisterBehavior,
 } from '@sapphire/framework';
-import '@sapphire/plugin-editable-commands/register';
-import '@sapphire/plugin-hmr/register';
-import type { Message } from 'discord.js';
+import { ActivityType, GatewayIntentBits, type Message } from 'discord.js';
 import { SniperClient } from './client.js';
 import { config } from './config.js';
 
@@ -18,11 +16,10 @@ ApplicationCommandRegistries.setDefaultBehaviorWhenNotIdentical(
 
 export const client: SniperClient = new SniperClient({
   intents: [
-    'GUILD_MEMBERS',
-    'GUILD_MESSAGES',
-    'GUILD_MESSAGE_REACTIONS',
-    'GUILD_MESSAGE_REACTIONS',
-    'GUILDS',
+    GatewayIntentBits.GuildMembers,
+    GatewayIntentBits.GuildMessages,
+    GatewayIntentBits.GuildMessageReactions,
+    GatewayIntentBits.Guilds,
   ],
   defaultPrefix: ['$'],
   fetchPrefix: async (message: Message) => {
@@ -44,7 +41,7 @@ export const client: SniperClient = new SniperClient({
     activities: [
       {
         name: 'for deleted messages',
-        type: 'WATCHING',
+        type: ActivityType.Watching,
       },
     ],
   },

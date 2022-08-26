@@ -7,6 +7,7 @@ import type {
   RESTPostAPIApplicationCommandsJSONBody,
 } from 'discord-api-types/v10';
 import type {
+  AutocompleteInteraction,
   Awaitable,
   CommandInteraction,
   CommandInteractionOptionResolver,
@@ -108,9 +109,9 @@ export abstract class Command {
    * @param {Array<string> | CommandInteractionOptionResolver | null} args
    * @returns {Promise<void>}
    */
-  abstract run(
+  run?(
     client: DiscordClient,
-    message: Message | CommandInteraction,
+    message: Message<true>,
     args: Array<string> | CommandInteractionOptionResolver | null
   ): Awaitable<unknown>;
 
@@ -134,12 +135,22 @@ export abstract class Command {
     client: DiscordClient,
     interaction: CommandInteraction
   ): Awaitable<unknown>;
+
+  /**
+   * thanks sapphire x3
+   */
+  autocompleteRun?(
+    client: DiscordClient,
+    interaction: AutocompleteInteraction
+  ): Awaitable<unknown>;
 }
 
 // eslint-disable-next-line @typescript-eslint/no-namespace
 export namespace Command {
   export type CommandInteraction = import('discord.js').CommandInteraction;
   export type CommandsRegistry = ApplicationCommandsRegistry;
+  export type AutocompleteInteraction =
+    import('discord.js').AutocompleteInteraction;
 }
 export default Command;
 

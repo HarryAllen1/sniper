@@ -16,6 +16,9 @@ export default defineConfig({
     lineNumbers: true,
   },
   themeConfig: {
+    footer: {
+      message: 'Released under the MIT License.',
+    },
     algolia: {
       appId: '9S4NWRYUU9',
       apiKey: '868289ec0b27caa98ebff49324609ce4',
