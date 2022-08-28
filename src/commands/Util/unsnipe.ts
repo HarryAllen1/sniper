@@ -2,6 +2,7 @@ import { ApplyOptions, RequiresGuildContext } from '@sapphire/decorators';
 import { ApplicationCommandRegistry, Command } from '@sapphire/framework';
 import {
   ActionRowBuilder,
+  ApplicationCommandType,
   ButtonBuilder,
   ButtonStyle,
   Colors,
@@ -25,6 +26,10 @@ export class UserCommand extends Command {
   ) {
     registry.registerChatInputCommand((builder) =>
       builder.setName(this.name).setDescription(this.description)
+    );
+
+    registry.registerContextMenuCommand((b) =>
+      b.setName('unsnipe').setType(ApplicationCommandType.Message)
     );
   }
 

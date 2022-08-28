@@ -6,9 +6,11 @@ import { Command, RegisterBehavior } from '@sapphire/framework';
 })
 export class UserCommand extends Command {
   public async chatInputRun(interaction: Command.ChatInputCommandInteraction) {
-    await interaction.reply(
-      'Directions can be found here: https://sniper.pages.dev/invite.html'
-    );
+    await interaction.reply({
+      content:
+        'Directions can be found here: https://sniper.pages.dev/invite.html',
+      ephemeral: true,
+    });
   }
 
   public override registerApplicationCommands(registry: Command.Registry) {
