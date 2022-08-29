@@ -1,6 +1,6 @@
-const _ = require('lodash');
-const ms = require('ms');
-const { appendFileSync, readFileSync, writeFileSync } = require('node:fs');
+import { lowerCase } from 'lodash';
+import ms from 'ms';
+import { appendFileSync, readFileSync, writeFileSync } from 'node:fs';
 
 // add template to command docs
 writeFileSync(
@@ -29,25 +29,22 @@ const camelToNormalCase = (str) =>
 const capitalizeFirstLetter = (string) =>
   string.charAt(0).toUpperCase() + string.slice(1);
 
-(async () => {
-  const categories = Object.keys(commands).reverse();
-  resetCommandDocs();
-  categories.forEach((cat) => {
-    appendToDocs(`\n
+const categories = Object.keys(commands).reverse();
+resetCommandDocs();
+categories.forEach((cat) => {
+  appendToDocs(`\n
 ## ${capitalizeFirstLetter(camelToNormalCase(cat))}
 `);
-    const commandsInCategory = commands[cat];
-    commandsInCategory.forEach((cmd) => {
-      appendToDocs(
-        `
+  const commandsInCategory = commands[cat];
+  commandsInCategory.forEach((cmd) => {
+    appendToDocs(
+      `
 ### ${cmd.disabled ? `~~${cmd.name}~~` : cmd.name}
 ${cmd.disabled ? '::: warning\nThis command is disabled\n:::\n' : ''}${
-          cmd.tip !== '' ? `::: tip\n${cmd.tip}\n:::\n` : ''
-        }${cmd.aliases?.length ? `${cmd.description  }\\\n` : ''}${
-          cmd.aliases?.length
-            ? `**Aliases:** ${cmd.aliases.join(', ')}\\\n`
-            : ''
-        }
+        cmd.tip === '' ? '' : `::: tip\n${cmd.tip}\n:::\n`
+      }${cmd.aliases?.length ? `${cmd.description}\\\n` : ''}${
+        cmd.aliases?.length ? `**Aliases:** ${cmd.aliases.join(', ')}\\\n` : ''
+      }
 **Arguments/Usage:**
 ${
   cmd.args
@@ -78,8 +75,8 @@ ${
 }
 **Cooldown:** ${ms(cmd.cooldown, { long: true })}\\
 **Permissions:** ${cmd.permissions
-          .map((perm) => `\`${_.lowerCase(perm)}\``)
-          .join(', ')}
+        .map((perm) => `\`${lowerCase(perm)}\``)
+        .join(', ')}
 ${
   cmd.slashCommand
     ? `\n::: tip\nThis command supports slash commands. Find it by typing \`/${cmd.name}\`\n:::\n`
@@ -91,7 +88,6 @@ ${
     'https://github.com/MajesticString/sniper/blob/main/apps/sniper/src'
   )})
 `
-      );
-    });
+    );
   });
-})();
+});
