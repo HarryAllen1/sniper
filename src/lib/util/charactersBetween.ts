@@ -9,7 +9,7 @@ interface GetFromBetween {
 export const getFromBetween: GetFromBetween = {
   results: [],
   string: '',
-  getFromBetween (sub1: string, sub2: string) {
+  getFromBetween(sub1: string, sub2: string) {
     try {
       if (!this.string.includes(sub1) || !this.string.includes(sub2))
         return false;
@@ -22,7 +22,7 @@ export const getFromBetween: GetFromBetween = {
       console.error(error);
     }
   },
-  removeFromBetween (sub1: string, sub2: string) {
+  removeFromBetween(sub1: string, sub2: string) {
     try {
       if (!this.string.includes(sub1) || !this.string.includes(sub2))
         return false;
@@ -32,11 +32,10 @@ export const getFromBetween: GetFromBetween = {
       console.error(error);
     }
   },
-  getAllResults (sub1: string, sub2: string) {
+  getAllResults(sub1: string, sub2: string) {
     try {
       // first check to see if we do have both substrings
-      if (!this.string.includes(sub1) || !this.string.includes(sub2))
-        return;
+      if (!this.string.includes(sub1) || !this.string.includes(sub2)) return;
 
       // find one result
       const result = this.getFromBetween(sub1, sub2);
@@ -53,7 +52,7 @@ export const getFromBetween: GetFromBetween = {
       console.error(error);
     }
   },
-  get (string: string, sub1: string, sub2: string) {
+  get(string: string, sub1: string, sub2: string) {
     try {
       this.results = [];
       this.string = string;
