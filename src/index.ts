@@ -1,3 +1,4 @@
+import '@kaname-png/plugin-statcord/register';
 import {
   ApplicationCommandRegistries,
   container,
@@ -55,6 +56,10 @@ export const client: SniperClient = new SniperClient({
   defaultCooldown: {
     delay: 3000,
     filteredUsers: [harrysDiscordID],
+  },
+  statcord: {
+    key: config.statcord,
+    autopost: true,
   },
 });
 
