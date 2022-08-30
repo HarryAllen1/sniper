@@ -20,7 +20,7 @@ specifiers:
   eslint: 8.23.0
   eslint-config-prettier: ^8.5.0
   firebase-admin: ^11.0.1
-  lodash: ^4.17.21
+  lodash-es: ^4.17.21
   luxon: ^3.0.3
   ms: 3.0.0-canary.1
   pnpm: ^7.9.5
@@ -42,6 +42,7 @@ dependencies:
   colorette: 2.0.19
   discord.js: 14.3.0
   firebase-admin: 11.0.1_@firebase+app-types@0.7.0
+  lodash-es: 4.17.21
   luxon: 3.0.3
   ms: 3.0.0-canary.1
 
@@ -54,7 +55,6 @@ devDependencies:
   '@typescript-eslint/parser': 5.36.1_yqf6kl63nyoq5megxukfnom5rm
   eslint: 8.23.0
   eslint-config-prettier: 8.5.0_eslint@8.23.0
-  lodash: 4.17.21
   pnpm: 7.9.5
   prettier: 2.7.1
   tsup: 6.2.3_typescript@4.8.2
@@ -2745,6 +2745,10 @@ packages:
       p-locate: 5.0.0
     dev: true
 
+  /lodash-es/4.17.21:
+    resolution: {integrity: sha512-mKnC+QJ9pWVzv+C4/U3rRsHapFfHvQFoFB92e52xeyGMcX6/OlIl78je1u8vePzYZSkkogMPJ2yjxxsb89cxyw==}
+    dev: false
+
   /lodash.camelcase/4.3.0:
     resolution: {integrity: sha512-TwuEnCnxbc3rAvhf/LbG7tJUDzhqXyFnv3dtzLOPgCG/hODL7WFnsbwktkD7yUV0RrreP/l1PALq/YSg6VvjlA==}
     dev: false
@@ -2797,10 +2801,6 @@ packages:
   /lodash.uniqwith/4.5.0:
     resolution: {integrity: sha512-7lYL8bLopMoy4CTICbxygAUq6CdRJ36vFc80DucPueUee+d5NBRxz3FdT9Pes/HEx5mPoT9jwnsEJWz1N7uq7Q==}
     dev: false
-
-  /lodash/4.17.21:
-    resolution: {integrity: sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==}
-    dev: true
 
   /long/4.0.0:
     resolution: {integrity: sha512-XsP+KhQif4bjX1kbuSiySJFNAehNxgLb6hPRGJ9QsUr8ajHkuXGdrHmFUTUUXhDwVX2R5bY4JNZEwbUiMhV+MA==}

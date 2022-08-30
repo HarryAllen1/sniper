@@ -33,6 +33,7 @@
     "colorette": "^2.0.19",
     "discord.js": "^14.3.0",
     "firebase-admin": "^11.0.1",
+    "lodash-es": "^4.17.21",
     "luxon": "^3.0.3",
     "ms": "3.0.0-canary.1"
   },
@@ -45,7 +46,6 @@
     "@typescript-eslint/parser": "5.36.1",
     "eslint": "8.23.0",
     "eslint-config-prettier": "^8.5.0",
-    "lodash": "^4.17.21",
     "pnpm": "^7.9.5",
     "prettier": "2.7.1",
     "tsup": "^6.2.3",
