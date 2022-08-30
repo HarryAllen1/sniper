@@ -34,7 +34,6 @@ export class SnipeCommand extends Command {
               )
               .setChoices(
                 { name: 'messages', value: 'messages' },
-                { name: 'embeds', value: 'embeds' },
                 { name: 'attachments', value: 'attachments' }
               )
               .setRequired(false)
@@ -71,14 +70,6 @@ export class SnipeCommand extends Command {
       requesterId: interaction.user.id,
     };
 
-    if (
-      !snipe.content &&
-      snipe.embeds &&
-      Array.isArray(snipe.embeds) &&
-      snipe.embeds[0]
-    )
-      type = 'embeds';
-
     if (!snipe.content && !snipe.embeds?.length && snipe.attachments)
       type = 'attachments';
 
@@ -96,36 +87,30 @@ export class SnipeCommand extends Command {
       await interaction
         .reply({
           embeds: [
-            snipe
-              ? new EmbedBuilder()
-                  .setDescription(
-                    `${
-                      interaction.user.bot
-                        ? "(if there is nothing here, the message was probably an embed and i can't send embeds in embeds)\n"
-                        : ''
-                    }${snipe.content}${
-                      snipe.attachments?.length
-                        ? `\n\nAttachment(s): ${snipe.attachments
-                            .map((val) => ` ${val} `)
-                            .toString()}`
-                        : ``
-                    }`
-                  )
-                  .setAuthor({ name: snipe.author?.tag ?? '' })
-                  .setColor(Colors.Green)
-                  .setFooter({
-                    text: `#${
-                      (interaction.channel as TextChannel).name
-                    } | If the original author or the person who requested this snipe wants to remove this message, they can use the \`unsnipe\` command.`,
-                  })
-                  .setTimestamp(snipe?.createdAt ? snipe.createdAt : 0)
-              : {
-                  title: "There's nothing to snipe!",
-                  description:
-                    'Deleted messages can only be sniped within 1 hour of deletion.',
-                  color: Colors.Red,
-                },
-            {},
+            new EmbedBuilder()
+              .setDescription(
+                `${
+                  interaction.user.bot
+                    ? "(if there is nothing here, the message was probably an embed and I can't send embeds in embeds)\n"
+                    : ''
+                }${snipe.content}${
+                  snipe.attachments?.length
+                    ? `\n\nAttachment(s): ${snipe.attachments
+                        .map((val) => ` ${val} `)
+                        .toString()}`
+                    : ``
+                }`
+              )
+              .setAuthor({
+                name: snipe.author?.tag ?? "(couldn't fetch author)",
+              })
+              .setColor(Colors.Green)
+              .setFooter({
+                text: `#${
+                  (interaction.channel as TextChannel).name
+                } | If the original author or the person who requested this snipe wants to remove this message, they can use the \`unsnipe\` command.`,
+              })
+              .setTimestamp(snipe?.createdAt ? snipe.createdAt : 0),
           ],
           fetchReply: true,
         })
@@ -134,25 +119,6 @@ export class SnipeCommand extends Command {
             msg,
           };
         });
-    } else if (type === 'embeds') {
-      if (snipe.embeds?.length === 0)
-        return interaction.reply({
-          embeds: [
-            {
-              title:
-                "This message doesn't have any embeds! Try this command again with the `messages` type.",
-              color: Colors.Red,
-            },
-          ],
-        });
-      const paginator = new PaginatedMessage();
-      paginator.addPageEmbeds(
-        snipe.embeds ?? [new EmbedBuilder().setTitle('No embeds')]
-      );
-      const unSnipe = await paginator.run(interaction);
-      unSnipes[interaction.channelId] = {
-        msg: unSnipe.response as Message,
-      };
     } else if (type === 'attachments') {
       if (!snipe.attachments?.length)
         return interaction.reply({
