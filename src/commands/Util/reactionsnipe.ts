@@ -4,7 +4,7 @@ import { Colors, EmbedBuilder, GuildEmoji, TextChannel } from 'discord.js';
 import { reactionSnipes, UniversalEmoji } from '../../lib/snipes.js';
 
 @ApplyOptions<Command.Options>({
-  detailedDescription: {},
+  description: 'Snipes a reaction',
 })
 export class UserCommand extends Command {
   public formatEmoji = (emoji: UniversalEmoji | undefined) => {
@@ -17,6 +17,15 @@ export class UserCommand extends Command {
         : `[:${emoji.name}:](${emoji.url})`
       : ''; // bot cannot use the emoji
   };
+
+  public registerApplicationCommands(registry: Command.Registry) {
+    registry.registerChatInputCommand(
+      (b) => b.setName(this.name).setDescription(this.description),
+      {
+        idHints: ['1014031686834602014'],
+      }
+    );
+  }
 
   @RequiresGuildContext()
   public async chatInputRun(interaction: Command.ChatInputCommandInteraction) {

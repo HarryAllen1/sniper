@@ -12,8 +12,11 @@ export class UserCommand extends Command {
   public override registerApplicationCommands(
     registry: ApplicationCommandRegistry
   ) {
-    registry.registerChatInputCommand((builder) =>
-      builder.setName(this.name).setDescription(this.description)
+    registry.registerChatInputCommand(
+      (builder) => builder.setName(this.name).setDescription(this.description),
+      {
+        idHints: ['1014030262897745930'],
+      }
     );
   }
 

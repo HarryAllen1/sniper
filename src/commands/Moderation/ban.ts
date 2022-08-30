@@ -1,15 +1,6 @@
-import {
-  ApplyOptions,
-  RequiresClientPermissions,
-  RequiresUserPermissions,
-} from '@sapphire/decorators';
+import { ApplyOptions } from '@sapphire/decorators';
 import { Command, RegisterBehavior, UserError } from '@sapphire/framework';
-import {
-  ApplicationCommandType,
-  DiscordAPIError,
-  PermissionFlagsBits,
-  UserContextMenuCommandInteraction,
-} from 'discord.js';
+import { DiscordAPIError, PermissionFlagsBits } from 'discord.js';
 
 @ApplyOptions<Command.Options>({
   description: 'Bans members',
@@ -51,20 +42,6 @@ export class UserCommand extends Command {
     );
   }
 
-  @RequiresClientPermissions('BanMembers')
-  @RequiresUserPermissions('BanMembers')
-  public async contextMenuRun(
-    interaction: UserContextMenuCommandInteraction<'cached'>
-  ) {
-    const target = interaction.targetMember;
-    await target.ban();
-    await interaction.reply(
-      `Banned ${target.user.tag} ${
-        target.nickname ? `(${target.nickname})` : ''
-      }`
-    );
-  }
-
   public override registerApplicationCommands(registry: Command.Registry) {
     registry.registerChatInputCommand(
       (builder) =>
@@ -88,13 +65,7 @@ export class UserCommand extends Command {
       {
         behaviorWhenNotIdentical: RegisterBehavior.Overwrite,
         registerCommandIfMissing: true,
-      }
-    );
-
-    registry.registerContextMenuCommand(
-      (b) => b.setName('ban').setType(ApplicationCommandType.User),
-      {
-        idHints: ['1013906694746689577'],
+        idHints: ['1014030514648272916'],
       }
     );
   }

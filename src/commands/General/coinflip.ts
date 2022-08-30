@@ -8,20 +8,24 @@ import { getRandomNumber } from '../../lib/index.js';
 })
 export class UserCommand extends Command {
   public registerApplicationCommands(registry: Command.Registry) {
-    registry.registerChatInputCommand((b) =>
-      b
-        .setName(this.name)
-        .setDescription(this.description)
-        .addStringOption((i) =>
-          i
-            .setName('choice')
-            .setDescription('What to guess')
-            .setRequired(false)
-            .setChoices(
-              { name: 'heads', value: 'heads' },
-              { name: 'tails', value: 'tails' }
-            )
-        )
+    registry.registerChatInputCommand(
+      (b) =>
+        b
+          .setName(this.name)
+          .setDescription(this.description)
+          .addStringOption((i) =>
+            i
+              .setName('choice')
+              .setDescription('What to guess')
+              .setRequired(false)
+              .setChoices(
+                { name: 'heads', value: 'heads' },
+                { name: 'tails', value: 'tails' }
+              )
+          ),
+      {
+        idHints: ['1014030343432577024'],
+      }
     );
   }
 

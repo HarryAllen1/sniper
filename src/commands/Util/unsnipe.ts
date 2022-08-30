@@ -24,12 +24,18 @@ export class UserCommand extends Command {
   public override registerApplicationCommands(
     registry: ApplicationCommandRegistry
   ) {
-    registry.registerChatInputCommand((builder) =>
-      builder.setName(this.name).setDescription(this.description)
+    registry.registerChatInputCommand(
+      (builder) => builder.setName(this.name).setDescription(this.description),
+      {
+        idHints: ['1014030176352477225'],
+      }
     );
 
-    registry.registerContextMenuCommand((b) =>
-      b.setName('unsnipe').setType(ApplicationCommandType.Message)
+    registry.registerContextMenuCommand(
+      (b) => b.setName('unsnipe').setType(ApplicationCommandType.Message),
+      {
+        idHints: ['1014030258133016677'],
+      }
     );
   }
 

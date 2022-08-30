@@ -41,6 +41,7 @@ export class SnipeCommand extends Command {
           ),
       {
         behaviorWhenNotIdentical: RegisterBehavior.Overwrite,
+        idHints: ['1014030259131256963'],
       }
     );
   }

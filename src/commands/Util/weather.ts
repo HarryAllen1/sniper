@@ -25,7 +25,7 @@ export class UserCommand extends Command {
       {
         behaviorWhenNotIdentical: RegisterBehavior.Overwrite,
         registerCommandIfMissing: true,
-        idHints: ['1014019755948118086'],
+        idHints: ['1014030262021140537'],
       }
     );
   }
@@ -86,7 +86,7 @@ export class UserCommand extends Command {
             },
           ],
           thumbnail: {
-            url: res.current.condition.icon,
+            url: `https:${res.current.condition.icon}`,
           },
         },
       ],

@@ -57,7 +57,7 @@ export class UserCommand extends Command {
       {
         behaviorWhenNotIdentical: RegisterBehavior.Overwrite,
         registerCommandIfMissing: true,
-        idHints: ['1013907115015934002'],
+        idHints: ['1014030433253597204'],
       }
     );
   }

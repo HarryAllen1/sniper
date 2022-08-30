@@ -4,7 +4,7 @@ import {
   Command,
   RegisterBehavior,
 } from '@sapphire/framework';
-import { Message, PermissionFlagsBits } from 'discord.js';
+import { PermissionFlagsBits } from 'discord.js';
 import { createHelpCommand } from '../../lib/util/createHelpCommand.js';
 
 @ApplyOptions<Command.Options>({
@@ -17,12 +17,26 @@ import { createHelpCommand } from '../../lib/util/createHelpCommand.js';
 export class UserCommand extends Command {
   @RequiresGuildContext()
   public async chatInputRun(interaction: Command.ChatInputCommandInteraction) {
+    // if (interaction.options.getString('command', false)) {
+    //   const cmd = this.container.stores.get('commands').get(
+    //     interaction.options.getString('command', false)!
+    //   )!;
+    //   return interaction.reply({
+    //     embeds: [
+    //       {
+    //         title: cmd.name,
+    //         description: cmd.description,
+    //         fields: [
+    //           {
+    //             name: 'Options',
+    //             value: regCmd.
+    //           }
+    //         ]
+    //       }
+    //     ],
+    //   });
+    // }
     await createHelpCommand(this.container.stores.get('commands'), interaction);
-  }
-
-  @RequiresGuildContext()
-  public async messageRun(message: Message) {
-    await createHelpCommand(this.container.stores.get('commands'), message);
   }
 
   public override registerApplicationCommands(
@@ -30,9 +44,24 @@ export class UserCommand extends Command {
   ) {
     registry.registerChatInputCommand(
       (b) => b.setName(this.name).setDescription(this.description),
+      // .addStringOption((i) =>
+      //   i
+      //     .setName('command')
+      //     .setDescription('The command to get help for')
+      //     .setRequired(false)
+      //     .setChoices(
+      //       ...this.container.stores
+      //         .get('commands')
+      //         .filter((v) => v.category !== 'Restricted')
+      //         .map((cmd) => ({
+      //           name: cmd.name,
+      //           value: cmd.name,
+      //         }))
+      //     )
+      // )
       {
         behaviorWhenNotIdentical: RegisterBehavior.Overwrite,
-        idHints: ['978003059479314483'],
+        idHints: ['1014030429701029929'],
       }
     );
   }
