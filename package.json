@@ -16,7 +16,7 @@
     "docs:dev:update": "pnpm run docs:update && vitepress dev docs",
     "docs:dev:update:existing": "node scripts/update-docs.js && vitepress dev docs",
     "docs:build": "vitepress build docs",
-    "docs:build:update": "npm run docs:update && vitepress build docs",
+    "docs:build:update": "node scripts/add-fake-config.js && npm run docs:update && vitepress build docs",
     "docs:build:update:existing": "node scripts/update-docs.js && vitepress build docs",
     "docs:update": "pnpm build && ONLY_UPDATE_DOCS=true DEV_SCRIPT=true node dist/index.js && node scripts/update-docs.js && pnpm run format"
   },
