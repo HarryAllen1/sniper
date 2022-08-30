@@ -5,7 +5,6 @@
   "type": "module",
   "main": "dist/index.js",
   "scripts": {
-    "preinstall": "npx only-allow pnpm",
     "dev": "tsup --watch --onSuccess \"DEV_SCRIPT=true node --enable-source-maps .\"",
     "build": "tsup",
     "watch": "tsup --watch",
