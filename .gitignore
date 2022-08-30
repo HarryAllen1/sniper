@@ -50,3 +50,5 @@ dist
 
 src.old/src/config.ts
 src.old/out
+
+all-commands.json

@@ -19,7 +19,7 @@
     "docs:build": "vitepress build docs",
     "docs:build:update": "npm run docs:update && vitepress build docs",
     "docs:build:update:existing": "node scripts/update-docs.js && vitepress build docs",
-    "docs:update": "echo no"
+    "docs:update": "pnpm build && ONLY_UPDATE_DOCS=true DEV_SCRIPT=true node dist/index.js && node scripts/update-docs.js && pnpm run format"
   },
   "dependencies": {
     "@firebase/app-compat": "^0.1.32",

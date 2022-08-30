@@ -1,4 +1,4 @@
-import { lowerCase } from 'lodash';
+import { lowerCase } from 'lodash-es';
 import ms from 'ms';
 import { appendFileSync, readFileSync, writeFileSync } from 'node:fs';
 
@@ -9,9 +9,9 @@ writeFileSync(
 );
 let commandsMD = readFileSync('./docs/commands/index.md').toString();
 const commands = JSON.parse(
-  readFileSync('./apps/sniper/all-commands.json').toString() === ''
+  readFileSync('./all-commands.json').toString() === ''
     ? '{}'
-    : readFileSync('./apps/sniper/all-commands.json').toString()
+    : readFileSync('./all-commands.json').toString()
 );
 
 function resetCommandDocs() {
@@ -38,51 +38,10 @@ categories.forEach((cat) => {
   const commandsInCategory = commands[cat];
   commandsInCategory.forEach((cmd) => {
     appendToDocs(
-      `
-### ${cmd.disabled ? `~~${cmd.name}~~` : cmd.name}
-${cmd.disabled ? '::: warning\nThis command is disabled\n:::\n' : ''}${
-        cmd.tip === '' ? '' : `::: tip\n${cmd.tip}\n:::\n`
-      }${cmd.aliases?.length ? `${cmd.description}\\\n` : ''}${
-        cmd.aliases?.length ? `**Aliases:** ${cmd.aliases.join(', ')}\\\n` : ''
-      }
-**Arguments/Usage:**
-${
-  cmd.args
-    ? `
-<div class="discord-messages">
-  <div class="discord-message">
-    <div class="discord-message-content">
-      <div class="discord-author-avatar">
-				<img src="https://cdn.discordapp.com/embed/avatars/0.png" alt="" />
-			</div>
-      <div class="discord-message-body">
-          <span class="discord-author-info">
-            <span class="discord-author-username">
-              User
-            </span>
-          </span>
-          <span class="discord-message-timestamp">
-            {{ new Date().toLocaleDateString() }}
-					</span><br />
-      &#36;${cmd.name} ${cmd.args
-        .replace(/&/g, '&amp;')
-        .replace(/</g, '&lt;')
-        .replace(/>/g, '&gt;')
-        .replace(/\\/g, '\\\\')}
-            </div>
-          </div>\n</div>\n</div>\n`
-    : 'None\n'
-}
-**Cooldown:** ${ms(cmd.cooldown, { long: true })}\\
-**Permissions:** ${cmd.permissions
-        .map((perm) => `\`${lowerCase(perm)}\``)
-        .join(', ')}
-${
-  cmd.slashCommand
-    ? `\n::: tip\nThis command supports slash commands. Find it by typing \`/${cmd.name}\`\n:::\n`
-    : ''
-}
- 
+      `### ${cmd.disabled ? `~~${cmd.name}~~` : cmd.name}
+${cmd.disabled ? '::: warning\nThis command is disabled\n:::\n' : ''}
+**Description:** ${cmd.description}
+
   [Source on Github](${cmd.filePath.replace(
     /^src/,
     'https://github.com/MajesticString/sniper/blob/main/apps/sniper/src'

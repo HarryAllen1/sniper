@@ -28,6 +28,7 @@ export const client: SniperClient = new SniperClient({
     repliedUser: true,
     parse: ['users'],
   },
+  rest: {},
   presence: {
     activities: [
       {
@@ -51,6 +52,6 @@ export const client: SniperClient = new SniperClient({
   },
 });
 
-client.initDB();
 createColors({ useColor: true });
+
 void client.login(config.discordToken);
