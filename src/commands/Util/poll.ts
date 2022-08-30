@@ -21,7 +21,7 @@ export class PingCommand extends Command {
           ),
       {
         behaviorWhenNotIdentical: RegisterBehavior.Overwrite,
-        idHints: ['1014030172707622954'],
+        idHints: ['1014030172707622954', '1014036389433708544'],
       }
     );
   }

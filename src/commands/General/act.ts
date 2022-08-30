@@ -75,7 +75,7 @@ export class UserCommand extends Command {
           ),
       {
         guildIds: config.actServers,
-        idHints: ['988311498440966214'],
+        idHints: ['988311498440966214', '1014036562809475072'],
         behaviorWhenNotIdentical: RegisterBehavior.Overwrite,
         registerCommandIfMissing: true,
       }

@@ -15,7 +15,7 @@ export class UserCommand extends Command {
     registry.registerChatInputCommand(
       (builder) => builder.setName(this.name).setDescription(this.description),
       {
-        idHints: ['1014030262897745930'],
+        idHints: ['1014030262897745930', '1014036387995058237'],
       }
     );
   }

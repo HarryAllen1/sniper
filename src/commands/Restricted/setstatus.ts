@@ -36,6 +36,7 @@ export class UserCommand extends Command {
           ),
       {
         guildIds: config.ownerGuilds,
+        idHints: ['1014036378490773595'],
       }
     );
   }

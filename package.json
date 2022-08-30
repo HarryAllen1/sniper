@@ -9,9 +9,9 @@
     "dev": "tsup --watch --onSuccess \"DEV_SCRIPT=true node --enable-source-maps .\"",
     "build": "tsup",
     "watch": "tsup --watch",
-    "start": "pnpm build && node out/index.js",
+    "start": "pnpm build && node dist/index.js",
     "lint": "eslint --ext .ts,js .",
-    "pm2:start": "pnpm build && pm2 start out/index.js",
+    "pm2:start": "pnpm build && pm2 start dist/index.js",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "docs:dev": "vitepress dev docs",
     "docs:dev:update": "pnpm run docs:update && vitepress dev docs",
@@ -19,7 +19,7 @@
     "docs:build": "vitepress build docs",
     "docs:build:update": "npm run docs:update && vitepress build docs",
     "docs:build:update:existing": "node scripts/update-docs.js && vitepress build docs",
-    "docs:update": "cd apps/sniper && npm run register-commands && cd ../.. && node scripts/update-docs.js"
+    "docs:update": "echo no"
   },
   "dependencies": {
     "@firebase/app-compat": "^0.1.32",
