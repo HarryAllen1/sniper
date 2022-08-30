@@ -8,7 +8,7 @@ import { harrysDiscordID } from '../../index.js';
 export class GuildDelete extends Listener<typeof Events.GuildDelete> {
   public async run(guild: Guild) {
     this.container.client.user?.setActivity({
-      name: `$help in ${this.container.client.guilds.cache.size} servers`,
+      name: `for deleted messages in ${this.container.client.guilds.cache.size} servers`,
       type: ActivityType.Watching,
     });
     this.container.logger.info(

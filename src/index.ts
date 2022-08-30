@@ -31,7 +31,7 @@ export const client: SniperClient = new SniperClient({
   presence: {
     activities: [
       {
-        name: 'for deleted messages',
+        name: `for deleted messages`,
         type: ActivityType.Watching,
       },
     ],

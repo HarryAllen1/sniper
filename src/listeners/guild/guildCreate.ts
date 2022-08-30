@@ -20,7 +20,7 @@ import { harrysDiscordID } from '../../index.js';
 export class GuildCreate extends Listener<typeof Events.GuildCreate> {
   public async run(guild: Guild) {
     this.container.client.user?.setActivity({
-      name: `$help in ${this.container.client.guilds.cache.size} servers`,
+      name: `for deleted messages in ${this.container.client.guilds.cache.size} servers`,
       type: ActivityType.Watching,
     });
     const owner = await guild.fetchOwner({ force: true });
