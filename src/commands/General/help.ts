@@ -29,10 +29,7 @@ export class UserCommand extends Command {
     registry: ApplicationCommandRegistry
   ) {
     registry.registerChatInputCommand(
-      {
-        name: this.name,
-        description: this.description,
-      },
+      (b) => b.setName(this.name).setDescription(this.description),
       {
         behaviorWhenNotIdentical: RegisterBehavior.Overwrite,
         idHints: ['978003059479314483'],

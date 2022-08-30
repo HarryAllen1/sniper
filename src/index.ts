@@ -1,13 +1,12 @@
 import '@kaname-png/plugin-statcord/register';
 import {
   ApplicationCommandRegistries,
-  container,
   LogLevel,
   RegisterBehavior,
 } from '@sapphire/framework';
 import '@sapphire/plugin-logger/register';
 import { createColors } from 'colorette';
-import { ActivityType, GatewayIntentBits, type Message } from 'discord.js';
+import { ActivityType, GatewayIntentBits } from 'discord.js';
 import { SniperClient } from './client.js';
 import { config } from './config.js';
 
@@ -23,19 +22,8 @@ export const client: SniperClient = new SniperClient({
     GatewayIntentBits.GuildMessages,
     GatewayIntentBits.GuildMessageReactions,
     GatewayIntentBits.Guilds,
+    GatewayIntentBits.MessageContent,
   ],
-  defaultPrefix: ['$'],
-  fetchPrefix: async (message: Message) => {
-    const getGuildSettings = async (guildID: string) => {
-      const val = await container.db.collection('guilds').doc(guildID).get();
-      return val.data();
-    };
-
-    return (await getGuildSettings(message.guildId ?? ''))?.prefixes &&
-      (await getGuildSettings(message.guildId ?? ''))?.prefixes[0]
-      ? (await getGuildSettings(message.guildId ?? ''))?.prefixes
-      : client.options.defaultPrefix;
-  },
   allowedMentions: {
     repliedUser: true,
     parse: ['users'],
@@ -63,8 +51,6 @@ export const client: SniperClient = new SniperClient({
   },
 });
 
-(() => {
-  // client.initDB();
-  createColors({ useColor: true });
-  void client.login(config.discordToken);
-})();
+client.initDB();
+createColors({ useColor: true });
+void client.login(config.discordToken);

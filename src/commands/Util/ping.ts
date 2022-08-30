@@ -1,11 +1,9 @@
 import { ApplyOptions } from '@sapphire/decorators';
 import { Command, RegisterBehavior } from '@sapphire/framework';
-import { Colors, CommandInteraction, Message } from 'discord.js';
+import { Colors } from 'discord.js';
 import ms from 'ms';
 
 @ApplyOptions<Command.Options>({
-  aliases: ['ping', 'pong'],
-  name: 'Ping',
   description: 'Pings the bot and returns response times.',
   cooldownDelay: ms('5s'),
 })
@@ -23,8 +21,8 @@ export class PingCommand extends Command {
     );
   }
 
-  public async chatInputRun(message: CommandInteraction) {
-    const msg = await message.reply({
+  public async chatInputRun(interaction: Command.ChatInputCommandInteraction) {
+    const msg = await interaction.reply({
       embeds: [{ title: 'pinging....', color: Colors.Red }],
       fetchReply: true,
     });
@@ -39,7 +37,7 @@ export class PingCommand extends Command {
             {
               name: 'Latency',
               value: `${ms(
-                (msg as Message).createdTimestamp - message.createdTimestamp
+                msg.createdTimestamp - interaction.createdTimestamp
               )}`,
             },
             {

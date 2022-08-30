@@ -1,20 +1,11 @@
-import {
-  ApplyOptions,
-  RequiresClientPermissions,
-  RequiresUserPermissions,
-} from '@sapphire/decorators';
+import { ApplyOptions } from '@sapphire/decorators';
 import { Command, RegisterBehavior, UserError } from '@sapphire/framework';
-import {
-  ApplicationCommandType,
-  DiscordAPIError,
-  PermissionFlagsBits,
-  UserContextMenuCommandInteraction,
-} from 'discord.js';
+import { DiscordAPIError, PermissionFlagsBits } from 'discord.js';
 
 @ApplyOptions<Command.Options>({
-  description: 'Bans members',
-  requiredClientPermissions: [PermissionFlagsBits.BanMembers],
-  requiredUserPermissions: [PermissionFlagsBits.BanMembers],
+  description: 'Kicks members',
+  requiredClientPermissions: [PermissionFlagsBits.KickMembers],
+  requiredUserPermissions: [PermissionFlagsBits.KickMembers],
 })
 export class UserCommand extends Command {
   public async chatInputRun(interaction: Command.ChatInputCommandInteraction) {
@@ -39,29 +30,13 @@ export class UserCommand extends Command {
     );
 
     (await targets).forEach((v) =>
-      v.ban({
-        reason: interaction.options.getString('reason', false) as
-          | string
-          | undefined,
-      })
+      v.kick(
+        interaction.options.getString('reason', false) as string | undefined
+      )
     );
 
     await interaction.reply(
-      `Banned ${(await targets).map((v) => v.user.tag).join(', ')}`
-    );
-  }
-
-  @RequiresClientPermissions('BanMembers')
-  @RequiresUserPermissions('BanMembers')
-  public async contextMenuRun(
-    interaction: UserContextMenuCommandInteraction<'cached'>
-  ) {
-    const target = interaction.targetMember;
-    await target.ban();
-    await interaction.reply(
-      `Banned ${target.user.tag} ${
-        target.nickname ? `(${target.nickname})` : ''
-      }`
+      `Kicked ${(await targets).map((v) => v.user.tag).join(', ')}`
     );
   }
 
@@ -75,26 +50,14 @@ export class UserCommand extends Command {
             i
               .setName('users')
               .setDescription(
-                'The users to ban. Should be mentioned or space-separated IDs'
+                'The users to kick. Should be mentioned or space-separated IDs'
               )
               .setRequired(true)
-          )
-          .addStringOption((i) =>
-            i
-              .setName('reason')
-              .setDescription('The reason for the ban')
-              .setRequired(false)
           ),
       {
         behaviorWhenNotIdentical: RegisterBehavior.Overwrite,
         registerCommandIfMissing: true,
-      }
-    );
-
-    registry.registerContextMenuCommand(
-      (b) => b.setName('ban').setType(ApplicationCommandType.User),
-      {
-        idHints: ['1013906694746689577'],
+        idHints: ['1013907115015934002'],
       }
     );
   }

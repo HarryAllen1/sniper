@@ -74,7 +74,7 @@ export class UserCommand extends Command {
               .setRequired(true)
           ),
       {
-        // guildIds: config.actServers,
+        guildIds: config.actServers,
         idHints: ['988311498440966214'],
         behaviorWhenNotIdentical: RegisterBehavior.Overwrite,
         registerCommandIfMissing: true,
