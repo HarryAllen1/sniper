@@ -37,10 +37,11 @@ export class SnipeCommand extends Command {
                 { name: 'attachments', value: 'attachments' }
               )
               .setRequired(false)
-          ),
+          )
+          .setDMPermission(false),
       {
         behaviorWhenNotIdentical: RegisterBehavior.Overwrite,
-        idHints: ['1014030259131256963', '1014036382387290255'],
+        idHints: ['1014030259131256963', '1014592793462710364'],
       }
     );
   }

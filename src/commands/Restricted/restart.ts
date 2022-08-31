@@ -15,6 +15,7 @@ export class UserCommand extends Command {
       (b) => b.setName(this.name).setDescription(this.description),
       {
         guildIds: config.ownerGuilds,
+        idHints: ['1014207656069697607'],
       }
     );
   }

@@ -20,7 +20,11 @@ export class UserCommand extends Command {
 
   public registerApplicationCommands(registry: Command.Registry) {
     registry.registerChatInputCommand(
-      (b) => b.setName(this.name).setDescription(this.description),
+      (b) =>
+        b
+          .setName(this.name)
+          .setDescription(this.description)
+          .setDMPermission(false),
       {
         idHints: ['1014031686834602014', '1014036470702546955'],
       }

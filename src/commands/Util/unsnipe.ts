@@ -25,16 +25,24 @@ export class UserCommand extends Command {
     registry: ApplicationCommandRegistry
   ) {
     registry.registerChatInputCommand(
-      (builder) => builder.setName(this.name).setDescription(this.description),
+      (builder) =>
+        builder
+          .setName(this.name)
+          .setDescription(this.description)
+          .setDMPermission(false),
       {
-        idHints: ['1014030176352477225', '1014036472195710999'],
+        idHints: ['1014030176352477225', '1014592801066975312'],
       }
     );
 
     registry.registerContextMenuCommand(
-      (b) => b.setName('unsnipe').setType(ApplicationCommandType.Message),
+      (b) =>
+        b
+          .setName('unsnipe')
+          .setType(ApplicationCommandType.Message)
+          .setDMPermission(false),
       {
-        idHints: ['1014030258133016677', '1014036473638551663'],
+        idHints: ['1014030258133016677', '1014592880570007633'],
       }
     );
   }

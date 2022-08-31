@@ -17,11 +17,12 @@ export class UserCommand extends Command {
               .setName('role')
               .setDescription('The role to get info about')
               .setRequired(false)
-          ),
+          )
+          .setDMPermission(false),
       {
         behaviorWhenNotIdentical: RegisterBehavior.Overwrite,
         registerCommandIfMissing: true,
-        idHints: ['1014030173257084989', '1014036383528144908'],
+        idHints: ['1014030173257084989', '1014592795660517386'],
       }
     );
   }
