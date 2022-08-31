@@ -18,7 +18,7 @@ export class MessageReactionRemove extends Listener<
   typeof Events.MessageReactionRemove
 > {
   public async run(reaction: MessageReaction, user: User) {
-    if (reaction.partial || user.bot) return;
+    if (reaction.partial || user.bot || !reaction.message.inGuild()) return;
     // this causes errors sometimes; idk why (missing access?????)
     const idk = reaction.fetch();
     // so just catch the error to prevent bot crash.

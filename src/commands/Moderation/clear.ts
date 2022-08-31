@@ -25,7 +25,8 @@ export class UserCommand extends Command {
                 'Whether the response should be ephemeral. Defaults to true.'
               )
               .setRequired(false)
-          ),
+          )
+          .setDMPermission(false),
       {
         behaviorWhenNotIdentical: RegisterBehavior.Overwrite,
         registerCommandIfMissing: true,

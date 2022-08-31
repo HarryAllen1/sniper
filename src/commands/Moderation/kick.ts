@@ -53,7 +53,8 @@ export class UserCommand extends Command {
                 'The users to kick. Should be mentioned or space-separated IDs'
               )
               .setRequired(true)
-          ),
+          )
+          .setDMPermission(false),
       {
         behaviorWhenNotIdentical: RegisterBehavior.Overwrite,
         registerCommandIfMissing: true,

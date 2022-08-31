@@ -61,7 +61,8 @@ export class UserCommand extends Command {
               .setName('reason')
               .setDescription('The reason for the ban')
               .setRequired(false)
-          ),
+          )
+          .setDMPermission(false),
       {
         behaviorWhenNotIdentical: RegisterBehavior.Overwrite,
         registerCommandIfMissing: true,

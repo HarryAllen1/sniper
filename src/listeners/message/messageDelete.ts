@@ -10,7 +10,7 @@ import { snipes } from '../../lib/snipes.js';
 })
 export class MessageDelete extends Listener<typeof Events.MessageDelete> {
   public async run(message: Message) {
-    if (message.partial) return; // content is null
+    if (message.partial || !message.inGuild()) return; // content is null
     if (
       message.content.toLowerCase() !== '.pick' &&
       message.guildId === '882695828140073052'

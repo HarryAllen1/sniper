@@ -72,7 +72,8 @@ export class UserCommand extends Command {
               .setName('message')
               .setDescription('The message to send')
               .setRequired(true)
-          ),
+          )
+          .setDMPermission(false),
       {
         guildIds: config.actServers,
         idHints: ['988311498440966214', '1014036562809475072'],
