@@ -10,6 +10,8 @@ This can be checked in `Server Settings`/`Integrations`.
 
 ## Full Changelog
 
+Sniper has fully been migrated to Discord's application-command system. Prefixed commands have been removed. Please type `/` to see available commands.
+
 ### Removed Commands
 
 - `deletealldata` (since currency commands were deleted)
