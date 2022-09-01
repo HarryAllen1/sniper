@@ -1,6 +1,6 @@
 import { ApplyOptions } from '@sapphire/decorators';
 import { Command, RegisterBehavior } from '@sapphire/framework';
-import { time } from 'discord.js';
+import { time, TimestampStyles } from 'discord.js';
 
 @ApplyOptions<Command.Options>({
   description: 'Gets info about a role or just displays all roles',
@@ -85,9 +85,12 @@ export class UserCommand extends Command {
             },
             {
               name: 'Created at',
-              value: `${time(new Date(role.createdTimestamp), 'F')} (${time(
+              value: `${time(
                 new Date(role.createdTimestamp),
-                'R'
+                TimestampStyles.LongDateTime
+              )} (${time(
+                new Date(role.createdTimestamp),
+                TimestampStyles.RelativeTime
               )})`,
               inline: true,
             },

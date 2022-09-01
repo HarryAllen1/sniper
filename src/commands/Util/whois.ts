@@ -1,6 +1,6 @@
 import { ApplyOptions } from '@sapphire/decorators';
 import { Command, RegisterBehavior } from '@sapphire/framework';
-import { time } from 'discord.js';
+import { time, TimestampStyles } from 'discord.js';
 import ms from 'ms';
 
 @ApplyOptions<Command.Options>({
@@ -58,18 +58,24 @@ export class PingCommand extends Command {
             },
             {
               name: 'Account Age',
-              value: `${time(new Date(user.createdTimestamp), 'F')} (${time(
+              value: `${time(
                 new Date(user.createdTimestamp),
-                'R'
+                TimestampStyles.LongDateTime
+              )} (${time(
+                new Date(user.createdTimestamp),
+                TimestampStyles.RelativeTime
               )})`,
               inline: true,
             },
             {
               name: 'Joined Server At',
               value: member.joinedAt
-                ? `${time(new Date(member.joinedAt), 'F')} (${time(
+                ? `${time(
                     new Date(member.joinedAt),
-                    'R'
+                    TimestampStyles.LongDateTime
+                  )} (${time(
+                    new Date(member.joinedAt),
+                    TimestampStyles.RelativeTime
                   )})`
                 : "Couldn't get info",
               inline: true,
