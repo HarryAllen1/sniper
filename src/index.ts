@@ -16,6 +16,8 @@ ApplicationCommandRegistries.setDefaultBehaviorWhenNotIdentical(
   RegisterBehavior.Overwrite
 );
 
+process.on('unhandledRejection', console.error);
+
 export const client: SniperClient = new SniperClient({
   intents: [
     GatewayIntentBits.GuildMembers,
