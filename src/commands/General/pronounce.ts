@@ -6,8 +6,6 @@ import { Command, RegisterBehavior } from '@sapphire/framework';
 })
 export class UserCommand extends Command {
   public async chatInputRun(interaction: Command.ChatInputCommandInteraction) {
-    await interaction.deferReply();
-
     await interaction.reply({
       embeds: [
         {

@@ -18,7 +18,7 @@ export class MessageReactionRemove extends Listener<
   typeof Events.MessageReactionRemove
 > {
   public async run(reaction: MessageReaction, user: User) {
-    if ((await getUserData(user.id)).dataOptOut) return;
+    if ((await getUserData(user.id))?.dataOptOut) return;
     if (reaction.partial || user.bot || !reaction.message.inGuild()) return;
     // this causes errors sometimes; idk why (missing access?????)
     const idk = reaction.fetch();

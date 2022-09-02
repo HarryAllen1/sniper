@@ -8,8 +8,6 @@ import { RedditRes } from '../../typings/index.js';
 })
 export class UserCommand extends Command {
   public async chatInputRun(interaction: Command.ChatInputCommandInteraction) {
-    await interaction.deferReply();
-
     const res = await fetch<RedditRes>(
       'https://www.reddit.com/r/memes/top/.json?sort=top&t=day&limit=100'
     );

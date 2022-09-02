@@ -31,7 +31,7 @@ export const getUserDataRef = (
   return db.collection('users').doc(userID).get();
 };
 
-export const getUserData = (userID: string): Promise<UserData> =>
+export const getUserData = (userID: string): Promise<UserData | undefined> =>
   getUserDataRef(userID).then((doc) => doc.data());
 
 export const setUserData = (

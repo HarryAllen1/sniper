@@ -10,7 +10,7 @@ import { editSnipes } from '../../lib/snipes.js';
 })
 export class MessageDelete extends Listener<typeof Events.MessageUpdate> {
   public async run(oldMessage: Message, newMessage: Message) {
-    if ((await getUserData(oldMessage.author.id)).dataOptOut) return;
+    if ((await getUserData(oldMessage.author.id))?.dataOptOut) return;
     if (oldMessage.partial || !oldMessage.inGuild()) return; // content is null
     if (oldMessage.content !== newMessage.content) {
       if (oldMessage.guildId === '882695828140073052')
