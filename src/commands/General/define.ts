@@ -12,7 +12,6 @@ export class UserCommand extends Command {
   public async chatInputRun(interaction: Command.ChatInputCommandInteraction) {
     let defaultDictionary =
       interaction.options.getString('dictionary', false) ?? 'oxford';
-    await interaction.deferReply();
 
     if (interaction.options.getString('locale', false)) {
       defaultDictionary = 'oxford';
