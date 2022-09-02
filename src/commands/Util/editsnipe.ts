@@ -32,7 +32,7 @@ export class UserCommand extends Command {
           {
             title: "There's nothing to snipe!",
             description:
-              'Deleted messages can only be sniped within 1 hour of deletion.',
+              'Edited messages can only be sniped within 1 hour of deletion. The user might have also opted out of data collection.',
             color: Colors.Red,
           },
         ],

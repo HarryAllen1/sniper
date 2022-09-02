@@ -59,8 +59,8 @@ export class SnipeCommand extends Command {
             description:
               this.container.client.uptime &&
               this.container.client.uptime < ms('1m')
-                ? 'The bot was just restarted less than a minute ago. All snipes are wiped after every restart.'
-                : 'Deleted messages can only be sniped within 1 hour of deletion.',
+                ? 'The bot was just restarted less than a minute ago. All snipes are wiped after every restart.  The user might have also opted out of data collection.'
+                : 'Deleted messages can only be sniped within 1 hour of deletion. The user might have also opted out of data collection.',
             color: Colors.Red,
           },
         ],
