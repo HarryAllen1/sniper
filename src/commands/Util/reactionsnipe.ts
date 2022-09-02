@@ -51,7 +51,10 @@ export class UserCommand extends Command {
                 text: `#${(interaction.channel as TextChannel).name}`,
               })
               .setTimestamp(channelSnipe.createdAt)
-          : { title: "There's nothing to snipe!" },
+          : {
+              title:
+                "There's nothing to snipe! The user might have also opted out of data collection.",
+            },
       ],
     });
   }

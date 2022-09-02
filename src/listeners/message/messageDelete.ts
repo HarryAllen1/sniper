@@ -2,7 +2,7 @@ import { ApplyOptions } from '@sapphire/decorators';
 import { Events, Listener, ListenerOptions } from '@sapphire/framework';
 import { cleanContent, Message } from 'discord.js';
 import ms from 'ms';
-import { sleep } from '../../lib/index.js';
+import { getUserData, sleep } from '../../lib/index.js';
 import { snipes } from '../../lib/snipes.js';
 
 @ApplyOptions<ListenerOptions>({
@@ -10,6 +10,7 @@ import { snipes } from '../../lib/snipes.js';
 })
 export class MessageDelete extends Listener<typeof Events.MessageDelete> {
   public async run(message: Message) {
+    if ((await getUserData(message.author.id)).dataOptOut) return;
     if (message.partial || !message.inGuild()) return; // content is null
     if (
       message.content.toLowerCase() !== '.pick' &&

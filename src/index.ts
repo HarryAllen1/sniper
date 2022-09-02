@@ -56,4 +56,5 @@ export const client: SniperClient = new SniperClient({
 
 createColors({ useColor: true });
 
+client.initDB();
 void client.login(config.discordToken);

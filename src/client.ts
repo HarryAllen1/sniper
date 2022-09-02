@@ -10,11 +10,11 @@ export class SniperClient extends SapphireClient {
   }
 
   public initDB() {
-    initializeApp({
+    const app = initializeApp({
       credential: cert(config.firebaseConfig),
       projectId: 'discord-sniper-5c7f0',
     });
-    container.db = getFirestore();
+    container.db = getFirestore(app);
   }
 }
 
