@@ -25,7 +25,7 @@
     "@kaname-png/plugin-statcord": "^2.1.4",
     "@sapphire/decorators": "5.0.1-pr-434.549335e.0",
     "@sapphire/discord.js-utilities": "5.1.0-pr-434.549335e.0",
-    "@sapphire/framework": "3.1.0-pr-512.135ce4a.0",
+    "@sapphire/framework": "3.1.1",
     "@sapphire/plugin-logger": "^3.0.0",
     "@sapphire/type": "^2.2.4",
     "@sapphire/utilities": "^3.9.3",
