@@ -24,8 +24,9 @@ export class UserCommand extends Command {
     i.reply('This command can only be used in a guild.');
   })
   public async chatInputRun(interaction: Command.ChatInputCommandInteraction) {
-    const channel = interaction.channel as TextChannel;
-    const snipe = editSnipes[channel.id];
+    if (!interaction.inGuild()) return;
+
+    const snipe = editSnipes[interaction.channelId];
     if (!snipe)
       return interaction.reply({
         embeds: [
@@ -52,7 +53,7 @@ export class UserCommand extends Command {
               .setAuthor({ name: snipe.author?.tag ?? '' })
               .setColor(Colors.Green)
               .setFooter({
-                text: `#${channel.name}`,
+                text: `#${interaction.channel?.name ?? 'unknown'}`,
               })
               .setTimestamp(snipe.createdAt ? snipe.createdAt : 0)
           : new EmbedBuilder()

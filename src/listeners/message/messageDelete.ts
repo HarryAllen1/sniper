@@ -22,7 +22,7 @@ export class MessageDelete extends Listener<typeof Events.MessageDelete> {
         }: ${cleanContent(message.content, message.channel)}`
       );
 
-    snipes[message.channel.id] = {
+    snipes[message.channelId] = {
       author: message.author,
       content: message.content,
       createdAt: message.createdTimestamp,
@@ -48,7 +48,7 @@ export class MessageDelete extends Listener<typeof Events.MessageDelete> {
       snipes[message.channelId] &&
       snipes[message.channelId]?.createdAt === message.createdTimestamp
     ) {
-      delete snipes[message.channel.id];
+      delete snipes[message.channelId];
     }
   }
 }

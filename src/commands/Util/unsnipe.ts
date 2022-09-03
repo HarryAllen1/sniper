@@ -51,7 +51,6 @@ export class UserCommand extends Command {
     i.reply('This command can only be used in a guild.');
   })
   public async chatInputRun(interaction: Command.ChatInputCommandInteraction) {
-    const channel = interaction.channel as TextChannel;
     const snipe = unSnipes[interaction.channelId]?.msg;
     if (!snipe) {
       return interaction.reply({
@@ -68,11 +67,11 @@ export class UserCommand extends Command {
     if (
       msgToDelete &&
       snipe &&
-      (interaction.user.id === snipes[channel.id].user?.id ||
-        interaction.user.id === snipes[channel.id].requesterId)
+      (interaction.user.id === snipes[interaction.channelId].user?.id ||
+        interaction.user.id === snipes[interaction.channelId].requesterId)
     ) {
       await msgToDelete.delete();
-      delete snipes[channel.id];
+      delete snipes[interaction.channelId];
     }
   }
 

@@ -31,7 +31,7 @@ export class MessageReactionRemove extends Listener<
     )
       reaction = await idk;
 
-    reactionSnipes[reaction.message.channel.id] = {
+    reactionSnipes[reaction.message.channelId] = {
       user,
       emoji: reaction.emoji,
       messageURL: reaction.message.url,

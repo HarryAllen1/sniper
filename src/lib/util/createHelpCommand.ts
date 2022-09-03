@@ -32,8 +32,8 @@ export function createHelpCommand(
   const pages: HelpPages = {};
   // create a paginated message instance
   const pager = new PaginatedMessage();
-  // set the first page
 
+  // set the first page
   if (options.firstPage) pager.addPageEmbed(options.firstPage);
   data.forEach((cmd) => {
     if (pages[cmd.category ?? 'No Category'])
