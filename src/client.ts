@@ -11,14 +11,14 @@ export class SniperClient extends SapphireClient {
 
   public initDB() {
     const app = process.env.ONLY_UPDATE_DOCS
-      ? initializeApp({
+      ? ({} as any)
+      : initializeApp({
           credential: cert(config.firebaseConfig),
           projectId: 'discord-sniper-5c7f0',
-        })
-      : ({} as any);
+        });
     container.db = process.env.ONLY_UPDATE_DOCS
-      ? getFirestore(app)
-      : ({} as any);
+      ? ({} as any)
+      : getFirestore(app);
   }
 }
 
