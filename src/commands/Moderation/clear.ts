@@ -1,4 +1,9 @@
-import { ApplyOptions } from '@sapphire/decorators';
+import {
+  ApplyOptions,
+  RequiresClientPermissions,
+  RequiresGuildContext,
+  RequiresUserPermissions,
+} from '@sapphire/decorators';
 import { Command, RegisterBehavior } from '@sapphire/framework';
 import { Colors, PermissionFlagsBits } from 'discord.js';
 
@@ -35,33 +40,11 @@ export class UserCommand extends Command {
     );
   }
 
+  @RequiresGuildContext()
+  @RequiresClientPermissions(PermissionFlagsBits.ManageMessages)
+  @RequiresUserPermissions(PermissionFlagsBits.ManageMessages)
   public async chatInputRun(interaction: Command.ChatInputCommandInteraction) {
-    if (!interaction.inCachedGuild()) return;
-
-    if (
-      !interaction.member?.permissions.has(PermissionFlagsBits.ManageMessages)
-    )
-      return interaction.reply({
-        embeds: [{ title: 'you dont have the required perms' }],
-      });
-
-    if (
-      !interaction.guild?.members.me?.permissions.has(
-        PermissionFlagsBits.ManageMessages
-      )
-    ) {
-      return interaction.reply({
-        embeds: [
-          {
-            title: "I don't have the required perms",
-            description:
-              'I need the `Manage Messages` permission to run this command',
-            color: Colors.Red,
-          },
-        ],
-      });
-    }
-
+    if (!interaction.inGuild()) return;
     if (interaction.options.getInteger('messages', true) > 100)
       return interaction.reply({
         embeds: [

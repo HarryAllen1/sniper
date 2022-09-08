@@ -9,7 +9,7 @@ import { DiscordAPIError, PermissionFlagsBits } from 'discord.js';
 })
 export class UserCommand extends Command {
   public async chatInputRun(interaction: Command.ChatInputCommandInteraction) {
-    if (!interaction.inCachedGuild()) return;
+    if (!interaction.inGuild()) return;
 
     const rawTargets = interaction.options
       .getString('users', true)
@@ -18,7 +18,7 @@ export class UserCommand extends Command {
 
     const targets = Promise.all(
       rawTargets.map((v) =>
-        interaction.guild.members.fetch(v).catch((r: DiscordAPIError) => {
+        interaction.guild?.members.fetch(v).catch((r: DiscordAPIError) => {
           throw new UserError({
             identifier: 'argumentInvalidSnowflake',
             context: r.message,
@@ -30,7 +30,7 @@ export class UserCommand extends Command {
     );
 
     (await targets).forEach((v) =>
-      v.ban({
+      v?.ban({
         reason: interaction.options.getString('reason', false) as
           | string
           | undefined,
@@ -38,7 +38,7 @@ export class UserCommand extends Command {
     );
 
     await interaction.reply(
-      `Banned ${(await targets).map((v) => v.user.tag).join(', ')}`
+      `Banned ${(await targets).map((v) => v?.user.tag).join(', ')}`
     );
   }
 

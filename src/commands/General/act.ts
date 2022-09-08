@@ -36,8 +36,10 @@ export class UserCommand extends Command {
       });
     const wh = await (interaction.channel as TextChannel)?.createWebhook({
       name:
-        interaction.guild.members.cache.get(
-          interaction.options.getUser('user', true).id
+        (
+          await interaction.guild.members.fetch(
+            interaction.options.getUser('user', true).id
+          )
         )?.nickname ?? interaction.options.getUser('user', true).username,
       avatar: interaction.options.getUser('user', true).displayAvatarURL(),
       reason: 'sniper command',
