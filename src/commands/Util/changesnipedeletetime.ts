@@ -1,4 +1,4 @@
-import { ApplyOptions } from '@sapphire/decorators';
+import { ApplyOptions, RequiresUserPermissions } from '@sapphire/decorators';
 import { Command, RegisterBehavior } from '@sapphire/framework';
 import { Colors, PermissionFlagsBits } from 'discord.js';
 import { setGuildSettings } from '../../lib/index.js';
@@ -29,6 +29,7 @@ export class UserCommand extends Command {
     );
   }
 
+  @RequiresUserPermissions(PermissionFlagsBits.ManageGuild)
   public async chatInputRun(interaction: Command.ChatInputCommandInteraction) {
     await setGuildSettings(interaction.guildId!, {
       snipeDeleteTime: interaction.options.getInteger('time'),
