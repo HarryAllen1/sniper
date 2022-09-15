@@ -7,6 +7,7 @@ import {
 } from '@sapphire/framework';
 import { Colors, EmbedBuilder, Message, TextChannel } from 'discord.js';
 import ms from 'ms';
+import { getGuildSettings } from '../../lib/index.js';
 import { snipes, unSnipes } from '../../lib/snipes.js';
 
 @ApplyOptions<Command.Options>({
@@ -48,8 +49,11 @@ export class SnipeCommand extends Command {
 
   @RequiresGuildContext()
   public async chatInputRun(interaction: Command.ChatInputCommandInteraction) {
+    if (!interaction.inGuild()) return;
+
     let type = interaction.options.get('type', false)?.value ?? 'messages';
     const snipe = snipes[interaction.channelId];
+    const guildSettings = await getGuildSettings(interaction.guildId);
 
     if (!snipe)
       return interaction.reply({
@@ -60,7 +64,21 @@ export class SnipeCommand extends Command {
               this.container.client.uptime &&
               this.container.client.uptime < ms('1m')
                 ? 'The bot was just restarted less than a minute ago. All snipes are wiped after every restart.  The user might have also opted out of data collection.'
-                : 'Deleted messages can only be sniped within 1 hour of deletion. The user might have also opted out of data collection.',
+                : `Deleted messages can only be sniped within ${
+                    guildSettings.snipeDeleteTime
+                      ? `${guildSettings.snipeDeleteTime} minute(s)`
+                      : '1 hour'
+                  } of deletion (customizable with ${
+                    this.container.client.application?.commands.cache.find(
+                      (v) => v.name === 'changesnipedeletetime'
+                    )?.id
+                      ? `</changesnipedeletetime:${
+                          this.container.client.application?.commands.cache.find(
+                            (v) => v.name === 'changesnipedeletetime'
+                          )?.id
+                        }>`
+                      : '/changesnipedeletetime'
+                  }). The user might have also opted out of data collection.`,
             color: Colors.Red,
           },
         ],
