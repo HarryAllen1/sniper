@@ -44,6 +44,7 @@ export class UserCommand extends Command {
       avatar: interaction.options.getUser('user', true).displayAvatarURL(),
       reason: 'sniper command',
     });
+
     await wh.send({
       content: interaction.options.getString('message', true),
       allowedMentions: { parse: [] },

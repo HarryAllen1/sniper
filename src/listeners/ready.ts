@@ -1,6 +1,9 @@
 import { ApplyOptions } from '@sapphire/decorators';
 import { Events, Listener, SapphireClient } from '@sapphire/framework';
-import { ActivityType } from 'discord.js';
+import {
+  ActivityType,
+  RESTPostAPIChatInputApplicationCommandsJSONBody,
+} from 'discord.js';
 import { writeFile } from 'fs/promises';
 
 @ApplyOptions<Listener.Options>({
@@ -26,6 +29,14 @@ export class UserEvent extends Listener<typeof Events.ClientReady> {
           description: cmd.description,
           filePath: `src/commands/${cmd.fullCategory.join('/')}/${cmd.name}.ts`,
           disabled: !cmd.enabled,
+          options:
+            // prettier-ignore
+            (
+              // @ts-expect-error its private; whatever
+              cmd.applicationCommandRegistry.apiCalls[0] as {
+                builtData: RESTPostAPIChatInputApplicationCommandsJSONBody;
+              }
+            ).builtData.options,
         });
       });
       await writeFile('./all-commands.json', JSON.stringify(commands, null, 2));

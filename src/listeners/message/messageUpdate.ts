@@ -2,7 +2,7 @@ import { ApplyOptions } from '@sapphire/decorators';
 import { Events, Listener, ListenerOptions } from '@sapphire/framework';
 import { cleanContent, Message } from 'discord.js';
 import ms from 'ms';
-import { getUserData, sleep } from '../../lib/index.js';
+import { getGuildSettings, getUserData, sleep } from '../../lib/index.js';
 import { editSnipes } from '../../lib/snipes.js';
 
 @ApplyOptions<ListenerOptions>({
@@ -30,7 +30,16 @@ export class MessageDelete extends Listener<typeof Events.MessageUpdate> {
         id: newMessage.id,
         cmdId: '',
       };
-      await sleep(ms('1h'));
+
+      const guildSettings = await getGuildSettings(oldMessage.guildId);
+
+      await sleep(
+        ms(
+          guildSettings.snipeDeleteTime
+            ? `${guildSettings.snipeDeleteTime}m`
+            : '1h'
+        )
+      );
 
       if (
         editSnipes[oldMessage.channelId]?.createdAt ===

@@ -8,7 +8,7 @@ import {
   User,
 } from 'discord.js';
 import ms from 'ms';
-import { getUserData, sleep } from '../../lib/index.js';
+import { getGuildSettings, getUserData, sleep } from '../../lib/index.js';
 import { reactionSnipes } from '../../lib/snipes.js';
 
 @ApplyOptions<ListenerOptions>({
@@ -38,7 +38,15 @@ export class MessageReactionRemove extends Listener<
       createdAt: reaction.message.createdTimestamp,
       cmdId: '',
     };
-    await sleep(ms('1h'));
+    const guildSettings = await getGuildSettings(reaction.message.guildId!);
+
+    await sleep(
+      ms(
+        guildSettings.snipeDeleteTime
+          ? `${guildSettings.snipeDeleteTime}m`
+          : '1h'
+      )
+    );
 
     if (
       reactionSnipes[reaction.message.channelId]?.createdAt ===

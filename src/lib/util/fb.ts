@@ -2,9 +2,15 @@ import { container } from '@sapphire/framework';
 
 const { db } = container;
 
-export const getGuildSettings = async (guildID: string) => {
+interface GuildSettings {
+  snipeDeleteTime?: number;
+}
+
+export const getGuildSettings = async (
+  guildID: string
+): Promise<GuildSettings> => {
   const val = await db.collection('guilds').doc(guildID).get();
-  return val.data();
+  return val.data() as Promise<GuildSettings>;
 };
 export const setGuildSettings = async (
   guildID: string,
