@@ -42,7 +42,7 @@ export class MessageReactionRemove extends Listener<
 
     await sleep(
       ms(
-        guildSettings.snipeDeleteTime
+        guildSettings?.snipeDeleteTime
           ? `${guildSettings.snipeDeleteTime}m`
           : '1h'
       )
