@@ -1,0 +1,9 @@
+diff --git a/src/index.js b/src/index.js
+index a015ba4954c0120f97cd27f4b6f0b891efe842c1..f6504022a9df9a59c75ef5015064edc27fab446b 100644
+--- a/src/index.js
++++ b/src/index.js
+@@ -187,3 +187,4 @@ exports.WebSocket = require('./WebSocket');
+ __exportStar(require('discord-api-types/v10'), exports);
+ __exportStar(require('@discordjs/builders'), exports);
+ __exportStar(require('@discordjs/rest'), exports);
++__exportStar(require('@discordjs/util'), exports);
