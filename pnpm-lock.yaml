@@ -32,7 +32,7 @@ specifiers:
   prettier: 2.7.1
   tsup: ^6.2.3
   typescript: 4.8.4
-  vitepress: 1.0.0-alpha.19
+  vitepress: 1.0.0-alpha.21
   vue: ^3.2.40
 
 dependencies:
@@ -64,7 +64,7 @@ devDependencies:
   prettier: 2.7.1
   tsup: 6.2.3_typescript@4.8.4
   typescript: 4.8.4
-  vitepress: 1.0.0-alpha.19
+  vitepress: 1.0.0-alpha.21
   vue: 3.2.40
 
 packages:
@@ -3907,8 +3907,8 @@ packages:
       fsevents: 2.3.2
     dev: true
 
-  /vitepress/1.0.0-alpha.19:
-    resolution: {integrity: sha512-0FIUZB6JGXio7SELDDUkyQoMjmO/UAXqDXmznzOsBKsdZ3EHlyb6NaP/V/BMfN5S8+GV88ScbIL0jd/pDzkLBg==}
+  /vitepress/1.0.0-alpha.21:
+    resolution: {integrity: sha512-D/tkoDW16uUZ9pnWd28Kk1vX26zNiTml3m9oGbfx2pAfYg99PHd1GceZyEm4jZsJU0+n9S++1ctFxoQvsq376A==}
     hasBin: true
     dependencies:
       '@docsearch/css': 3.2.1
