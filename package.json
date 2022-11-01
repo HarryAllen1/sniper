@@ -21,8 +21,8 @@
     "docs:update": "pnpm build && ONLY_UPDATE_DOCS=true DEV_SCRIPT=true node dist/index.js && node scripts/update-docs.js && pnpm run format"
   },
   "dependencies": {
-    "@firebase/app-compat": "^0.1.35",
-    "@kaname-png/plugin-statcord": "^2.1.4",
+    "@firebase/app-compat": "^0.1.38",
+    "@kaname-png/plugin-statcord": "^2.1.5",
     "@sapphire/decorators": "5.1.0-pr-434.9fcf7df.0",
     "@sapphire/discord.js-utilities": "5.1.0-pr-434.9fcf7df.0",
     "@sapphire/framework": "3.2.0-pr-512.244de39.0",
@@ -30,27 +30,27 @@
     "@sapphire/type": "^2.2.4",
     "@sapphire/utilities": "3.10.2-pr-434.9fcf7df.0",
     "colorette": "^2.0.19",
-    "discord.js": "^14.5.0",
-    "firebase-admin": "^11.1.0",
+    "discord.js": "^14.6.0",
+    "firebase-admin": "^11.2.0",
     "lodash-es": "^4.17.21",
-    "luxon": "^3.0.4",
+    "luxon": "^3.1.0",
     "ms": "3.0.0-canary.1"
   },
   "devDependencies": {
-    "@firebase/app-types": "^0.8.0",
+    "@firebase/app-types": "^0.8.1",
     "@sapphire/eslint-config": "^4.3.8",
-    "@types/luxon": "^3.0.1",
-    "@types/node": "18.8.3",
-    "@typescript-eslint/eslint-plugin": "5.40.1",
-    "@typescript-eslint/parser": "5.40.1",
-    "eslint": "8.25.0",
+    "@types/luxon": "^3.0.2",
+    "@types/node": "18.11.8",
+    "@typescript-eslint/eslint-plugin": "5.42.0",
+    "@typescript-eslint/parser": "5.42.0",
+    "eslint": "8.26.0",
     "eslint-config-prettier": "^8.5.0",
-    "pnpm": "^7.13.2",
+    "pnpm": "^7.14.1",
     "prettier": "2.7.1",
-    "tsup": "^6.2.3",
+    "tsup": "^6.3.0",
     "typescript": "4.8.4",
-    "vitepress": "1.0.0-alpha.21",
-    "vue": "^3.2.40"
+    "vitepress": "1.0.0-alpha.26",
+    "vue": "^3.2.41"
   },
   "engines": {
     "npm": ">=7.0.0",
@@ -64,9 +64,6 @@
         "react-dom",
         "@algolia/client-search"
       ]
-    },
-    "patchedDependencies": {
-      "discord.js@14.5.0": "patches/discord.js@14.5.0.patch"
     }
   },
   "packageManager": "pnpm@7.13.5"

@@ -65,8 +65,8 @@ export class SnipeCommand extends Command {
               this.container.client.uptime < ms('1m')
                 ? 'The bot was just restarted less than a minute ago. All snipes are wiped after every restart.  The user might have also opted out of data collection.'
                 : `Deleted messages can only be sniped within ${
-                    guildSettings.snipeDeleteTime
-                      ? `${guildSettings.snipeDeleteTime} minute(s)`
+                    guildSettings?.snipeDeleteTime ?? '60'
+                      ? `${guildSettings?.snipeDeleteTime ?? '60'} minute(s)`
                       : '1 hour'
                   } of deletion (customizable with ${
                     this.container.client.application?.commands.cache.find(
