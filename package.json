@@ -28,7 +28,7 @@
     "@sapphire/framework": "3.2.0-pr-512.244de39.0",
     "@sapphire/plugin-logger": "^3.0.1",
     "@sapphire/type": "^2.2.4",
-    "@sapphire/utilities": "3.10.2-pr-434.9fcf7df.0",
+    "@sapphire/utilities": "3.11.0",
     "colorette": "^2.0.19",
     "discord.js": "^14.6.0",
     "firebase-admin": "^11.2.0",
