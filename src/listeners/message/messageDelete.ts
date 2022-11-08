@@ -47,7 +47,11 @@ export class MessageDelete extends Listener<typeof Events.MessageDelete> {
     await sleep(
       ms(
         guildSettings?.snipeDeleteTime
-          ? `${guildSettings.snipeDeleteTime}m`
+          ? `${
+              guildSettings.snipeDeleteTime > 2147483647 / 1000
+                ? 2147483647 / 1000
+                : guildSettings.snipeDeleteTime
+            }m`
           : '1h'
       )
     );
