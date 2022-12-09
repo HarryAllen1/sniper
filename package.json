@@ -37,7 +37,7 @@
     "ms": "3.0.0-canary.1"
   },
   "devDependencies": {
-    "@firebase/app-types": "^0.8.1",
+    "@firebase/app-types": "^0.9.0",
     "@sapphire/eslint-config": "^4.3.8",
     "@types/luxon": "^3.0.2",
     "@types/node": "18.11.8",
