@@ -21,7 +21,7 @@
     "docs:update": "pnpm build && ONLY_UPDATE_DOCS=true DEV_SCRIPT=true node dist/index.js && node scripts/update-docs.js && pnpm run format"
   },
   "dependencies": {
-    "@firebase/app-compat": "^0.1.38",
+    "@firebase/app-compat": "^0.2.0",
     "@kaname-png/plugin-statcord": "^2.1.5",
     "@sapphire/decorators": "5.1.0-pr-434.9fcf7df.0",
     "@sapphire/discord.js-utilities": "5.1.0-pr-434.9fcf7df.0",
