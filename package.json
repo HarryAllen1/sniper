@@ -40,7 +40,7 @@
     "@firebase/app-types": "^0.8.1",
     "@sapphire/eslint-config": "^4.3.8",
     "@types/luxon": "^3.0.2",
-    "@types/node": "18.11.8",
+    "@types/node": "18.11.18",
     "@typescript-eslint/eslint-plugin": "5.42.0",
     "@typescript-eslint/parser": "5.42.0",
     "eslint": "8.26.0",
