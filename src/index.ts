@@ -2,7 +2,7 @@ import '@kaname-png/plugin-statcord/register';
 import {
   ApplicationCommandRegistries,
   LogLevel,
-  RegisterBehavior,
+  RegisterBehavior
 } from '@sapphire/framework';
 import '@sapphire/plugin-logger/register';
 import { createColors } from 'colorette';
@@ -13,12 +13,12 @@ import { config } from './config.js';
 export const harrysDiscordID = '696554549418262548';
 
 ApplicationCommandRegistries.setDefaultBehaviorWhenNotIdentical(
-  RegisterBehavior.Overwrite
+  RegisterBehavior.BulkOverwrite
 );
 
 process.on('unhandledRejection', console.error);
 
-export const client: SniperClient = new SniperClient({
+export const client = new SniperClient({
   intents: [
     GatewayIntentBits.GuildMembers,
     GatewayIntentBits.GuildMessages,
@@ -30,7 +30,6 @@ export const client: SniperClient = new SniperClient({
     repliedUser: true,
     parse: ['users'],
   },
-  rest: {},
   presence: {
     activities: [
       {
@@ -39,7 +38,7 @@ export const client: SniperClient = new SniperClient({
       },
     ],
   },
-  failIfNotExists: true,
+  failIfNotExists: false,
   caseInsensitiveCommands: true,
   logger: {
     level: LogLevel.Info,
