@@ -2,7 +2,7 @@ import '@kaname-png/plugin-statcord/register';
 import {
   ApplicationCommandRegistries,
   LogLevel,
-  RegisterBehavior
+  RegisterBehavior,
 } from '@sapphire/framework';
 import '@sapphire/plugin-logger/register';
 import { createColors } from 'colorette';
