@@ -7,7 +7,7 @@ const config = `export const config = {
   ownerGuilds: [],
 }`;
 
-if (import.meta.url.includes('/home/harry')) {
+if (!import.meta.url.includes('/home/harry')) {
   await writeFile('./src/config.ts', config);
   await writeFile('./dist/config.js', config);
 }
