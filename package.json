@@ -24,7 +24,7 @@
     "@firebase/app-compat": "^0.2.0",
     "@kaname-png/plugin-statcord": "^2.1.10",
     "@sapphire/decorators": "6.0.0",
-    "@sapphire/discord.js-utilities": "6.0.0",
+    "@sapphire/discord.js-utilities": "6.0.2",
     "@sapphire/framework": "4.0.0",
     "@sapphire/plugin-logger": "^3.0.1",
     "@sapphire/type": "^2.3.0",
