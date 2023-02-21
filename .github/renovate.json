@@ -1,10 +1,19 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:base"],
-  "packageRules": [
-    {
-      "matchPackagePatterns": ["*"],
-      "rangeStrategy": "replace"
-    }
-  ]
+	"extends": [
+		"github>whitesource/merge-confidence:beta",
+		"config:base",
+		":preserveSemverRanges",
+		"group:allNonMajor",
+		":semanticCommitTypeAll(chore)"
+	],
+	"pin": {
+		"enabled": false
+	},
+	"packageRules": [
+		{
+			"matchPackageNames": ["@types/node", "vite"],
+			"matchUpdateTypes": ["minor", "patch", "pin", "digest"]
+		}
+	]
 }
