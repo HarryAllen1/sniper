@@ -38,7 +38,7 @@
   },
   "devDependencies": {
     "@firebase/app-types": "^0.9.0",
-    "@sapphire/eslint-config": "^4.3.8",
+    "@sapphire/eslint-config": "^5.0.0",
     "@types/lodash-es": "^4.17.6",
     "@types/luxon": "^3.2.0",
     "@types/node": "18.17.1",
