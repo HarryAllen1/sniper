@@ -21,8 +21,8 @@ dependencies:
     specifier: 4.5.3
     version: 4.5.3
   '@sapphire/plugin-i18next':
-    specifier: ^5.1.0
-    version: 5.1.0
+    specifier: ^6.0.0
+    version: 6.0.0
   '@sapphire/plugin-logger':
     specifier: ^3.0.6
     version: 3.0.6
@@ -1061,14 +1061,14 @@ packages:
       tslib: 2.6.2
     dev: false
 
-  /@sapphire/plugin-i18next@5.1.0:
-    resolution: {integrity: sha512-UmUibnoKHvxNuwiQ4ZCat58pq+tVPK6i1/tUVpFMHREiKu0qJVa40j3lsdk8KHCuweypLiScZRT86pJQcV/Gfg==}
+  /@sapphire/plugin-i18next@6.0.0:
+    resolution: {integrity: sha512-FIBjR+eR9ZZ3x2An5ZK0lAvUfhVUCJj76qN6tjdBFC8UHrRnOeXWeXKU6WDq+2z9ENRFBEdwlFg0y2iPazMasw==}
     engines: {node: '>=v14', npm: '>=7'}
     dependencies:
       '@sapphire/utilities': 3.13.0
       '@skyra/i18next-backend': 2.0.4
       chokidar: 3.5.3
-      i18next: 22.5.1
+      i18next: 23.4.9
     dev: false
 
   /@sapphire/plugin-logger@3.0.6:
@@ -2685,8 +2685,8 @@ packages:
     engines: {node: '>=14.18.0'}
     dev: true
 
-  /i18next@22.5.1:
-    resolution: {integrity: sha512-8TGPgM3pAD+VRsMtUMNknRz3kzqwp/gPALrWMsDnmC1mKqJwpWyooQRLMcbTwq8z8YwSmuj+ZYvc+xCuEpkssA==}
+  /i18next@23.4.9:
+    resolution: {integrity: sha512-F8YQ29LD6FvWS/aOYbZ4WqjDEuQZmug8akAM0QOcAtR+EuHHlBYf/JpsjeqUDdYiClmj2zE9rI9ZUWzN7W+trQ==}
     dependencies:
       '@babel/runtime': 7.22.11
     dev: false
