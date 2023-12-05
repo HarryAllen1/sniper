@@ -21,8 +21,8 @@ dependencies:
     specifier: 4.5.3
     version: 4.5.3
   '@sapphire/plugin-i18next':
-    specifier: ^5.1.0
-    version: 5.1.0
+    specifier: ^7.0.0
+    version: 7.0.0
   '@sapphire/plugin-logger':
     specifier: ^3.0.6
     version: 3.0.6
@@ -258,8 +258,8 @@ packages:
     dependencies:
       '@babel/types': 7.22.11
 
-  /@babel/runtime@7.22.11:
-    resolution: {integrity: sha512-ee7jVNlWN09+KftVOu9n7S8gQzD/Z6hN/I8VBRXW4P1+Xe7kJGXMwu8vds4aGIMHZnNbdpSWCfZZtinytpcAvA==}
+  /@babel/runtime@7.23.5:
+    resolution: {integrity: sha512-NdUTHcPe4C99WxPub+K9l9tK5/lV4UXIoaHSYgzco9BCyjKAAwzdBI+wWtYqHt7LJdbo74ZjRPJgzVweq1sz0w==}
     engines: {node: '>=6.9.0'}
     dependencies:
       regenerator-runtime: 0.14.0
@@ -1061,14 +1061,14 @@ packages:
       tslib: 2.6.2
     dev: false
 
-  /@sapphire/plugin-i18next@5.1.0:
-    resolution: {integrity: sha512-UmUibnoKHvxNuwiQ4ZCat58pq+tVPK6i1/tUVpFMHREiKu0qJVa40j3lsdk8KHCuweypLiScZRT86pJQcV/Gfg==}
-    engines: {node: '>=v14', npm: '>=7'}
+  /@sapphire/plugin-i18next@7.0.0:
+    resolution: {integrity: sha512-yKQ65T54payaAx6PdFdCcQ5DFinglorUeIod18OI7QcrZlJ3G5X8x7LvyxhOBzzroFE6QlFECV5zRdp3L+tlvw==}
+    engines: {node: '>=v18', npm: '>=7'}
     dependencies:
-      '@sapphire/utilities': 3.13.0
+      '@sapphire/utilities': 3.14.0
       '@skyra/i18next-backend': 2.0.4
       chokidar: 3.5.3
-      i18next: 22.5.1
+      i18next: 23.7.7
     dev: false
 
   /@sapphire/plugin-logger@3.0.6:
@@ -1130,6 +1130,11 @@ packages:
   /@sapphire/utilities@3.13.0:
     resolution: {integrity: sha512-BD5ycPjZX5dXxrAb90dJTY8ukpPVBXgU17gA5ghK2memS4hwAzFYpvK+R+6zh4d6HYIKVuqrVhGXjvZenAa/Aw==}
     engines: {node: '>=v14.0.0', npm: '>=7.0.0'}
+    dev: false
+
+  /@sapphire/utilities@3.14.0:
+    resolution: {integrity: sha512-eYlpYlaKLvxTNjD3ymxpsf4MaSHW3x6vf+DMsLdMsV235J7i66VboHb8uxNcogR/lJ7khmMhMTCtabqUhNX4bA==}
+    engines: {node: '>=v14.0.0'}
     dev: false
 
   /@skyra/i18next-backend@2.0.4:
@@ -2685,10 +2690,10 @@ packages:
     engines: {node: '>=14.18.0'}
     dev: true
 
-  /i18next@22.5.1:
-    resolution: {integrity: sha512-8TGPgM3pAD+VRsMtUMNknRz3kzqwp/gPALrWMsDnmC1mKqJwpWyooQRLMcbTwq8z8YwSmuj+ZYvc+xCuEpkssA==}
+  /i18next@23.7.7:
+    resolution: {integrity: sha512-peTvdT+Lma+o0LfLFD7IC2M37N9DJ04dH0IJYOyOHRhDfLo6nK36v7LkrQH35C2l8NHiiXZqGirhKESlEb/5PA==}
     dependencies:
-      '@babel/runtime': 7.22.11
+      '@babel/runtime': 7.23.5
     dev: false
 
   /idb@7.1.1:
