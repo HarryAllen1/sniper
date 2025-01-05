@@ -32,7 +32,7 @@
     "@sapphire/utilities": "3.18.1",
     "colorette": "^2.0.20",
     "discord.js": "^14.13.0",
-    "firebase-admin": "^11.10.1",
+    "firebase-admin": "^13.0.0",
     "lodash-es": "^4.17.21",
     "luxon": "^3.4.2",
     "ms": "3.0.0-canary.1"
