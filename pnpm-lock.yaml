@@ -24,8 +24,8 @@ importers:
         specifier: 4.8.5
         version: 4.8.5
       '@sapphire/plugin-i18next':
-        specifier: ^5.1.0
-        version: 5.1.0
+        specifier: ^7.0.0
+        version: 7.1.3
       '@sapphire/plugin-logger':
         specifier: ^3.0.6
         version: 3.0.6
@@ -204,8 +204,8 @@ packages:
     engines: {node: '>=6.0.0'}
     hasBin: true
 
-  '@babel/runtime@7.22.11':
-    resolution: {integrity: sha512-ee7jVNlWN09+KftVOu9n7S8gQzD/Z6hN/I8VBRXW4P1+Xe7kJGXMwu8vds4aGIMHZnNbdpSWCfZZtinytpcAvA==}
+  '@babel/runtime@7.26.0':
+    resolution: {integrity: sha512-FDSOghenHTiToteC/QRlv2q3DhPZ/oOXTBoirfWNx1Cx3TMVcGWQtMMmQcSvb/JjpNeGzx8Pq/b4fKEJuWm1sw==}
     engines: {node: '>=6.9.0'}
 
   '@babel/types@7.22.11':
@@ -859,9 +859,9 @@ packages:
     resolution: {integrity: sha512-iBaux50dA+VYjtBqmaceWcskdmw7ua51ojEPkyaSJyg2t9ln/Wc9NqYoQheRCWltZeDTERCUBIYYMqDuCs1Okw==}
     engines: {node: '>=v14.0.0', npm: '>=7.0.0'}
 
-  '@sapphire/plugin-i18next@5.1.0':
-    resolution: {integrity: sha512-UmUibnoKHvxNuwiQ4ZCat58pq+tVPK6i1/tUVpFMHREiKu0qJVa40j3lsdk8KHCuweypLiScZRT86pJQcV/Gfg==}
-    engines: {node: '>=v14', npm: '>=7'}
+  '@sapphire/plugin-i18next@7.1.3':
+    resolution: {integrity: sha512-MzZIAhvdP2cQ9sBod/yusoUaJoEl5Ahjh4jChiKZWeY5pAsuw9tue88F5Qkjh3JFA5vf5lU+AWwNnahMJGKeMQ==}
+    engines: {node: '>=v18', npm: '>=7'}
 
   '@sapphire/plugin-logger@3.0.6':
     resolution: {integrity: sha512-BMluxIdVODObdbCy4TRkCmSAB/T/XQlYxaD25HD+1Z4feUVrBGWFmmWQo/2X4aLMD3VZi5RQ5oY6kZgtHn+ufA==}
@@ -927,8 +927,8 @@ packages:
   '@shikijs/vscode-textmate@10.0.1':
     resolution: {integrity: sha512-fTIQwLF+Qhuws31iw7Ncl1R3HUDtGwIipiJ9iU+UsDUwMhegFcQKQHd51nZjb7CArq0MvON8rbgCGQYWHUKAdg==}
 
-  '@skyra/i18next-backend@2.0.4':
-    resolution: {integrity: sha512-kgNuel7x8qHdjyTLd31tvRi+Lo+innqBVnTJBT8MRvf43aTsrMv1sNo5byit7HPTgjesaGwJYgvheOTaGEhuGQ==}
+  '@skyra/i18next-backend@2.0.5':
+    resolution: {integrity: sha512-qa8gzWedaMDE4TV8OROvbL1zQ/fK1k5rnuBZ2LR1YIVX9QO/Nwl/W+1vaBWNYR1Kd3c0HP6F+FhwJHqY08WAyQ==}
     engines: {node: '>=16.9.0', npm: '>=8.0.0'}
 
   '@tootallnate/once@2.0.0':
@@ -1377,6 +1377,10 @@ packages:
     resolution: {integrity: sha512-Dr3sfKRP6oTcjf2JmUmFJfeVMvXBdegxB0iVQ5eb2V10uFJUCAS8OByZdVAyVb8xXNz3GjjTgj9kLWsZTqE6kw==}
     engines: {node: '>= 8.10.0'}
 
+  chokidar@4.0.3:
+    resolution: {integrity: sha512-Qgzu8kfBvo+cA4962jnP1KkS6Dop5NS6g7R5LFYJr4b8Ub94PPQXUksCw9PvXoeXPRRddRNC5C1JQUR2SMGtnA==}
+    engines: {node: '>= 14.16.0'}
+
   chownr@2.0.0:
     resolution: {integrity: sha512-bIomtDF5KGpdogkLd9VspvFzk9KfpyyGlS8YFVZl7TGPBHL5snIOnxeshwVgPteQ9b4Eydl+pVbIyE1DcvCWgQ==}
     engines: {node: '>=10'}
@@ -1806,8 +1810,8 @@ packages:
     resolution: {integrity: sha512-nZXjEF2nbo7lIw3mgYjItAfgQXog3OjJogSbKa2CQIIvSGWcKgeJnQlNXip6NglNzYH45nSRiEVimMvYL8DDqQ==}
     engines: {node: '>=14.18.0'}
 
-  i18next@22.5.1:
-    resolution: {integrity: sha512-8TGPgM3pAD+VRsMtUMNknRz3kzqwp/gPALrWMsDnmC1mKqJwpWyooQRLMcbTwq8z8YwSmuj+ZYvc+xCuEpkssA==}
+  i18next@23.16.8:
+    resolution: {integrity: sha512-06r/TitrM88Mg5FdUXAKL96dJMzgqLE5dv3ryBAra4KCwD9mJ4ndOTS95ZuymIGoE+2hzfdaMak2X11/es7ZWg==}
 
   idb@7.1.1:
     resolution: {integrity: sha512-gchesWBzyvGHRO9W8tzUWFDycow5gwjvFKfyV9FF32Y7F50yZMp7mP+T2mJIWFx49zicqyC4uefHM17o6xKIVQ==}
@@ -2389,6 +2393,10 @@ packages:
   readdirp@3.6.0:
     resolution: {integrity: sha512-hOS089on8RduqdbhvQ5Z37A0ESjsqz6qnRcffsMU3495FuTdqSm+7bhJ29JvIOsBDEEnan5DPu9t3To9VRlMzA==}
     engines: {node: '>=8.10.0'}
+
+  readdirp@4.0.2:
+    resolution: {integrity: sha512-yDMz9g+VaZkqBYS/ozoBJwaBhTbZo3UNYQHNRw1D3UFQB8oHB4uS/tAODO+ZLjGWmUbKnIlOWO+aaIiAxrUWHA==}
+    engines: {node: '>= 14.16.0'}
 
   regenerator-runtime@0.14.0:
     resolution: {integrity: sha512-srw17NI0TUWHuGa5CFGGmhfNIeja30WMBfbslPNhf6JrqQlLN5gcrvig1oqPxiVaXb0oW0XRKtH6Nngs5lKCIA==}
@@ -3015,7 +3023,7 @@ snapshots:
     dependencies:
       '@babel/types': 7.26.3
 
-  '@babel/runtime@7.22.11':
+  '@babel/runtime@7.26.0':
     dependencies:
       regenerator-runtime: 0.14.0
 
@@ -3631,12 +3639,12 @@ snapshots:
       '@sapphire/utilities': 3.18.1
       tslib: 2.6.2
 
-  '@sapphire/plugin-i18next@5.1.0':
+  '@sapphire/plugin-i18next@7.1.3':
     dependencies:
       '@sapphire/utilities': 3.18.1
-      '@skyra/i18next-backend': 2.0.4
-      chokidar: 3.5.3
-      i18next: 22.5.1
+      '@skyra/i18next-backend': 2.0.5
+      chokidar: 4.0.3
+      i18next: 23.16.8
 
   '@sapphire/plugin-logger@3.0.6':
     dependencies:
@@ -3715,9 +3723,9 @@ snapshots:
 
   '@shikijs/vscode-textmate@10.0.1': {}
 
-  '@skyra/i18next-backend@2.0.4':
+  '@skyra/i18next-backend@2.0.5':
     dependencies:
-      tslib: 2.6.2
+      tslib: 2.8.1
 
   '@tootallnate/once@2.0.0':
     optional: true
@@ -4255,6 +4263,10 @@ snapshots:
       readdirp: 3.6.0
     optionalDependencies:
       fsevents: 2.3.3
+
+  chokidar@4.0.3:
+    dependencies:
+      readdirp: 4.0.2
 
   chownr@2.0.0: {}
 
@@ -4864,9 +4876,9 @@ snapshots:
 
   human-signals@4.3.1: {}
 
-  i18next@22.5.1:
+  i18next@23.16.8:
     dependencies:
-      '@babel/runtime': 7.22.11
+      '@babel/runtime': 7.26.0
 
   idb@7.1.1: {}
 
@@ -5455,6 +5467,8 @@ snapshots:
   readdirp@3.6.0:
     dependencies:
       picomatch: 2.3.1
+
+  readdirp@4.0.2: {}
 
   regenerator-runtime@0.14.0: {}
 
