@@ -27,7 +27,7 @@
     "@sapphire/discord.js-utilities": "7.3.2",
     "@sapphire/framework": "4.8.5",
     "@sapphire/plugin-i18next": "^5.1.0",
-    "@sapphire/plugin-logger": "^3.0.6",
+    "@sapphire/plugin-logger": "^4.0.0",
     "@sapphire/type": "^2.4.0",
     "@sapphire/utilities": "3.18.1",
     "colorette": "^2.0.20",

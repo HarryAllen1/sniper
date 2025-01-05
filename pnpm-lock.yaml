@@ -27,8 +27,8 @@ importers:
         specifier: ^5.1.0
         version: 5.1.0
       '@sapphire/plugin-logger':
-        specifier: ^3.0.6
-        version: 3.0.6
+        specifier: ^4.0.0
+        version: 4.0.2
       '@sapphire/type':
         specifier: ^2.4.0
         version: 2.4.0
@@ -863,9 +863,9 @@ packages:
     resolution: {integrity: sha512-UmUibnoKHvxNuwiQ4ZCat58pq+tVPK6i1/tUVpFMHREiKu0qJVa40j3lsdk8KHCuweypLiScZRT86pJQcV/Gfg==}
     engines: {node: '>=v14', npm: '>=7'}
 
-  '@sapphire/plugin-logger@3.0.6':
-    resolution: {integrity: sha512-BMluxIdVODObdbCy4TRkCmSAB/T/XQlYxaD25HD+1Z4feUVrBGWFmmWQo/2X4aLMD3VZi5RQ5oY6kZgtHn+ufA==}
-    engines: {node: '>=v14.0.0', npm: '>=7.0.0'}
+  '@sapphire/plugin-logger@4.0.2':
+    resolution: {integrity: sha512-5Nr++u+fA3/jZwj1aL9Z16RgyJZRE1gyUftfWjrzdndE5FkcbnLiVCKvnI8WzSupVhdn6kMaCWAteOSgAaq3lQ==}
+    engines: {node: '>=v18', npm: '>=7'}
 
   '@sapphire/ratelimits@2.4.11':
     resolution: {integrity: sha512-O6FNA/P0wxU4Ve9gxL948CoZw7+sSpujyUR2CLyLLCNuNvuFGFxPCJVl5crFVLXMIyBIrc2qk+/H9bsqsyQK1Q==}
@@ -891,8 +891,8 @@ packages:
     resolution: {integrity: sha512-DtyKugdy3JTqm6JnEepTY64fGJAqlusDVrlrzifEgSCfGYCqpvB+SBldkWtDH+z+zLcp+PyaFLq7xpVfkhmvGg==}
     engines: {node: '>=v14.0.0', npm: '>=7.0.0'}
 
-  '@sapphire/timestamp@1.0.1':
-    resolution: {integrity: sha512-uLg+rBFuBiaQY/pFGDDzZSOH2cfv4ONIB7zQGNuRCTpYKBW/iIhRBIZjJZyn8NVkXQhVi+Q94DI4i6gDhYVs7w==}
+  '@sapphire/timestamp@1.0.5':
+    resolution: {integrity: sha512-oNwWyNdbt5wm4aYZvlHl1+64U3g0xrFmRIHsnER7RgMxNnp/wmAE4yTK2oUHeadg3t4V9iYctPAQCF+aINke4g==}
     engines: {node: '>=v14.0.0', npm: '>=7.0.0'}
 
   '@sapphire/type@2.4.0':
@@ -3638,9 +3638,9 @@ snapshots:
       chokidar: 3.5.3
       i18next: 22.5.1
 
-  '@sapphire/plugin-logger@3.0.6':
+  '@sapphire/plugin-logger@4.0.2':
     dependencies:
-      '@sapphire/timestamp': 1.0.1
+      '@sapphire/timestamp': 1.0.5
       colorette: 2.0.20
 
   '@sapphire/ratelimits@2.4.11': {}
@@ -3663,7 +3663,7 @@ snapshots:
     dependencies:
       tslib: 2.6.2
 
-  '@sapphire/timestamp@1.0.1': {}
+  '@sapphire/timestamp@1.0.5': {}
 
   '@sapphire/type@2.4.0':
     dependencies:
