@@ -22,6 +22,7 @@ export const disableAllComponents = (message: Message) => {
 
   componentsClone.forEach((component) => {
     component.components.forEach((v) => {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore -- whatever
       v.disabled = true;
     });
@@ -64,11 +65,14 @@ export interface ConfirmationMessageOptions {
   collectorOptions?: MessageCollectorOptionsParams<ComponentType.Button>;
 }
 
-export declare interface ConfirmationMessage {
-  on(event: 'confirm' | 'deny', listener: (i: ButtonInteraction) => any): this;
+export interface ConfirmationMessageI {
+  on(event: 'confirm' | 'deny', listener: (i: ButtonInteraction) => void): this;
 }
 
-export class ConfirmationMessage extends EventEmitter {
+export class ConfirmationMessage
+  extends EventEmitter
+  implements ConfirmationMessageI
+{
   private embed;
   public constructor(
     private message: Message | CommandInteraction,
@@ -130,17 +134,17 @@ export class ConfirmationMessage extends EventEmitter {
       switch (i.customId) {
         case this.options?.confirmButtonCustomId ?? 'confirm':
           if (this.options?.disableComponentsOnConfirm !== false)
-            await disableAllComponents(<Message>i.message);
+            await disableAllComponents(i.message);
           if (this.options?.deleteComponentsOnConfirm !== false)
-            await removeAllComponents(<Message>i.message);
+            await removeAllComponents(i.message);
           this.emit('confirm', i);
           break;
         case this.options?.denyButtonCustomId ?? 'deny':
           collector.stop();
           if (this.options?.disableComponentsOnDeny !== false)
-            await disableAllComponents(<Message>i.message);
+            await disableAllComponents(i.message);
           if (this.options?.deleteComponentsOnDeny !== false)
-            await removeAllComponents(<Message>i.message);
+            await removeAllComponents(i.message);
           this.emit('deny', i);
           break;
         default:

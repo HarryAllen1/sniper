@@ -1,6 +1,6 @@
 import { ApplyOptions } from '@sapphire/decorators';
 import { Command, RegisterBehavior } from '@sapphire/framework';
-import { time, TimestampStyles } from 'discord.js';
+import { TimestampStyles, time } from 'discord.js';
 import ms from 'ms';
 
 @ApplyOptions<Command.Options>({
@@ -98,7 +98,7 @@ export class PingCommand extends Command {
               name: 'Roles',
               value: member.roles.cache
                 .sort((f, s) => s.position - f.position)
-                .map((val) => `${val}`)
+                .map((val) => `${val.toString()}`)
                 .toString(),
               inline: true,
             },

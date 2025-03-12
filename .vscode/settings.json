@@ -1,29 +1,3 @@
 {
-  "cSpell.words": [
-    "autoposter",
-    "Coinflip",
-    "discordjs",
-    "fortnite",
-    "harrys",
-    "nodenext",
-    "pnpm",
-    "topgg"
-  ],
-  "typescript.tsdk": "./node_modules/typescript/lib",
-  "typescript.preferences.importModuleSpecifierEnding": "js",
-  "javascript.preferences.importModuleSpecifierEnding": "js",
-  "typescript.preferences.importModuleSpecifier": "relative",
-  "javascript.preferences.importModuleSpecifier": "relative",
-
-  "editor.formatOnSave": true,
-  "[typescript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.codeActionsOnSave": {
-      "source.organizeImports": true
-    }
-  },
-
-  "files.associations": {
-    "*.json": "jsonc"
-  }
+  "prettier.prettierPath": "./node_modules/prettier"
 }

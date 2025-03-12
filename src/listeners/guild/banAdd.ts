@@ -5,7 +5,7 @@ import { Events, Listener, ListenerOptions } from '@sapphire/framework';
   event: Events.GuildBanAdd,
 })
 export default class extends Listener<typeof Events.GuildBanAdd> {
-  public run(...args: any[]) {
+  public run(...args: unknown[]) {
     console.log(args);
   }
 }

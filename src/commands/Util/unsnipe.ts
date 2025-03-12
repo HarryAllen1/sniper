@@ -8,6 +8,7 @@ import {
   Colors,
   ComponentType,
   ContextMenuCommandInteraction,
+  Message,
   MessageActionRowComponentBuilder,
   PermissionFlagsBits,
   TextChannel,
@@ -47,9 +48,9 @@ export class UserCommand extends Command {
     );
   }
 
-  @RequiresGuildContext((i) => {
-    i.reply('This command can only be used in a guild.');
-  })
+  @RequiresGuildContext((i: { reply: (r: string) => Promise<Message> }) =>
+    i.reply('This command can only be used in a guild.')
+  )
   public async chatInputRun(interaction: Command.ChatInputCommandInteraction) {
     const snipe = unSnipes[interaction.channelId]?.msg;
     if (!snipe) {
@@ -128,49 +129,15 @@ export class UserCommand extends Command {
             embeds: [
               {
                 title: 'Snipe deleted.',
-                description:
-                  'Would you like to also delete the original command?',
               },
             ],
             ephemeral: true,
-            fetchReply: true,
-            components: [
-              new ActionRowBuilder<MessageActionRowComponentBuilder>().addComponents(
-                new ButtonBuilder()
-                  .setStyle(ButtonStyle.Primary)
-                  .setLabel('Yes')
-                  .setCustomId('yes')
-              ),
-            ],
-          });
-          const collector = msg.createMessageComponentCollector({
-            componentType: ComponentType.Button,
-          });
-          collector.on('collect', async (c) => {
-            if (c.customId === 'yes') {
-              await originalCmd
-                ?.delete()
-                .catch(() =>
-                  c.reply({
-                    content: 'Error deleting command',
-                    ephemeral: true,
-                  })
-                )
-                .then(async () => {
-                  await c.reply({
-                    content: 'Command deleted.',
-                    ephemeral: true,
-                  });
-                });
-            }
           });
         } else
           return interaction.reply({
             embeds: [
               {
                 title: 'Deleted Snipe',
-                description:
-                  'Could not delete original command because of missing permissions.',
               },
             ],
             ephemeral: true,

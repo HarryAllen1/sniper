@@ -50,7 +50,7 @@ export declare type StringValue =
  * @param x Times to fire
  */
 export function setIntervalLimited(
-  callback: () => any,
+  callback: () => void,
   interval: number,
   x: number
 ) {
@@ -60,12 +60,15 @@ export function setIntervalLimited(
 }
 
 export const renameKeys = (
-  keysMap: { [key: string]: any },
-  obj: { [key: string]: any }
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  keysMap: Record<string, any>,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  obj: Record<string, any>
 ): Record<string, unknown> =>
   Object.keys(obj).reduce(
     (acc, key) => ({
       ...acc,
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
       ...{ [keysMap[key] || key]: obj[key] },
     }),
     {}

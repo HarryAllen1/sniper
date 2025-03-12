@@ -1,6 +1,6 @@
 import { Dispatcher, request } from 'undici';
 
-export async function fetch<T extends Record<string, unknown> | unknown>(
+export async function fetch<T>(
   input: string | URL,
   init?: { dispatcher?: Dispatcher } & Omit<
     Dispatcher.RequestOptions,
@@ -9,5 +9,5 @@ export async function fetch<T extends Record<string, unknown> | unknown>(
     Partial<Pick<Dispatcher.RequestOptions, 'method'>>
 ): Promise<T> {
   const { body } = await request(input, init);
-  return body.json();
+  return body.json() as Promise<T>;
 }

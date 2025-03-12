@@ -1,6 +1,5 @@
 import { ApplyOptions } from '@sapphire/decorators';
 import { Command } from '@sapphire/framework';
-import { Type } from '@sapphire/type';
 import { codeBlock, isThenable } from '@sapphire/utilities';
 import { inspect } from 'util';
 import { config } from '../../config.js';
@@ -56,7 +55,7 @@ export class UserCommand extends Command {
   public async chatInputRun(interaction: Command.ChatInputCommandInteraction) {
     const code = interaction.options.getString('code', true);
 
-    const { result, success, type } = await this.eval(interaction, code, {
+    const { result, success } = await this.eval(interaction, code, {
       async: interaction.options.getBoolean('async', false) ?? false,
       depth: Number(interaction.options.getNumber('depth', false)) ?? 0,
       showHidden: interaction.options.getBoolean('hidden', false) ?? false,
@@ -67,16 +66,14 @@ export class UserCommand extends Command {
       : `**ERROR**: ${codeBlock('bash', result)}`;
     if (interaction.options.getBoolean('silent', false)) return null;
 
-    const typeFooter = `**Type**: ${codeBlock('typescript', type)}`;
-
     if (output.length > 2000) {
       return {
-        content: `Output was too long... sent the result as a file.\n\n${typeFooter}`,
+        content: `Output was too long... sent the result as a file.`,
         files: [{ attachment: Buffer.from(output), name: 'output.js' }],
       };
     }
 
-    return interaction.reply(`${output}\n${typeFooter}`);
+    return interaction.reply(output);
   }
 
   private async eval(
@@ -103,7 +100,6 @@ export class UserCommand extends Command {
       success = false;
     }
 
-    const type = new Type(result).toString();
     if (isThenable(result)) result = await result;
 
     if (typeof result !== 'string') {
@@ -113,6 +109,6 @@ export class UserCommand extends Command {
       });
     }
 
-    return { result, success, type };
+    return { result, success };
   }
 }

@@ -1,10 +1,10 @@
 interface GetFromBetween {
-  results: string[] | any;
+  results: string[];
   string: string;
   getFromBetween: (sub1: string, sub2: string) => string | false | undefined;
   removeFromBetween: (sub1: string, sub2: string) => false | undefined;
   getAllResults: (sub1: string, sub2: string) => void;
-  get: (string: string, sub1: string, sub2: string) => any;
+  get: (string: string, sub1: string, sub2: string) => void;
 }
 export const getFromBetween: GetFromBetween = {
   results: [],
@@ -40,7 +40,7 @@ export const getFromBetween: GetFromBetween = {
       // find one result
       const result = this.getFromBetween(sub1, sub2);
       // push it to the results array
-      this.results.push(result as any);
+      this.results.push(String(result));
       // remove the most recently found one from the string
       this.removeFromBetween(sub1, sub2);
 

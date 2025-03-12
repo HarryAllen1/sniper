@@ -27,7 +27,7 @@ export const isAdmin = (
 
 export const getUserDataRef = (
   userID: string
-): Promise<FirebaseFirestore.DocumentSnapshot<any>> => {
+): Promise<FirebaseFirestore.DocumentSnapshot<UserData>> => {
   return db.collection('users').doc(userID).get();
 };
 

@@ -1,10 +1,9 @@
 import { ApplyOptions } from '@sapphire/decorators';
-import {
-  ApplicationCommandRegistry,
-  Events,
-  Listener,
-} from '@sapphire/framework';
-import type { RESTPostAPIChatInputApplicationCommandsJSONBody } from 'discord.js';
+import { Events, Listener } from '@sapphire/framework';
+import type {
+  APIApplicationCommandOption,
+  RESTPostAPIChatInputApplicationCommandsJSONBody,
+} from 'discord.js';
 import { writeFile } from 'fs/promises';
 
 @ApplyOptions<Listener.Options>({
@@ -13,11 +12,20 @@ import { writeFile } from 'fs/promises';
 export class UserListener extends Listener<
   typeof Events.ApplicationCommandRegistriesRegistered
 > {
-  public async run(registries: Map<string, ApplicationCommandRegistry>) {
+  public async run() {
     console.log('running');
 
     if (process.env.ONLY_UPDATE_DOCS) {
-      const commands = JSON.parse('{}');
+      const commands = JSON.parse('{}') as Record<
+        string,
+        {
+          name: string;
+          description: string;
+          filePath: string;
+          disabled: boolean;
+          options?: APIApplicationCommandOption[];
+        }[]
+      >;
       this.container.stores.get('commands').forEach((cmd) => {
         if (!commands[cmd.category ?? cmd.fullCategory[0]])
           commands[cmd.category ?? cmd.fullCategory[0]] = [];
@@ -30,6 +38,7 @@ export class UserListener extends Listener<
             // prettier-ignore
             (
               // @ts-expect-error its private; whatever
+              // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
               cmd.applicationCommandRegistry.apiCalls[0] as {
                 builtData: RESTPostAPIChatInputApplicationCommandsJSONBody;
               }

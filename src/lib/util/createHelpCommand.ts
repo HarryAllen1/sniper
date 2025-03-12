@@ -59,12 +59,12 @@ export function createHelpCommand(
           }
 ${
   cmd.aliases[0]
-    ? `**Aliases: **${cmd.aliases.map((alias) => `\`${alias}\``)}`
+    ? `**Aliases: **${cmd.aliases.map((alias) => `\`${alias}\``).toString()}`
     : ''
 }
 ${
   typeof cmd.options.options === 'string'
-    ? `**Options: **${cmd.options.options}`
+    ? `**Options: **${String(cmd.options.options)}`
     : cmd.options.options === true
     ? `**Options: ** any`
     : ''

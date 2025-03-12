@@ -41,7 +41,7 @@ export class UserCommand extends Command {
         },
       }
     );
-    if (res.error) return interaction.reply(res.error.message);
+    if (res.error instanceof Error) return interaction.reply(res.error.message);
 
     return interaction.reply({
       embeds: [
