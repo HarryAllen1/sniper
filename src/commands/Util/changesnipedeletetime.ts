@@ -31,6 +31,20 @@ export class UserCommand extends Command {
 
   @RequiresUserPermissions(PermissionFlagsBits.ManageGuild)
   public async chatInputRun(interaction: Command.ChatInputCommandInteraction) {
+    const time = interaction.options.getInteger('time', true);
+
+    // ensure its below the setTimeout limit
+    if (time > 2147483647) {
+      return interaction.reply({
+        embeds: [
+          {
+            title: 'Time must be below 2147483647 minutes',
+            color: Colors.Red,
+          },
+        ],
+      });
+    }
+
     await setGuildSettings(interaction.guildId!, {
       snipeDeleteTime: interaction.options.getInteger('time'),
     });

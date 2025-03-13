@@ -114,34 +114,17 @@ export class UserCommand extends Command {
           interaction.user.id === snipes[interaction.channelId].requesterId)
       ) {
         await msgToDelete.delete();
-        const originalCmd = await interaction.channel?.messages.fetch(
-          snipes[interaction.channelId]?.cmdId
-        );
+
         delete snipes[interaction.channelId];
 
-        if (
-          (<TextChannel>interaction.channel)
-            // eslint-disable-next-line -- it exists
-            .permissionsFor(interaction.guild!.members.me!)
-            .has(PermissionFlagsBits.ManageMessages)
-        ) {
-          const msg = await interaction.reply({
-            embeds: [
-              {
-                title: 'Snipe deleted.',
-              },
-            ],
-            ephemeral: true,
-          });
-        } else
-          return interaction.reply({
-            embeds: [
-              {
-                title: 'Deleted Snipe',
-              },
-            ],
-            ephemeral: true,
-          });
+        interaction.reply({
+          embeds: [
+            {
+              title: 'Deleted Snipe',
+            },
+          ],
+          ephemeral: true,
+        });
       }
     }
   }

@@ -1,15 +1,19 @@
 import { ApplyOptions } from '@sapphire/decorators';
 import { Events, Listener, ListenerOptions } from '@sapphire/framework';
-import { cleanContent, Message } from 'discord.js';
+import { cleanContent, Message, PartialMessage } from 'discord.js';
 import ms from 'ms';
 import { getGuildSettings, getUserData, sleep } from '../../lib/index.js';
 import { snipes } from '../../lib/snipes.js';
+import { OmitPartialGroupDMChannel } from 'discord.js';
 
 @ApplyOptions<ListenerOptions>({
   event: Events.MessageDelete,
 })
 export class MessageDelete extends Listener<typeof Events.MessageDelete> {
-  public async run(message: Message) {
+  public async run(
+    message: OmitPartialGroupDMChannel<Message<boolean> | PartialMessage>
+  ) {
+    if (!message.author) return;
     if ((await getUserData(message.author.id))?.dataOptOut) return;
     if (message.partial || !message.inGuild()) return; // content is null
     if (

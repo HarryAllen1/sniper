@@ -1,4 +1,3 @@
-import '@kaname-png/plugin-statcord/register';
 import {
   ApplicationCommandRegistries,
   LogLevel,
@@ -46,10 +45,6 @@ export const client = new SniperClient({
   defaultCooldown: {
     delay: 3000,
     filteredUsers: [harrysDiscordID],
-  },
-  statcord: {
-    key: config.statcord,
-    autopost: true,
   },
 });
 

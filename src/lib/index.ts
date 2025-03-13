@@ -1,6 +1,5 @@
 export * from './snipes.js';
 export * from './util/charactersBetween.js';
-export * from './util/console.js';
 export * from './util/date.js';
 export * from './util/fb.js';
 export * from './util/fetch.js';
