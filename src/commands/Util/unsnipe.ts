@@ -1,17 +1,10 @@
 import { ApplyOptions, RequiresGuildContext } from '@sapphire/decorators';
 import { ApplicationCommandRegistry, Command } from '@sapphire/framework';
 import {
-  ActionRowBuilder,
   ApplicationCommandType,
-  ButtonBuilder,
-  ButtonStyle,
   Colors,
-  ComponentType,
   ContextMenuCommandInteraction,
   Message,
-  MessageActionRowComponentBuilder,
-  PermissionFlagsBits,
-  TextChannel,
 } from 'discord.js';
 import { snipes, unSnipes } from '../../lib/snipes.js';
 
