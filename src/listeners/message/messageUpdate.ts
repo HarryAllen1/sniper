@@ -1,6 +1,6 @@
 import { ApplyOptions } from '@sapphire/decorators';
 import { Events, Listener, ListenerOptions } from '@sapphire/framework';
-import { cleanContent, Message } from 'discord.js';
+import { cleanContent, Message, OmitPartialGroupDMChannel, PartialMessage } from 'discord.js';
 import ms from 'ms';
 import { getGuildSettings, getUserData, sleep } from '../../lib/index.js';
 import { editSnipes } from '../../lib/snipes.js';
@@ -9,8 +9,8 @@ import { editSnipes } from '../../lib/snipes.js';
   event: Events.MessageUpdate,
 })
 export class MessageDelete extends Listener<typeof Events.MessageUpdate> {
-  public async run(oldMessage: Message, newMessage: Message) {
-    if ((await getUserData(oldMessage.author.id))?.dataOptOut) return;
+  public async run(oldMessage: OmitPartialGroupDMChannel<Message | PartialMessage>, newMessage: Message) {
+    if ((await getUserData(newMessage.author.id))?.dataOptOut) return;
     if (oldMessage.partial || !oldMessage.inGuild()) return; // content is null
     if (oldMessage.content !== newMessage.content) {
       if (oldMessage.guildId === '882695828140073052')

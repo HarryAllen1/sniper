@@ -1,6 +1,6 @@
 import { ApplyOptions, RequiresUserPermissions } from '@sapphire/decorators';
 import { Command, RegisterBehavior } from '@sapphire/framework';
-import { Colors, PermissionFlagsBits } from 'discord.js';
+import { Colors, InteractionContextType, PermissionFlagsBits } from 'discord.js';
 import { setGuildSettings } from '../../lib/index.js';
 
 @ApplyOptions<Command.Options>({
@@ -18,8 +18,10 @@ export class UserCommand extends Command {
               .setName('time')
               .setDescription('The time in minutes before snipes are deleted')
               .setRequired(true)
+          ).setContexts(
+            InteractionContextType.Guild,
+            InteractionContextType.PrivateChannel,
           )
-          .setDMPermission(false)
           .setDefaultMemberPermissions(PermissionFlagsBits.ManageGuild),
       {
         behaviorWhenNotIdentical: RegisterBehavior.Overwrite,
@@ -34,11 +36,11 @@ export class UserCommand extends Command {
     const time = interaction.options.getInteger('time', true);
 
     // ensure its below the setTimeout limit
-    if (time > 2147483647) {
+    if (time > 2147483) {
       return interaction.reply({
         embeds: [
           {
-            title: 'Time must be below 2147483647 minutes',
+            title: 'Time must be below 2147483 minutes',
             color: Colors.Red,
           },
         ],

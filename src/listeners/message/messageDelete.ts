@@ -16,15 +16,6 @@ export class MessageDelete extends Listener<typeof Events.MessageDelete> {
     if (!message.author) return;
     if ((await getUserData(message.author.id))?.dataOptOut) return;
     if (message.partial || !message.inGuild()) return; // content is null
-    if (
-      message.content.toLowerCase() !== '.pick' &&
-      message.guildId === '882695828140073052'
-    )
-      this.container.logger.info(
-        `${message.guild?.name}: ${
-          message.member?.user.username
-        }: ${cleanContent(message.content, message.channel)}`
-      );
 
     snipes[message.channelId] = {
       author: message.author,
